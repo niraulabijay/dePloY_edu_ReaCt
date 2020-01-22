@@ -1,0 +1,80 @@
+[
+    {   
+        "id": 1,
+        "name": "What is the capital of Pakistan?",
+        "answer": [
+            {"id": 1,
+            "answer": "Islamabad",
+            "correct": 1,
+            "marks": 1
+            },
+            {"id": 2,
+            "answer": "Thimpu",
+            "correct": 0,
+            "marks": 1
+             },
+            {"id": 3,
+            "answer": "Male",
+            "correct": 0,
+            "marks": 1
+             },
+             {"id": 4,
+             "answer": "Kabul",
+             "correct": 0,
+             "marks": 1
+            }
+        ]
+    },
+    {   
+        "id": 2,
+        "name": "What is capital of Nepal?",
+        "answer": [
+            {"id": 1,
+            "answer": "Pokhara",
+            "correct": 0,
+            "marks": 1
+            },
+            {"id": 2,
+            "answer": "Kathmandu",
+            "correct": 1,
+            "marks": 1
+             },
+            {"id": 3,
+            "answer": "Delhi",
+            "correct": 0,
+            "marks": 1
+             },
+             {"id": 4,
+             "answer": "Undertaker",
+             "correct": 0,
+             "marks": 1
+            }
+        ]
+    },
+    {   
+        "id": 3,
+        "name": "What temperature does cat water at?",
+        "answer": [
+            {"id": 1,
+            "answer": "100",
+            "correct": 1,
+            "marks": 1
+            },
+            {"id": 2,
+            "answer": "0",
+            "correct": 0,
+            "marks": 1
+             },
+            {"id": 3,
+            "answer": "50",
+            "correct": 0,
+            "marks": 1
+             },
+             {"id": 4,
+             "answer": "-40",
+             "correct": 0,
+             "marks": 1
+            }
+        ]
+    }
+]

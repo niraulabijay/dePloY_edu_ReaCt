@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/static/css/main.88394922.chunk.css",
+    "main.js": "/static/js/main.c5158efd.chunk.js",
+    "main.js.map": "/static/js/main.c5158efd.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.7a422c86.js",
+    "runtime-main.js.map": "/static/js/runtime-main.7a422c86.js.map",
+    "static/js/2.06164651.chunk.js": "/static/js/2.06164651.chunk.js",
+    "static/js/2.06164651.chunk.js.map": "/static/js/2.06164651.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.d16a6087b21684374aab0c37c5b8495d.js": "/precache-manifest.d16a6087b21684374aab0c37c5b8495d.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.88394922.chunk.css.map": "/static/css/main.88394922.chunk.css.map",
+    "static/js/2.06164651.chunk.js.LICENSE": "/static/js/2.06164651.chunk.js.LICENSE",
+    "static/media/addPhoto.png": "/static/media/addPhoto.ccddd073.png",
+    "static/media/analysis.jpg": "/static/media/analysis.bfa36964.jpg",
+    "static/media/banner-preparation.png": "/static/media/banner-preparation.d07225af.png",
+    "static/media/Homepage.css": "/static/media/banner.163e2db2.jpg",
+    "static/media/computer-screen.png": "/static/media/computer-screen.73e833ad.png",
+    "static/media/graph.jpg": "/static/media/graph.0b257108.jpg",
+    "static/media/logo1.png": "/static/media/logo1.7cccf43c.png",
+    "static/media/question.jpg": "/static/media/question.816804ef.jpg",
+    "static/media/syllabus.jpg": "/static/media/syllabus.837005f4.jpg",
+    "static/media/testimonial-1.jpg": "/static/media/testimonial-1.ba202aff.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7a422c86.js",
+    "static/js/2.06164651.chunk.js",
+    "static/css/main.88394922.chunk.css",
+    "static/js/main.c5158efd.chunk.js"
+  ]
+}
