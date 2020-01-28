@@ -1,4 +1,4 @@
-import React, { Component, useState, setState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Dropdown from './Dropdown'
 import LoginModal from "../Login/LoginModal"
 import RegisterModal from "../Register/RegisterModal"
@@ -56,10 +56,10 @@ function closeNav() {
         </div>
         <div className="button-container">
             <div className="join-now">
-                <a data-toggle="modal" data-target="#join">Join Now</a>
+                <a href="" data-toggle="modal" data-target="#join">Join Now</a>
             </div>
             <div className="login">
-                <a href="#" data-toggle="modal" data-target="#login">Login</a>
+                <a href="" data-toggle="modal" data-target="#login">Login</a>
             </div>
         </div>
         <span  className="d-block d-sm-none" onClick={openNav}><i className="fa fa-bars"></i></span>

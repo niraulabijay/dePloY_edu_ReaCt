@@ -8,7 +8,7 @@ const ViewAsset = () => {
       <div className="ViewAsset">
         <PDFViewer 
           backend={PDFJSBackend}
-          src='/webviewer-demo.pdf'
+          src='/pdf/ApplicationDetails.pdf'
         />
       </div>
     );  

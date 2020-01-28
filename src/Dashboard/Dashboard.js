@@ -4,12 +4,10 @@ import Practise from './Practise/Practise';
 import Test from './MockTest/Test';
 import { BrowserRouter as Router, Switch, Route, Link, useRouteMatch, Redirect, NavLink } from 'react-router-dom';
 import Bookmark from './Bookmark/Bookmark';
-import $ from 'jquery';
 import Doubts from './Doubts/Doubts';
 import Profile from './Profile/Profile';
 import PageNotFound from '../pages/PageNotFound';
 import Learn from './Subject/Learn';
-import ClassSelect from './Profile/ClassSelect';
 
 
 const routes = [
@@ -43,10 +41,6 @@ const routes = [
         main: () => <Profile />
 
     },
-    // {
-    //     path: "/class-select",
-    //     main: () => <ClassSelect />
-    // },
     {
         path: "*",
         main: () => <PageNotFound />
@@ -57,8 +51,6 @@ const routes = [
 ]
 const Dashboard = () => {
     
-            // console.log(SubjectResponse)
-
             function closeNav() {
                 function myFunction(x) {
                     let userSideNav = document.getElementById("userSideNav");
@@ -131,10 +123,10 @@ const Dashboard = () => {
                 myFunction(x); // Call listener function at run time
                 x.addListener(myFunction);
             }
-    const handleActive = event => {
-        $('#userSideNav a').removeClass('active');
-        event.target.classList.add('active');
-    }
+    // const handleActive = event => {
+    //     $('#userSideNav a').removeClass('active');
+    //     event.target.classList.add('active');
+    // }
 
     let { path, url } = useRouteMatch();
         
@@ -161,25 +153,25 @@ const Dashboard = () => {
                     <NavLink to="/class-select">Change ></NavLink>
                 </div>
                 <div className="d-sm-block d-none">
-                    <Link to="/learn" className="active test-class" onClick={(event) => { handleActive(event) }}>
+                    <Link to="/learn" className="active test-class" >
                         <i className="fa fa-graduation-cap"></i> <span className="sideTab"> Learn</span>
                     </Link>
-                    <Link to="/practise" className="test-class" onClick={handleActive} >
+                    <Link to="/practise" className="test-class">
                         <i className="fa fa-user-md"></i> <span className="sideTab"> Practise</span>
                     </Link>
-                    <Link to="/test" className="test-class" onClick={handleActive}>
+                    <Link to="/test" className="test-class" >
                         <i className="fa fa-file-alt"></i><span className="sideTab"> Test</span>
                     </Link>
-                    <Link to="/doubts" className="test-class" onClick={handleActive}>
+                    <Link to="/doubts" className="test-class">
                         <i className="fa fa-comment"></i> <span className="sideTab"> Doubts</span>
                     </Link>
-                    <Link to="/bookmark" className="test-class" onClick={handleActive}>
+                    <Link to="/bookmark" className="test-class" >
                         <i className="fa fa-bookmark"></i> <span className="sideTab"> Bookmarks</span>
                     </Link>
 
                     <hr />
                 </div>
-                <Link to="/profile" onClick={handleActive}><i className="fa fa-user"></i><span className="sideTab"> Profile</span></Link>
+                <Link to="/profile" ><i className="fa fa-user"></i><span className="sideTab"> Profile</span></Link>
                 <Link to="/quiz"><i className="fa fa-folder-open"></i> <span className="sideTab"> Syllabus</span></Link>
                 <NavLink to="/class-select"><i className="fa fa-cogs"></i> <span className="sideTab"> Setting</span></NavLink>
                 <a href="#"><i className="fab fa-facebook"></i> <span className="sideTab"> Share on Facebook</span></a>
@@ -199,16 +191,16 @@ const Dashboard = () => {
                     &copy; Copywrite EduNepal
          </div>
                 <div className="footer-nav">
-                    <Link to="/learn" className="active" onClick={handleActive}>
+                    <Link to="/learn" className="active" >
                         <i className="fa fa-graduation-cap"></i> <span className="sideTab"> Learn</span>
                     </Link>
-                    <Link to="/practise" onClick={handleActive}>
+                    <Link to="/practise">
                         <i className="fa fa-user-md"></i> <span className="sideTab"> Practise</span>
                     </Link>
-                    <Link to="/test" onClick={handleActive}>
+                    <Link to="/test" >
                         <i className="fa fa-file-alt"></i><span> Test</span>
                     </Link>
-                    <Link to="doubts" onClick={handleActive}>
+                    <Link to="doubts">
                         <i className="fa fa-comment"></i> <span> Doubts</span>
                     </Link>
                     <Link to="/bookmark" ><i className="fa fa-bookmark"></i> <span> Bookmarks</span></Link>
