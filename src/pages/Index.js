@@ -9,7 +9,7 @@ import {
     useRouteMatch,
     useParams
 } from "react-router-dom";
-
+import "../Dashboard/assets/css/userStyle.css";
 import PrivateRoute from "./PrivateRoute";
 import { AuthContext, useAuth } from "../Context/Auth";
 import ResetPassword from "../components/Register/ResetPassword";

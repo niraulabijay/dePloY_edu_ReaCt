@@ -6,15 +6,19 @@ import {
 	useRouteMatch,
 	useHistory,
 	useParams,
-	Redirect
+	useLocation
 } from "react-router-dom";
 import axios from "axios";
+import PractiseQuiz from "./PractiseQuiz";
+import { useAuth } from "../../Context/Auth";
 
 export default function PractiseSubject() {
 	let { path, url, params } = useRouteMatch();
-	// let {params} = useParams();
+	console.log(url);
+	let { chapterId } = useParams();
 	const [PractiseChapter, setPractiseChapter] = useState([]);
-	// console.log(path);
+	let { Authtoken } = useAuth();
+	//    console.log(params)
 	useEffect(() => {
 		axios({
 			method: "get",
@@ -24,6 +28,10 @@ export default function PractiseSubject() {
 		});
 	}, []);
 	let History = useHistory();
+	const startTest = slug => {
+		// console.log(slug)
+		History.replace("/" + Authtoken.class_id + "/" + slug + "/practise");
+	};
 	return (
 		<React.Fragment>
 			<Switch>
@@ -64,7 +72,9 @@ export default function PractiseSubject() {
 										</div>
 										<div className="col-md-6">
 											<div className="button-container">
-												<Link to={`${url}/quiz`}>Take a Test</Link>
+												<Link onClick={() => startTest(practise.slug)}>
+													Take a Test
+												</Link>
 											</div>
 										</div>
 									</div>
@@ -73,9 +83,7 @@ export default function PractiseSubject() {
 						</div>
 					</div>
 				</Route>
-				<Route push path={`${path}/quiz`}>
-					<Redirect to={"/quiz"} />
-				</Route>
+				{/* <Route path={`${path}/:chapterId`} component={PractiseQuiz} /> */}
 			</Switch>
 		</React.Fragment>
 	);

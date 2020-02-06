@@ -18,7 +18,7 @@ export default function Doubts(){
                         </div>
                     <div className="title-box">
                     <h2>Doubts</h2>
-                    <div className="chapter-number">Get the Solution For your doubts</div>
+                    <div className="chapter-number">Solve your doubts</div>
                     </div>
                 
 

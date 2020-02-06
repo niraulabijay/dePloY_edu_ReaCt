@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
 import {
 	BrowserRouter as Router,
 	Switch,
 	Route,
 	Link,
-	NavLink
+	NavLink,
+	useHistory,
+	useRouteMatch
 } from "react-router-dom";
-import ViewAsset from "./ViewAsset";
-import "../../assets/css/userStyle.css";
+import Axios from "axios";
 import $ from "jquery";
+
+import ViewAsset from "./ViewAsset";
+
 export default function ViewNote() {
+	const { url, params } = useRouteMatch();
+	// const [noteId, setNoteId] = useState();
+	// setNoteId()
+	
 	function closeNav() {
 		function myFunction(x) {
 			if (x.matches) {
@@ -66,7 +75,7 @@ export default function ViewNote() {
 
 	return (
 		<React.Fragment>
-			<div id="viewerSideNav" className="viewerSideNav">
+			<div id="viewerSideNav" className="viewerSidenav">
 				<div className="company-container">
 					<div className="img-container">
 						<img
@@ -116,7 +125,7 @@ export default function ViewNote() {
 					</div>
 				</div>
 				<div className="main-content viewer">
-					<ViewAsset />
+					<ViewAsset id={params.noteId} />
 				</div>
 			</div>
 		</React.Fragment>

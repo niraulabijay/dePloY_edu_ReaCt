@@ -186,7 +186,7 @@ export default function Test() {
                                 {testSub.map((data, index) => {
                                     return (
                                         <div
-                                            className="col-md-3 col-lg-3 col-12"
+                                            className="col-md-3 col-lg-3"
                                             key={index}
                                         >
                                             <div className="test-wrapper">

@@ -1,9 +1,7 @@
-import React, { Component, useState, setState, useEffect } from "react";
+import React from "react";
 import Dropdown from "./Dropdown";
 import LoginModal from "../Login/LoginModal";
 import RegisterModal from "../Register/RegisterModal";
-import OTPModal from "../Register/OTPModal";
-import { Switch, Route } from "react-router-dom";
 import PageNotFound from "../../pages/PageNotFound";
 
 export default function Navbar() {

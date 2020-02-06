@@ -40,6 +40,7 @@ module.exports = {
     filename: "app.js"
   },
   devServer: {
+   
     contentBase: path.join(__dirname, "public/"),
     headers: { 'Access-Control-Allow-Origin': '*' },
     port: 3000,

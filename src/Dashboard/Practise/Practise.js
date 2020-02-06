@@ -292,10 +292,7 @@ export default function Practise() {
                                                         <div className="col-md-3 col-3">
                                                             <div
                                                                 className="icon-box"
-                                                                style={{
-                                                                    backgroundColor:
-                                                                        "#ffed6a"
-                                                                }}
+                                                                
                                                             >
                                                                 <i className="fa fa-atom"></i>
                                                             </div>

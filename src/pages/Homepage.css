@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:700,900|Mukta:400,500,600&display=swap");
-
+@import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
 /*
 font-family: 'Varela Round', sans-serif;
 font-family: 'Quicksand', sans-serif;
@@ -1053,7 +1053,7 @@ body {
 }
 .quiz .answer-wrapper:hover .option-number,
 .answer-container .active .option-number {
-    padding: 6px 15px;
+    
     -webkit-transition: padding 0.2s ease-in;
     transition: padding 0.2s ease-in;
     background-color: #ffffff;
@@ -1076,7 +1076,7 @@ body {
 }
 .quiz .answer-wrapper:hover .option-tick,
 .answer-container .active .option-tick {
-    display: block;
+    display: inherit;
     margin: 5px auto 4px auto;
     background: white;
     padding: 10px;
@@ -1109,17 +1109,16 @@ body {
     bottom: 30px;
     width: 100%;
 }
-.quiz .button-section .button-row {
-    display: flex;
-}
+
 .quiz .button-section .button-row .prev-btn {
     background: linear-gradient(45deg, rgb(11, 231, 136), rgb(9, 214, 175));
     padding-top: 8px;
-    display: inline-block;
+    float: left;
     border-radius: 5px;
-    width: 100px;
+    width: 120px;
     text-align: center;
     cursor: pointer;
+    padding: 8px;
 }
 .quiz .button-section .button-row .prev-btn span,
 .quiz .button-section .button-row .next-btn span {
@@ -1150,10 +1149,9 @@ body {
 .quiz .button-section .button-row .next-btn {
     background: linear-gradient(235deg, #36ea5f, #00b693);
     padding: 8px;
-    display: inline-block;
     border-radius: 5px;
-    justify-content: right;
-    width: 100px;
+    float: right;
+    width: 120px;
     cursor: pointer;
     text-align: center;
 }
@@ -1238,11 +1236,15 @@ body {
 .quizsidenav ul {
     list-style: none;
 }
+#quizSideNav ul li.active{
+background: #0ae293;
+color: white;
+}
 .quizsidenav ul li {
-    background: white;
+    background: red;
     text-align: center;
     padding-top: 6px;
-    color: #000;
+    color: #fff;
     width: 35px;
     height: 35px;
     margin-right: 10px;
@@ -1254,7 +1256,7 @@ body {
     top: 18%;
     left: 30px;
     z-index: 1;
-    padding: 12px 12px;
+    padding: 5px 12px;
     font-size: 24px;
     background: #fff;
     color: #0ad8aa;

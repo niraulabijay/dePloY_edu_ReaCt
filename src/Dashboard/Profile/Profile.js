@@ -2,19 +2,17 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { useAuth } from "../../Context/Auth";
 import { useForm } from "react-hook-form";
+import Skeleton from "react-loading-skeleton";
 
 export default function Profile() {
-    // let { path, url } = useRouteMatch();
-    // let { subjectId } = useParams();
-
+ 
     const { Authtoken } = useAuth();
-    // console.log(Authtoken);
+  
 
     const [UserResponse, setUserResponse] = useState([]);
     const [loading, setLoading] = useState(true);
-    const { register, handleSubmit, errors, watch } = useForm();
+    const { register, handleSubmit } = useForm();
     const [ProfileImage, setProfileImage] = useState([]);
-    const [ResponseImage, setResponseImage] = useState([]);
     let getUrl = "http://noname.hellonep.com/api/user/" + Authtoken.user_id;
 
     useEffect(() => {
@@ -26,7 +24,7 @@ export default function Profile() {
                     cancelToken: source.token
                 });
                 setUserResponse(response.data.user);
-                // setResponseImage(response.data.profile_image);
+               
                 console.log(response.data.user);
                 setLoading(false);
             } catch (error) {
@@ -43,10 +41,7 @@ export default function Profile() {
         };
     }, [getUrl]);
 
-    // const [userData, setUserData] = useState(UserResponse);
-    // ProfileImage.length != "0"
-    //     ? console.log(ProfileImage)
-    //     : console.log("no image");
+  
     const handleUserChange = e =>
         setUserResponse({
             ...UserResponse,
@@ -57,7 +52,7 @@ export default function Profile() {
         setProfileImage(e.target.files[0]);
     };
 
-    // const onSubmit = data => console.log(data);
+    
     const onSubmit = data => {
         const formData = new FormData();
         formData.append("profile_image", ProfileImage);
@@ -74,17 +69,7 @@ export default function Profile() {
             url: "http://noname.hellonep.com/api/user/update",
             headers: { "Content-Type": "multipart/form-data" },
             data: formData
-            // data: {
-            //     user_id: Authtoken.user_id,
-            //     class: Authtoken.class_id,
-            //     profile_image: formData,
-            //     name: data.name,
-            //     institution: data.institution,
-            //     dob: data.dob,
-            //     gender: data.gender,
-            //     address: data.address
-            // }
-            // data: data
+          
         })
             .then(res => {
                 console.log(res);
@@ -94,6 +79,79 @@ export default function Profile() {
     console.log(UserResponse.profile_image);
 
     return (
+        loading?(
+            <React.Fragment>
+            <div className="profile-wrapper">
+                <div className="top-wrapper">
+                    <div className="container">
+                        
+                        <div className="profile-pic">
+                        <Skeleton  height={150} width={150} />
+                        </div>
+                        <div className="text-container">
+                            <div className="name">
+                                <i className="fa fa-user"></i>
+                                <Skeleton width={100}/>
+                            </div>
+                            <div className="number"><Skeleton width={100} /></div>
+                        </div>
+                    </div>
+                </div>
+                <div className="personal-details">
+                    <div className="title">Personal Details</div>
+                    <form
+                       
+                    >
+                        <div className="form-group">
+                            <Skeleton/>
+                        </div>
+                        <div className="form-group">
+                            <Skeleton/>
+                        </div>
+                        <div className="form-group">
+                            <Skeleton/>
+                        </div>
+
+                        <div className="form-group">
+                           <Skeleton/>
+                        </div>
+                        <div className="form-group">
+                           <Skeleton/>
+                        </div>
+                        <div className="form-group">
+                            <Skeleton/>
+                        </div>
+                        <div className="button-container">
+                            <Skeleton/>
+                        </div>
+                    </form>
+                </div>
+                <div className="account-details">
+                    <div className="title">Account Details</div>
+                    <form>
+                        <div className="form-group">
+                           <Skeleton/>
+                        </div>
+                        <div className="form-group">
+                            <Skeleton/>
+                        </div>
+                        <div className="form-group">
+                           <Skeleton/>
+                        </div>
+                        <div className="form-group">
+                            <Skeleton/>
+                        </div>
+                        <div className="form-group">
+                            <Skeleton/>
+                        </div>
+                        <div className="button-container">
+                           <Skeleton/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </React.Fragment>
+        ):(
         <React.Fragment>
             <div className="profile-wrapper">
                 <div className="top-wrapper">
@@ -101,11 +159,12 @@ export default function Profile() {
                         <div className="profile-pic">
                             <img
                                 src={
-                                    UserResponse.length != "0"
+                                    UserResponse.length !== "0"
                                         ? UserResponse.profile_image
                                         : require("../assets/images/testimonial-1.jpg")
                                 }
                                 className="img-fluid"
+                                alt=""
                             />
                         </div>
                         <div className="text-container">
@@ -251,6 +310,6 @@ export default function Profile() {
                     </form>
                 </div>
             </div>
-        </React.Fragment>
+        </React.Fragment>)
     );
 }

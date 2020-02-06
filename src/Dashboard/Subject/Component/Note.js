@@ -8,16 +8,38 @@ import {
 	useLocation,
 	useRouteMatch
 } from "react-router-dom";
+import axios from "axios";
+import { useAuth } from "../../../Context/Auth";
 import Skeleton from "react-loading-skeleton";
 
 const Note = ({ chapterResponse }) => {
-	console.log(chapterResponse.chapters);
+	const { Authtoken } = useAuth();
+	const { url, params } = useRouteMatch();
+
+	console.log(chapterResponse);
+	const HandleBookmark = data => {
+		console.log(data);
+		axios({
+			method: "post",
+			url: "http://noname.hellonep.com/api/bookmark/store",
+			data: {
+				note_id: data,
+				class_id: Authtoken.class_id,
+				user_id: Authtoken.user_id,
+				type: "note",
+				auth_token: Authtoken.token
+			}
+		}).then(response => {
+			console.log(response);
+		});
+	};
+	
 	return (
 		<div className="tab-pane active" id="note">
 			<div className="subject-content">
-				{chapterResponse.chapters ? (
+				{chapterResponse.data ? (
 					<React.Fragment>
-						{chapterResponse.chapters.map((chapter, index) => (
+						{chapterResponse.data.map((note, index) => (
 							<div
 								className="chapter-wrapper d-flex justify-content-between"
 								key={index}
@@ -25,19 +47,26 @@ const Note = ({ chapterResponse }) => {
 								<Link to="/viewer">
 									<div className="chapter-title">
 										<span>{index + 1}</span>
-										{chapter.name}
+										{note.name ? note.name : <Skeleton width={150}/>}
 									</div>
 								</Link>
 								<div className="option">
 									<a href="#">
 										<i className="fa fa-download"></i>
 									</a>
-									<Link to="/viewer">
-										<i className="fa fa-eye"></i>
-									</Link>
-									<a href="#">
-										<i className="fa fa-bookmark"></i>
-									</a>
+									{note.notes && (
+										<Link to={`/viewer/` + (note.notes[0] && note.notes[0].id)}>
+											<i className="fa fa-eye"></i>
+										</Link>
+									)}
+									{note.notes && (
+										<a
+											href="#"
+											onClick={() => HandleBookmark(note.notes[0].id)}
+										>
+											<i className="fa fa-bookmark"></i>
+										</a>
+									)}
 								</div>
 							</div>
 						))}

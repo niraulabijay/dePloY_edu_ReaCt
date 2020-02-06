@@ -1752,7 +1752,7 @@ var PDFViewerApplication = {
 exports.PDFViewerApplication = PDFViewerApplication;
 var validateFileURL;
 {
-  var HOSTED_VIEWER_ORIGINS = ['null', 'http://mozilla.github.io', 'https://mozilla.github.io'];
+  var HOSTED_VIEWER_ORIGINS = ['null', 'http://mozilla.github.io', 'https://mozilla.github.io','http://noname.hellonep.com','http://localhost:3000'];
 
   validateFileURL = function validateFileURL(file) {
     if (file === undefined) {
@@ -1771,6 +1771,9 @@ var validateFileURL;
           protocol = _ref8.protocol;
 
       if (origin !== viewerOrigin && protocol !== 'blob:') {
+        console.log(origin + "origin");
+        console.log(viewerOrigin + "vieworigin");
+
         throw new Error('file origin does not match viewer\'s');
       }
     } catch (ex) {

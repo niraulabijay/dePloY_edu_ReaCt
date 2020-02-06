@@ -13,11 +13,9 @@ import axios from "axios";
 
 export default function LearnSubject() {
 	const { url, params } = useRouteMatch();
-	// console.log(url)
 	const [chapter, setChapterResponse] = useState([]);
-	const [getUrl, setUrl] = useState("chapters");
+	const [getUrl, setUrl] = useState("notes");
 	const history = useHistory();
-
 	const handleSubmit = data => {
 		setUrl(data);
 	};
@@ -28,6 +26,7 @@ export default function LearnSubject() {
 			url: "http://noname.hellonep.com/api/" + getUrl + "/" + params.subjectId
 		}).then(response => {
 			setChapterResponse(response.data);
+			console.log(response.data);
 		});
 	}, [getUrl]);
 
@@ -53,7 +52,7 @@ export default function LearnSubject() {
 								className="nav-link active"
 								data-toggle="pill"
 								href="#note"
-								onClick={() => handleSubmit("chapters")}
+								onClick={() => handleSubmit("notes")}
 							>
 								Notes
 							</a>
@@ -69,7 +68,12 @@ export default function LearnSubject() {
 							</a>
 						</li>
 						<li className="nav-item">
-							<a className="nav-link" data-toggle="pill" href="#past-question">
+							<a
+								className="nav-link"
+								data-toggle="pill"
+								href="#past-question"
+								onClick={() => handleSubmit("questionsets")}
+							>
 								Question Set
 							</a>
 						</li>
@@ -77,8 +81,8 @@ export default function LearnSubject() {
 				</div>
 				<div className="tab-content">
 					<Note chapterResponse={chapter} />
-					<FlashCards chapterResponse={chapter} />
-					<PastQuestions />
+					<FlashCards FlashcardResponse={chapter} />
+					<PastQuestions QuestionResponse={chapter} />
 				</div>
 			</div>
 		</React.Fragment>
