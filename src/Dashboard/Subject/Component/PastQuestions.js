@@ -14,6 +14,7 @@ const PastQuestions = ({ QuestionResponse }) => {
 							key={index}
 						>
 							<div className="chapter-title">
+								{index + 1 + " " }
 								{question.title ? question.title : <Skeleton width={150} />}
 							</div>
 							<div className="option">

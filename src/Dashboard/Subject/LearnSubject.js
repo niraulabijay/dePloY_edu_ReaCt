@@ -10,12 +10,15 @@ import Note from "./Component/Note";
 import FlashCards from "./Component/FlashCards";
 import PastQuestions from "./Component/PastQuestions";
 import axios from "axios";
+import { useAuth } from "../../Context/Auth";
 
 export default function LearnSubject() {
+	const { Authtoken } = useAuth();
 	const { url, params } = useRouteMatch();
 	const [chapter, setChapterResponse] = useState([]);
-	const [getUrl, setUrl] = useState("notes");
+	const [getUrl, setUrl] = useState("notes/" + Authtoken.user_id);
 	const history = useHistory();
+	const [loading, setLoading] = useState(false);
 	const handleSubmit = data => {
 		setUrl(data);
 	};
@@ -28,7 +31,7 @@ export default function LearnSubject() {
 			setChapterResponse(response.data);
 			console.log(response.data);
 		});
-	}, [getUrl]);
+	}, [getUrl,loading]);
 
 	return (
 		<React.Fragment>
@@ -52,7 +55,7 @@ export default function LearnSubject() {
 								className="nav-link active"
 								data-toggle="pill"
 								href="#note"
-								onClick={() => handleSubmit("notes")}
+								onClick={() => handleSubmit("notes/" + Authtoken.user_id)}
 							>
 								Notes
 							</a>
@@ -80,7 +83,7 @@ export default function LearnSubject() {
 					</ul>
 				</div>
 				<div className="tab-content">
-					<Note chapterResponse={chapter} />
+					<Note chapterResponse={chapter} setLoading={setLoading} />
 					<FlashCards FlashcardResponse={chapter} />
 					<PastQuestions QuestionResponse={chapter} />
 				</div>

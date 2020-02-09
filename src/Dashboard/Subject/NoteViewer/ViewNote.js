@@ -18,7 +18,8 @@ export default function ViewNote() {
 	const { url, params } = useRouteMatch();
 	// const [noteId, setNoteId] = useState();
 	// setNoteId()
-	
+	console.log(params.id + "params");
+
 	function closeNav() {
 		function myFunction(x) {
 			if (x.matches) {
@@ -125,7 +126,7 @@ export default function ViewNote() {
 					</div>
 				</div>
 				<div className="main-content viewer">
-					<ViewAsset id={params.noteId} />
+					<ViewAsset id={params.id} />
 				</div>
 			</div>
 		</React.Fragment>

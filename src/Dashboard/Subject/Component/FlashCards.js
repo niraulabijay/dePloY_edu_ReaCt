@@ -57,18 +57,20 @@ const FlashCards = ({ FlashcardResponse }) => {
 										<Slider {...settings}>
 											{Flash.flashCards.map(Content => (
 												<div className="carousel-inner" key={Content.id}>
-													<div className="carousel-box">
-														<a
+													<a
 															href=""
 															className="question"
 															data-toggle="modal"
 															data-target={"#flash-modal"}
 															onClick={() => setModalId(Content.id)}
 														>
+													<div className="carousel-box">
+														
 															{" "}
 															{Content.title}{" "}
-														</a>
+														
 													</div>
+													</a>
 												</div>
 											))}
 										</Slider>
@@ -95,8 +97,11 @@ const FlashCards = ({ FlashcardResponse }) => {
 							</div>
 						</div>
 					))}
-
-					<Modal id={modalId} />
+				
+						
+						<Modal id={modalId} />
+					
+					
 				</React.Fragment>
 			)}
 		</div>

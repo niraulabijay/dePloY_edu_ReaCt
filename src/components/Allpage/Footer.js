@@ -9,7 +9,7 @@ function Footer(){
             <div className="row">
                 <div className="col-md-6 col-sm-6 col-lg-4">
                     <div className="logo-container">
-                        <img src={require('../../pages/images/logo.png')} alt="" className="img-fluid" />
+                        <img src={require('../../pages/images/logo1.png')} alt="" className="img-fluid" />
                     </div>
                     <div className="tagline">
                         Better Education for Better World

@@ -17,6 +17,8 @@ import Profile from "./Profile/Profile";
 import PageNotFound from "../pages/PageNotFound";
 import Learn from "./Subject/Learn";
 import ClassSelect from "./Profile/ClassSelect";
+import Syllabus from "./Profile/Syllabus";
+
 
 const routes = [
 	{
@@ -30,6 +32,10 @@ const routes = [
 	{
 		path: "/test",
 		main: () => <Test />
+	},
+	{
+		path: "/syllabus",
+		main: () => <Syllabus />
 	},
 	{
 		path: "/doubts",
@@ -181,7 +187,7 @@ const Dashboard = () => {
 					<i className="fa fa-user"></i>
 					<span className="sideTab"> Profile</span>
 				</NavLink>
-				<NavLink to="/quiz">
+				<NavLink to="/syllabus">
 					<i className="fa fa-folder-open"></i>{" "}
 					<span className="sideTab"> Syllabus</span>
 				</NavLink>

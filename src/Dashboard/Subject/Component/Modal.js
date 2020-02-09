@@ -4,7 +4,7 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 const Modal = ({ id }) => {
 	const [FlashResponse, setFlashResponse] = useState({});
-	console.log(id);
+	console.log(id + 'modalid');
 	let getUrl = "http://noname.hellonep.com/api/flashcard/" + id;
 
 	useEffect(() => {
