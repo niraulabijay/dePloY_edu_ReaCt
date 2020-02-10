@@ -188,9 +188,8 @@ h6 {
 	height: 60px;
 	display: none;
 	border-top: 1px solid #fff;
-
 	text-align: center;
-	background: #fff;
+	background: linear-gradient(0deg, #ffffff, transparent);
 	bottom: 0px;
 	width: 100%;
 }
@@ -229,17 +228,25 @@ h6 {
 	}
 	.userSidenav .company-container .title-name span {
 		display: inline-block;
-		margin-left: 12px;
+		margin-left: 30px;
 	}
 	.userSidenav .company-container .title-name {
 		color: white;
 		text-shadow: 1px 2px 3px #767575;
 	}
 	.userSidenav .footer-nav {
+		display: flex;
+		border: none;
+	}
+	.userSidenav .footer-nav .inner-footer {
 		padding: 8px 15px;
 		display: flex;
-		justify-content: space-between;
-		box-shadow: 0px -1px 5px #d2d2d2;
+		width: 100%;
+		justify-content: space-between;		
+		border-bottom-left-radius: 15px;
+		border-bottom-right-radius: 15px;
+		background: #fff;
+		box-shadow: 0px 5px 10px #d7d7d7;
 	}
 	.userSidenav .footer-nav a i {
 		display: block;
@@ -247,7 +254,7 @@ h6 {
 	}
 	.userSidenav .footer-nav a {
 		padding: 5px;
-		color: #3b3a3a;
+		color: #a2a1a1;
 	}
 	.userSidenav .footer-nav .active {
 		color: #00b166;
@@ -1314,9 +1321,11 @@ h6 {
 	padding: 30px 90px;
 }
 .practiseSubject .practiseSubjectWrapper {
-	background: #f1fff9;
+	background: #ffffff;
 	padding: 10px 30px;
-	margin-bottom: 10px;
+	margin-bottom: 15px;
+	border-radius: 5px;
+	box-shadow: 0px 5px 15px -5px lightgrey;
 }
 .practiseSubject .practiseSubjectWrapper a {
 	text-decoration: none;

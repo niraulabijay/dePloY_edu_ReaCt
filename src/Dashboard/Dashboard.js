@@ -55,6 +55,7 @@ const routes = [
 	}
 ];
 const Dashboard = () => {
+	
 	function closeNav() {
 		function myFunction(x) {
 			let userSideNav = document.getElementById("userSideNav");
@@ -83,10 +84,23 @@ const Dashboard = () => {
 				}
 			}
 		}
-		var x = window.matchMedia("(max-width: 756px)");
+		var x = window.matchMedia("(max-width: 768px)");
 		myFunction(x); // Call listener function at run time
 		x.addListener(myFunction);
 	}
+	window.onclick = function() {
+		var userSideNav = document.getElementById("userSideNav");
+		document.onclick = function(e) {
+			var x = window.matchMedia("(max-width: 768px)");
+			if (x.matches) {
+				if (userSideNav.offsetWidth != 0) {
+					if (e.target.parentNode.id !== "userSideNav") {
+						closeNav();
+					}
+				}
+			}
+		};
+	};
 	function openNav() {
 		function myFunction(x) {
 			let userSideNav = document.getElementById("userSideNav");
@@ -120,7 +134,7 @@ const Dashboard = () => {
 				}, 350);
 			}
 		}
-		var x = window.matchMedia("(max-width: 700px)");
+		var x = window.matchMedia("(max-width: 768px)");
 		myFunction(x); // Call listener function at run time
 		x.addListener(myFunction);
 	}
@@ -141,7 +155,7 @@ const Dashboard = () => {
 					<div className="title-name sideTab">
 						Educate Nepal
 						<span onClick={closeNav}>
-							<i className="fa fa-times"></i>
+							<i className="fa fa-lg fa-times"></i>
 						</span>
 					</div>
 				</div>
@@ -227,6 +241,7 @@ const Dashboard = () => {
 					&copy; Copywrite EduNepal
 				</div>
 				<div className="footer-nav">
+					<div className="inner-footer">
 					<NavLink to="/learn">
 						<i className="fa fa-graduation-cap"></i>{" "}
 						<span className="sideTab"> Learn</span>
@@ -245,6 +260,8 @@ const Dashboard = () => {
 					<NavLink to="/bookmark">
 						<i className="fa fa-bookmark"></i> <span> Bookmarks</span>
 					</NavLink>
+					</div>
+					
 				</div>
 			</div>
 			<div id="main">

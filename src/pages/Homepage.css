@@ -433,7 +433,7 @@ body {
 }
 .join .modal-body .form-control {
 	border: none;
-	background: #fbfbfb;
+	background: #f3f3f3;
 }
 
 .join .modal-body .title {
@@ -1883,7 +1883,21 @@ body {
 	}
 	.setting-container .resetPassword-wrapper h1 {
 		text-align: center;
-		margin-top: 30px;
+		margin-top: 5px;		
+		color: #fff;
+		font-weight: bold;
+		margin-bottom: 0;
+		font-size: 40px;
+		text-shadow: 2px 3px 10px #656666;
+		border-top-right-radius: 10px;
+		background: linear-gradient(120deg, transparent,#17ba8b, #17ba8b);
+	}
+	.setting-container .resetPassword-wrapper .address{
+		color: #fff;
+		border-bottom-right-radius: 10px;
+		background: linear-gradient(120deg, transparent,#17ba8b, #17ba8b);
+	}
+	.setting-container .resetPassword-wrapper form label{
 		color: #fff;
 		font-size: 18px;
 	}
@@ -2105,4 +2119,8 @@ body {
 #loginLoader {
 	display: none;
 	margin-bottom: 15px;
+}
+.btn-success{
+	background: #09a893;
+	border: #09a893;
 }

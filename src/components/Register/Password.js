@@ -46,7 +46,7 @@ import { Redirect, useHistory } from 'react-router-dom';
     return(
          <div className="resetPassword-wrapper">
                         <div className="row">
-                            <div className="col-6">
+                            <div className="col-md-6 col-12">
                             <div className="logo-box">
                                 <img src={require('../../Dashboard/assets/images/logo1.png')} className="img-fluid" />
                             </div>
@@ -57,7 +57,7 @@ import { Redirect, useHistory } from 'react-router-dom';
                                     Sankhamul, Kathmandu
                             </div>
                             </div>
-                            <div className="col-6">
+                            <div className="col-md-6 col-12">
                                    <form onSubmit={handleSubmit(onSubmit)}>
                                        <div className="form-group">
                                            <label>New Password</label>
