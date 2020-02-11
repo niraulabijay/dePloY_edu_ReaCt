@@ -13,9 +13,6 @@ import "../Dashboard/assets/css/userStyle.css";
 import PrivateRoute from "./PrivateRoute";
 import { AuthContext, useAuth } from "../Context/Auth";
 import ResetPassword from "../components/Register/ResetPassword";
-import ClassSelect from "../Dashboard/Profile/ClassSelect";
-import Newquiz from "../Dashboard/Quiz/quizlayout";
-import QuizResult from "../Dashboard/Quiz/QuizResult";
 
 export default function Index() {
     const Tokens = data => {
@@ -39,10 +36,8 @@ export default function Index() {
             <AuthContext.Provider value={{ Authtoken, StorageToken: Tokens }}>
                 <BrowserRouter>
                     <Switch>
-                        <Route path="/quiz-result" component={QuizResult} />
                         <Route path="/set-password" component={ResetPassword} />
                         <PrivateRoute>
-                            <Route path="/quiz" component={Newquiz} />
                             <Dashboard />
                         </PrivateRoute>
                     </Switch>

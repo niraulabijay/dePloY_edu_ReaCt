@@ -1,24 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link, Switch, Route, useRouteMatch, Redirect } from "react-router-dom";
 import TestSubject from "./TestSubject";
 import axios from "axios";
 import Skeleton from "react-loading-skeleton";
+import { useAuth } from "../../Context/Auth";
+import { SubjectContext } from "../../Context/SubjectContext";
 
 export default function Test() {
     let { path, url } = useRouteMatch();
-    const [testSub, setTestSubject] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const {testSub, loading} = useContext(SubjectContext);
     const [returnTest, setReturnTest] = useState([]);
+    const {Authtoken} = useAuth();
 
-    useEffect(() => {
-        axios({
-            method: "get",
-            url: "http://noname.hellonep.com/api/subjects/1"
-        }).then(response => {
-            setTestSubject(response.data.subjects);
-            setLoading(false);
-        });
-    }, []);
+    
     const handleTest = props => {
         setReturnTest(props);
         console.log(props);

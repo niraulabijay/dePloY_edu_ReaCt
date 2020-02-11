@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
 	Link,
 	Switch,
@@ -12,6 +12,7 @@ import PageNotFound from "../../pages/PageNotFound";
 import Skeleton from "react-loading-skeleton";
 import "../assets/css/userStyle.css";
 import Axios from "axios";
+import { SubjectContext } from "../../Context/SubjectContext";
 
 export default function Learn() {
 	let { path, url } = useRouteMatch();
@@ -20,42 +21,8 @@ export default function Learn() {
 	const { Authtoken } = useAuth();
 	console.log(Authtoken);
 
-	const [SubjectResponse, setSubjectResponse] = useState([]);
-	const [loading, setLoading] = useState(true);
-	let getUrl = "http://noname.hellonep.com/api/subjects/" + Authtoken.class_id;
-
-	useEffect(() => {
-		let source = Axios.CancelToken.source();
-		console.log(Authtoken.token);
-		const loadData = async () => {
-			try {
-				const response = await Axios.get(
-					getUrl,
-					{
-						headers: {
-							Authorization: "bearer" + Authtoken.token
-						}
-					},
-					{
-						cancelToken: source.token
-					}
-				);
-				setSubjectResponse(response.data.subjects);
-				setLoading(false);
-			} catch (error) {
-				if (Axios.isCancel(error)) {
-					console.log(error);
-				} else {
-					throw error;
-				}
-			}
-		};
-		loadData();
-		return () => {
-			source.cancel();
-		};
-	}, [getUrl]);
-
+	const {SubjectResponse, loading} = useContext(SubjectContext);
+	
 	return (
 		<React.Fragment>
 			<Switch>
@@ -152,7 +119,7 @@ export default function Learn() {
 										<Link to={`${url}/` + subject.slug}>
 											<div className="subject-container">
 												<div className="img-container">
-													<i className="fa fa-atom"></i>
+													<i className={subject.icon}></i>
 												</div>
 												<div className="title">{subject.name}</div>
 											</div>

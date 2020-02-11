@@ -1,6 +1,43 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import { useAuth } from '../../Context/Auth';
+import Axios from 'axios';
 
 export default function Syllabus() {
+    const [loading, setLoading] = useState(true);
+    const [syllabus, setSyllabus] = useState([]);
+    const {Authtoken} = useAuth();
+    let getUrl = "http://noname.hellonep.com/api/syllabus/"+Authtoken.class_id
+    useEffect(() => {
+		let source = Axios.CancelToken.source();
+		const loadData = async () => {
+			try {
+				const response = await Axios.get(
+					getUrl,
+					{
+						headers: {
+							Authorization: "bearer" + Authtoken.token
+						}
+					},
+					{
+						cancelToken: source.token
+					}
+                );
+				setSyllabus(response.data.data);
+				setLoading(false);
+			} catch (error) {
+				if (Axios.isCancel(error)) {
+					console.log(error);
+				} else {
+					throw error;
+				}
+			}
+		};
+		loadData();
+		return () => {
+			source.cancel();
+		};
+	}, [getUrl]);
+
 
     return (
         <React.Fragment>

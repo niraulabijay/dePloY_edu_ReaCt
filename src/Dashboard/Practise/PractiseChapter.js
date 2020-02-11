@@ -9,7 +9,7 @@ import {
 	useLocation
 } from "react-router-dom";
 import axios from "axios";
-import PractiseQuiz from "./PractiseQuiz";
+import PractiseQuiz from "./ChapterQuiz";
 import { useAuth } from "../../Context/Auth";
 
 export default function PractiseSubject() {
@@ -22,7 +22,10 @@ export default function PractiseSubject() {
 	useEffect(() => {
 		axios({
 			method: "get",
-			url: "http://noname.hellonep.com/api/chapters/" + params.subjectId
+			url: "http://noname.hellonep.com/api/chapters/" + params.subjectId,
+			headers: {
+				Authorization: "bearer" + Authtoken.token
+			}
 		}).then(response => {
 			setPractiseChapter(response.data.chapters);
 		});

@@ -18,6 +18,7 @@ import PageNotFound from "../pages/PageNotFound";
 import Learn from "./Subject/Learn";
 import ClassSelect from "./Profile/ClassSelect";
 import Syllabus from "./Profile/Syllabus";
+import {SubjectProvider} from "../Context/SubjectContext";
 
 
 const routes = [
@@ -142,6 +143,7 @@ const Dashboard = () => {
 	let { path, url } = useRouteMatch();
 
 	return (
+		<SubjectProvider>
 		<React.Fragment>
 			<div id="userSideNav" className="userSidenav">
 				<div className="company-container">
@@ -300,6 +302,7 @@ const Dashboard = () => {
 				</div>
 			</div>
 		</React.Fragment>
+		</SubjectProvider>
 	);
 };
 

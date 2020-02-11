@@ -24,9 +24,17 @@ export default function Bookmark() {
 		let source = Axios.CancelToken.source();
 		const loadData = async () => {
 			try {
-				const response = await Axios.get(getUrl, {
-					cancelToken: source.token
-				});
+				const response = await Axios.get(
+					getUrl, 
+					{
+						headers: {
+							Authorization: "bearer" + Authtoken.token
+						}
+					},
+					{
+						cancelToken: source.token
+					}
+				);
 				setBookmarkResponse(response.data);
 				
 			} catch (error) {

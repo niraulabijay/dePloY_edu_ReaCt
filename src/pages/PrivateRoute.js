@@ -5,7 +5,7 @@ import { useAuth } from "../Context/Auth";
 import Homepage from "./Homepage";
 import ClassSelect from "../Dashboard/Profile/ClassSelect";
 import ViewNote from "../Dashboard/Subject/NoteViewer/ViewNote";
-import PractiseQuiz from "../Dashboard/Practise/PractiseQuiz";
+import ChapterQuiz from "../Dashboard/Practise/ChapterQuiz";
 
 const PrivateRoute = ({ children, ...rest }) => {
 	const { Authtoken } = useAuth();
@@ -26,7 +26,7 @@ const PrivateRoute = ({ children, ...rest }) => {
 							<Route path="/class-select" component={ClassSelect} />
 							<Route
 								path="/:class_id/:chapterId/practise"
-								component={PractiseQuiz}
+								component={ChapterQuiz}
 							/>
 							{children}
 						</Switch>

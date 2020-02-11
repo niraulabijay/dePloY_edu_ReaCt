@@ -20,9 +20,15 @@ export default function Profile() {
 
         const loadData = async () => {
             try {
-                const response = await Axios.get(getUrl, {
-                    cancelToken: source.token
-                });
+                const response = await Axios.get(getUrl,
+                    {
+						headers: {
+							Authorization: "bearer" + Authtoken.token
+						}
+					}, {
+                        cancelToken: source.token
+                    }
+                );
                 setUserResponse(response.data.user);
                
                 console.log(response.data.user);
