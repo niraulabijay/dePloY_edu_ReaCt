@@ -24,6 +24,7 @@ function LoginModal() {
 					user_id: response.data.user_id,
 					class_id: response.data.class_id,
 					token: response.data.auth_token
+
 				});
 				setisLogged(true);
 			} else {

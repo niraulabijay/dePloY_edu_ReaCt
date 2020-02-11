@@ -22,7 +22,7 @@ const PrivateRoute = ({ children, ...rest }) => {
 						</Switch>
 					) : (
 						<Switch>
-							<Route path="/viewer/:id" component={ViewNote} />
+							<Route path="/viewer/:subjectSlug/:id" component={ViewNote} />
 							<Route path="/class-select" component={ClassSelect} />
 							<Route
 								path="/:class_id/:chapterId/practise"

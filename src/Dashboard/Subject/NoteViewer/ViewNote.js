@@ -9,16 +9,38 @@ import {
 	useHistory,
 	useRouteMatch
 } from "react-router-dom";
-import Axios from "axios";
+import axios from "axios";
 import $ from "jquery";
 
 import ViewAsset from "./ViewAsset";
+import { useAuth } from "../../../Context/Auth";
 
 export default function ViewNote() {
 	const { url, params } = useRouteMatch();
-	// const [noteId, setNoteId] = useState();
-	// setNoteId()
-	console.log(params.id + "params");
+	const [chapterNote, setChapterNote] = useState();
+	const { Authtoken } = useAuth();
+	const [getid, setid] = useState(params.id);
+
+	console.log(getid);
+	useEffect(() => {
+		axios({
+			method: "get",
+
+			headers: {
+				Authorization: "bearer" + Authtoken.token
+			},
+
+			url:
+				"http://noname.hellonep.com/api/notes/" +
+				Authtoken.user_id +
+				"/" +
+				params.subjectSlug
+		}).then(response => {
+			setChapterNote(response.data);
+			console.log(response.data);
+			console.log('hello');
+		});
+	}, []);
 
 	function closeNav() {
 		function myFunction(x) {
@@ -92,19 +114,25 @@ export default function ViewNote() {
 						</span>
 					</div>
 				</div>
-
-				<NavLink to="/profile">
-					<i className="fa fa-user"></i>
-					<span className="sideTab"> Profile</span>
-				</NavLink>
-				<NavLink to="/quiz">
-					<i className="fa fa-folder-open"></i>{" "}
-					<span className="sideTab"> Syllabus</span>
-				</NavLink>
-				<NavLink to="/class-select">
-					<i className="fa fa-cogs"></i>{" "}
-					<span className="sideTab"> Setting</span>
-				</NavLink>
+				{chapterNote &&
+					chapterNote.data.map(
+						(note, index) =>
+							note.notes &&
+							note.notes[0] && (
+								<NavLink
+									onClick={() => setid(params.id)}
+									to={
+										`/viewer/` +
+										params.subjectSlug +
+										"/" +
+										(note.notes[0] && note.notes[0].id)
+									}
+								>
+									<i className="fa fa-book"> </i>
+									<span className="sideTab"> {note.name}</span>
+								</NavLink>
+							)
+					)}
 			</div>
 
 			<div id="main">

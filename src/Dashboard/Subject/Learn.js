@@ -26,12 +26,20 @@ export default function Learn() {
 
 	useEffect(() => {
 		let source = Axios.CancelToken.source();
-
+		console.log(Authtoken.token);
 		const loadData = async () => {
 			try {
-				const response = await Axios.get(getUrl, {
-					cancelToken: source.token
-				});
+				const response = await Axios.get(
+					getUrl,
+					{
+						headers: {
+							Authorization: "bearer" + Authtoken.token
+						}
+					},
+					{
+						cancelToken: source.token
+					}
+				);
 				setSubjectResponse(response.data.subjects);
 				setLoading(false);
 			} catch (error) {

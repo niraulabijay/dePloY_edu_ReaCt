@@ -2124,3 +2124,9 @@ body {
 	background: #09a893;
 	border: #09a893;
 }
+.errorpage{
+	background-image: url('../pages/images/404.jpg');
+	height: 100vh;
+	width: 100vw;
+	background-size: cover;
+}

@@ -12,10 +12,10 @@ import axios from "axios";
 import { useAuth } from "../../../Context/Auth";
 import Skeleton from "react-loading-skeleton";
 
-const Note = ({ chapterResponse , setLoading}) => {
+const Note = ({ chapterResponse , setLoading, subjectId}) => {
 	const { Authtoken } = useAuth();
 	const { url, params } = useRouteMatch();
-	
+	const [getUrl, setUrl] = useState("notes/" + Authtoken.user_id);
 
 	console.log(chapterResponse);
 	const HandleBookmark = data => {
@@ -63,7 +63,7 @@ const Note = ({ chapterResponse , setLoading}) => {
 											</a>
 											{note.notes && (
 												<Link
-													to={`/viewer/` + (note.notes[0] && note.notes[0].id)}
+													to={`/viewer/`+ subjectId+'/'+ (note.notes[0] && note.notes[0].id)}
 												>
 													<i className="fa fa-eye"></i>
 												</Link>

@@ -26,12 +26,17 @@ export default function LearnSubject() {
 	useEffect(() => {
 		axios({
 			method: "get",
+
+			headers: {
+				Authorization: "bearer" + Authtoken.token
+			},
+
 			url: "http://noname.hellonep.com/api/" + getUrl + "/" + params.subjectId
 		}).then(response => {
 			setChapterResponse(response.data);
 			console.log(response.data);
 		});
-	}, [getUrl,loading]);
+	}, [getUrl, loading]);
 
 	return (
 		<React.Fragment>
@@ -83,7 +88,7 @@ export default function LearnSubject() {
 					</ul>
 				</div>
 				<div className="tab-content">
-					<Note chapterResponse={chapter} setLoading={setLoading} />
+					<Note chapterResponse={chapter} setLoading={setLoading} subjectId={params.subjectId}/>
 					<FlashCards FlashcardResponse={chapter} />
 					<PastQuestions QuestionResponse={chapter} />
 				</div>
