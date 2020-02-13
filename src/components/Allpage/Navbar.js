@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Dropdown from "./Dropdown";
 import LoginModal from "../Login/LoginModal";
 import RegisterModal from "../Register/RegisterModal";
 import PageNotFound from "../../pages/PageNotFound";
+import axios from "axios";
+import {Link, NavLink} from 'react-router-dom';
 
 export default function Navbar() {
+	const [classResponse, setClassResponse] = useState();
+	const [preparationResponse, setPreparationResponse] = useState();
+	useEffect(() => {
+		axios.get("http://noname.hellonep.com/api/nav/classes").then(response => {
+			setClassResponse(response.data.grades);
+			setPreparationResponse(response.data.preparations);
+			console.log(response.data.preparations);
+		});
+	}, []);
+
 	function openNav() {
 		document.getElementById("myNav").style.height = "100%";
 		document.getElementById("myNav").style.width = "100%";
@@ -17,12 +29,11 @@ export default function Navbar() {
 
 	window.onscroll = function() {
 		let navbar = document.getElementById("navbar");
-		if ((
-			document.body.scrollTop > 80 ||
-			document.documentElement.scrollTop > 80 ) && 
+		if (
+			(document.body.scrollTop > 80 ||
+				document.documentElement.scrollTop > 80) &&
 			navbar
 		) {
-			
 			navbar.style.background = "#f6f6ff";
 		} else {
 			navbar.style.background = "transparent";
@@ -39,31 +50,45 @@ export default function Navbar() {
 					/>
 				</div>
 				<div className="nav d-none d-sm-block">
-					<a href="index.html" className="active">
+					<NavLink to="/" className="active">
 						Home
-					</a>
-					{/* {navbarItems.map((data,id) => 
-              <Dropdown data={data} loading={loading}/>
-            )} */}
-					{/* <div className="dropdown">
-              <a className=" dropdown-toggle" data-toggle="dropdown">
-                Classs
-              </a>
-              <div className="dropdown-menu">
-                
-              </div>
-            </div>
-           <div className="dropdown">
-              <a className=" dropdown-toggle" data-toggle="dropdown">
-                Prepartion
-              </a>
-              <div className="dropdown-menu">
-                  
-              </div>
-            </div> */}
+					</NavLink>
 
-					<a href="#features">Features</a>
-					<a href="#blog">Blogs</a>
+					<div className="dropdown">
+						<a className=" dropdown-toggle" data-toggle="dropdown">
+							Class
+						</a>
+						<div className="dropdown-menu">
+							{classResponse && classResponse.map(classItem=>(
+								<NavLink to={`/class/${classItem.slug}`} key={classItem.slug}>
+								<li className="dropdown-item" >
+								{classItem.name}
+							</li>
+							</NavLink>
+							))}
+							
+						</div>
+					</div>
+					<div className="dropdown">
+						<a className=" dropdown-toggle" data-toggle="dropdown">
+							Prepartion
+						</a>
+						<div className="dropdown-menu">
+							{
+								preparationResponse && preparationResponse.map((prepItem)=>(
+									<NavLink to={`/class/${prepItem.slug}`} key={prepItem.slug}>
+									<li className="dropdown-item"  >
+									{prepItem.name}
+								</li>
+								</NavLink>
+								))
+							}
+					
+						</div>
+					</div>
+
+					<NavLink to="#features">Features</NavLink>
+					<NavLink to="#blog">Blogs</NavLink>
 				</div>
 				<div className="button-container">
 					<div className="join-now">
@@ -88,21 +113,21 @@ export default function Navbar() {
 				</span>
 
 				<div className="overlay-content">
-					<a href="index.html">Home</a>
+				<NavLink to="/" className="active">
+						Home
+					</NavLink>
 					<div className="dropdown">
 						<a className=" dropdown-toggle" data-toggle="dropdown">
-							Classes
+							Class
 						</a>
 						<div className="dropdown-menu">
-							<a className="dropdown-item" href="class.html">
-								SEE
-							</a>
-							<a className="dropdown-item" href="#">
-								11
-							</a>
-							<a className="dropdown-item" href="#">
-								12
-							</a>
+						{classResponse && classResponse.map(classItem=>(
+								<NavLink to={`/class/${classItem.slug}`} key={classItem.slug}>
+								<li className="dropdown-item" >
+								{classItem.name}
+							</li>
+							</NavLink>
+							))}
 						</div>
 					</div>
 					<div className="dropdown">
@@ -110,15 +135,15 @@ export default function Navbar() {
 							Preparation
 						</a>
 						<div className="dropdown-menu">
-							<a className="dropdown-item" href="preparation.html">
-								Bridge Course
-							</a>
-							<a className="dropdown-item" href="#">
-								11
-							</a>
-							<a className="dropdown-item" href="#">
-								12
-							</a>
+						{
+								preparationResponse && preparationResponse.map((prepItem)=>(
+									<NavLink to={`/class/${prepItem.slug}`} key={prepItem.slug}>
+									<li className="dropdown-item"  >
+									{prepItem.name}
+								</li>
+								</NavLink>
+								))
+							}
 						</div>
 					</div>
 					<a href="dashboard.html">Features</a>
@@ -130,4 +155,3 @@ export default function Navbar() {
 		</React.Fragment>
 	);
 }
-

@@ -88,6 +88,7 @@ body {
 	font-weight: 400;
 	font-family: "Righteous", cursive;
 	position: relative;
+	cursor: pointer;
 }
 
 #navbar .nav a > .active {
@@ -116,7 +117,20 @@ body {
 	color: #ffffff;
 	text-shadow: 1px 2px 3px #c2b8b8;
 }
-
+#navbar .nav .dropdown-menu{
+	background: #f6f6ff;
+}
+#navbar .nav .dropdown-menu a{
+	float: none;
+	padding: 5px 0px;
+	margin-right: 0;
+}
+#navbar .nav .dropdown-menu .dropdown-item{
+	color: #28a745;
+}
+#navbar .nav .dropdown-menu .dropdown-item:hover{
+background-color: #ffffff;
+}
 .logo-container {
 	width: 50px;
 }
@@ -1525,21 +1539,40 @@ body {
 .class-section .syllabus-section .content {
 	margin: 40px auto;
 }
+.class-section .syllabus-section .content a{
+	text-decoration: none;
+	background:linear-gradient(235deg, #36ea5f, #00b693)
+}
+.class-section .syllabus-section .content a.active .subject, .class-section .syllabus-section .content a:hover .subject{
+	background:linear-gradient(235deg, #36ea5f, #00b693)
+}
+.class-section .syllabus-section .content a.active .subject .subject-name, .class-section .syllabus-section .content a:hover .subject .subject-name{
+color: white;
+}
+
+.class-section .syllabus-section .content .subtitle{
+	font-size: 24px;
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 15px;
+}
 .class-section .syllabus-section .content .subject {
 	background: #ffffff;
-	padding: 16px;
+	padding: 8px;
 	border-radius: 5px;
 	box-shadow: 0px 2px 3px 1px #b6b6b691;
-	margin-bottom: 25px;
+	margin-bottom: 10px;
 	cursor: pointer;
 }
 .class-section .syllabus-section .content .subject .subject-name {
-	font-family: sans-serif;
 	font-size: 20px;
 	color: #28a745;
 	letter-spacing: 2px;
-	font-family: "Righteous", cursive;
 	text-align: center;
+}
+.class-section .syllabus-section .content .syllabusContainer{
+	padding: 15px;
+	background-color: #f7f7ff;
 }
 .class-section .syllabus-section .demo-box {
 	padding: 60px 30px;
@@ -1622,7 +1655,7 @@ body {
 		padding: 30px 0px 0px 0px;
 	}
 	.class-section .syllabus-section .content .subject {
-		padding: 5px 30px;
+		padding: 0;
 	}
 	.class-section .syllabus-section .content .subject .subject-name {
 		line-height: 60px;

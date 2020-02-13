@@ -12,6 +12,7 @@ function LoginModal() {
 	const [LoginError, setLoginError] = useState();
 
 	const onSubmit = data => {
+		document.getElementById("joinLoader").style.display = "block";
 		axios({
 			method: "post",
 			url: "http://noname.hellonep.com/api/login",
@@ -113,7 +114,11 @@ function LoginModal() {
 									{LoginError}
 								</span>
 							)}
-
+								<div id="joinLoader">
+									<SkeletonTheme color="#89f3a1" highlightColor="#fbfbfb">
+										<Skeleton />
+									</SkeletonTheme>
+								</div>
 							<div className="button-container">
 								<button className="btn btn-success" type="submit">
 									Login
