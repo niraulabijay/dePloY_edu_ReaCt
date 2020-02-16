@@ -6,18 +6,21 @@ import {
 } from "react-router-dom";
 import Axios from "axios";
 import { useAuth } from "../../Context/Auth";
-import Timer from "./Timer";
-import PractiseResult from "./SubjectResult";
+import Timer from './Timer'
+import SubjectResult from "./SubjectResult";
 
 export default function SubjectQuiz(props) {
-    let { path, url, params } = useRouteMatch();
+    let { path,url,params } = useRouteMatch();
+    console.log(params)
     let { Authtoken } = useAuth();
 
     const [questions, setGetQuestion] = useState([]);
     const [quizLength, setQuizLength] = useState(0);
     const [ResultResponse, setResultResponse] = useState([]);
-    const [Finish, setFinish] = useState(false);
-    const getUrl = "http://noname.hellonep.com/api/practise/" + params.chapterId;
+    const [testFinish, setTestFinish] = useState(false);
+    const [QuizTime, setQuizTime] = useState();
+    const [logId, setLogId] = useState();
+    const getUrl = "http://noname.hellonep.com/api/test/"+params.subjectId+'/'+Authtoken.user_id;
     let history = useHistory();
     const localActive = localStorage.getItem("active");
     const [active, setActive] = useState(
@@ -35,12 +38,18 @@ export default function SubjectQuiz(props) {
         const loadData = async () => {
             try {
                 const response = await Axios.get(getUrl, {
+                    headers: {Authorization: "bearer" + Authtoken.token }
+                },
+                {
                     cancelToken: source.token
                 });
-                setGetQuestion(response.data.data);
-                setQuizLength(response.data.data.length);
-                if (!localStorage.getItem("active")) {
-                    for (let i = 0; i < response.data.data.length; i++) {
+                console.log('time',response.data.time)
+                setGetQuestion(response.data.questions);
+                setQuizTime(parseInt(response.data.time));
+                setLogId(parseInt(response.data.log_id))
+                setQuizLength(response.data.questions.length);
+                if (!localStorage.getItem(  "active")) {
+                    for (let i = 0; i  < response.data.questions.length; i++) {
                         active.push(null);
                     }
                     localStorage.setItem("active", JSON.stringify(active));
@@ -126,11 +135,9 @@ export default function SubjectQuiz(props) {
     function closeQuiz() {
         document.getElementById("quizSideNav").style.width = "0";
     }
-    let History = useHistory();
 
     const submitPractise = () => {
         console.log("apple");
-        // e.preventDefault();
         const PractiseData = JSON.parse(localStorage.getItem("active"));
         PractiseData.filter(({ ...datas }, index) => {
             if (PractiseData[index] == null) {
@@ -142,21 +149,25 @@ export default function SubjectQuiz(props) {
         });
         Axios({
             method: "post",
-            url: "http://noname.hellonep.com/api/practise/store",
+            headers: {Authorization: "bearer" + Authtoken.token },
+            url: "http://noname.hellonep.com/api/test/store",
             data: {
+                log_id: logId,
                 user_id: Authtoken.user_id,
-                practise: PractiseData
+                practise: PractiseData,
+                
             }
         }).then(response => {
             if (response.data.status === "success") {
-                setResultResponse(response.data.data);
-                setFinish(true);
+                console.log(response)
+                setResultResponse(response.data.result);
+                setTestFinish(true);
             }
         });
     };
 
     useEffect(() => {
-        if (Finish) {
+        if(testFinish) {
             localStorage.removeItem("active");
             localStorage.removeItem("initialValue");
             history.push({
@@ -164,7 +175,7 @@ export default function SubjectQuiz(props) {
                 state: ResultResponse
             });
         }
-    }, [ResultResponse, Finish]);
+    }, [ResultResponse, testFinish]);
 
     const items = [];
     let QuestionPosition = JSON.parse(totalMarks);
@@ -228,7 +239,7 @@ export default function SubjectQuiz(props) {
                                         <div className="button-container">
                                             <a
                                                 href=""
-                                                onClick={History.goBack}
+                                                onClick={history.goBack}
                                                 data-dismiss="modal"
                                                 className="yes"
                                             >
@@ -251,7 +262,11 @@ export default function SubjectQuiz(props) {
                                     boxShadow: "0px 2px 4px #a1a4a4"
                                 }}
                             ></nav>
-                            <Timer url={url} />
+                            { QuizTime ?
+                                <Timer myTime={QuizTime} /> :
+                                null
+                            } 
+                            
                         </div>
 
                         {questions.length > 0 ? (
@@ -453,9 +468,12 @@ export default function SubjectQuiz(props) {
                     </div>
                 </div>
             </Route>
+            {/* <Route path="/:class_id/:subjectId/result" component={SubjectResult}	/> */}
+
             <Route path={`${path}/result`}>
-                <PractiseResult result={ResultResponse} />
+                <SubjectResult result={ResultResponse} />
             </Route>
+            
         </React.Fragment>
     );
 }

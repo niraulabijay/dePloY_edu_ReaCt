@@ -4,7 +4,7 @@ import {useHistory, Link} from "react-router-dom"
 
 
 
-export default function PractiseResult({result}){ 
+const SubjectResult = ({result}) => { 
     const history = useHistory();   
     const place = {
         pathname:'/learn'
@@ -52,7 +52,7 @@ export default function PractiseResult({result}){
                         <div className="row">
                             {question.questionAnswers.map((answer, index)=>
                             <div className="col-md-6 col-sm-6" key={index+1}>
-                                <div className={"answer-wrapper"+' '+(answer.correct == 1 ? 'active': '')+' '+((answer.id == question.selected && answer.correct ==0) ? 'wrong' : ' ') }>
+                                <div className={"answer-wrapper "+((answer.correct) === "1" ? "active": 'hhh')+' '+((answer.id === question.selected && answer.correct === "0") ? 'wrong' : ' ') }>
                                     <div className="option-number">
                                         A
                                     </div>
@@ -78,3 +78,4 @@ export default function PractiseResult({result}){
     )
 }
 
+export default SubjectResult;

@@ -1,17 +1,18 @@
 import React, {useState, useEffect} from "react";
 import ReactDOM from "react-dom";
 
-function Timer() {
+const Timer = ({myTime}) => {
 
     // var counter = 0;
     const [Minute, setMinute] = useState(0);
     const [Second, setSecond] = useState(0);
     const [Hour, setHour] = useState(0); 
-    const [Time, setTime] = useState(10)
+    const [Time, setTime] = useState(myTime)
 
     useEffect(() => {
+        console.log('Nan',myTime)
         const interval =  setInterval(function(){
-            if(Time != 0){
+            if(Time !== 0){
             setSecond( Time % 60 );
             setMinute(Math.floor((Time/60)%60));
             setHour(Math.floor(Time/60/60));
@@ -25,6 +26,7 @@ function Timer() {
             }
         },1000);
         return () => clearInterval(interval);
+
     },[Time])
 
 

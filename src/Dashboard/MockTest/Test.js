@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link, Switch, Route, useRouteMatch, Redirect } from "react-router-dom";
+import { Link, Switch, Route, useRouteMatch, Redirect, useHistory } from "react-router-dom";
 import TestSubject from "./TestSubject";
 import axios from "axios";
 import Skeleton from "react-loading-skeleton";
@@ -7,23 +7,23 @@ import { useAuth } from "../../Context/Auth";
 import { SubjectContext } from "../../Context/SubjectContext";
 
 export default function Test() {
-    let { path, url } = useRouteMatch();
+    let { path } = useRouteMatch();
     const {testSub, loading} = useContext(SubjectContext);
-    const [returnTest, setReturnTest] = useState([]);
+    // const [returnTest, setReturnTest] = useState([]);
     const {Authtoken} = useAuth();
+    const history= useHistory();
 
     
-    const handleTest = props => {
-        setReturnTest(props);
-        console.log(props);
-        console.log(returnTest);
+    const handleTest = slug => {
+        console.log(slug)
         // axios({
-        //     method: "post",
-        //     url: "http://noname.hellonep.com/api/stpre/cla",
+        //     method: "get",
+        //     url: "http://noname.hellonep.com/api/test/"+slug+'/'+Authtoken.user_id,
         //     data: returnTest
         // }).then(res => {
         //     console.log(res);
         // });
+        history.replace('/'+Authtoken.class_id +'/' +slug +'/test')
     };
 
     return (
@@ -208,10 +208,10 @@ export default function Test() {
                                                     </div>
                                                     <div className="button-container">
                                                         <Link
-                                                            to={`/quiz`}
+                                                            
                                                             onClick={() =>
                                                                 handleTest(
-                                                                    data.name
+                                                                    data.slug
                                                                 )
                                                             }
                                                         >
