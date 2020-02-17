@@ -12,7 +12,7 @@ export default function Dropdown(props){
             <div className="dropdown">
                 <a className=" dropdown-toggle" data-toggle="dropdown">
                     {data.name}
-                </a>
+            </a>
                     <div className="dropdown-menu">
                         {courses.map(course =>(
                             <a className="dropdown-item" key={course.id} href="#">{course.name}</a>

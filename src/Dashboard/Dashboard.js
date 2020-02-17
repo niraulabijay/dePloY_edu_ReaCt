@@ -9,7 +9,8 @@ import {
 	Link,
 	useRouteMatch,
 	Redirect,
-	NavLink
+	NavLink,
+	useHistory
 } from "react-router-dom";
 import Bookmark from "./Bookmark/Bookmark";
 import Doubts from "./Doubts/Doubts";
@@ -55,6 +56,9 @@ const routes = [
 		main: () => <PageNotFound />
 	}
 ];
+
+
+
 const Dashboard = () => {
 	
 	function closeNav() {
@@ -140,7 +144,24 @@ const Dashboard = () => {
 		x.addListener(myFunction);
 	}
 
-	let { path, url } = useRouteMatch();
+
+	const history = useHistory();
+	const [logout, setLogout] = useState(false);
+
+	const handleClose = e => {
+				e.preventDefault();
+				console.log("clicked")
+				setLogout(true);
+			}
+			
+	useEffect(() => {
+		if(logout){
+			localStorage.clear();
+			history.push({
+				pathname: '/',
+			})
+		}
+	}, [logout])
 
 	return (
 		<SubjectProvider>
@@ -283,9 +304,9 @@ const Dashboard = () => {
                                 <span>Invite & Earn</span>
                             </a>
                         </div> */}
-						<div className="logout">
-							<a href="">
-								<i className="fa fa-power-off"></i> <span>Logout</span>
+						<div className="logout"   >
+							<a href="#" onClick={handleClose} >
+								<i className="fa fa-power-off" ></i> <span>Logout</span>
 							</a>
 						</div>
 					</div>

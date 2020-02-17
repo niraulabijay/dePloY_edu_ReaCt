@@ -1,32 +1,35 @@
 import React, {useState, useEffect} from "react";
 import ReactDOM from "react-dom";
 
-function Timer() {
+const Timer = ({myTime, Timeup}) => {
 
-    // var counter = 0;
+    console.log(Timeup)
+
     const [Minute, setMinute] = useState(0);
     const [Second, setSecond] = useState(0);
     const [Hour, setHour] = useState(0); 
-    const [Time, setTime] = useState(10)
+    const [Time, setTime] = useState(myTime)
 
     useEffect(() => {
         const interval =  setInterval(function(){
-            if(Time != 0){
+            if(Time !== 0){
             setSecond( Time % 60 );
             setMinute(Math.floor((Time/60)%60));
             setHour(Math.floor(Time/60/60));
             setTime(Time=> Time - 1);
+            console.log('Nan',Time)
             }
             else{
                 setSecond(0);
                 setMinute(0);
                 setHour(0);
-                setTime(Time=> 0)
+                setTime(0); 
+                Timeup(); 
             }
         },1000);
         return () => clearInterval(interval);
     },[Time])
-
+    
 
     return (
         <div className="timer-container">

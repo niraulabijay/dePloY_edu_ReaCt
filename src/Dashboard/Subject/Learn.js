@@ -19,7 +19,6 @@ export default function Learn() {
 	let { subjectId } = useParams();
 
 	const { Authtoken } = useAuth();
-	console.log(Authtoken);
 
 	const {SubjectResponse, loading} = useContext(SubjectContext);
 	

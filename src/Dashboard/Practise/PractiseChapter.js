@@ -25,7 +25,7 @@ export default function PractiseSubject() {
 			url: "http://noname.hellonep.com/api/chapters/" + params.subjectId,
 			headers: {
 				Authorization: "bearer" + Authtoken.token
-			}
+			}	
 		}).then(response => {
 			setPractiseChapter(response.data.chapters);
 		});

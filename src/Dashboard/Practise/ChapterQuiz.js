@@ -74,9 +74,11 @@ const ChapterQuiz = (props) => {
             method: 'post',
             url: 'http://noname.hellonep.com/api/practise/store',
             headers: {Authorization : "Bearer"+ Authtoken.token},
-            data: { "data": [{
+            data: { "data": [
+            {
                 question_id: question.id,
-                correct: correct
+                correct: correct,
+                chapter: question.chapter_id
             }]
         }
         }).then(

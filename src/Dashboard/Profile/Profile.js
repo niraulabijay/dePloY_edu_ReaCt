@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { useAuth } from "../../Context/Auth";
 import { useForm } from "react-hook-form";
@@ -45,7 +45,7 @@ export default function Profile() {
         return () => {
             source.cancel();
         };
-    }, [getUrl]);
+    }, [getUrl, setProfileImage]);
 
   
     const handleUserChange = e =>
@@ -73,7 +73,8 @@ export default function Profile() {
         Axios({
             method: "post",
             url: "http://noname.hellonep.com/api/user/update",
-            headers: { "Content-Type": "multipart/form-data" },
+            headers: { "Content-Type": "multipart/form-data", Authorization: "bearer" + Authtoken.token 
+        },
             data: formData
           
         })
