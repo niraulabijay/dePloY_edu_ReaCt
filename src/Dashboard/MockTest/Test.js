@@ -215,7 +215,10 @@ export default function Test() {
                                                                 )
                                                             }
                                                         >
-                                                            Take a Test
+                                                            { (data.ongoing == 1) ?
+                                                                <span>Ongoing</span> :
+                                                                <span>Take a Test</span>    
+                                                            }
                                                         </Link>
                                                     </div>
                                                     <div className="progress">
