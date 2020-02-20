@@ -24,6 +24,9 @@ const Note = ({ chapterResponse , setLoading, subjectId}) => {
 		axios({
 			method: "post",
 			url: "http://noname.hellonep.com/api/bookmark/store",
+			headers: {
+				Authorization: "bearer" + Authtoken.token
+			},
 			// url: "http://192.168.1.71/api/bookmark/store",
 			data: {
 				note_id: data,
@@ -70,7 +73,7 @@ const Note = ({ chapterResponse , setLoading, subjectId}) => {
 											)}
 											{note.notes && (
 												<a
-													href="#"
+													
 													onClick={() => HandleBookmark(note.notes[0].id)}
 													className={note.notes[0].bookmark == 1 ? "set" : ""}
 												>

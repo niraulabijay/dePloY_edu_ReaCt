@@ -217,6 +217,8 @@ export default function SubjectQuiz(props) {
             response=>{
                 console.log(response)
                 if(response.data.status === "success"){
+                    localStorage.removeItem('active');
+                    localStorage.removeItem('initialValue');
                     history.replace({
                         pathname: '/learn'
                     })
@@ -297,7 +299,7 @@ export default function SubjectQuiz(props) {
 
                         {questions.length > 0 ? (
                             <>
-                                <div className="container test-section">
+                                <div className="container question test-section">
                                     <div className="question-container">
                                         <div className="question-title">
                                             <span className="question-number">

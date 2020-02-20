@@ -29,15 +29,17 @@ export default function Navbar() {
 
 	window.onscroll = function() {
 		let navbar = document.getElementById("navbar");
-		if (
-			(document.body.scrollTop > 80 ||
-				document.documentElement.scrollTop > 80) &&
-			navbar
-		) {
-			navbar.style.background = "#f6f6ff";
-		} else {
-			navbar.style.background = "transparent";
+		if(navbar != null){
+			if (
+				document.body.scrollTop > 80 ||
+					document.documentElement.scrollTop > 80
+			) {
+				navbar.style.background = "#f6f6ff";
+			} else {
+				navbar.style.background = "transparent";
+			}
 		}
+		
 	};
 
 	return (

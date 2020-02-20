@@ -11,9 +11,11 @@ import {
 import axios from "axios";
 import PractiseQuiz from "./ChapterQuiz";
 import { useAuth } from "../../Context/Auth";
+import Skeleton from "react-loading-skeleton";
 
 export default function PractiseSubject() {
 	let { path, url, params } = useRouteMatch();
+	const [loading, setLoading] = useState(false);
 	console.log(url);
 	let { chapterId } = useParams();
 	const [PractiseChapter, setPractiseChapter] = useState([]);
@@ -28,6 +30,7 @@ export default function PractiseSubject() {
 			}
 		}).then(response => {
 			setPractiseChapter(response.data.chapters);
+			setLoading(true);
 		});
 	}, []);
 	let History = useHistory();
@@ -55,14 +58,15 @@ export default function PractiseSubject() {
 							</div>
 						</div>
 						<div className="practiseSubject">
-							{PractiseChapter.map((practise, index) => (
+							{loading ?
+							(PractiseChapter.map((practise, index) => (
 								<div className="practiseSubjectWrapper" key={index}>
 									<div className="row">
 										<div className="col-md-6">
 											<div className="chapter-name">
-												<span>1</span> {practise.name}
+												<span>{index + 1}</span> {practise.name}
 											</div>
-											<div className="p   rogress">
+											<div className="progress">
 												<div
 													className="progress-bar"
 													style={{ width: "70%" }}
@@ -82,7 +86,59 @@ export default function PractiseSubject() {
 										</div>
 									</div>
 								</div>
-							))}
+							))):(
+								<React.Fragment>
+								<div className="practiseSubjectWrapper">
+									<div className="row">
+										<div className="col-md-6">
+											<div className="chapter-name">
+												<Skeleton/>
+											</div>
+											<Skeleton height={8} count={2}/>
+											
+										</div>
+										<div className="col-md-6">
+											<div className="button-container">
+												<Skeleton height={45} width={80}/>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div className="practiseSubjectWrapper">
+								<div className="row">
+									<div className="col-md-6">
+										<div className="chapter-name">
+											<Skeleton/>
+										</div>
+										<Skeleton count={2}/>
+										
+									</div>
+									<div className="col-md-6">
+										<div className="button-container">
+											<Skeleton height={45} width={80}/>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div className="practiseSubjectWrapper">
+							<div className="row">
+								<div className="col-md-6">
+									<div className="chapter-name">
+										<Skeleton/>
+									</div>
+									<Skeleton count={2}/>
+									
+								</div>
+								<div className="col-md-6">
+									<div className="button-container">
+										<Skeleton height={45} width={80}/>
+									</div>
+								</div>
+							</div>
+						</div>
+						</React.Fragment>
+							)
+}
 						</div>
 					</div>
 				</Route>

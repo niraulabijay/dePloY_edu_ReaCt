@@ -242,7 +242,7 @@ h6 {
 		padding: 8px 15px;
 		display: flex;
 		width: 100%;
-		justify-content: space-between;		
+		justify-content: space-between;
 		border-bottom-left-radius: 15px;
 		border-bottom-right-radius: 15px;
 		background: #fff;
@@ -1771,4 +1771,29 @@ h6 {
 	opacity: 0;
 	transition: opacity 0.5s ease-out;
 	transition-delay: 600ms;
+}
+.chapterNext {
+	border: none;
+	padding: 10px 30px;
+	margin: 0 auto;
+	display: block;
+	border-radius: 5px;
+	background: linear-gradient(45deg, #36ea5f, #00b693);
+	color: white;
+}
+.chapterSubmit {
+	border: none;
+	padding: 10px 30px;
+	margin: 0 auto;
+	display: block;
+	border-radius: 5px;
+	margin-top: 30px;
+	background: linear-gradient(45deg, #36ea5f, #00b693);
+	color: white;
+}
+.chapterSubmit:disabled {
+	display: none;
+}
+.status{
+	text-align: center;
 }

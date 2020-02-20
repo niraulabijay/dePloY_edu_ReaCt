@@ -161,16 +161,18 @@ const ChapterQuiz = (props) => {
                     <span>Loading</span>
                 }
             </div>
-            <button  onClick={handleSubmit} disabled={EnableSubmit ? '' : 'true'}>Submit</button>          
+            <div className="container">
+            <button  className="chapterSubmit" onClick={handleSubmit} disabled={EnableSubmit ? '' : 'true'}>Submit</button>          
             {     (result === true) ?
-                <div className="alert alert-success">Correct Answer</div>
+                <div className="status alert alert-success">Correct Answer</div>
                 : (result === false) ?
-                <div className="alert alert-danger">Wrong Answer</div>
+                <div className="status alert alert-danger">Wrong Answer</div>
                 : ""
             }
             {
-                NextButton && <button onClick={handleNextQuestion}> Next!</button>
+                NextButton && <button className="chapterNext" onClick={handleNextQuestion}> Next!</button>
             }
+            </div>
                 
             
     </React.Fragment>
