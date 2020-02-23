@@ -1704,6 +1704,21 @@ h6 {
 	color: #2ed485;
 	font-weight: bold;
 }
+.user-syllabus .subtitle {
+	font-size: 24px;
+	text-align: center;
+}
+.user-syllabus ul li a {
+	text-decoration: none;
+	color: black;
+	font-size: 20px;
+}
+.user-syllabus ul li a.active {
+	color: #2ed485;
+}
+.user-syllabus .syllabusContainer p {
+	text-align: justify;
+}
 .user-syllabus h2 {
 	font-size: 18px;
 	color: #fff;
@@ -1794,6 +1809,6 @@ h6 {
 .chapterSubmit:disabled {
 	display: none;
 }
-.status{
+.status {
 	text-align: center;
 }
