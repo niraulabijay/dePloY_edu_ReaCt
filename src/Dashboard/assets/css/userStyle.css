@@ -242,7 +242,7 @@ h6 {
 		padding: 8px 15px;
 		display: flex;
 		width: 100%;
-		justify-content: space-between;		
+		justify-content: space-between;
 		border-bottom-left-radius: 15px;
 		border-bottom-right-radius: 15px;
 		background: #fff;
@@ -1704,6 +1704,21 @@ h6 {
 	color: #2ed485;
 	font-weight: bold;
 }
+.user-syllabus .subtitle {
+	font-size: 24px;
+	text-align: center;
+}
+.user-syllabus ul li a {
+	text-decoration: none;
+	color: black;
+	font-size: 20px;
+}
+.user-syllabus ul li a.active {
+	color: #2ed485;
+}
+.user-syllabus .syllabusContainer p {
+	text-align: justify;
+}
 .user-syllabus h2 {
 	font-size: 18px;
 	color: #fff;
@@ -1771,4 +1786,49 @@ h6 {
 	opacity: 0;
 	transition: opacity 0.5s ease-out;
 	transition-delay: 600ms;
+}
+.chapterNext {
+	border: none;
+	padding: 10px 30px;
+	margin: 0 auto;
+	display: block;
+	border-radius: 5px;
+	background: linear-gradient(45deg, #36ea5f, #00b693);
+	color: white;
+}
+.chapterSubmit {
+	border: none;
+	padding: 10px 30px;
+	margin: 0 auto;
+	display: block;
+	border-radius: 5px;
+	margin-top: 30px;
+	background: linear-gradient(45deg, #36ea5f, #00b693);
+	color: white;
+}
+.chapterSubmit:disabled {
+	display: none;
+}
+.status {
+	text-align: center;
+}
+.errorContainer{
+	height: calc(100vh - 90px);
+	align-items: center;
+	text-align: center;
+	display: grid;
+}
+.errorContainer .errorContent i{
+	color: #23c885;
+}
+.errorContainer .errorContent a{
+	display: block;
+	padding: 15px;
+}
+.errorContainer .errorContent a:hover i{
+	transform: rotate(180deg);
+	transition: transform 0.5s linear;
+}
+.errorContainer .errorContent p{
+	margin-bottom: 0px;
 }

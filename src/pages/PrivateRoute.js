@@ -32,7 +32,6 @@ const PrivateRoute = ({ children, ...rest }) => {
 								path="/:class_id/:chapterId/practise"
 								component={ChapterQuiz}
 							/>
-
 							<Route
 								path="/:class_id/:subjectId/test"
 								component={SubjectQuiz}

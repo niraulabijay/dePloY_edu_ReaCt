@@ -28,9 +28,14 @@ export default class ErrorBoundary extends Component {
     render(){
         if(this.state.hasError){
             return(
-            <div>
+            <div className="errorContainer">
+                <div className="errorContent">
+                <a href=""><i className="fa fa-2x fa-redo"></i></a>
                 <p>An Error has occured while loading data.</p>
+                
                 <p>Please refresh your page or Check your Internet Connection.</p>
+                </div>
+               
             </div>
             )
         }else{

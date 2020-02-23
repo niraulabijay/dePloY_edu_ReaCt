@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Axios from "axios";
 import { useAuth } from "../../Context/Auth";
+import Skeleton from "react-loading-skeleton";
 
 export default function Bookmark() {
 	let { path, url } = useRouteMatch();
@@ -57,6 +58,10 @@ export default function Bookmark() {
 		Axios({
 			method: "post",
 			url: "http://noname.hellonep.com/api/bookmark/store",
+			
+				headers: {
+					Authorization: "bearer" + Authtoken.token
+				},
 			data: {
 				note_id: data,
 				class_id: Authtoken.class_id,
@@ -90,8 +95,8 @@ export default function Bookmark() {
 					</div>
 				</div>
 				<div className="subject-content">
-					{BookmarkResponse.data &&
-						BookmarkResponse.data.map((bookmark, index) => (
+					{BookmarkResponse.data ?
+					 (BookmarkResponse.data.map((bookmark, index) => (
 							<div
 								className="chapter-wrapper d-flex justify-content-between"
 								key={index}
@@ -109,7 +114,7 @@ export default function Bookmark() {
 									</Link>
 									{bookmark.notes && (
 										<a
-											href="#"
+											
 											onClick={() => HandleBookmark(bookmark.notes[0].id)}
 											className="set"
 										>
@@ -117,8 +122,21 @@ export default function Bookmark() {
 										</a>
 									)}
 								</div>
+							</div>)
+						)):
+						(
+						<div className="chapter-wrapper d-flex justify-content-between"
+								
+							>
+								<div className="chapter-title">
+									<Skeleton width={150}/>
+								</div>
+								<div className="option">
+									<Skeleton width={150} />
+								</div>
 							</div>
-						))}
+						)
+						}
 				</div>
 			</div>
 		</React.Fragment>

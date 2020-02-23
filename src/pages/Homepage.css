@@ -117,19 +117,19 @@ body {
 	color: #ffffff;
 	text-shadow: 1px 2px 3px #c2b8b8;
 }
-#navbar .nav .dropdown-menu{
+#navbar .nav .dropdown-menu {
 	background: #f6f6ff;
 }
-#navbar .nav .dropdown-menu a{
+#navbar .nav .dropdown-menu a {
 	float: none;
 	padding: 5px 0px;
 	margin-right: 0;
 }
-#navbar .nav .dropdown-menu .dropdown-item{
+#navbar .nav .dropdown-menu .dropdown-item {
 	color: #28a745;
 }
-#navbar .nav .dropdown-menu .dropdown-item:hover{
-background-color: #ffffff;
+#navbar .nav .dropdown-menu .dropdown-item:hover {
+	background-color: #ffffff;
 }
 .logo-container {
 	width: 50px;
@@ -1050,11 +1050,12 @@ background-color: #ffffff;
 	padding: 8px 10px;
 	display: -webkit-box;
 	display: flex;
+	cursor: pointer;
 	margin-top: 5px;
 	margin-bottom: 20px;
 	box-shadow: inset 3px 2px 6px 0px #b6acac;
 }
-.quiz .answer-wrapper:hover {
+.quiz .question .answer-wrapper:hover {
 	background: linear-gradient(90deg, rgb(11, 231, 136), rgb(9, 214, 175));
 }
 .quiz .answer-container .active {
@@ -1095,7 +1096,7 @@ background-color: #ffffff;
 	color: green;
 	padding-top: 10px;
 }
-.quiz .answer-wrapper:hover .option-number,
+.quiz .question .answer-wrapper:hover .option-number,
 .answer-container .active .option-number {
 	-webkit-transition: padding 0.2s ease-in;
 	transition: padding 0.2s ease-in;
@@ -1117,7 +1118,7 @@ background-color: #ffffff;
 	box-shadow: 1px 1px 5px 1px #b4b2b2;
 	border-radius: 50%;
 }
-.quiz .answer-wrapper:hover .option-tick,
+.quiz .question .answer-wrapper:hover .option-tick,
 .answer-container .active .option-tick {
 	display: inherit;
 	margin: 5px auto 4px auto;
@@ -1539,18 +1540,20 @@ background-color: #ffffff;
 .class-section .syllabus-section .content {
 	margin: 40px auto;
 }
-.class-section .syllabus-section .content a{
+.class-section .syllabus-section .content a {
 	text-decoration: none;
-	background:linear-gradient(235deg, #36ea5f, #00b693)
+	background: linear-gradient(235deg, #36ea5f, #00b693);
 }
-.class-section .syllabus-section .content a.active .subject, .class-section .syllabus-section .content a:hover .subject{
-	background:linear-gradient(235deg, #36ea5f, #00b693)
+.class-section .syllabus-section .content a.active .subject,
+.class-section .syllabus-section .content a:hover .subject {
+	background: linear-gradient(235deg, #36ea5f, #00b693);
 }
-.class-section .syllabus-section .content a.active .subject .subject-name, .class-section .syllabus-section .content a:hover .subject .subject-name{
-color: white;
+.class-section .syllabus-section .content a.active .subject .subject-name,
+.class-section .syllabus-section .content a:hover .subject .subject-name {
+	color: white;
 }
 
-.class-section .syllabus-section .content .subtitle{
+.class-section .syllabus-section .content .subtitle {
 	font-size: 24px;
 	font-weight: bold;
 	text-align: center;
@@ -1570,7 +1573,7 @@ color: white;
 	letter-spacing: 2px;
 	text-align: center;
 }
-.class-section .syllabus-section .content .syllabusContainer{
+.class-section .syllabus-section .content .syllabusContainer {
 	padding: 15px;
 	background-color: #f7f7ff;
 }
@@ -1916,21 +1919,21 @@ color: white;
 	}
 	.setting-container .resetPassword-wrapper h1 {
 		text-align: center;
-		margin-top: 5px;		
+		margin-top: 5px;
 		color: #fff;
 		font-weight: bold;
 		margin-bottom: 0;
 		font-size: 40px;
 		text-shadow: 2px 3px 10px #656666;
 		border-top-right-radius: 10px;
-		background: linear-gradient(120deg, transparent,#17ba8b, #17ba8b);
+		background: linear-gradient(120deg, transparent, #17ba8b, #17ba8b);
 	}
-	.setting-container .resetPassword-wrapper .address{
+	.setting-container .resetPassword-wrapper .address {
 		color: #fff;
 		border-bottom-right-radius: 10px;
-		background: linear-gradient(120deg, transparent,#17ba8b, #17ba8b);
+		background: linear-gradient(120deg, transparent, #17ba8b, #17ba8b);
 	}
-	.setting-container .resetPassword-wrapper form label{
+	.setting-container .resetPassword-wrapper form label {
 		color: #fff;
 		font-size: 18px;
 	}
@@ -2153,13 +2156,42 @@ color: white;
 	display: none;
 	margin-bottom: 15px;
 }
-.btn-success{
+.btn-success {
 	background: #09a893;
 	border: #09a893;
 }
-.errorpage{
-	background-image: url('../pages/images/404.jpg');
+.errorpage {
 	height: 100vh;
+	background: #f4f4fe;
 	width: 100vw;
-	background-size: cover;
+}
+.errorpage .img-container {
+	padding-top: 10%;
+	text-align: center;
+	width: 30%;
+	margin: 0 auto;
+}
+
+.errorpage .img-container h2{
+	font-size: 3em;
+	margin-bottom: 30px;
+}
+.errorpage .img-container a{
+	background: linear-gradient(235deg, #36ea5f, #00b693);
+	color: white;
+	padding: 10px 30px;
+	text-decoration: none;
+	
+	border-radius: 5px;
+}
+@media (max-width: 768px){
+	.errorpage .img-container {
+		padding-top: 60%;
+		text-align: center;
+		width: 80%;
+		margin: 0 auto;
+	}
+	.errorpage .img-container h2{
+		font-size: 2em;
+	}
 }

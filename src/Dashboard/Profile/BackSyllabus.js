@@ -4,7 +4,7 @@ import Axios from "axios";
 import { useState } from "react";
 import { useRouteMatch } from "react-router-dom";
 
-export default function FrontSyllabus() {
+export default function BackSyllabus() {
 	const { params } = useRouteMatch();
 	console.log(params);
 	const getUrl =
@@ -21,6 +21,7 @@ export default function FrontSyllabus() {
 		<React.Fragment>
 			<div className="container">
 				<div className="subtitle">{getSyllabus.title}</div>
+
 				<p dangerouslySetInnerHTML={{ __html: getSyllabus.description }}></p>
 			</div>
 		</React.Fragment>
