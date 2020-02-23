@@ -1,17 +1,21 @@
 import React , {useState, useEffect, createContext} from 'react'
 import Axios from 'axios'
 import { useAuth } from './Auth';
-import PractiseSubject from '../Dashboard/Practise/PractiseChapter';
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
+import Logout from '../Dashboard/Logout';
+
 
 export const SubjectContext = createContext();
 
 export const SubjectProvider = props => {
 
 	const [SubjectResponse, setSubjectResponse] = useState([]);
+	const [tokenError, setTokenError] = useState(false);
 	const [testSub, setTestSubject] = useState([]);
 	const [PractiseResponse, setPractiseResponse] = useState([]);
     const [loading, setLoading] = useState(true);
-    const {Authtoken} = useAuth();
+	const {Authtoken} = useAuth();
+	const {handleClose} = Logout();
 	let getUrl = "http://noname.hellonep.com/api/subjects/" + Authtoken.class_id;
 
     useEffect(() => {
@@ -24,19 +28,31 @@ export const SubjectProvider = props => {
 					{
 						headers: {
 							Authorization: "bearer" + Authtoken.token
-						}
+						},
+						// timeout: 10,
 					},
-					{ cancelToken: source.token }
+					{ cancelToken: source.token },
 				);
+				console.log(response.data.status)
+				// if(response.data.status === "")
+				if(response.data.status === "Token is Expired" || response.data.status === "Token is Invalid"){
+					handleClose()
+				}else{
 				setSubjectResponse(response.data.learn_subjects);
 				setPractiseResponse(response.data.practice_subjects);
 				setTestSubject(response.data.test_subjects);
 				setLoading(false);
-			} catch (error) {
+				}
+			}catch(error){
 				if (Axios.isCancel(error)) {
 					console.log(error);
-				} else {
-					throw error;
+				}else {
+					console.log(error)
+					// setTokenError(error)
+					// throw new Error(error);	
+					setTokenError(()=>{
+						throw error;
+					})
 				}
 			}
 		};
@@ -47,7 +63,12 @@ export const SubjectProvider = props => {
 	}, [getUrl]);
 
     return (
-        <SubjectContext.Provider value={{
+		
+		<React.Fragment>
+		{/* if({tokenError}){
+		 throw new Error('error');
+		}		 */}
+		<SubjectContext.Provider value={{
 				SubjectResponse:SubjectResponse, 
 				testSub:testSub, 
 				PractiseResponse:PractiseResponse, 
@@ -55,5 +76,8 @@ export const SubjectProvider = props => {
 			}}>
             {props.children}
         </SubjectContext.Provider>
+		
+		</React.Fragment>
+
     )
 }

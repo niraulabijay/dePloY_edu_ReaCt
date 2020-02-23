@@ -14,8 +14,12 @@ export default function Test() {
     const history= useHistory();
 
     
-    const handleTest = slug => {
+    const handleTest = (slug, ongoing) => {
         console.log(slug)
+        if(ongoing !== 1){
+            localStorage.removeItem('active');
+            localStorage.removeItem('initialValue')
+        }
         // axios({
         //     method: "get",
         //     url: "http://noname.hellonep.com/api/test/"+slug+'/'+Authtoken.user_id,
@@ -211,11 +215,14 @@ export default function Test() {
                                                             
                                                             onClick={() =>
                                                                 handleTest(
-                                                                    data.slug
+                                                                    data.slug, data.ongoing
                                                                 )
                                                             }
                                                         >
-                                                            Take a Test
+                                                            { (data.ongoing === 1) ?
+                                                                <span>Ongoing</span> :
+                                                                <span>Take a Test</span>    
+                                                            }
                                                         </Link>
                                                     </div>
                                                     <div className="progress">

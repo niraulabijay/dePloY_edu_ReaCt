@@ -17,9 +17,11 @@ import Doubts from "./Doubts/Doubts";
 import Profile from "./Profile/Profile";
 import PageNotFound from "../pages/PageNotFound";
 import Learn from "./Subject/Learn";
-import ClassSelect from "./Profile/ClassSelect";
 import Syllabus from "./Profile/Syllabus";
 import {SubjectProvider} from "../Context/SubjectContext";
+import { useAuth } from "../Context/Auth";
+import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
+import Logout from "./Logout";
 
 
 const routes = [
@@ -60,6 +62,9 @@ const routes = [
 
 
 const Dashboard = () => {
+	
+	const { StorageToken, Authtoken } = useAuth();
+	const {handleClose} = Logout();
 	
 	function closeNav() {
 		function myFunction(x) {
@@ -148,20 +153,17 @@ const Dashboard = () => {
 	const history = useHistory();
 	const [logout, setLogout] = useState(false);
 
-	const handleClose = e => {
-				e.preventDefault();
-				console.log("clicked")
-				setLogout(true);
-			}
+	// const handleClose = e => {
+	// 			e.preventDefault();
+	// 			setLogout(true);
+	// 			localStorage.clear();
+	// 			StorageToken(false)
+	// 			history.push({
+	// 				pathname:'/'
+	// 			})
+	// 		}
 			
-	useEffect(() => {
-		if(logout){
-			localStorage.clear();
-			history.push({
-				pathname: '/',
-			})
-		}
-	}, [logout])
+	
 
 	return (
 		<SubjectProvider>
@@ -317,7 +319,7 @@ const Dashboard = () => {
 							<Redirect to="/learn" />
 						</Route>
 						{routes.map((route, index) => (
-							<Route key={index} path={route.path} children={<route.main />} />
+							<Route key={index} path={route.path} ><ErrorBoundary><route.main /></ErrorBoundary></Route>
 						))}
 					</Switch>
 				</div>

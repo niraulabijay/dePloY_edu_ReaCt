@@ -8,6 +8,7 @@ import Axios from "axios";
 import { useAuth } from "../../Context/Auth";
 import Timer from './Timer'
 import SubjectResult from "./SubjectResult";
+import Skeleton from 'react-loading-skeleton';
 
 export default function SubjectQuiz(props) {
     let { path,url,params } = useRouteMatch();
@@ -216,6 +217,8 @@ export default function SubjectQuiz(props) {
             response=>{
                 console.log(response)
                 if(response.data.status === "success"){
+                    localStorage.removeItem('active');
+                    localStorage.removeItem('initialValue')
                     history.replace({
                         pathname: '/learn'
                     })
@@ -473,7 +476,38 @@ export default function SubjectQuiz(props) {
                                 </div>
                             </>
                         ) : (
-                            <span>Loading....</span>
+                            <>
+                                <div className="container test-section">
+                                    <div className="question-container">
+                                        <div className="question-title">
+                                            <span className="question-number">
+                                                <Skeleton></Skeleton>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div className="answer-container">
+                                            <div className="row">
+                                                { [1,2,3,4].map((val,index) => { return(
+                                                <div className="col-md-6 col-sm-6">
+                                                    <div
+                                                        className=
+                                                            "answer-wrapper"
+                                                    >
+                                                        <div className="option-number">{index+1}</div>
+                                                        <div className="option">
+                                                            <Skeleton></Skeleton>
+                                                        </div>
+                                                        <div className="option-tick">
+                                                            <i className="fa fa-check"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                );})}
+                                            </div>
+                                    </div>
+                                </div>
+                                
+                            </>
                         )}
                     </div>
 

@@ -11,6 +11,7 @@ const Timer = ({myTime, Timeup}) => {
     const [Time, setTime] = useState(myTime)
 
     useEffect(() => {
+        console.log('Nan',myTime)
         const interval =  setInterval(function(){
             if(Time !== 0){
             setSecond( Time % 60 );
@@ -28,6 +29,7 @@ const Timer = ({myTime, Timeup}) => {
             }
         },1000);
         return () => clearInterval(interval);
+
     },[Time])
     
 

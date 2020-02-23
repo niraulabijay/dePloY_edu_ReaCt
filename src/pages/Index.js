@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import Dashboard from "../Dashboard/Dashboard";
 import "./Homepage.css";
@@ -6,20 +6,24 @@ import {
     BrowserRouter,
     Route,
     Switch,
-    useRouteMatch,
-    useParams
 } from "react-router-dom";
 import "../Dashboard/assets/css/userStyle.css";
 import PrivateRoute from "./PrivateRoute";
-import { AuthContext, useAuth } from "../Context/Auth";
+import { AuthContext } from "../Context/Auth";
 import ResetPassword from "../components/Register/ResetPassword";
+import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 
 export default function Index() {
+    // cons history = useHistory();
     const Tokens = data => {
+        if(data){
         localStorage.setItem("tokens", JSON.stringify(data));
         // setAuthtokens(token)
         const token = JSON.parse(localStorage.getItem("tokens"));
         setAuthtokens(token);
+        }else{
+            setAuthtokens(null);
+     }
     };
     const [Authtoken, setAuthtokens] = useState(
         Tokens.tokens
@@ -44,7 +48,7 @@ export default function Index() {
                 </BrowserRouter>
             </AuthContext.Provider>
         </React.Fragment>
-    );
+    );  
 }
 
 if (document.getElementById("example")) {

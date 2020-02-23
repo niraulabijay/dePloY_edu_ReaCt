@@ -18,8 +18,12 @@ function Homepage() {
 		<React.Fragment>
 			<Navbar />
 			<Switch>
-				<Route path="/class" component={Class} />
-				<Route path="/preparation" component={Preparation} />
+				<Route path="/class/:classSlug" >
+				<Class/>
+				</Route>
+				<Route path="/preparation/:prepSlug" >
+					<Preparation/>
+					</Route>
 				<Route exact path="/">
 					<Banner />
 					<Interactive />

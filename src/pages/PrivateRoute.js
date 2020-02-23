@@ -7,11 +7,14 @@ import ClassSelect from "../Dashboard/Profile/ClassSelect";
 import ViewNote from "../Dashboard/Subject/NoteViewer/ViewNote";
 import ChapterQuiz from "../Dashboard/Practise/ChapterQuiz";
 import SubjectQuiz from "../Dashboard/Quiz/subjectQuiz";
+import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
+import Dashboard from "../Dashboard/Dashboard";
 
 const PrivateRoute = ({ children, ...rest }) => {
 	const { Authtoken } = useAuth();
 
 	return (
+		<ErrorBoundary>
 		<Route
 			{...rest}
 			render={({ location }) =>
@@ -29,8 +32,14 @@ const PrivateRoute = ({ children, ...rest }) => {
 								path="/:class_id/:chapterId/practise"
 								component={ChapterQuiz}
 							/>
-							<Route path="/:class_id/:subjectId/test" component={SubjectQuiz}	/>
-							{children}
+
+							<Route
+								path="/:class_id/:subjectId/test"
+								component={SubjectQuiz}
+							/>
+							{/* <ErrorBoundary> */}
+								<Dashboard />
+							{/* </ErrorBoundary> */}
 						</Switch>
 					)
 				) : (
@@ -38,6 +47,7 @@ const PrivateRoute = ({ children, ...rest }) => {
 				)
 			}
 		/>
+		</ErrorBoundary>
 	);
 };
 

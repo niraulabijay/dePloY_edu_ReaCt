@@ -11,14 +11,16 @@ import FlashCards from "./Component/FlashCards";
 import PastQuestions from "./Component/PastQuestions";
 import axios from "axios";
 import { useAuth } from "../../Context/Auth";
+import ErrorBoundary from "../../ErrorBoundary/ErrorBoundary";
 
-export default function LearnSubject() {
+const LearnSubject = () => {
 	const { Authtoken } = useAuth();
-	const { url, params } = useRouteMatch();
+	const {  params } = useRouteMatch();
 	const [chapter, setChapterResponse] = useState([]);
 	const [getUrl, setUrl] = useState("notes/" + Authtoken.user_id);
 	const history = useHistory();
 	const [loading, setLoading] = useState(false);
+	const [chapterError, setChapterError] = useState()
 	const handleSubmit = data => {
 		setUrl(data);
 	};
@@ -28,13 +30,22 @@ export default function LearnSubject() {
 			method: "get",
 
 			headers: {
-				Authorization: "bearer" + Authtoken.token
+				Authorization: "bearer" + JSON.parse(localStorage.getItem('tokens')).token
 			},
-
-			url: "http://noname.hellonep.com/api/" + getUrl + "/" + params.subjectId
+			url: "http://noname.hellonep.com/api/" + getUrl + "/" + params.subjectId,
+			timeout: 10000,
 		}).then(response => {
+			if(response.data.status === "Token is Expired" || response.data.status === "Token is Invalid"){
+				throw new Error('Token Problem')
+			}else{
+			console.log(response)
 			setChapterResponse(response.data);
-			console.log(response.data);
+			}
+		}).catch(error => {
+			// console.log(error)
+			setChapterError(()=>{
+				throw error;
+			})
 		});
 	}, [getUrl, loading]);
 
@@ -84,15 +95,19 @@ export default function LearnSubject() {
 							>
 								Question Set
 							</a>
-						</li>
+						</li> 
 					</ul>
 				</div>
 				<div className="tab-content">
+					{/* <ErrorBoundary> */}
 					<Note chapterResponse={chapter} setLoading={setLoading} subjectId={params.subjectId}/>
 					<FlashCards FlashcardResponse={chapter} />
 					<PastQuestions QuestionResponse={chapter} />
+					{/* </ErrorBoundary> */}
 				</div>
 			</div>
 		</React.Fragment>
 	);
 }
+
+export default LearnSubject;

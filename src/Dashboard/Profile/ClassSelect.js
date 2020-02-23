@@ -10,6 +10,7 @@ const ClassSelect = () => {
     const { StorageToken, Authtoken } = useAuth();
     let history = useHistory();
 
+
     const handleClassSubmit = data => {
         axios({
             method: "post",
@@ -17,10 +18,13 @@ const ClassSelect = () => {
             data: {
                 class_id: data,
                 user_id: JSON.parse(token).user_id,
-                auth_token: JSON.parse(token).token
+                auth_token: JSON.parse(token).token,
+                headers: {
+                    Authorization: "bearer" + Authtoken.token
+                }
             }
         }).then(res => {
-            console.log(res);
+            console.log(res + 'apple');
             if (res.data.status === "success") {
                 // const localstor = JSON.parse(localStorage.getItem('tokens'))
                 // localstor.class_id = data
@@ -37,9 +41,17 @@ const ClassSelect = () => {
     };
     const [classResponse, setClassResponse] = useState([]);
     const [PreparationResponse, setPreparationResponse] = useState([]);
-
+    
     useEffect(() => {
-        axios.get("http://noname.hellonep.com/api/classes").then(response => {
+        axios({
+            method: 'get',
+            url: "http://noname.hellonep.com/api/classes",
+            headers: {
+                Authorization: "bearer" + Authtoken.token
+            }
+        })
+        
+        .then(response => {
             setClassResponse(response.data.grades);
             setPreparationResponse(response.data.preparations);
         });

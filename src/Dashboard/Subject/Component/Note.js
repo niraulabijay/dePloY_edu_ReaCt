@@ -35,7 +35,9 @@ const Note = ({ chapterResponse , setLoading, subjectId}) => {
 		}).then(response => {
 			console.log(response);
 			setLoading(false);
-		});
+		}).catch(error=>{
+			throw error;
+		})
 	};
 
 	return (

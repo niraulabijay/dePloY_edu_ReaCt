@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, {  useContext } from "react";
 import {
 	Link,
 	Switch,
@@ -8,11 +8,11 @@ import {
 } from "react-router-dom";
 import LearnSubject from "../Subject/LearnSubject";
 import { useAuth } from "../../Context/Auth";
-import PageNotFound from "../../pages/PageNotFound";
 import Skeleton from "react-loading-skeleton";
 import "../assets/css/userStyle.css";
 import Axios from "axios";
 import { SubjectContext } from "../../Context/SubjectContext";
+import ErrorBoundary from "../../ErrorBoundary/ErrorBoundary";
 
 export default function Learn() {
 	let { path, url } = useRouteMatch();
@@ -23,6 +23,7 @@ export default function Learn() {
 	const {SubjectResponse, loading} = useContext(SubjectContext);
 	
 	return (
+		
 		<React.Fragment>
 			<Switch>
 				<Route exact path={path}>
@@ -130,10 +131,12 @@ export default function Learn() {
 					</div>
 				</Route>
 				<Route path={`${path}/:subjectId`}>
+				{/* <ErrorBoundary> */}
 					<LearnSubject />
+				{/* </ErrorBoundary>	 */}
 				</Route>
-				{/* <Route path={`${path}/` + "*"} component={PageNotFound} /> */}
 			</Switch>
 		</React.Fragment>
+		
 	);
 }

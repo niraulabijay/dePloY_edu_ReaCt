@@ -7,9 +7,7 @@ export default function Classbanner(){
     <div className="title">
         Hit SEE with your Knowledge
     </div>
-    <div className="subtitle d-sm-block d-none">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, vero nesciunt qui enim blanditiis
-    </div>
+   
     <div className="join-now-form container-fluid">
         <div className="row">
             <div className="col-md-3 col-lg-3 col-3">
