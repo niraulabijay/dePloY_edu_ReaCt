@@ -116,6 +116,7 @@ const ChapterQuiz = (props) => {
     </div>
   </div>
 </div>
+
                 <div className="quiz-header">
                     <nav className="navbar navbar-expand-sm" style={{
                         background: "linear-gradient(45deg, #0be788, #09d6af)",

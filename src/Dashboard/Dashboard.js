@@ -255,7 +255,9 @@ const Dashboard = () => {
 					<div className="copywrite text-center mt-2">
 						&copy; Copywrite EduNepal
 					</div>
-					<div className="footer-nav">
+					
+				</div>
+				<div className="footer-nav">
 						<div className="inner-footer">
 							<NavLink to="/learn">
 								<i className="fa fa-graduation-cap"></i>{" "}
@@ -277,7 +279,6 @@ const Dashboard = () => {
 							</NavLink>
 						</div>
 					</div>
-				</div>
 				<div id="main">
 					<div className="navbar d-flex ">
 						<div className="bars">

@@ -242,10 +242,10 @@ body {
 	display: block;
 	transition: 0.3s;
 }
-.overlay .dropdown-item{
+.overlay .dropdown-item {
 	color: white;
 	border-radius: 30px;
-    box-shadow: 0px 0px 10px #8f8c8c;
+	box-shadow: 0px 0px 10px #8f8c8c;
 }
 
 /* When you mouse over the navigation links, change their color */
@@ -257,16 +257,16 @@ body {
 /* Position the close button (top right corner) */
 .overlay .closebtn {
 	position: absolute;
-    top: 0px;
-    right: 0px;
-    line-height: 60px;
-    font-size: 60px;
-    padding: 0px 20px;
-    color: white;
+	top: 0px;
+	right: 0px;
+	line-height: 60px;
+	font-size: 60px;
+	padding: 0px 20px;
+	color: white;
 }
 
 @media (max-width: 756px) {
-	.fa-window-close{
+	.fa-window-close {
 		color: #28a745;
 	}
 	#navbar {
@@ -308,7 +308,6 @@ body {
 		left: 0;
 		padding: 0;
 		border: none;
-		
 	}
 	#myNav .dropdown-menu a {
 		text-align: center;
@@ -1012,7 +1011,64 @@ body {
 	margin: 0px 15px;
 	padding: 10px 30px;
 }
+
 #quitModal .button-container .no {
+	background: #ff8888;
+	margin: 0px 15px;
+	padding: 10px 30px;
+	border-radius: 5px;
+}
+#finishModal {
+	text-align: center;
+}
+#finishModal .title {
+	margin-top: 30px;
+	font-size: 30px;
+	color: #777d79;
+}
+#finishModal .button-container {
+	padding: 30px;
+}
+#finishModal .button-container a {
+	display: inline-block;
+	color: white;
+}
+#finishModal .button-container .yes {
+	border-radius: 5px;
+	background: #09d6af;
+	margin: 0px 15px;
+	padding: 10px 30px;
+}
+
+#finishModal .button-container .no {
+	background: #ff8888;
+	margin: 0px 15px;
+	padding: 10px 30px;
+	border-radius: 5px;
+}
+#startModal {
+	text-align: center;
+}
+#startModal .title {
+	margin-top: 30px;
+	font-size: 30px;
+	color: #777d79;
+}
+#startModal .button-container {
+	padding: 30px;
+}
+#startModal .button-container a {
+	display: inline-block;
+	color: white;
+}
+#startModal .button-container .yes {
+	border-radius: 5px;
+	background: #09d6af;
+	margin: 0px 15px;
+	padding: 10px 30px;
+}
+
+#startModal .button-container .no {
 	background: #ff8888;
 	margin: 0px 15px;
 	padding: 10px 30px;

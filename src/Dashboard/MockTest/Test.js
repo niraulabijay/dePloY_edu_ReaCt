@@ -16,10 +16,11 @@ import { SubjectContext } from "../../Context/SubjectContext";
 export default function Test() {
 	let { path } = useRouteMatch();
 	const { testSub, loading } = useContext(SubjectContext);
+	const [modalData, setModalData] = useState();
 	// const [returnTest, setReturnTest] = useState([]);
 	const { Authtoken } = useAuth();
 	const history = useHistory();
-   
+
 	const handleTest = slug => {
 		console.log(slug);
 		// axios({
@@ -30,12 +31,8 @@ export default function Test() {
 		//     console.log(res);
 		// });
 		history.replace("/" + Authtoken.class_id + "/" + slug + "/test");
-    };
-    
+	};
 
-    
-   
-	
 	// if(onGoing.innerHTML == "Ongoing"){
 	//     console.log('hi');
 	// }
@@ -195,23 +192,27 @@ export default function Test() {
 														</div>
 														<div className="remaining">Remaining 3</div>
 													</div>
-                                                    
+
 													<div className="button-container">
-                                                    {data.ongoing == 1 ? (
-														<Link onClick={() => handleTest(data.slug)} style={{background: "#4bf769"}}>
-																<span >Ongoing</span>			
-														</Link>
-													
-                                                    ):
-                                                    (
-                                                    
-														<Link onClick={() => handleTest(data.slug)}>
+														{data.ongoing == 1 ? (
+															<Link
+																data-toggle="modal"
+																data-target="#startModal"
+																onClick={() => setModalData(data.slug)}
+																style={{ background: "#4bf769" }}
+															>
+																<span>Ongoing</span>
+															</Link>
+														) : (
+															<Link
+																data-toggle="modal"
+																data-target="#startModal"
+																onClick={() => setModalData(data.slug)}
+															>
 																<span>Take a Test</span>
-															
-														</Link>
-													
-                                                    )}
-                                                    </div> 
+															</Link>
+														)}
+													</div>
 													<div className="progress">
 														<div
 															className="progress-bar"
@@ -228,6 +229,31 @@ export default function Test() {
 								})}
 							</div>
 						)}
+					</div>
+					<div className="modal" id="startModal">
+						<div className="modal-dialog">
+							<div className="modal-content">
+								<div className="modal-body">
+									<button type="button" className="close" data-dismiss="modal">
+										&times;
+									</button>
+									<div className="title">Really, wanna Start Test?</div>
+									<div className="button-container">
+										<a
+											href=""
+											data-dismiss="modal"
+											onClick={() => handleTest(modalData)}
+											className="yes"
+										>
+											Yes
+										</a>
+										<a href="" className="no" data-dismiss="modal">
+											No{" "}
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 					<div className="sub-title">Your practise Report</div>
 					<div className="practise-report">

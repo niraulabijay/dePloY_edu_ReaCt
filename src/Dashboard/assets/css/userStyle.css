@@ -39,7 +39,7 @@ h6 {
 	z-index: 2;
 	top: 0;
 	left: 0;
-	background: linear-gradient(180deg, #2ad181, #009d98);
+	background-image: linear-gradient(180deg, #2ad181, #009d98);
 	overflow-x: hidden;
 	-ms-overflow-style: none;
 	transition: all 0.2s ease-in;
@@ -183,9 +183,10 @@ h6 {
 	font-size: 36px;
 	margin-left: 50px;
 }
-.userSidenav .footer-nav {
+.footer-nav {
 	position: fixed;
 	height: 60px;
+	z-index: 99;
 	display: none;
 	border-top: 1px solid #fff;
 	text-align: center;
@@ -193,7 +194,7 @@ h6 {
 	bottom: 0px;
 	width: 100%;
 }
-.userSidenav .footer-nav a {
+ .footer-nav a {
 	display: inline-block;
 }
 @media (max-width: 756px) {
@@ -234,11 +235,11 @@ h6 {
 		color: white;
 		text-shadow: 1px 2px 3px #767575;
 	}
-	.userSidenav .footer-nav {
+	.footer-nav {
 		display: flex;
 		border: none;
 	}
-	.userSidenav .footer-nav .inner-footer {
+	.footer-nav .inner-footer {
 		padding: 8px 15px;
 		display: flex;
 		width: 100%;
@@ -248,18 +249,19 @@ h6 {
 		background: #fff;
 		box-shadow: 0px 5px 10px #d7d7d7;
 	}
-	.userSidenav .footer-nav a i {
+	.footer-nav a i {
 		display: block;
 		font-size: 20px;
 	}
-	.userSidenav .footer-nav a {
+	.footer-nav a {
 		padding: 5px;
 		color: #a2a1a1;
+		text-decoration: none;
 	}
-	.userSidenav .footer-nav .active {
-		color: #00b166;
+	.footer-nav .active {
+		color: #019456;
 	}
-	.userSidenav .footer-nav a span {
+	.footer-nav a span {
 		font-size: 14px;
 		font-weight: normal;
 	}
@@ -1674,16 +1676,16 @@ h6 {
 }
 
 .profile-wrapper .personal-details input[type="file"] {
-    display: block;
+	display: block;
 }
 .profile-wrapper .personal-details .custom-file-upload {
 	display: inline-block;
-    padding: 6px 12px;
-    cursor: pointer;
+	padding: 6px 12px;
+	cursor: pointer;
 	background: #1bbe89;
 	color: white;
 	width: 100%;
-    border-radius: 5px;
+	border-radius: 5px;
 }
 @media screen and (max-width: 768px) {
 	.profile-wrapper .top-wrapper {
