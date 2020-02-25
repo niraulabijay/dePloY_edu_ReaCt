@@ -70,7 +70,9 @@ export default function Classcontent() {
 				</p>
                 </React.Fragment>
                                     </Route>
-                <Route path={`${path}/syllabus/:subjectSlug`} component={FrontSyllabus}/>
+                <Route path={`${path}/syllabus/:subjectSlug`} >
+					<FrontSyllabus  />
+				</Route>
                 
                 </Switch>
 

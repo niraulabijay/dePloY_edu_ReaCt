@@ -1672,6 +1672,19 @@ h6 {
 	margin-top: 15px;
 	cursor: pointer;
 }
+
+.profile-wrapper .personal-details input[type="file"] {
+    display: block;
+}
+.profile-wrapper .personal-details .custom-file-upload {
+	display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+	background: #1bbe89;
+	color: white;
+	width: 100%;
+    border-radius: 5px;
+}
 @media screen and (max-width: 768px) {
 	.profile-wrapper .top-wrapper {
 		margin-bottom: -60px;
@@ -1732,12 +1745,19 @@ h6 {
 .user-syllabus ul {
 	list-style: none;
 	font-size: 18px;
+	padding-left: 15px;
 }
 .user-syllabus ul li {
 	width: 100%;
+	padding: 5px 5px;
+	box-shadow: 0px 5px 10px -10px #706f6f;
+}
+.user-syllabus ul li a {
+	font-size: 16px;
 }
 .user-syllabus ul li span {
-	padding-right: 15px;
+	padding-right: 10px;
+	padding-left: 10px;
 }
 .user-syllabus .subject-wrapper {
 	margin-top: 60px;
@@ -1802,6 +1822,7 @@ h6 {
 	margin: 0 auto;
 	display: block;
 	border-radius: 5px;
+	cursor: pointer;
 	margin-top: 30px;
 	background: linear-gradient(45deg, #36ea5f, #00b693);
 	color: white;
@@ -1811,4 +1832,37 @@ h6 {
 }
 .status {
 	text-align: center;
+}
+
+/* Notification */
+.notificationWrapper {
+	padding: 0px 10%;
+}
+.notificationWrapper .notification-item {
+	background: #ffffff;
+	padding: 10px 30px;
+	margin-bottom: 15px;
+	border-radius: 5px;
+	box-shadow: 0px 5px 15px -5px lightgrey;
+}
+.notificationWrapper .notification-item .date {
+	font-size: 14px;
+	color: gray;
+}
+
+/* Alert */
+.alertContainer {
+	position: absolute;
+	bottom: 30px;
+	padding: 10px;
+	right: 30px;
+	width: fit-content;
+	background: #25cb83;
+	border-radius: 5px;
+	box-shadow: 0px 5px 15px -5px #a5a5a5;
+	z-index: 9999;
+}
+.alertContainer p {
+	color: white;
+	margin: 0;
 }

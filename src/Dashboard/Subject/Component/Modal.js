@@ -4,7 +4,7 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 const Modal = ({ id }) => {
 	const [FlashResponse, setFlashResponse] = useState({});
-	console.log(id + 'modalid');
+	console.log(id + "modalid");
 	let getUrl = "http://noname.hellonep.com/api/flashcard/" + id;
 
 	useEffect(() => {
@@ -37,7 +37,7 @@ const Modal = ({ id }) => {
 				<div className="modal-content">
 					<div className="modal-body">
 						<button type="button" className="close" data-dismiss="modal">
-							&times;
+							<i className="fa fa-times"></i>
 						</button>
 						{FlashResponse ? (
 							<div>
@@ -48,9 +48,8 @@ const Modal = ({ id }) => {
 							</div>
 						) : (
 							<React.Fragment>
-								
-									<Skeleton height={20} width={200}/>
-								
+								<Skeleton height={20} width={200} />
+
 								<p>
 									<Skeleton count={5} />
 								</p>

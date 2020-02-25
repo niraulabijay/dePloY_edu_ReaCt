@@ -237,10 +237,15 @@ body {
 	font-size: 26px;
 	font-family: "Quicksand", sans-serif;
 	font-weight: bold;
-	color: #fff;
+	color: #fff !important;
 	text-align: left;
 	display: block;
 	transition: 0.3s;
+}
+.overlay .dropdown-item{
+	color: white;
+	border-radius: 30px;
+    box-shadow: 0px 0px 10px #8f8c8c;
 }
 
 /* When you mouse over the navigation links, change their color */
@@ -252,13 +257,18 @@ body {
 /* Position the close button (top right corner) */
 .overlay .closebtn {
 	position: absolute;
-	top: 0px;
-	right: 0px;
-	font-size: 60px;
-	padding: 0px 35px;
+    top: 0px;
+    right: 0px;
+    line-height: 60px;
+    font-size: 60px;
+    padding: 0px 20px;
+    color: white;
 }
 
 @media (max-width: 756px) {
+	.fa-window-close{
+		color: #28a745;
+	}
 	#navbar {
 		padding: 10px;
 	}
@@ -296,10 +306,14 @@ body {
 	#myNav .dropdown-menu {
 		right: 0;
 		left: 0;
+		padding: 0;
+		border: none;
+		
 	}
 	#myNav .dropdown-menu a {
 		text-align: center;
 		color: green;
+		background-color: #37d389;
 	}
 }
 
@@ -2172,26 +2186,26 @@ body {
 	margin: 0 auto;
 }
 
-.errorpage .img-container h2{
+.errorpage .img-container h2 {
 	font-size: 3em;
 	margin-bottom: 30px;
 }
-.errorpage .img-container a{
+.errorpage .img-container a {
 	background: linear-gradient(235deg, #36ea5f, #00b693);
 	color: white;
 	padding: 10px 30px;
 	text-decoration: none;
-	
+
 	border-radius: 5px;
 }
-@media (max-width: 768px){
+@media (max-width: 768px) {
 	.errorpage .img-container {
 		padding-top: 60%;
 		text-align: center;
 		width: 80%;
 		margin: 0 auto;
 	}
-	.errorpage .img-container h2{
+	.errorpage .img-container h2 {
 		font-size: 2em;
 	}
 }

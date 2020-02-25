@@ -18,8 +18,8 @@ import PageNotFound from "../pages/PageNotFound";
 import Learn from "./Subject/Learn";
 import ClassSelect from "./Profile/ClassSelect";
 import Syllabus from "./Profile/Syllabus";
-import {SubjectProvider} from "../Context/SubjectContext";
-
+import { SubjectProvider } from "../Context/SubjectContext";
+import Notification from "./Notification/Notification";
 
 const routes = [
 	{
@@ -43,6 +43,10 @@ const routes = [
 		main: () => <Doubts />
 	},
 	{
+		path: "/notification",
+		main: () => <Notification />
+	},
+	{
 		path: "/bookmark",
 		main: () => <Bookmark />
 	},
@@ -56,7 +60,6 @@ const routes = [
 	}
 ];
 const Dashboard = () => {
-	
 	function closeNav() {
 		function myFunction(x) {
 			let userSideNav = document.getElementById("userSideNav");
@@ -140,168 +143,181 @@ const Dashboard = () => {
 		x.addListener(myFunction);
 	}
 
+	function facebook(){
+		window.open(
+			'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent("edu.hellonep.com"), 
+			'facebook-share-dialog', 
+			'width=626,height=436')
+	}
+	let scrollPoint = document.getElementById("main");
+	if (scrollPoint) {
+		scrollPoint.scrollIntoView();
+	}
 	let { path, url } = useRouteMatch();
 
 	return (
 		<SubjectProvider>
-		<React.Fragment>
-			<div id="userSideNav" className="userSidenav">
-				<div className="company-container">
-					<div className="img-container">
-						<img
-							src={require("./assets/images/logo1.png")}
-							alt=""
-							className="img-fluid"
-						/>
+			<React.Fragment>
+				<div id="userSideNav" className="userSidenav">
+					<div className="company-container">
+						<div className="img-container">
+							<img
+								src={require("./assets/images/logo1.png")}
+								alt=""
+								className="img-fluid"
+							/>
+						</div>
+						<div className="title-name sideTab">
+							Educate Nepal
+							<span onClick={closeNav}>
+								<i className="fa fa-lg fa-times"></i>
+							</span>
+						</div>
 					</div>
-					<div className="title-name sideTab">
-						Educate Nepal
-						<span onClick={closeNav}>
-							<i className="fa fa-lg fa-times"></i>
-						</span>
+					<div className="profile-container">
+						<div className="img-container">
+							<img
+								src={require("./assets/images/testimonial-1.jpg")}
+								alt=""
+								className="img-fluid"
+							/>
+						</div>
 					</div>
-				</div>
-				<div className="profile-container">
-					<div className="img-container">
-						<img
-							src={require("./assets/images/testimonial-1.jpg")}
-							alt=""
-							className="img-fluid"
-						/>
+					<div className="title-name sideTab" style={{ width: "100%" }}>
+						Hot Babe
+						<div className="grade">| Class 10</div>
+						<NavLink to="/class-select">Change ></NavLink>
 					</div>
-				</div>
-				<div className="title-name sideTab" style={{ width: "100%" }}>
-					Hot Babe
-					<div className="grade">| Class 10</div>
-					<NavLink to="/class-select">Change ></NavLink>
-				</div>
-				<div className="d-sm-block d-none">
-					<NavLink to="/learn" className="test-class">
-						<i className="fa fa-graduation-cap"></i>{" "}
-						<span className="sideTab"> Learn</span>
-					</NavLink>
-					<NavLink to="/practise" className="test-class">
-						<i className="fa fa-user-md"></i>{" "}
-						<span className="sideTab"> Practise</span>
-					</NavLink>
-					<NavLink to="/test" className="test-class">
-						<i className="fa fa-file-alt"></i>
-						<span className="sideTab"> Test</span>
-					</NavLink>
-					<NavLink to="/doubts" className="test-class">
-						<i className="fa fa-comment"></i>{" "}
-						<span className="sideTab"> Doubts</span>
-					</NavLink>
-					<NavLink to="/bookmark" className="test-class">
-						<i className="fa fa-bookmark"></i>{" "}
-						<span className="sideTab"> Bookmarks</span>
-					</NavLink>
+					<div className="d-sm-block d-none">
+						<NavLink to="/learn" className="test-class">
+							<i className="fa fa-graduation-cap"></i>{" "}
+							<span className="sideTab"> Learn</span>
+						</NavLink>
+						<NavLink to="/practise" className="test-class">
+							<i className="fa fa-user-md"></i>{" "}
+							<span className="sideTab"> Practise</span>
+						</NavLink>
+						<NavLink to="/test" className="test-class">
+							<i className="fa fa-file-alt"></i>
+							<span className="sideTab"> Test</span>
+						</NavLink>
+						<NavLink to="/doubts" className="test-class">
+							<i className="fa fa-comment"></i>{" "}
+							<span className="sideTab"> Doubts</span>
+						</NavLink>
+						<NavLink to="/bookmark" className="test-class">
+							<i className="fa fa-bookmark"></i>{" "}
+							<span className="sideTab"> Bookmarks</span>
+						</NavLink>
 
+						<hr />
+					</div>
+					<NavLink to="/profile">
+						<i className="fa fa-user"></i>
+						<span className="sideTab"> Profile</span>
+					</NavLink>
+					<NavLink to="/syllabus">
+						<i className="fa fa-folder-open"></i>{" "}
+						<span className="sideTab"> Syllabus</span>
+					</NavLink>
+					<NavLink to="/notification">
+						<i className="fa fa-bell"></i>{" "}
+						<span className="sideTab"> Notification</span>
+					</NavLink>
+					<a onClick={facebook}>
+						<i className="fab fa-facebook"></i>{" "}
+						<span className="sideTab"> Share on Facebook</span>
+					</a>
 					<hr />
-				</div>
-				<NavLink to="/profile">
-					<i className="fa fa-user"></i>
-					<span className="sideTab"> Profile</span>
-				</NavLink>
-				<NavLink to="/syllabus">
-					<i className="fa fa-folder-open"></i>{" "}
-					<span className="sideTab"> Syllabus</span>
-				</NavLink>
-				<NavLink to="/class-select">
-					<i className="fa fa-cogs"></i>{" "}
-					<span className="sideTab"> Setting</span>
-				</NavLink>
-				<a href="#">
-					<i className="fab fa-facebook"></i>{" "}
-					<span className="sideTab"> Share on Facebook</span>
-				</a>
-				<hr />
-				<div className="sideTab d-sm-block d-none">
-					<div className="download-title">Download App</div>
-					<div className="download-app d-flex justify-content-between ">
-						<div className="play-store">
-							<a href="">
-								<img
-									src={require("./assets/images/play-store.png")}
-									alt=""
-									className="img-fluid"
-								/>
-							</a>
-						</div>
-						<div className="app-store">
-							<a href="">
-								<img
-									src={require("./assets/images/brand-apple.png")}
-									alt=""
-									className="img-fluid"
-								/>
-							</a>
+					<div className="sideTab d-sm-block d-none">
+						<div className="download-title">Download App</div>
+						<div className="download-app d-flex justify-content-between ">
+							<div className="play-store">
+								<a href="">
+									<img
+										src={require("./assets/images/play-store.png")}
+										alt=""
+										className="img-fluid"
+									/>
+								</a>
+							</div>
+							<div className="app-store">
+								<a href="">
+									<img
+										src={require("./assets/images/brand-apple.png")}
+										alt=""
+										className="img-fluid"
+									/>
+								</a>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div className="copywrite text-center mt-2">
-					&copy; Copywrite EduNepal
-				</div>
-				<div className="footer-nav">
-					<div className="inner-footer">
-					<NavLink to="/learn">
-						<i className="fa fa-graduation-cap"></i>{" "}
-						<span className="sideTab"> Learn</span>
-					</NavLink>
-					<NavLink to="/practise">
-						<i className="fa fa-user-md"></i>{" "}
-						<span className="sideTab"> Practise</span>
-					</NavLink>
-					<NavLink to="/test">
-						<i className="fa fa-file-alt"></i>
-						<span> Test</span>
-					</NavLink>
-					<NavLink to="doubts">
-						<i className="fa fa-comment"></i> <span> Doubts</span>
-					</NavLink>
-					<NavLink to="/bookmark">
-						<i className="fa fa-bookmark"></i> <span> Bookmarks</span>
-					</NavLink>
+					<div className="copywrite text-center mt-2">
+						&copy; Copywrite EduNepal
 					</div>
-					
-				</div>
-			</div>
-			<div id="main">
-				<div className="navbar d-flex ">
-					<div className="bars">
-						<span onClick={openNav} id="view">
-							<i className="fa fa-bars"></i>
-						</span>
-						<span onClick={closeNav} id="hide">
-							<i className="fa fa-bars"></i>
-						</span>
+					<div className="footer-nav">
+						<div className="inner-footer">
+							<NavLink to="/learn">
+								<i className="fa fa-graduation-cap"></i>{" "}
+								<span className="sideTab"> Learn</span>
+							</NavLink>
+							<NavLink to="/practise">
+								<i className="fa fa-user-md"></i>{" "}
+								<span className="sideTab"> Practise</span>
+							</NavLink>
+							<NavLink to="/test">
+								<i className="fa fa-file-alt"></i>
+								<span> Test</span>
+							</NavLink>
+							<NavLink to="doubts">
+								<i className="fa fa-comment"></i> <span> Doubts</span>
+							</NavLink>
+							<NavLink to="/bookmark">
+								<i className="fa fa-bookmark"></i> <span> Bookmarks</span>
+							</NavLink>
+						</div>
 					</div>
-					<div className="d-flex justify-content-end">
-						{/* <div className="invite">
+				</div>
+				<div id="main">
+					<div className="navbar d-flex ">
+						<div className="bars">
+							<span onClick={openNav} id="view">
+								<i className="fa fa-bars"></i>
+							</span>
+							<span onClick={closeNav} id="hide">
+								<i className="fa fa-bars"></i>
+							</span>
+						</div>
+						<div className="d-flex justify-content-end">
+							{/* <div className="invite">
                             <a href="">
                                 <i className="fa fa-gift"></i>{" "}
                                 <span>Invite & Earn</span>
                             </a>
                         </div> */}
-						<div className="logout">
-							<a href="">
-								<i className="fa fa-power-off"></i> <span>Logout</span>
-							</a>
+							<div className="logout">
+								<a href="">
+									<i className="fa fa-power-off"></i> <span>Logout</span>
+								</a>
+							</div>
 						</div>
 					</div>
+					<div className="main-content">
+						<Switch>
+							<Route exact path="/">
+								<Redirect to="/learn" />
+							</Route>
+							{routes.map((route, index) => (
+								<Route
+									key={index}
+									path={route.path}
+									children={<route.main />}
+								/>
+							))}
+						</Switch>
+					</div>
 				</div>
-				<div className="main-content">
-					<Switch>
-						<Route exact path="/">
-							<Redirect to="/learn" />
-						</Route>
-						{routes.map((route, index) => (
-							<Route key={index} path={route.path} children={<route.main />} />
-						))}
-					</Switch>
-				</div>
-			</div>
-		</React.Fragment>
+			</React.Fragment>
 		</SubjectProvider>
 	);
 };
