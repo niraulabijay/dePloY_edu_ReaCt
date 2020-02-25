@@ -186,8 +186,8 @@ export default function SubjectQuiz(props) {
                 className={
                     QuestionPosition != null
                         ? QuestionPosition[i - 1] === null
-                            ? "wrong"
-                            : "active"
+                            ? "active"
+                            : "wrong"
                         : ""
                 }
             >
@@ -517,7 +517,7 @@ export default function SubjectQuiz(props) {
                                 className="progress-bar"
                                 role="progressbar"
                                 style={{
-                                    width: (currentQuestionIndex / allQuestion) * 100 + "%"
+                                    width: (currentQuestionIndex / (allQuestion - 1)) * 100 + "%"
                                 }}
                                 aria-valuenow="75"
                                 aria-valuemin="0"

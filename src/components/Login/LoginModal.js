@@ -31,8 +31,13 @@ function LoginModal() {
 			} else {
 				setLoginError("User is Not Valid");
 			}
+		}).catch(error => {
+			setLoginError('Check your Login Credential or Internet Connection.')
+			document.getElementById("joinLoader").style.display = "none";
+
 		});
 	};
+	console.log(LoginError)
 
 	const history = useHistory();
 	useEffect(() => {
@@ -110,9 +115,12 @@ function LoginModal() {
 							)}
 
 							{LoginError && (
-								<span style={{ color: "red", textAlign: "center" }}>
+								<>
+								<span style={{ color: "red", textAlign: "center", fontWeight: "bold" }}>
 									{LoginError}
 								</span>
+								<br />
+								</>
 							)}
 								<div id="joinLoader">
 									<SkeletonTheme color="#89f3a1" highlightColor="#fbfbfb">

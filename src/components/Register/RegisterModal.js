@@ -20,6 +20,7 @@ export default function RegisterModal() {
 			data: data
 		}).then(response => {
 			console.log(response);
+			// console.log(response.data.data.statusText)
 			if (response.data.status === "success") {
 				setResponse(response.data);
 				console.log(RegisterResponse);

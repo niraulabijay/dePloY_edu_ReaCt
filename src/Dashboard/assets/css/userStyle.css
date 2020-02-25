@@ -44,6 +44,7 @@ h6 {
 	-ms-overflow-style: none;
 	transition: all 0.2s ease-in;
 	padding-bottom: 30px;
+	scrollbar-width: none;
 }
 .userSidenav::-webkit-scrollbar {
 	display: none;

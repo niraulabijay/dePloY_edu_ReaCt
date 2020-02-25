@@ -29,6 +29,8 @@ export default function Test() {
 		// }).then(res => {
 		//     console.log(res);
 		// });
+		localStorage.removeItem('initialValue')
+		localStorage.removeItem('active')
 		history.replace("/" + Authtoken.class_id + "/" + slug + "/test");
     };
     

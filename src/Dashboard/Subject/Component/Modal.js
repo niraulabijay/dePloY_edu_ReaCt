@@ -1,18 +1,29 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import { useAuth } from "../../../Context/Auth";
 
 const Modal = ({ id }) => {
 	const [FlashResponse, setFlashResponse] = useState({});
 	console.log(id + 'modalid');
 	let getUrl = "http://noname.hellonep.com/api/flashcard/" + id;
+	const {Authtoken} = useAuth();
+
 
 	useEffect(() => {
 		let source = Axios.CancelToken.source();
 
+		
 		const loadData = async () => {
 			try {
-				const response = await Axios.get(getUrl, {
+				const response = await Axios.get(getUrl,
+					{
+						headers: {
+							Authorization: "bearer" + Authtoken.token
+						},
+						// timeout: 10,
+					},
+					{
 					cancelToken: source.token
 				});
 				setFlashResponse(response.data.data);
@@ -42,8 +53,8 @@ const Modal = ({ id }) => {
 						{FlashResponse ? (
 							<div>
 								<strong>{FlashResponse.title}</strong>
-								<p style={{ fontWeight: "lighter" }}>
-									{FlashResponse.description}
+								<p style={{ fontWeight: "lighter" }} dangerouslySetInnerHTML={{ __html: FlashResponse.description }}>
+								
 								</p>
 							</div>
 						) : (

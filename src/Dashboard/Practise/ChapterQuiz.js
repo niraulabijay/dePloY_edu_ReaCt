@@ -14,7 +14,8 @@ const ChapterQuiz = (props) => {
     const [EnableSubmit, setEnableSubmit] = useState(false)
     const [NextButton, setNextButton] = useState(false)
     const [nextQuestion, setNextQuestion] = useState(false)
-    const [correct, setCorrect] = useState(0)
+    const [correct, setCorrect] = useState()
+    const [mistake, setMistake] = useState()
     const {Authtoken} = useAuth();
     
     useEffect(() => {
@@ -35,23 +36,30 @@ const ChapterQuiz = (props) => {
     }, [nextQuestion])
 
     const handleChange = (answer_id) => {
+        console.log(answer_id)
         setActive(answer_id)
         setEnableSubmit(true)
     }
 
     const handleSubmit = () =>{
-        console.log('abcd')
         const selected_answer = question.answers.filter(ans=>{
             return ans.id === active
         })[0];
-        console.log(selected_answer)
+        setActive()
         if(selected_answer){
             if(parseInt(selected_answer.correct) === 1){
                 setResult(true)
+                setActive(selected_answer.id)
                 setCorrect(1)
             } 
             else {
                 setResult(false)
+                setMistake(selected_answer.id)
+                question.answers.filter(select => {
+                    if(parseInt(select.correct) === 1 ){
+                        setActive(select.id)
+                    }
+                })
                 setCorrect(0)
             }
         }
@@ -64,6 +72,11 @@ const ChapterQuiz = (props) => {
          
     }
     const handleNextQuestion = () =>{
+        setActive()
+        setMistake()
+        setResult()
+        setQuestionResponse()
+
         if(nextQuestion){
             setNextQuestion(false)
         }else{
@@ -87,13 +100,20 @@ const ChapterQuiz = (props) => {
             }
         )
     }
+
+    const handleQuit = e => {
+        e.preventDefault()
+        history.replace({
+            pathname: '/learn'
+        })
+    }
     
     return (
         <React.Fragment>        
             <div className="quiz">
                 <div className="quit-section">
                     <div className="quit">
-                        <a href="" data-toggle="modal" data-target="#quitModal"> <i className="fa fa-stop-circle"></i> Quit</a>
+                        <a href="" onClick data-toggle="modal" data-target="#quitModal"> <i className="fa fa-stop-circle"></i> Quit</a>
                     </div>
                 </div>
                 <div className="modal" id="quitModal">
@@ -107,7 +127,7 @@ const ChapterQuiz = (props) => {
             Really, wanna quit it?
         </div>
         <div className="button-container">
-            <a href="" onClick={history.goBack} data-dismiss="modal" className="yes">Yes</a> 
+            <a href="" onClick={handleQuit} data-dismiss="modal" className="yes">Yes</a> 
             <a href="" className="no" data-dismiss="modal" >No </a>
         </div>    
       </div>   
@@ -135,7 +155,8 @@ const ChapterQuiz = (props) => {
                         <div className="row">
                             {question.answers.map((answer, index)=>
                             <div className="col-md-6 col-sm-6">
-                                <div className={"answer-wrapper" +' '+ ((answer.id === active) ? 'active' : '')}
+                                <div className={"answer-wrapper"+' '+ ((answer.id === active) ? 'active' : '')  
+                                +' '+ (mistake ? (answer.id === mistake ? 'wrong' : ''): '')}
                                 
                                 onClick ={ (!NextButton) ? () => handleChange(answer.id) : ''} >
 

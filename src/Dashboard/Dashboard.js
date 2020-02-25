@@ -149,6 +149,10 @@ const Dashboard = () => {
 		x.addListener(myFunction);
 	}
 
+	let scrollpoint = document.getElementById('main');
+	if(scrollpoint){
+		scrollpoint.scrollIntoView();
+	}
 
 	const history = useHistory();
 	const [logout, setLogout] = useState(false);

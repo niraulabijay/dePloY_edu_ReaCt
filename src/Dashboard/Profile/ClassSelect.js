@@ -10,21 +10,21 @@ const ClassSelect = () => {
     const { StorageToken, Authtoken } = useAuth();
     let history = useHistory();
 
-
     const handleClassSubmit = data => {
         axios({
             method: "post",
             url: "http://noname.hellonep.com/api/store/class",
+            headers: {
+				Authorization: "bearer" + Authtoken.token
+			},
             data: {
                 class_id: data,
                 user_id: JSON.parse(token).user_id,
                 auth_token: JSON.parse(token).token,
-                headers: {
-                    Authorization: "bearer" + Authtoken.token
-                }
+
             }
         }).then(res => {
-            console.log(res + 'apple');
+            console.log(res)
             if (res.data.status === "success") {
                 // const localstor = JSON.parse(localStorage.getItem('tokens'))
                 // localstor.class_id = data

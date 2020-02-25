@@ -17,6 +17,8 @@ export const SubjectProvider = props => {
 	const {Authtoken} = useAuth();
 	const {handleClose} = Logout();
 	let getUrl = "http://noname.hellonep.com/api/subjects/" + Authtoken.class_id;
+	console.log(getUrl)
+	console.log(Authtoken)
 
     useEffect(() => {
 		let source = Axios.CancelToken.source();
@@ -33,11 +35,12 @@ export const SubjectProvider = props => {
 					},
 					{ cancelToken: source.token },
 				);
-				console.log(response.data.status)
 				// if(response.data.status === "")
 				if(response.data.status === "Token is Expired" || response.data.status === "Token is Invalid"){
+					console.log("asfasdfas")
 					handleClose()
 				}else{
+					console.log(response)
 				setSubjectResponse(response.data.learn_subjects);
 				setPractiseResponse(response.data.practice_subjects);
 				setTestSubject(response.data.test_subjects);
