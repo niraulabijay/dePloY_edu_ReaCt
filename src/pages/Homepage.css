@@ -339,13 +339,18 @@ body {
 
 /*---------------------------------------- banner-------------------------------*/
 .banner {
-	background-image: url("./images/banner.jpg");
-	background-size: cover;
-	background-repeat: no-repeat;
 	padding: 160px 0px 160px 0px;
 	text-align: center;
 	height: 100vh;
 	position: relative;
+}
+.banner .banner-img {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	z-index: -1;
 }
 
 .banner .title {
@@ -539,10 +544,10 @@ body {
 
 @media (max-width: 756px) {
 	.banner {
-		height: 95vh;
-		padding: 140px 10px 140px 10px;
-		background-image: url("./images/mobileBanner.jpg");
+		height: 100%;
+		padding: 50% 10px 50% 10px;
 	}
+
 	.banner .title {
 		font-size: 30px;
 		text-shadow: 1px 3px 4px #b3b4b3;
@@ -561,7 +566,7 @@ body {
 		justify-content: center;
 	}
 	.banner .wave-img {
-		bottom: 0;
+		bottom: -5px;
 	}
 }
 

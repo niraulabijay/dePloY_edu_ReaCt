@@ -65,7 +65,8 @@ const Dashboard = () => {
 			let userSideNav = document.getElementById("userSideNav");
 			let main = document.getElementById("main");
 			if (x.matches) {
-				userSideNav.style.width = "0";
+				document.getElementById("main").style.marginLeft = "0";
+				document.getElementById("userSideNav").style.width = "0";
 			} else {
 				userSideNav.style.width = "80px";
 				userSideNav.style.left = "-170px";
@@ -107,11 +108,12 @@ const Dashboard = () => {
 	};
 	function openNav() {
 		function myFunction(x) {
-			let userSideNav = document.getElementById("userSideNav");
 			let main = document.getElementById("main");
+			let userSideNav = document.getElementById("userSideNav");
+
 			if (x.matches) {
-				userSideNav.style.width = "240px";
-				main.style.marginLeft = "0px";
+				document.getElementById("userSideNav").style.width = "240px";
+				document.getElementById("main").style.marginLeft = "240px";
 			} else {
 				userSideNav.style.left = "0px";
 				userSideNav.style.width = "250px";
@@ -143,11 +145,13 @@ const Dashboard = () => {
 		x.addListener(myFunction);
 	}
 
-	function facebook(){
+	function facebook() {
 		window.open(
-			'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent("edu.hellonep.com"), 
-			'facebook-share-dialog', 
-			'width=626,height=436')
+			"https://www.facebook.com/sharer/sharer.php?u=" +
+				encodeURIComponent("edu.hellonep.com"),
+			"facebook-share-dialog",
+			"width=626,height=436"
+		);
 	}
 	let scrollPoint = document.getElementById("main");
 	if (scrollPoint) {
@@ -255,30 +259,29 @@ const Dashboard = () => {
 					<div className="copywrite text-center mt-2">
 						&copy; Copywrite EduNepal
 					</div>
-					
 				</div>
 				<div className="footer-nav">
-						<div className="inner-footer">
-							<NavLink to="/learn">
-								<i className="fa fa-graduation-cap"></i>{" "}
-								<span className="sideTab"> Learn</span>
-							</NavLink>
-							<NavLink to="/practise">
-								<i className="fa fa-user-md"></i>{" "}
-								<span className="sideTab"> Practise</span>
-							</NavLink>
-							<NavLink to="/test">
-								<i className="fa fa-file-alt"></i>
-								<span> Test</span>
-							</NavLink>
-							<NavLink to="doubts">
-								<i className="fa fa-comment"></i> <span> Doubts</span>
-							</NavLink>
-							<NavLink to="/bookmark">
-								<i className="fa fa-bookmark"></i> <span> Bookmarks</span>
-							</NavLink>
-						</div>
+					<div className="inner-footer">
+						<NavLink to="/learn">
+							<i className="fa fa-graduation-cap"></i>{" "}
+							<span className="sideTab"> Learn</span>
+						</NavLink>
+						<NavLink to="/practise">
+							<i className="fa fa-user-md"></i>{" "}
+							<span className="sideTab"> Practise</span>
+						</NavLink>
+						<NavLink to="/test">
+							<i className="fa fa-file-alt"></i>
+							<span> Test</span>
+						</NavLink>
+						<NavLink to="doubts">
+							<i className="fa fa-comment"></i> <span> Doubts</span>
+						</NavLink>
+						<NavLink to="/bookmark">
+							<i className="fa fa-bookmark"></i> <span> Bookmarks</span>
+						</NavLink>
 					</div>
+				</div>
 				<div id="main">
 					<div className="navbar d-flex ">
 						<div className="bars">
