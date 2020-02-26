@@ -12,7 +12,7 @@ function LoginModal() {
 	const [LoginError, setLoginError] = useState();
 
 	const onSubmit = data => {
-		document.getElementById("joinLoader").style.display = "block";
+		document.getElementById("loginLoader").style.display = "block";
 		axios({
 			method: "post",
 			url: "http://noname.hellonep.com/api/login",
@@ -28,25 +28,29 @@ function LoginModal() {
 
 				});
 				setisLogged(true);
+				history.replace({
+					pathname: "/learn"
+				});
 			} else {
+				document.getElementById("loginLoader").style.display = "none";
 				setLoginError("User is Not Valid");
 			}
 		}).catch(error => {
 			setLoginError('Check your Login Credential or Internet Connection.')
-			document.getElementById("joinLoader").style.display = "none";
+			document.getElementById("loginLoader").style.display = "none";
 
 		});
 	};
 	console.log(LoginError)
 
 	const history = useHistory();
-	useEffect(() => {
-		if (isLogged) {
-			history.push({
-				pathname: "/learn"
-			});
-		}
-	}, [Authtoken, isLogged]);
+	// useEffect(() => {
+	// 	if (isLogged) {
+	// 		history.replace({
+	// 			pathname: "/learn"
+	// 		});
+	// 	}
+	// }, [Authtoken, isLogged]);
 
 	return (
 		<div
@@ -84,17 +88,17 @@ function LoginModal() {
 								/>
 							</div>
 							{errors.phone && errors.phone.type === "minLength" && (
-								<span style={{ color: "red" }} id="error-name-maxLength">
+								<span style={{ color: "red", display:'block',textAlign: "center" }} id="error-name-maxLength">
 									*The length must be 10
 								</span>
 							)}
 							{errors.phone && errors.phone.type === "pattern" && (
-								<span style={{ color: "red" }} id="error-name-pattern">
+								<span style={{ color: "red", display:'block',textAlign: "center" }} id="error-name-pattern">
 									*The value must be number
 								</span>
 							)}
 							{errors.phone && errors.phone.type === "required" && (
-								<span style={{ color: "red" }} id="error-name-required">
+								<span style={{ color: "red", display:'block',textAlign: "center" }} id="error-name-required">
 									*The field is empty
 								</span>
 							)}
@@ -109,20 +113,21 @@ function LoginModal() {
 								/>
 							</div>
 							{errors.password && errors.password.type === "required" && (
-								<span style={{ color: "red" }} id="error-name-required">
+								<span style={{ color: "red", display:'block',textAlign: "center"}} id="error-name-required">
 									*The field is empty
+									<br />
 								</span>
 							)}
 
 							{LoginError && (
 								<>
-								<span style={{ color: "red", textAlign: "center", fontWeight: "bold" }}>
+								<span style={{ color: "red", textAlign: "center", fontWeight: "bold", display:'block' }}>
 									{LoginError}
 								</span>
 								<br />
 								</>
 							)}
-								<div id="joinLoader">
+								<div id="loginLoader">
 									<SkeletonTheme color="#89f3a1" highlightColor="#fbfbfb">
 										<Skeleton />
 									</SkeletonTheme>

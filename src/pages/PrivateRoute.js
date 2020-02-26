@@ -36,9 +36,7 @@ const PrivateRoute = ({ children, ...rest }) => {
 								path="/:class_id/:subjectId/test"
 								component={SubjectQuiz}
 							/>
-							{/* <ErrorBoundary> */}
 								<Dashboard />
-							{/* </ErrorBoundary> */}
 						</Switch>
 					)
 				) : (

@@ -14,23 +14,26 @@ import { Redirect, useHistory } from 'react-router-dom';
      const {StorageToken, Authtoken} = useAuth()
 
      const onSubmit = (data) => {
+         console.log(data)
         axios({
             method: 'post',
             url: 'http://noname.hellonep.com/api/savepassword',
             data: data
         }).then(
             response =>{
+                console.log(response)
                 if(response.data.status === "success"){
                          StorageToken({
                             name: response.data.name,
                             user_id: response.data.user_id,
-                            class_id: response.data.class_id,
+                            // class_id: response.data.class_id,
                             token: response.data.auth_token,
 
                         })
                         setisLogged(true) 
                     }
             }).catch(e =>{
+                console.log(e)
                 setErr(true)
             });
      }

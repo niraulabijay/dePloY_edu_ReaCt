@@ -9,8 +9,7 @@ import $ from "jquery";
 export default function RegisterModal() {
 	const { register, handleSubmit, errors } = useForm();
 	const [RegisterResponse, setResponse] = useState("");
-	// const [catchResponse, setcatchResponse] = useState("");
-	const [OTPController, setOTPController] = useState();
+	const [registerError, setRegisterError] = useState();
 
 	const onSubmit = data => {
 		document.getElementById("joinLoader").style.display = "block";
@@ -19,14 +18,17 @@ export default function RegisterModal() {
 			url: "http://noname.hellonep.com/api/register",
 			data: data
 		}).then(response => {
-			console.log(response);
-			// console.log(response.data.data.statusText)
 			if (response.data.status === "success") {
 				setResponse(response.data);
 				console.log(RegisterResponse);
 				$("#join").modal("hide");
 				$("#otp").modal("show");
+			}else{
+				document.getElementById("joinLoader").style.display = "none";
+				setRegisterError("Your number is already registered")
 			}
+		}).catch(error => {
+			console.log(error)
 		});
 	};
 
@@ -69,17 +71,17 @@ export default function RegisterModal() {
 										})}
 									/>
 									{errors.phone && errors.phone.type === "minLength" && (
-										<span style={{ color: "red" }} id="error-name-maxLength">
+										<span style={{ color: "red",display:'block',textAlign: "center" }} id="error-name-maxLength">
 											*The length must be 10
 										</span>
 									)}
 									{errors.phone && errors.phone.type === "pattern" && (
-										<span style={{ color: "red" }} id="error-name-pattern">
+										<span style={{ color: "red", display:'block',textAlign: "center" }} id="error-name-pattern">
 											*The value must be number
 										</span>
 									)}
 									{errors.phone && errors.phone.type === "required" && (
-										<span style={{ color: "red" }} id="error-name-required">
+										<span style={{ color: "red", display:'block',textAlign: "center" }} id="error-name-required">
 											*The field is empty
 										</span>
 									)}
@@ -102,7 +104,7 @@ export default function RegisterModal() {
 										<span
 											style={{
 												color: "red",
-												textAlign: "center"
+												textAlign: "center", display:'block'
 											}}
 											id="error-name-pattern"
 										>
@@ -114,10 +116,12 @@ export default function RegisterModal() {
 											style={{
 												color: "red",
 												textAlign: "center"
+												, display:'block'
 											}}
 											id="error-name-required"
 										>
 											*The field is empty
+											<br />
 										</span>
 									)}
 								</div>
@@ -127,6 +131,7 @@ export default function RegisterModal() {
                                     <input name="text" type="tel" value="" placeholder="Invite Code" className="form-control" />
                                 </div>
                             </div> */}
+								{registerError &&  <span style={{ color:'red', fontWeight:'bold', textAlign:'center', display:'block' }}>{registerError}</span>}
 								<div id="joinLoader">
 									<SkeletonTheme color="#89f3a1" highlightColor="#fbfbfb">
 										<Skeleton />

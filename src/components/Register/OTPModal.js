@@ -20,6 +20,7 @@ const OTPModal = ({ RegisterResponse }) => {
 
 	let history = useHistory();
 	const onSubmit = values => {
+		console.log(values)
 		document.getElementById("otpLoader").style.display = "block";
 		axios({
 			method: "post",
@@ -27,7 +28,7 @@ const OTPModal = ({ RegisterResponse }) => {
 			data: values
 		})
 			.then(response => {
-				if (response.data.status === "success") {
+				if(response.data.status === "success") {
 					document.querySelector(".modal-backdrop").style.display = "none";
 					history.push({
 						pathname: "/set-password",
@@ -85,6 +86,7 @@ const OTPModal = ({ RegisterResponse }) => {
 										style={{
 											color: "Red",
 											textAlign: "center"
+											, display:'block'
 										}}
 									>
 										*The OTP provided does not match
