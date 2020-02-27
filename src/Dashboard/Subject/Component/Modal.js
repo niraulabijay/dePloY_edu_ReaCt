@@ -8,6 +8,7 @@ const Modal = ({ id }) => {
 	console.log(id + 'modalid');
 	let getUrl = "http://noname.hellonep.com/api/flashcard/" + id;
 	const {Authtoken} = useAuth();
+	const [FlashError, setFlashError] = useState()
 
 
 	useEffect(() => {
@@ -21,7 +22,7 @@ const Modal = ({ id }) => {
 						headers: {
 							Authorization: "bearer" + Authtoken.token
 						},
-						// timeout: 10,
+						// timeout: 10000,
 					},
 					{
 					cancelToken: source.token
@@ -31,7 +32,10 @@ const Modal = ({ id }) => {
 				if (Axios.isCancel(error)) {
 					console.log(error);
 				} else {
-					throw error;
+					// setFlashError(()=>{
+					// 	throw error;
+					// })
+					console.log(error)
 				}
 			}
 		};

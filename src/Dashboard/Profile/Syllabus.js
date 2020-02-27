@@ -19,7 +19,8 @@ export default function Syllabus() {
 					{
 						headers: {
 							Authorization: "bearer" + Authtoken.token
-						}
+						},
+						timeout: 10000,
 					},
 					{
 						cancelToken: source.token

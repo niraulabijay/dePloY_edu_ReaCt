@@ -41,10 +41,10 @@ const LearnSubject = () => {
 			setChapterResponse(response.data);
 			}
 		}).catch(error => {
-			// console.log(error)
-			setChapterError(()=>{
-				throw error;
-			})
+			console.log(error)
+			// setChapterError(()=>{
+			// 	throw error;
+			// })
 		});
 	}, [getUrl, loading]);
 

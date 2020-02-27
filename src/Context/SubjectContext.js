@@ -31,13 +31,12 @@ export const SubjectProvider = props => {
 						headers: {
 							Authorization: "bearer" + Authtoken.token
 						},
-						// timeout: 10,
+						timeout: 10000,
 					},
 					{ cancelToken: source.token },
 				);
 				// if(response.data.status === "")
 				if(response.data.status === "Token is Expired" || response.data.status === "Token is Invalid"){
-					console.log("asfasdfas")
 					handleClose()
 				}else{
 					console.log(response)

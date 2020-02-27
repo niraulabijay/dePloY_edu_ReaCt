@@ -22,7 +22,8 @@ const ChapterQuiz = (props) => {
         axios({
             method: 'get',
             url: 'http://noname.hellonep.com/api/practise_by_chapter/'+(params.chapterId),
-            headers: {Authorization : "Bearer"+ Authtoken.token}
+            headers: {Authorization : "Bearer"+ Authtoken.token},
+            timeout: 10000
         }).then(
             response => {
                 console.log(response)

@@ -16,7 +16,8 @@ export default function Bookmark() {
 	const { Authtoken } = useAuth();
 
     const [BookmarkResponse, setBookmarkResponse] = useState([]);
-    const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState(false);
+	const [err, setErr] = useState();
 
 	let getUrl =
 		"http://noname.hellonep.com/api/bookmarks/note/" + Authtoken.user_id;
@@ -30,7 +31,8 @@ export default function Bookmark() {
 					{
 						headers: {
 							Authorization: "bearer" + Authtoken.token
-						}
+						},
+						timeout: 10000
 					},
 					{
 						cancelToken: source.token
@@ -42,7 +44,9 @@ export default function Bookmark() {
 				if (Axios.isCancel(error)) {
 					console.log(error);
 				} else {
-					throw error;
+					setErr(()=>{
+						throw error;
+					})
 				}
 			}
 		};

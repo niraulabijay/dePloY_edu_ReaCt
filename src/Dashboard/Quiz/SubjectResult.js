@@ -55,7 +55,7 @@ const SubjectResult = ({ result }) => {
 									<div
 										className={
 											"answer-wrapper " +
-											(answer.correct === "1" ? "active" : "hhh") +
+											(answer.correct === "1" ? "active" : " ") +
 											" " +
 											(answer.id === question.selected && answer.correct === "0"
 												? "wrong"

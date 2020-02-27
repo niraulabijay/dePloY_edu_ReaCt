@@ -24,7 +24,8 @@ export default function Profile() {
                     {
 						headers: {
 							Authorization: "bearer" + Authtoken.token
-						}
+                        },
+                        timeout: 10000
 					}, {
                         cancelToken: source.token
                     }

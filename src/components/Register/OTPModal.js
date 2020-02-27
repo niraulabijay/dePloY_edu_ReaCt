@@ -2,24 +2,20 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { useForm } from "react-hook-form";
 import {
-	Link,
-	Switch,
-	Route,
-	Redirect,
 	useHistory,
-	withRouter
 } from "react-router-dom";
 import axios from "axios";
-import ResetPassword from "./ResetPassword";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 const OTPModal = ({ RegisterResponse }) => {
 	const { register, handleSubmit, errors } = useForm();
 	const [error, setError] = useState();
+	const [buttonDisable, setButtonDisable] = useState();
 	const [responseError, setResponseError] = useState();
 
 	let history = useHistory();
 	const onSubmit = values => {
+		setButtonDisable(true)
 		console.log(values)
 		document.getElementById("otpLoader").style.display = "block";
 		axios({
@@ -99,7 +95,7 @@ const OTPModal = ({ RegisterResponse }) => {
 									</SkeletonTheme>
 								</div>
 								<div className="button-container">
-									<button className="btn btn-success" type="submit">
+									<button className="btn btn-success" type="submit" disabled={buttonDisable ? "true" : ""} >
 										Jump In
 									</button>
 

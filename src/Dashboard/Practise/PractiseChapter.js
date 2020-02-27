@@ -20,6 +20,7 @@ export default function PractiseSubject() {
 	let { chapterId } = useParams();
 	const [PractiseChapter, setPractiseChapter] = useState([]);
 	let { Authtoken } = useAuth();
+	const [chapterError, setChapterError] = useState()
 	//    console.log(params)
 	useEffect(() => {
 		axios({
@@ -27,10 +28,15 @@ export default function PractiseSubject() {
 			url: "http://noname.hellonep.com/api/chapters/" + params.subjectId,
 			headers: {
 				Authorization: "bearer" + Authtoken.token
-			}	
+			},
+			timeout: 10000,	
 		}).then(response => {
 			setPractiseChapter(response.data.chapters);
 			setLoading(true);
+		}).catch(error => {
+			setChapterError(() => {
+				throw new Error(error)
+			})
 		});
 	}, []);
 	let History = useHistory();

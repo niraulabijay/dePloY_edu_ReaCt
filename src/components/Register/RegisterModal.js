@@ -9,9 +9,11 @@ import $ from "jquery";
 export default function RegisterModal() {
 	const { register, handleSubmit, errors } = useForm();
 	const [RegisterResponse, setResponse] = useState("");
+	const [buttonDisable, setButtonDisable] = useState();
 	const [registerError, setRegisterError] = useState();
 
 	const onSubmit = data => {
+		setButtonDisable(true)
 		document.getElementById("joinLoader").style.display = "block";
 		axios({
 			method: "post",
@@ -23,9 +25,11 @@ export default function RegisterModal() {
 				console.log(RegisterResponse);
 				$("#join").modal("hide");
 				$("#otp").modal("show");
+				setButtonDisable()
 			}else{
 				document.getElementById("joinLoader").style.display = "none";
 				setRegisterError("Your number is already registered")
+				setButtonDisable()
 			}
 		}).catch(error => {
 			console.log(error)
@@ -142,6 +146,7 @@ export default function RegisterModal() {
 										className="btn btn-success"
 										data-toggle="modal"
 										type="submit"
+										disabled={ buttonDisable ? 'true' : '' }
 									>
 										Join Now
 									</button>

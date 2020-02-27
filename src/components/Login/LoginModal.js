@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../Context/Auth";
 import { useHistory } from "react-router-dom";
@@ -6,12 +6,14 @@ import axios from "axios";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 function LoginModal() {
-	const [isLogged, setisLogged] = useState(false);
+	// const [isLogged, setisLogged] = useState(false);
 	const { register, handleSubmit, errors } = useForm();
-	const { StorageToken, Authtoken } = useAuth();
+	const { StorageToken } = useAuth();
 	const [LoginError, setLoginError] = useState();
+	const [buttonDisable, setButtonDisable] = useState();
 
 	const onSubmit = data => {
+		setButtonDisable(true)
 		document.getElementById("loginLoader").style.display = "block";
 		axios({
 			method: "post",
@@ -19,6 +21,7 @@ function LoginModal() {
 			data: data
 		}).then(response => {
 			if (response.data.status === "success") {
+				setButtonDisable()
 				document.querySelector(".modal-backdrop").style.display = "none";
 				StorageToken({
 					name: response.data.name,
@@ -27,15 +30,16 @@ function LoginModal() {
 					token: response.data.auth_token
 
 				});
-				setisLogged(true);
 				history.replace({
 					pathname: "/learn"
 				});
 			} else {
+				setButtonDisable()
 				document.getElementById("loginLoader").style.display = "none";
 				setLoginError("User is Not Valid");
 			}
 		}).catch(error => {
+			setButtonDisable()
 			setLoginError('Check your Login Credential or Internet Connection.')
 			document.getElementById("loginLoader").style.display = "none";
 
@@ -133,7 +137,7 @@ function LoginModal() {
 									</SkeletonTheme>
 								</div>
 							<div className="button-container">
-								<button className="btn btn-success" type="submit">
+								<button className="btn btn-success"  type="submit" disabled={ buttonDisable ? 'true' : '' }  >
 									Login
 								</button>
 								<br />

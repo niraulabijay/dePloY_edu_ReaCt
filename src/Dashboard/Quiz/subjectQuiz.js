@@ -39,7 +39,8 @@ export default function SubjectQuiz(props) {
         const loadData = async () => {
             try {
                 const response = await Axios.get(getUrl, {
-                    headers: {Authorization: "bearer" + Authtoken.token }
+                    headers: {Authorization: "bearer" + Authtoken.token },
+                    timeout: 10000,
                 },
                 {
                     cancelToken: source.token
