@@ -112,7 +112,7 @@ export default function Learn() {
 									</div>
 								</div>
 							</div>
-						) : (
+						) : (	
 							<div className="row">
 								{SubjectResponse.map((subject, index) => (
 									<div className="col-md-3 col-lg-3 col-6" key={index}>

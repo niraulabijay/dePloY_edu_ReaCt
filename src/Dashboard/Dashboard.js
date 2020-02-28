@@ -311,6 +311,7 @@ const Dashboard = () => {
 							<Route exact path="/">
 								<Redirect to="/learn" />
 							</Route>
+							
 							{routes.map((route, index) => (
 								<Route
 									key={index}
