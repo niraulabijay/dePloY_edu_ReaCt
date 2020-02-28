@@ -14,7 +14,6 @@ export default function Class(){
             <Classbanner />
             <Classcontent />
             <Question />
-            <Footer />
         </React.Fragment>
     )
 }
