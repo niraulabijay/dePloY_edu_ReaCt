@@ -6,6 +6,7 @@ body {
 	font-family: "Mukta", sans-serif;
 	overflow-x: hidden;
 	overflow-y: scroll;
+
 }
 h1,
 h2,
@@ -40,12 +41,11 @@ h6 {
 	z-index: 2;
 	top: 0;
 	left: 0;
-	background: linear-gradient(180deg, #2ad181, #009d98);
+	background-image: linear-gradient(180deg, #2ad181, #009d98);
 	overflow-x: hidden;
 	-ms-overflow-style: none;
-	transition: all 0.2s ease-in;
+	transition: all 0.15s ease-out;
 	padding-bottom: 30px;
-	scrollbar-width: none;
 }
 .userSidenav::-webkit-scrollbar {
 	display: none;
@@ -111,7 +111,7 @@ h6 {
 	overflow: hidden;
 	z-index: 9;
 	padding: 5px 15px;
-	transition: all 0.2s ease-in;
+	transition: all 0.15s ease-out;
 	background: #27cd81;
 }
 .userSidenav .company-container .img-container {
@@ -155,6 +155,7 @@ h6 {
 	font-size: 16px;
 	color: #fff;
 	display: block;
+	cursor: pointer;
 	transition: 0.1s;
 	position: relative;
 	height: 45px;
@@ -185,9 +186,10 @@ h6 {
 	font-size: 36px;
 	margin-left: 50px;
 }
-.userSidenav .footer-nav {
+.footer-nav {
 	position: fixed;
 	height: 60px;
+	z-index: 99;
 	display: none;
 	border-top: 1px solid #fff;
 	text-align: center;
@@ -195,7 +197,7 @@ h6 {
 	bottom: 0px;
 	width: 100%;
 }
-.userSidenav .footer-nav a {
+.footer-nav a {
 	display: inline-block;
 }
 @media (max-width: 756px) {
@@ -236,11 +238,11 @@ h6 {
 		color: white;
 		text-shadow: 1px 2px 3px #767575;
 	}
-	.userSidenav .footer-nav {
+	.footer-nav {
 		display: flex;
 		border: none;
 	}
-	.userSidenav .footer-nav .inner-footer {
+	.footer-nav .inner-footer {
 		padding: 8px 15px;
 		display: flex;
 		width: 100%;
@@ -250,18 +252,19 @@ h6 {
 		background: #fff;
 		box-shadow: 0px 5px 10px #d7d7d7;
 	}
-	.userSidenav .footer-nav a i {
+	.footer-nav a i {
 		display: block;
 		font-size: 20px;
 	}
-	.userSidenav .footer-nav a {
+	.footer-nav a {
 		padding: 5px;
-		color: #a2a1a1;
+		color: #6f6f6f;
+		text-decoration: none;
 	}
-	.userSidenav .footer-nav .active {
-		color: #00b166;
+	.footer-nav .active {
+		color: #019456;
 	}
-	.userSidenav .footer-nav a span {
+	.footer-nav a span {
 		font-size: 14px;
 		font-weight: normal;
 	}
@@ -274,7 +277,7 @@ h6 {
 }
 /*--------------------main-div---------------------------------*/
 #main {
-	transition: all 0.2s ease-in;
+	transition: all 0.15s ease-out;
 	margin-left: 250px;
 }
 .navbar {
@@ -426,7 +429,8 @@ h6 {
 
 @media (max-width: 756px) {
 	.main-content {
-		padding: 60px 15px 30px 15px;
+		padding: 60px 15px 60px 15px;
+		width: 100vw;
 	}
 	.main-title {
 		margin-top: 30px;
@@ -1171,9 +1175,6 @@ h6 {
 	display: inline-block;
 }
 @media (max-width: 756px) {
-	#userSideNav {
-		padding-bottom: 60px;
-	}
 	.viewerSidenav .company-container .img-container {
 		width: 50px;
 		margin: 0 5px;
@@ -1674,6 +1675,19 @@ h6 {
 	margin-top: 15px;
 	cursor: pointer;
 }
+
+.profile-wrapper .personal-details input[type="file"] {
+	display: block;
+}
+.profile-wrapper .personal-details .custom-file-upload {
+	display: inline-block;
+	padding: 6px 12px;
+	cursor: pointer;
+	background: #1bbe89;
+	color: white;
+	width: 100%;
+	border-radius: 5px;
+}
 @media screen and (max-width: 768px) {
 	.profile-wrapper .top-wrapper {
 		margin-bottom: -60px;
@@ -1713,10 +1727,20 @@ h6 {
 .user-syllabus ul li a {
 	text-decoration: none;
 	color: black;
-	font-size: 20px;
+	font-size: 16px;
+	display: block;
+	padding: 5px;
 }
 .user-syllabus ul li a.active {
-	color: #2ed485;
+	color: #151414;
+	background: #dedede;
+	width: 100%;
+	font-weight: bold;
+
+	border-radius: 5px;
+	font-size: 20px;
+	display: block;
+	margin-top: 5px;
 }
 .user-syllabus .syllabusContainer p {
 	text-align: justify;
@@ -1737,16 +1761,24 @@ h6 {
 }
 .user-syllabus ul li {
 	width: 100%;
+	border-radius: 5px;
+	padding: 5px 5px 5px 5px;
+	box-shadow: 0px 5px 10px #ddd5d5;
 }
+
 .user-syllabus ul li span {
-	padding-right: 15px;
+	padding-right: 10px;
+	padding-left: 10px;
 }
 .user-syllabus .subject-wrapper {
 	margin-top: 60px;
 }
 .user-syllabus .subject-list {
 	box-shadow: 0px 0px 6px 2px #c9c7c7;
+	padding: 0px 30px;
+	border-radius: 10px;
 	background: #fff;
+	padding-bottom: 15px;
 }
 .user-syllabus .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-link.active {
@@ -1804,6 +1836,7 @@ h6 {
 	margin: 0 auto;
 	display: block;
 	border-radius: 5px;
+	cursor: pointer;
 	margin-top: 30px;
 	background: linear-gradient(45deg, #36ea5f, #00b693);
 	color: white;
@@ -1814,6 +1847,7 @@ h6 {
 .status {
 	text-align: center;
 }
+
 .errorContainer{
 	height: calc(100vh - 90px);
 	align-items: center;
@@ -1833,4 +1867,38 @@ h6 {
 }
 .errorContainer .errorContent p{
 	margin-bottom: 0px;
+}
+
+
+/* Notification */
+.notificationWrapper {
+	padding: 0px 10%;
+}
+.notificationWrapper .notification-item {
+	background: #ffffff;
+	padding: 10px 30px;
+	margin-bottom: 15px;
+	border-radius: 5px;
+	box-shadow: 0px 5px 15px -5px lightgrey;
+}
+.notificationWrapper .notification-item .date {
+	font-size: 14px;
+	color: gray;
+}
+
+/* Alert */
+.alertContainer {
+	position: absolute;
+	bottom: 30px;
+	padding: 10px;
+	right: 30px;
+	width: fit-content;
+	background: #25cb83;
+	border-radius: 5px;
+	box-shadow: 0px 5px 15px -5px #a5a5a5;
+	z-index: 9999;
+}
+.alertContainer p {
+	color: white;
+	margin: 0;
 }

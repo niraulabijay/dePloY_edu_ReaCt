@@ -115,7 +115,7 @@ export default function Navbar() {
 				</span>
 
 				<div className="overlay-content">
-				<NavLink to="/" className="active">
+				<NavLink to="/" className="active" onClick={closeNav}>
 						Home
 					</NavLink>
 					<div className="dropdown">
@@ -124,7 +124,7 @@ export default function Navbar() {
 						</a>
 						<div className="dropdown-menu">
 						{classResponse && classResponse.map(classItem=>(
-								<NavLink to={`/class/${classItem.slug}`} key={classItem.slug}>
+								<NavLink to={`/class/${classItem.slug}`} key={classItem.slug} onClick={closeNav}>
 								<li className="dropdown-item" >
 								{classItem.name}
 							</li>
@@ -139,7 +139,7 @@ export default function Navbar() {
 						<div className="dropdown-menu">
 						{
 								preparationResponse && preparationResponse.map((prepItem)=>(
-									<NavLink to={`/class/${prepItem.slug}`} key={prepItem.slug}>
+									<NavLink to={`/class/${prepItem.slug}`} key={prepItem.slug} onClick={closeNav}>
 									<li className="dropdown-item"  >
 									{prepItem.name}
 								</li>
@@ -148,8 +148,8 @@ export default function Navbar() {
 							}
 						</div>
 					</div>
-					<a href="dashboard.html">Features</a>
-					<a href="quiz.html">Blog</a>
+					<a href="dashboard.html" onClick={closeNav}>Features</a>
+					<a href="quiz.html" onClick={closeNav}>Blog</a>
 				</div>
 			</div>
 			<LoginModal />

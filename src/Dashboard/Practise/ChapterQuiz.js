@@ -2,12 +2,14 @@ import React, {useState, useEffect} from "react";
 import {useHistory, useRouteMatch} from 'react-router-dom';
 import axios from "axios";
 import { useAuth } from "../../Context/Auth";
+import Skeleton from "react-loading-skeleton";
 
 
 const ChapterQuiz = (props) => {
     const {params} = useRouteMatch();
     console.log('Parameter',params)
     let history = useHistory();
+    const [loading, setLoading] = useState(false);
     const [question, setQuestionResponse] = useState();
     const [active, setActive] = useState();
     const [result, setResult] = useState(null);
@@ -32,6 +34,7 @@ const ChapterQuiz = (props) => {
                 if(response.status === 200){
                 setQuestionResponse(response.data.data)
                 }
+                setLoading(true);
             }
         )
     }, [nextQuestion])
@@ -84,6 +87,7 @@ const ChapterQuiz = (props) => {
             setNextQuestion(true)
         }
         setNextButton(false)
+        setLoading(false);
         axios({
             method: 'post',
             url: 'http://noname.hellonep.com/api/practise/store',
@@ -135,6 +139,7 @@ const ChapterQuiz = (props) => {
     </div>
   </div>
 </div>
+
                 <div className="quiz-header">
                     <nav className="navbar navbar-expand-sm" style={{
                         background: "linear-gradient(45deg, #0be788, #09d6af)",
@@ -142,7 +147,7 @@ const ChapterQuiz = (props) => {
                     }}>                    
                     </nav>
                 </div>
-                {question ? (
+                {loading ? (
                 <>
                 <div className="container test-section">
                     <div className="question-container">
@@ -182,7 +187,40 @@ const ChapterQuiz = (props) => {
                 </>
                 ) : 
                  
-                    <span>Loading</span>
+                (
+                    <>
+                        <div className="container test-section">
+                            <div className="question-container">
+                                <div className="question-title">
+                                    <span className="question-number">
+                                        <Skeleton></Skeleton>
+                                    </span>
+                                </div>
+                            </div>
+                            <div className="answer-container">
+                                    <div className="row">
+                                        { [1,2,3,4].map((val,index) => { return(
+                                        <div className="col-md-6 col-sm-6">
+                                            <div
+                                                className=
+                                                    "answer-wrapper"
+                                            >
+                                                <div className="option-number">{index+1}</div>
+                                                <div className="option">
+                                                    <Skeleton></Skeleton>
+                                                </div>
+                                                <div className="option-tick">
+                                                    <i className="fa fa-check"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        );})}
+                                    </div>
+                            </div>
+                        </div>
+                        
+                    </>
+                )
                 }
             </div>
             <div className="container">

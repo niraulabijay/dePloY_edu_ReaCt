@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 const Timer = ({myTime, Timeup}) => {
 
-    console.log(Timeup)
+    // console.log(Timeup)
 
     const [Minute, setMinute] = useState(0);
     const [Second, setSecond] = useState(0);
@@ -11,14 +11,14 @@ const Timer = ({myTime, Timeup}) => {
     const [Time, setTime] = useState(myTime)
 
     useEffect(() => {
-        console.log('Nan',myTime)
+        // console.log('Nan',myTime)
         const interval =  setInterval(function(){
             if(Time !== 0){
             setSecond( Time % 60 );
             setMinute(Math.floor((Time/60)%60));
             setHour(Math.floor(Time/60/60));
             setTime(Time=> Time - 1);
-            console.log('Nan',Time)
+            // console.log('Nan',Time)
             }
             else{
                 setSecond(0);

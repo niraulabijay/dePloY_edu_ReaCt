@@ -10,9 +10,7 @@ import LearnSubject from "../Subject/LearnSubject";
 import { useAuth } from "../../Context/Auth";
 import Skeleton from "react-loading-skeleton";
 import "../assets/css/userStyle.css";
-import Axios from "axios";
 import { SubjectContext } from "../../Context/SubjectContext";
-import ErrorBoundary from "../../ErrorBoundary/ErrorBoundary";
 
 export default function Learn() {
 	let { path, url } = useRouteMatch();
@@ -112,7 +110,7 @@ export default function Learn() {
 									</div>
 								</div>
 							</div>
-						) : (
+						) : (	
 							<div className="row">
 								{SubjectResponse.map((subject, index) => (
 									<div className="col-md-3 col-lg-3 col-6" key={index}>

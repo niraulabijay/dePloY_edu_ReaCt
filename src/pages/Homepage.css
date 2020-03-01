@@ -9,6 +9,9 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: "Mukta", sans-serif;
+	overflow-x: hidden;
+	overflow-y: scroll;
+
 }
 
 .logo-box {
@@ -237,10 +240,15 @@ body {
 	font-size: 26px;
 	font-family: "Quicksand", sans-serif;
 	font-weight: bold;
-	color: #fff;
+	color: #fff !important;
 	text-align: left;
 	display: block;
 	transition: 0.3s;
+}
+.overlay .dropdown-item {
+	color: white;
+	border-radius: 30px;
+	box-shadow: 0px 0px 10px #8f8c8c;
 }
 
 /* When you mouse over the navigation links, change their color */
@@ -254,11 +262,16 @@ body {
 	position: absolute;
 	top: 0px;
 	right: 0px;
+	line-height: 60px;
 	font-size: 60px;
-	padding: 0px 35px;
+	padding: 0px 20px;
+	color: white;
 }
 
 @media (max-width: 756px) {
+	.fa-window-close {
+		color: #28a745;
+	}
 	#navbar {
 		padding: 10px;
 	}
@@ -296,10 +309,13 @@ body {
 	#myNav .dropdown-menu {
 		right: 0;
 		left: 0;
+		padding: 0;
+		border: none;
 	}
 	#myNav .dropdown-menu a {
 		text-align: center;
 		color: green;
+		background-color: #37d389;
 	}
 }
 
@@ -326,13 +342,18 @@ body {
 
 /*---------------------------------------- banner-------------------------------*/
 .banner {
-	background-image: url("./images/banner.jpg");
-	background-size: cover;
-	background-repeat: no-repeat;
 	padding: 160px 0px 160px 0px;
 	text-align: center;
 	height: 100vh;
 	position: relative;
+}
+.banner .banner-img {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	z-index: -1;
 }
 
 .banner .title {
@@ -526,10 +547,10 @@ body {
 
 @media (max-width: 756px) {
 	.banner {
-		height: 95vh;
-		padding: 140px 10px 140px 10px;
-		background-image: url("./images/mobileBanner.jpg");
+		height: 100%;
+		padding: 50% 10px 50% 10px;
 	}
+
 	.banner .title {
 		font-size: 30px;
 		text-shadow: 1px 3px 4px #b3b4b3;
@@ -548,7 +569,7 @@ body {
 		justify-content: center;
 	}
 	.banner .wave-img {
-		bottom: 0;
+		bottom: -5px;
 	}
 }
 
@@ -998,13 +1019,82 @@ body {
 	margin: 0px 15px;
 	padding: 10px 30px;
 }
+
 #quitModal .button-container .no {
 	background: #ff8888;
 	margin: 0px 15px;
 	padding: 10px 30px;
 	border-radius: 5px;
 }
+#finishModal {
+	text-align: center;
+}
+#finishModal .title {
+	margin-top: 30px;
+	font-size: 30px;
+	color: #777d79;
+}
+#finishModal .button-container {
+	padding: 30px;
+}
+#finishModal .button-container a {
+	display: inline-block;
+	color: white;
+}
+#finishModal .button-container .yes {
+	border-radius: 5px;
+	background: #09d6af;
+	margin: 0px 15px;
+	padding: 10px 30px;
+}
 
+#finishModal .button-container .no {
+	background: #ff8888;
+	margin: 0px 15px;
+	padding: 10px 30px;
+	border-radius: 5px;
+}
+/*start Modal */
+#startModal {
+	text-align: center;
+}
+#startModal .title {
+	margin-top: 30px;
+	font-size: 26px;
+	font-weight: bold;
+	color: #000;
+}
+#startModal .subtitle{
+	font-weight: bold;
+	margin-top: 15px;
+}
+#startModal ol{
+	text-align: left;
+	margin-top: 15px;
+}
+#startModal .button-container {
+	padding: 30px;
+	display: flex;
+	justify-content: space-between;
+}
+#startModal .button-container a {
+	display: inline-block;
+	color: white;
+}
+#startModal .button-container .yes {
+	border-radius: 5px;
+	background: #09d6af;
+	margin: 0px 15px;
+	padding: 10px 30px;
+}
+
+#startModal .button-container .no {
+	background: #ff8888;
+	margin: 0px 15px;
+	padding: 10px 30px;
+	border-radius: 5px;
+}
+/* end of start Modal */
 .quiz .test-section {
 	margin-top: 10%;
 }
@@ -2172,26 +2262,26 @@ body {
 	margin: 0 auto;
 }
 
-.errorpage .img-container h2{
+.errorpage .img-container h2 {
 	font-size: 3em;
 	margin-bottom: 30px;
 }
-.errorpage .img-container a{
+.errorpage .img-container a {
 	background: linear-gradient(235deg, #36ea5f, #00b693);
 	color: white;
 	padding: 10px 30px;
 	text-decoration: none;
-	
+
 	border-radius: 5px;
 }
-@media (max-width: 768px){
+@media (max-width: 768px) {
 	.errorpage .img-container {
 		padding-top: 60%;
 		text-align: center;
 		width: 80%;
 		margin: 0 auto;
 	}
-	.errorpage .img-container h2{
+	.errorpage .img-container h2 {
 		font-size: 2em;
 	}
 }

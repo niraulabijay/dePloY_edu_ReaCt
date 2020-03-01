@@ -8,6 +8,21 @@ function Banner() {
 	return (
 		<div>
 			<div className="banner">
+				<div className="banner-img">
+					<picture>
+						<source
+							media="(max-width: 768px)"
+							srcset={require("../../pages/images/mobileBanner.jpg")}
+							className="img-fluid"
+						/>
+						<img
+							src={require("../../pages/images/banner.jpg")}
+							style={{ width: "auto" }}
+							className="img-fluid"
+						/>
+					</picture>
+					
+				</div>
 				<div className="title">Better Education For a Better World</div>
 
 				<div className="join-now-form container-fluid">

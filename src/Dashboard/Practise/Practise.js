@@ -5,12 +5,13 @@ import Axios from "axios";
 import { useAuth } from "../../Context/Auth";
 import Skeleton from "react-loading-skeleton";
 import { SubjectContext } from "../../Context/SubjectContext";
+import PractiseWeeklyReport from "./PractiseWeeklyReport";
 
 export default function Practise() {
 	const { Authtoken } = useAuth();
-	const {PractiseResponse, loading} = useContext(SubjectContext);
+	const { PractiseResponse, loading } = useContext(SubjectContext);
 	let { path, url } = useRouteMatch();
-	
+
 	return (
 		<React.Fragment>
 			<Switch>
@@ -304,59 +305,10 @@ export default function Practise() {
 									</div>
 								</div>
 							</div>
-							<div className="col-md-4 col-lg-4 col-12">
-								<div className="report-wrapper ">
-									<div className="title d-flex justify-content-between">
-										<span className="prev">
-											<i className="fa fa-caret-left"></i>
-										</span>
-										<div className="title-wrapper">
-											<strong>Weekly Report</strong>
-											<small>Jan 1 - Feb 1</small>
-										</div>
-
-										<span className="next">
-											<i className="fa fa-caret-right"></i>
-										</span>
-									</div>
-									<div className="content-wrapper">
-										<img
-											src={require("../assets/images/graph.jpg")}
-											alt=""
-											className="img-fluid"
-										/>
-									</div>
-									<div className="footer-wrapper">
-										<div className="title-wrapper d-flex justify-content-between">
-											<div className="title">
-												<small>Time</small>
-												<strong>1 hrs</strong>
-												<i
-													className="fa fa-long-arrow-alt-up"
-													style={{ color: "green" }}
-												></i>
-											</div>
-											<div className="title">
-												<small>Goals</small>
-												<strong>1 </strong>
-												<i
-													className="fa fa-long-arrow-alt-down"
-													style={{ color: "red" }}
-												></i>
-											</div>
-											<div className="title">
-												<small>Accuracy</small>
-												<strong>90%</strong>
-												<i
-													className="fa fa-long-arrow-alt-down"
-													style={{ color: "red" }}
-												></i>
-											</div>
-										</div>
-									</div>
-								</div>
+							<div className="col-md-8 col-lg-8 col-12">
+							<PractiseWeeklyReport />
 							</div>
-							<div className="col-md-4 col-lg-4 col-12">
+							{/* <div className="col-md-4 col-lg-4 col-12">
 								<div className="report-wrapper ">
 									<div className="title d-flex justify-content-between">
 										<span className="prev">
@@ -407,7 +359,7 @@ export default function Practise() {
 										</div>
 									</div>
 								</div>
-							</div>
+							</div> */}
 						</div>
 					</div>
 				</Route>
