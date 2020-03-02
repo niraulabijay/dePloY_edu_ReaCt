@@ -18,7 +18,7 @@ import Profile from "./Profile/Profile";
 import PageNotFound from "../pages/PageNotFound";
 import Learn from "./Subject/Learn";
 import Syllabus from "./Profile/Syllabus";
-import {SubjectProvider} from "../Context/SubjectContext";
+import { SubjectProvider } from "../Context/SubjectContext";
 import { useAuth } from "../Context/Auth";
 import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 import Logout from "./Logout";
@@ -64,13 +64,10 @@ const routes = [
 	}
 ];
 
-
-
 const Dashboard = () => {
-	
 	// const { StorageToken, Authtoken } = useAuth();
-	const {handleClose} = Logout();
-	
+	const { handleClose } = Logout();
+
 	function closeNav() {
 		function myFunction(x) {
 			let userSideNav = document.getElementById("userSideNav");
@@ -106,16 +103,18 @@ const Dashboard = () => {
 	}
 	window.onclick = function() {
 		var userSideNav = document.getElementById("userSideNav");
-		document.onclick = function(e) {
-			var x = window.matchMedia("(max-width: 768px)");
-			if (x.matches) {
-				if (userSideNav.offsetWidth != 0) {
-					if (e.target.parentNode.id !== "userSideNav") {
-						closeNav();
+		if (userSideNav != null) {
+			document.onclick = function(e) {
+				var x = window.matchMedia("(max-width: 768px)");
+				if (x.matches) {
+					if (userSideNav.offsetWidth != 0) {
+						if (e.target.parentNode.id !== "userSideNav") {
+							closeNav();
+						}
 					}
 				}
-			}
-		};
+			};
+		}
 	};
 	function openNav() {
 		function myFunction(x) {
@@ -234,10 +233,11 @@ const Dashboard = () => {
 						<i className="fa fa-folder-open"></i>{" "}
 						<span className="sideTab"> Syllabus</span>
 					</NavLink>
-					<NavLink to="/notification">
-						<i className="fa fa-bell"></i>{" "}
-						<span className="sideTab"> Notification</span>
-					</NavLink>
+
+					<a onClick={handleClose}>
+						<i className="fa fa-power-off"></i> <span>Logout</span>
+					</a>
+
 					<a onClick={facebook}>
 						<i className="fab fa-facebook"></i>{" "}
 						<span className="sideTab"> Share on Facebook</span>
@@ -309,26 +309,29 @@ const Dashboard = () => {
                                 <span>Invite & Earn</span>
                             </a>
                         </div> */}
-						<div className="logout"   >
-							<a href="#" onClick={handleClose} >
-								<i className="fa fa-power-off" ></i> <span>Logout</span>
-							</a>
+							<div className="logout">
+								<NavLink to="/notification">
+									<i className="fa fa-bell"></i><span className="badge">1</span> 
+								</NavLink>
+							</div>
 						</div>
 					</div>
-					
+					<div className="main-content">
+						<Switch>
+							<Route exact path="/">
+								<Redirect to="/learn" />
+							</Route>
+							{routes.map((route, index) => (
+								<Route key={index} path={route.path}>
+									<ErrorBoundary>
+										<route.main />
+									</ErrorBoundary>
+								</Route>
+							))}
+						</Switch>
+					</div>
 				</div>
-				<div className="main-content">
-					<Switch>
-						<Route exact path="/">
-							<Redirect to="/learn" />
-						</Route>
-						{routes.map((route, index) => (
-							<Route key={index} path={route.path} ><ErrorBoundary><route.main /></ErrorBoundary></Route>
-						))}
-					</Switch>
-				</div>
-			</div>
-		</React.Fragment>
+			</React.Fragment>
 		</SubjectProvider>
 	);
 };

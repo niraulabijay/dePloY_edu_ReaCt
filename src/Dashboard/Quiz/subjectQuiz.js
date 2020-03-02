@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory, Route, useRouteMatch } from "react-router-dom";
+import { useHistory, Route, useRouteMatch, Switch } from "react-router-dom";
 import Axios from "axios";
 import { useAuth } from "../../Context/Auth";
 import Timer from "./Timer";
@@ -226,6 +226,7 @@ export default function SubjectQuiz(props) {
 
 	return (
 		<React.Fragment>
+			<Switch>
 			<Route exact path={path}>
 				<div>
 					<span onClick={openQuiz} id="quizOpen">
@@ -566,6 +567,7 @@ export default function SubjectQuiz(props) {
 			<Route path={`${path}/result`}>
 				<SubjectResult result={ResultResponse} />
 			</Route>
+			</Switch>
 		</React.Fragment>
 	);
 }

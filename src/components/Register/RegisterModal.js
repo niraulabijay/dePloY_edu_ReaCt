@@ -144,7 +144,7 @@ export default function RegisterModal() {
 								<div className="button-container">
 									<button
 										className="btn btn-success"
-										data-toggle="modal"
+											
 										type="submit"
 										disabled={ buttonDisable ? 'true' : '' }
 									>
