@@ -37,7 +37,7 @@ export default function SubjectQuiz(props) {
 			});
 		}
 		let source = Axios.CancelToken.source();
-
+	
         const loadData = async () => {
             try {
                 const response = await Axios.get(getUrl, {
@@ -46,7 +46,8 @@ export default function SubjectQuiz(props) {
                 },
                 {
                     cancelToken: source.token
-                });
+				});
+				console.log(response)
                 setGetQuestion(response.data.questions);
                 setQuizTime(parseInt(response.data.time));
                 setLogId(parseInt(response.data.log_id))
@@ -69,7 +70,8 @@ export default function SubjectQuiz(props) {
         loadData();
         return () => {
             source.cancel();
-        };
+		};
+	
     }, [getUrl]);
 
 	const allQuestion = questions.length;
@@ -160,6 +162,9 @@ export default function SubjectQuiz(props) {
 			}
 		}).then(response => {
 			if (response.data.status === "success") {
+				console.log(response)
+				console.log(response.data.obtain_marks.obtain_marks)
+				console.log(response.data.obtain_marks.total_marks)
 				setResultResponse(response.data.result);
 				setTestFinish(true);
 			}
@@ -170,12 +175,12 @@ export default function SubjectQuiz(props) {
 		if (testFinish) {
 			localStorage.removeItem("active");
 			localStorage.removeItem("initialValue");
-			history.push({
-				pathname: url + "/result",
+			history.replace({
+				pathname:  '/' + Authtoken.class_id + '/' + params.subjectId + "/result",
 				state: ResultResponse
 			});
 		}
-	}, [ResultResponse, testFinish]);
+	}, [testFinish]);
 
 	const items = [];
     for (let i = 1; i <= quizLength; i++) {
@@ -259,7 +264,7 @@ export default function SubjectQuiz(props) {
 										</button>
 										<div className="title">Are you sure you want to submit the quiz?
 										</div>
-																					<span style={{ color:'red' }}>Your work will not be reverted.</span>
+										<span style={{ color:'red' }}>Your work will not be reverted.</span>
 
 										<div className="button-container">
 											<a
@@ -563,9 +568,9 @@ export default function SubjectQuiz(props) {
             </Route>
             {/* <Route path="/:class_id/:subjectId/result" component={SubjectResult}	/> */}
 
-			<Route path={`${path}/result`}>
+			{/* <Route path={`${path}/result`}>
 				<SubjectResult result={ResultResponse} />
-			</Route>
+			</Route> */}
 		</React.Fragment>
 	);
 }

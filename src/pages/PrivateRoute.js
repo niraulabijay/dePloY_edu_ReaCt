@@ -9,6 +9,7 @@ import ChapterQuiz from "../Dashboard/Practise/ChapterQuiz";
 import SubjectQuiz from "../Dashboard/Quiz/subjectQuiz";
 import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 import Dashboard from "../Dashboard/Dashboard";
+import SubjectResult from "../Dashboard/Quiz/SubjectResult";
 
 const PrivateRoute = ({ children, ...rest }) => {
 	const { Authtoken } = useAuth();
@@ -36,6 +37,9 @@ const PrivateRoute = ({ children, ...rest }) => {
 								path="/:class_id/:subjectId/test"
 								component={SubjectQuiz}
 							/>
+							<Route path="/:class_id/:subjectId/result">
+										<SubjectResult />
+								</Route>
 								<Dashboard />
 						</Switch>
 					)

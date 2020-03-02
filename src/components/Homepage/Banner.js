@@ -1,9 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 import ReactDOM from "react-dom";
 // import LoginModal from "../Login/LoginModal"
 
 function Banner() {
-	// invite code collapse in join form
+	const [registerNumber, setRegisterNumber] = useState()
+	const registerChange = e => {
+		setRegisterNumber(e.target.value)
+	}
+	console.log(registerNumber)
 
 	return (
 		<div>
@@ -32,7 +36,7 @@ function Banner() {
 						</div>
 						<div className="col-md-5 col-lg-5 col-5">
 							<div className="phone-number">
-								<input type="phone" name="phone number" maxLength="10" />
+								<input type="phone" name="phone" onChange={registerChange} maxLength="10" />
 							</div>
 						</div>
 						<div className="col-md-4 col-lg-4 col-4">

@@ -1,19 +1,26 @@
 import React, { useEffect } from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory, Link, useLocation } from "react-router-dom";
 
-const SubjectResult = ({ result }) => {
+const SubjectResult = () => {
 	const history = useHistory();
 	const place = {
-		pathname: "/learn"
+		pathname: "/test"
 	};
 
+	const location = useLocation()
+	const result = location.state
+
+	console.log(location)
+	console.log(result)
 	useEffect(() => {
+		
 		window.onpopstate = e => {
 			history.replace(place);
 		};
-		if (history.action == "POP") {
+		if (history.action === "POP") {
 			history.replace(place);
 		}
+
 	}, [history]);
 
 	return (
