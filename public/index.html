@@ -44,7 +44,35 @@
 		<div id="example"></div>
 		<script
 			src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.2.228/build/pdf.min.js"
-			defer
+			
 		></script>
+		<script>
+				t = performance.timing;
+				console.log(performance.timing);
+				if(t.navigationStart){
+					console.log("connected to navigation");
+				}
+				if(t.connectEnd){
+					console.log("connected to server");
+				}
+				if(t.responseStart){
+					console.log("fetching from server");
+				}
+				if(t.domLoading){
+					console.log("content is loading");
+				}
+				if(t.domInteractive){
+					console.log("content is interactive");
+				}
+				if(t.domComplete){
+					console.log("content is loading");
+				}
+			
+			
+			
+// 			window.addEventListener('DOMContentLoaded', (event) => {
+//     console.log("fully loaded");
+// });
+</script>
 	</body>
 </html>
