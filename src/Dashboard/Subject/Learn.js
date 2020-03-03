@@ -1,4 +1,4 @@
-import React, {  useContext } from "react";
+import React, { useContext } from "react";
 import {
 	Link,
 	Switch,
@@ -18,10 +18,9 @@ export default function Learn() {
 
 	const { Authtoken } = useAuth();
 
-	const {SubjectResponse, loading} = useContext(SubjectContext);
-	
+	const { SubjectResponse, loading } = useContext(SubjectContext);
+
 	return (
-		
 		<React.Fragment>
 			<Switch>
 				<Route exact path={path}>
@@ -110,7 +109,7 @@ export default function Learn() {
 									</div>
 								</div>
 							</div>
-						) : (	
+						) : (
 							<div className="row">
 								{SubjectResponse.map((subject, index) => (
 									<div className="col-md-3 col-lg-3 col-6" key={index}>
@@ -129,12 +128,11 @@ export default function Learn() {
 					</div>
 				</Route>
 				<Route path={`${path}/:subjectId`}>
-				{/* <ErrorBoundary> */}
+					{/* <ErrorBoundary> */}
 					<LearnSubject />
-				{/* </ErrorBoundary>	 */}
+					{/* </ErrorBoundary>	 */}
 				</Route>
 			</Switch>
 		</React.Fragment>
-		
 	);
 }

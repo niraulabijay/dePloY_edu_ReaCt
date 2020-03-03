@@ -311,21 +311,22 @@ h6 {
 }
 .navbar .logout {
 	display: block;
-	height: 44px;
-	overflow: hidden;
-
+	height: 45px;
 	padding: 10px 0px 10px 15px;
 	border-radius: 5px;
+	position: relative;
 }
 .navbar .logout a {
-	margin-right: -50px;
+	
 	font-size: 18px;
 	text-decoration: none;
 	color: #008862;
 }
-.navbar .logout:hover a {
-	margin-right: 10px;
-	transition: margin-right 0.3s linear;
+.navbar .logout .badge{
+	position: absolute;
+	right: -5px;
+	top: 5px;
+	color: #00ce6f;
 }
 .navbar #view {
 	display: none;
