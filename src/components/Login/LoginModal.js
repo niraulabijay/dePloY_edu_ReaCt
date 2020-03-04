@@ -18,7 +18,7 @@ function LoginModal() {
 		axios({
 			method: "post",
 			url: "http://noname.hellonep.com/api/login",
-			data: data
+			data: data,
 		})
 			.then(response => {
 				if (response.data.status === "success") {

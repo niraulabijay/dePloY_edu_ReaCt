@@ -3,6 +3,7 @@ import Axios from "axios";
 import { useAuth } from "../../Context/Auth";
 import { useForm } from "react-hook-form";
 import Skeleton from "react-loading-skeleton";
+import AccountDetail from "./AccountDetail";
 
 export default function Profile() {
 	const { Authtoken } = useAuth();
@@ -261,58 +262,7 @@ export default function Profile() {
 						</div>
 					</form>
 				</div>
-				<div className="account-details">
-					<div className="title">Account Details</div>
-					<form>
-						<div className="form-group">
-							<label>Phone Number</label>
-							<input
-								className="form-control"
-								type="number"
-								placeholder={UserResponse.phone}
-								disabled
-								name="phone"
-							/>
-						</div>
-						<div className="form-group">
-							<label>email</label>
-							<input
-								className="form-control"
-								type="email"
-								placeholder={UserResponse.email}
-								disabled
-								name="email"
-							/>
-						</div>
-						<div className="form-group">
-							<label>New Password</label>
-							<input
-								className="form-control"
-								type="password"
-								name="new-password"
-							/>
-						</div>
-						<div className="form-group">
-							<label>Confirm Password</label>
-							<input
-								className="form-control"
-								type="password"
-								name="confirm-password"
-							/>
-						</div>
-						<div className="form-group">
-							<label>Old Password</label>
-							<input
-								className="form-control"
-								type="password"
-								name="old-password"
-							/>
-						</div>
-						<div className="button-container">
-							<input type="submit" value="Update" />
-						</div>
-					</form>
-				</div>
+				<AccountDetail UserResponse={UserResponse} />
 			</div>
 		</React.Fragment>
 	);

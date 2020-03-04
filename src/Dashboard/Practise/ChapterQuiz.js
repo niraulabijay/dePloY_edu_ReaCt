@@ -96,8 +96,9 @@ const ChapterQuiz = (props) => {
             {
                 question_id: question.id,
                 correct: correct,
-                chapter: question.chapter_id
-            }]
+                
+            }],
+            chapter_id: question.chapter_id
         }
         }).then(
             res =>{
