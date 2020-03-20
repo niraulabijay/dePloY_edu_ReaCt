@@ -920,32 +920,38 @@ body {
 	border-radius: 5px !important;
 	color: white;
 }
-.footer  .social-link{
+.footer .social-link {
 	padding: 0px 30px;
 }
-.footer .social-link ul{
+.footer .social-link ul {
 	list-style: none;
 	display: flex;
 	padding: 0;
 	justify-content: space-around;
-
 }
-.footer .social-link ul a{
+.footer .social-link ul a {
 	font-size: 30px;
-text-decoration: none;
-display: inline;
+	text-decoration: none;
+	display: inline;
 }
-.fa-facebook{
- color: #3B5998;
+.fa-facebook {
+	color: #3b5998;
 }
-.fa-linkedin{
-	color:#0E76A8;
+.fa-linkedin {
+	color: #0e76a8;
 }
-.fa-twitter{
-	color:#00acee;
+.fa-twitter {
+	color: #00acee;
 }
-.fa-instagram{
-	 background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+.fa-instagram {
+	background: radial-gradient(
+		circle at 30% 107%,
+		#fdf497 0%,
+		#fdf497 5%,
+		#fd5949 45%,
+		#d6249f 60%,
+		#285aeb 90%
+	);
 	color: white;
 	font-size: 26px;
 	padding: 1px 3px;
@@ -1084,6 +1090,36 @@ display: inline;
 	padding: 10px 30px;
 	border-radius: 5px;
 }
+/* logout modal */
+#logoutModal {
+	text-align: center;
+}
+#logoutModal .title {
+	margin-top: 30px;
+	font-size: 30px;
+	color: #777d79;
+}
+#logoutModal .button-container {
+	padding: 30px;
+}
+#logoutModal .button-container a {
+	display: inline-block;
+	color: white;
+}
+#logoutModal .button-container .yes {
+	border-radius: 5px;
+	background: #09d6af;
+	margin: 0px 15px;
+	padding: 10px 30px;
+}
+
+#logoutModal .button-container .no {
+	background: #ff8888;
+	margin: 0px 15px;
+	padding: 10px 30px;
+	border-radius: 5px;
+}
+
 /*start Modal */
 #startModal {
 	text-align: center;
@@ -1104,8 +1140,6 @@ display: inline;
 }
 #startModal .button-container {
 	padding: 30px;
-	display: flex;
-	justify-content: space-between;
 }
 #startModal .button-container a {
 	display: inline-block;

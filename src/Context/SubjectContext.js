@@ -11,14 +11,15 @@ export const SubjectProvider = props => {
 
 	const [SubjectResponse, setSubjectResponse] = useState([]);
 	const [tokenError, setTokenError] = useState(false);
+	const [practiseReport, setPractiseReport] = useState([]);
+	const [practiseSubject, setPractiseSubject]= useState([]);
 	const [testSub, setTestSubject] = useState([]);
 	const [PractiseResponse, setPractiseResponse] = useState([]);
     const [loading, setLoading] = useState(true);
 	const {Authtoken} = useAuth();
 	const {handleClose} = Logout();
 	let getUrl = "http://noname.hellonep.com/api/subjects/" + Authtoken.class_id;
-	console.log(getUrl)
-	console.log(Authtoken)
+	
 
     useEffect(() => {
 		let source = Axios.CancelToken.source();
@@ -39,10 +40,12 @@ export const SubjectProvider = props => {
 				if(response.data.status === "Token is Expired" || response.data.status === "Token is Invalid"){
 					handleClose()
 				}else{
-					console.log(response)
+					console.log(response.data + "hello")
 				setSubjectResponse(response.data.learn_subjects);
 				setPractiseResponse(response.data.practice_subjects);
 				setTestSubject(response.data.test_subjects);
+				setPractiseSubject(response.data.practice_graph_subjects);
+				setPractiseReport(response.data.practice_report);
 				setLoading(false);
 				}
 			}catch(error){
@@ -74,7 +77,9 @@ export const SubjectProvider = props => {
 				SubjectResponse:SubjectResponse, 
 				testSub:testSub, 
 				PractiseResponse:PractiseResponse, 
-				loading:loading
+				loading:loading,
+				practiseReport:practiseReport,
+				practiseSubject:practiseSubject
 			}}>
             {props.children}
         </SubjectContext.Provider>

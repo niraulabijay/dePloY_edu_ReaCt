@@ -58,6 +58,12 @@ h6 {
 	opacity: 1;
 	transition: opacity 0.2s ease-in;
 }
+.userSidenav a:not([href]):not([tabindex]){
+	color: white;
+}
+.userSidenav .fa-facebook{
+	color: white;
+}
 .userSidenav .profile-container {
 	text-align: center;
 	padding: 20px 10px;
@@ -580,6 +586,9 @@ h6 {
 	box-shadow: 0px 0px 10px 1px #ebe9e9;
 	position: relative;
 }
+.test-subject .testrow{
+	margin: 0 auto;
+}
 .test-subject .test-wrapper .subWrap {
 	background: #fff;
 	position: absolute;
@@ -875,7 +884,7 @@ h6 {
 	text-decoration: none;
 }
 .subject-content .chapter-wrapper .chapter-title {
-	font-size: 22px;
+	font-size: 18px;
 	color: #000;
 }
 .subject-content .chapter-wrapper .chapter-title:hover {
@@ -939,7 +948,7 @@ h6 {
 		padding: 24px 15px;
 	}
 	.subject-content .chapter-wrapper .chapter-title {
-		font-size: 20px;
+		font-size: 16px;
 	}
 	.subject-content .chapter-wrapper .option a {
 		padding-right: 0px;
@@ -1338,7 +1347,7 @@ h6 {
 	color: gray;
 }
 .practiseSubject .practiseSubjectWrapper .chapter-name {
-	font-size: 24px;
+	font-size: 20px;
 	color: black;
 	margin-bottom: 5px;
 }

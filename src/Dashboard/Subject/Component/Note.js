@@ -95,15 +95,16 @@ const Note = ({ chapterResponse , setLoading, subjectId}) => {
 								<Skeleton width={200} />
 							</div>
 							<div className="option">
-								<a href="#">
-									<i className="fa fa-download"></i>
-								</a>
-								<Link to="/viewer">
-									<i className="fa fa-eye"></i>
-								</Link>
-								<a href="#">
-									<i className="fa fa-bookmark"></i>
-								</a>
+							<Skeleton width={150} />
+							</div>
+						</div>
+						<div className="chapter-wrapper d-flex justify-content-between">
+							<div className="chapter-title">
+								<span></span>
+								<Skeleton width={230} />
+							</div>
+							<div className="option">
+							<Skeleton width={150} />
 							</div>
 						</div>
 						<div className="chapter-wrapper d-flex justify-content-between">
@@ -112,32 +113,7 @@ const Note = ({ chapterResponse , setLoading, subjectId}) => {
 								<Skeleton width={200} />
 							</div>
 							<div className="option">
-								<a href="#">
-									<i className="fa fa-download"></i>
-								</a>
-								<Link to="/viewer">
-									<i className="fa fa-eye"></i>
-								</Link>
-								<a href="#">
-									<i className="fa fa-bookmark"></i>
-								</a>
-							</div>
-						</div>
-						<div className="chapter-wrapper d-flex justify-content-between">
-							<div className="chapter-title">
-								<span></span>
-								<Skeleton width={200} />
-							</div>
-							<div className="option">
-								<a href="#">
-									<i className="fa fa-download"></i>
-								</a>
-								<Link to="/viewer">
-									<i className="fa fa-eye"></i>
-								</Link>
-								<a href="#">
-									<i className="fa fa-bookmark"></i>
-								</a>
+							<Skeleton width={150} />
 							</div>
 						</div>
 					</React.Fragment>

@@ -19,10 +19,11 @@ const PastQuestions = ({ QuestionResponse }) => {
 							</div>
 							<div className="option">
 								<a href="#">
-									<i className="fa fa-download"></i>
+								{question.title ?<i className="fa fa-download"></i> : ""}
 								</a>
 								<Link to={"/viewer/OEQ2063"}>
-									<i className="fa fa-eye"></i>
+								{question.title ?<i className="fa fa-eye"></i> : <Skeleton width={150} />}
+									
 								</Link>
 							</div>
 						</div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {
 	AreaChart,
 	Area,
@@ -10,139 +10,13 @@ import {
 	Legend
 } from "recharts";
 
-const data1 = [
-	{
-		name: "Sun",
-		Math: 20,
-		Science: 24,
-		English: 28
-	},
-	{
-		name: "Mon",
-		Math: 23,
-		Science: 12,
-		English: 34
-	},
-	{
-		name: "Tue",
-		Math: 23,
-		Science: 56,
-		English: 26
-	},
-	{
-		name: "Wed",
-		Math: 15,
-		Science: 26,
-		English: 14
-	},
-	{
-		name: "Thu",
-		Math: 35,
-		Science: 39,
-		English: 5
-	},
-	{
-		name: "Fri",
-		Math: 23,
-		Science: 15,
-		English: 56
-	},
-	{
-		name: "Sat",
-		Math: 37,
-		Science: 29,
-		English: 68
-	}
-];
-const data2 = [
-	{
-		name: "Sun",
-		Math: 20,
-		Science: 24,
-		English: 28
-	},
-	{
-		name: "Mon",
-		Math: 23,
-		Science: 12,
-		English: 34
-	},
-	{
-		name: "Tue",
-		Math: 23,
-		Science: 56,
-		English: 26
-	},
-	{
-		name: "Wed",
-		Math: 15,
-		Science: 26,
-		English: 14
-	},
-	{
-		name: "Thu",
-		Math: 35,
-		Science: 39,
-		English: 5
-	},
-	{
-		name: "Fri",
-		Math: 23,
-		Science: 15,
-		English: 56
-	},
-	{
-		name: "Sat",
-		Math: 37,
-		Science: 29,
-		English: 68
-	}
-];
-const data3 = [
-	{
-		name: "Sun",
-		Math: 20,
-		Science: 24,
-		English: 28
-	},
-	{
-		name: "Mon",
-		Math: 23,
-		Science: 12,
-		English: 34
-	},
-	{
-		name: "Tue",
-		Math: 23,
-		Science: 56,
-		English: 26
-	},
-	{
-		name: "Wed",
-		Math: 15,
-		Science: 26,
-		English: 14
-	},
-	{
-		name: "Thu",
-		Math: 35,
-		Science: 39,
-		English: 5
-	},
-	{
-		name: "Fri",
-		Math: 23,
-		Science: 15,
-		English: 56
-	},
-	{
-		name: "Sat",
-		Math: 37,
-		Science: 29,
-		English: 68
-	}
-];
-export default function PractiseWeeklyReport() {
+
+export default function PractiseWeeklyReport({practiseReport, loading, practiseSubject}) {
+	
+	  
+
+	
+
 	return (
 		<div className="report-wrapper ">
 			<div className="title d-flex justify-content-between">
@@ -161,7 +35,7 @@ export default function PractiseWeeklyReport() {
 			<div className="content-wrapper">
 				<ResponsiveContainer width="100%" height={300}>
 					<AreaChart 
-						data={data2}
+						data={practiseReport}
 						margin={{
 							top: 5,
 							right: 30,
@@ -170,34 +44,46 @@ export default function PractiseWeeklyReport() {
 						}}
 					>
                         <defs>
-    <linearGradient id="colorMath" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
-      <stop offset="95%" stopColor="#8884d8" stopOpacity={0}/>
-    </linearGradient>
-    <linearGradient id="colorScience" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8}/>
-      <stop offset="95%" stopColor="#82ca9d" stopOpacity={0}/>
-    </linearGradient>
-    <linearGradient id="colorEnglish" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="5%" stopColor="#23ca9d" stopOpacity={0.8}/>
-      <stop offset="95%" stopColor="#23ca9d" stopOpacity={0}/>
-    </linearGradient>
+							{
+								
+								practiseSubject.map((subject, index)=>{ return(
+								
+								<linearGradient id={"color"+subject} x1="0" y1="0" x2="0" y2="1">
+								<stop offset="5%"  stopColor="red" stopOpacity={0.9}/>
+								<stop offset="95%" stopColor="red" stopOpacity={0}/>
+							  </linearGradient>
+								)})
+							}
+   
+
   </defs>
 						
-						<XAxis dataKey="name" />
+						<XAxis dataKey="date" />
 						<YAxis />
                         <CartesianGrid strokeDasharray="3 3" />
 						<Tooltip />
 						<Legend />
-						<Area
+						{console.log(practiseReport)}
+						
+					{
+						practiseSubject.map((subject, index)=>{ return(
+						
+							<Area
 							type="monotone"
-							dataKey="Math"
-							stroke="#8884d8"
-                            activeDot={{ r: 8 }}
-                            fillOpacity={1} fill="url(#colorMath)"
-						/>
-						<Area type="monotone" dataKey="Science" stroke="#82ca9d" fillOpacity={1} fill="url(#colorScience)"/>
-						<Area type="monotone" dataKey="English" stroke="#12679d" fillOpacity={1} fill="url(#colorEnglish)" />
+							dataKey={subject}
+							stroke={"url(#color"+subject+")"}
+							fillOpacity={1} fill={"url(#color"+subject+")"}
+							
+						/>)})
+					}
+							
+							
+						
+					
+											
+					
+						
+					
 					</AreaChart >
 				</ResponsiveContainer>
 			</div>
