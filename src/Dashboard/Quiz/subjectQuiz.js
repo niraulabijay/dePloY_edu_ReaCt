@@ -66,7 +66,7 @@ export default function SubjectQuiz(props) {
                 }
             }
         };
-        loadData();
+		loadData();
         return () => {
             source.cancel();
         };

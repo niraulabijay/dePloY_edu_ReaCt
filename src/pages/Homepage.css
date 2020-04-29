@@ -7,6 +7,14 @@ body {
 	overflow-x: hidden;
 	overflow-y: scroll;
 }
+.asyncImage {
+	width: 100%;
+	height: 100%;
+}
+.asyncBanner {
+	width: 100% !important;
+	height: 100vh !important;
+}
 
 .logo-box {
 	width: 100px;
@@ -1160,7 +1168,10 @@ body {
 }
 /* end of start Modal */
 .quiz .test-section {
-	margin-top: 10%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 60px 0px;
 }
 .quiz .timer-container {
 	margin: 0px auto;
@@ -1189,10 +1200,22 @@ body {
 	margin: 20px auto;
 }
 .quiz .question-title {
-	font-size: 28px;
+	font-size: 20px;
 	color: #757b75;
 	font-weight: bold;
 	text-align: center;
+}
+.quiz .question-image {
+	margin: 0 auto;
+	max-width: 600px;
+	max-height: 300px;
+	overflow: hidden;
+	margin-top: 15px;
+	text-align: center;
+}
+.quiz .question-image img {
+	height: 300px;
+	width: 600px;
 }
 .quiz .answer-container {
 	margin-top: 45px;
@@ -1410,7 +1433,12 @@ body {
 }
 @media (max-width: 768px) {
 	.quiz .test-section {
-		margin-top: 25%;
+		margin-top: 0%;
+		padding: 15px;
+	}
+	.quiz .question-image img {
+		height: 150px;
+		width: 300px;
 	}
 	.answer-wrapper {
 		padding: 5px 5px;
@@ -1499,7 +1527,12 @@ body {
 }
 @media (max-width: 768px) and (max-height: 600px) {
 	.quiz .test-section {
-		margin-top: 20%;
+		margin-top: 0;
+		padding: 15px;
+	}
+	.quiz .question-image img {
+		height: 150px;
+		width: 300px;
 	}
 	.quiz .answer-wrapper {
 		margin-bottom: 10px;

@@ -1,7 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 
 function Interactive() {
+	useEffect(() => {
+		const objects = document.querySelectorAll(".asyncImage");
+		console.log(objects);
+		Array.from(objects).map((item) => {
+		// Start loading image
+		console.log("hello img");
+		const img = new Image();
+		img.src = item.dataset.src;
+		// Once image is loaded replace the src of the HTML element
+		img.onload = () => {
+			item.classList.remove("asyncImage");
+			return item.nodeName === "IMG"
+				? (item.src = item.dataset.src)
+				: (item.style.backgroundImage = `url(${item.dataset.src})`);
+		};
+		  });
+	}, []);
+	// (() => {
+	// 	"use strict";
+	// 	// Page is loaded
+
+	// })();
 	return (
 		<React.Fragment>
 			<div className="syllabus-feature">
@@ -9,9 +31,10 @@ function Interactive() {
 					<div className="row h-100 justify-content-center align-items-center">
 						<div className="col-md-5">
 							<img
-								src={require("../../pages/images/syllabus.png")}
+								src={require("../../pages/images/syllabus-min.png")}
+								data-src={require("../../pages/images/syllabus.png")}
 								alt=""
-								className="img-fluid"
+								className="img-fluid asyncImage"
 							/>
 						</div>
 						<div className="col-md-7">
@@ -52,9 +75,10 @@ function Interactive() {
 						</div>
 						<div className="col-md-5 order0">
 							<img
-								src={require("../../pages/images/analysis.png")}
+								src={require("../../pages/images/analysis-min.png")}
+								data-src={require("../../pages/images/analysis.png")}
 								alt=""
-								className="img-fluid"
+								className="img-fluid asyncImage"
 							/>
 						</div>
 					</div>
@@ -65,9 +89,10 @@ function Interactive() {
 					<div className="row h-100 justify-content-center align-items-center">
 						<div className="col-md-5">
 							<img
-								src={require("../../pages/images/question.png")}
+								src={require("../../pages/images/question-min.png")}
+								data-src={require("../../pages/images/question.png")}
 								alt=""
-								className="img-fluid"
+								className="img-fluid asyncImage"
 							/>
 						</div>
 						<div className="col-md-7">

@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 // import LoginModal from "../Login/LoginModal"
 
 function Banner() {
-	// invite code collapse in join form
+	useEffect(() => {
+		const objects = document.querySelector(".asyncBanner");
+		console.log(objects);
+
+		// Start loading image
+		console.log("hello img");
+		const img = new Image();
+		img.src = objects.dataset.src;
+		// Once image is loaded replace the src of the HTML element
+		img.onload = () => {
+			objects.classList.remove("asyncBanner");
+			return objects.nodeName === "IMG"
+				? (objects.src = objects.dataset.src)
+				: (objects.style.backgroundImage = `url(${objects.dataset.src})`);
+		};
+	}, []);
 
 	return (
 		<div>
@@ -16,12 +31,12 @@ function Banner() {
 							className="img-fluid"
 						/>
 						<img
-							src={require("../../pages/images/banner.jpg")}
+							src={require("../../pages/images/banner-min.jpg")}
+							data-src={require("../../pages/images/banner.jpg")}
 							style={{ width: "auto" }}
-							className="img-fluid"
+							className="img-fluid asyncBanner"
 						/>
 					</picture>
-					
 				</div>
 				<div className="title">Better Education For a Better World</div>
 

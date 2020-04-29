@@ -38,7 +38,7 @@ const ChapterQuiz = (props) => {
             }
         )
     }, [nextQuestion])
-
+console.log(question);
     const handleChange = (answer_id) => {
         console.log(answer_id)
         setActive(answer_id)
@@ -150,11 +150,16 @@ const ChapterQuiz = (props) => {
                 {loading ? (
                 <>
                 <div className="container test-section">
+                    <div className="question-wrapper">
                     <div className="question-container">
 
                         <div className="question-title">
                             <span className="question-number">{question.id}.</span>
                             {question.name}
+                        </div>
+                        {/* use image of size 600*300 */}
+                        <div className="question-image">
+                            <img src={question.image} alt="" className="img-fluid" />
                         </div>
                     </div>
                     <div className="answer-container">
@@ -182,7 +187,7 @@ const ChapterQuiz = (props) => {
                             )}
                         </div>
                     </div>
-
+                    </div>
                 </div>
                 </>
                 ) : 
