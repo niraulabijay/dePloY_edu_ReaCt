@@ -39,7 +39,7 @@ const AccountDetail = ({ UserResponse }) => {
                     />
                 </div>
                 <div className="form-group">
-                    <label>email</label>
+                    <label>Email</label>
                     <input
                         className="form-control"
                         type="email"

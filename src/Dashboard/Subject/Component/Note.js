@@ -17,7 +17,7 @@ const Note = ({ chapterResponse , setLoading, subjectId}) => {
 	const { url, params } = useRouteMatch();
 	const [getUrl, setUrl] = useState("notes/" + Authtoken.user_id);
 
-	console.log(chapterResponse);
+	console.log(chapterResponse, 'myResponse');
 	const HandleBookmark = data => {
 		console.log(data);
 		setLoading(true);
@@ -46,9 +46,9 @@ const Note = ({ chapterResponse , setLoading, subjectId}) => {
 	return (
 		<div className="tab-pane active" id="note">
 			<div className="subject-content">
-				{chapterResponse.data ? (
+				{chapterResponse[0] ? (
 					<React.Fragment>
-						{chapterResponse.data.map(
+						{chapterResponse.map(
 							(note, index) =>
 								note.notes &&
 								note.notes[0] && (

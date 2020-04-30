@@ -9,7 +9,7 @@ import PractiseWeeklyReport from "./PractiseWeeklyReport";
 
 export default function Practise() {
 	const { Authtoken } = useAuth();
-	const { PractiseResponse, loading } = useContext(SubjectContext);
+	const { PractiseResponse, loading, practiseReport } = useContext(SubjectContext);
 	let { path, url } = useRouteMatch();
 
 	return (
@@ -306,7 +306,7 @@ export default function Practise() {
 								</div>
 							</div>
 							<div className="col-md-8 col-lg-8 col-12">
-							<PractiseWeeklyReport />
+							<PractiseWeeklyReport practiseReport={practiseReport} />
 							</div>
 							{/* <div className="col-md-4 col-lg-4 col-12">
 								<div className="report-wrapper ">

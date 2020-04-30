@@ -13,6 +13,7 @@ export const SubjectProvider = props => {
 	const [tokenError, setTokenError] = useState(false);
 	const [testSub, setTestSubject] = useState([]);
 	const [PractiseResponse, setPractiseResponse] = useState([]);
+	const [practiseReport, setPractiseReport] = useState([]);
     const [loading, setLoading] = useState(true);
 	const {Authtoken} = useAuth();
 	const {handleClose} = Logout();
@@ -39,10 +40,11 @@ export const SubjectProvider = props => {
 				if(response.data.status === "Token is Expired" || response.data.status === "Token is Invalid"){
 					handleClose()
 				}else{
-					console.log(response)
+					console.log('response', response)
 				setSubjectResponse(response.data.learn_subjects);
 				setPractiseResponse(response.data.practice_subjects);
 				setTestSubject(response.data.test_subjects);
+				setPractiseReport(response.data.practice_report);
 				setLoading(false);
 				}
 			}catch(error){
@@ -74,7 +76,8 @@ export const SubjectProvider = props => {
 				SubjectResponse:SubjectResponse, 
 				testSub:testSub, 
 				PractiseResponse:PractiseResponse, 
-				loading:loading
+				loading:loading,
+				practiseReport: practiseReport
 			}}>
             {props.children}
         </SubjectContext.Provider>

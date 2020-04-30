@@ -17,6 +17,8 @@ const LearnSubject = () => {
 	const { Authtoken } = useAuth();
 	const {  params } = useRouteMatch();
 	const [chapter, setChapterResponse] = useState([]);
+	const [chapterCount, setChapterCount] = useState()
+	const [subjectName, setSubjectName] = useState();
 	const [getUrl, setUrl] = useState("notes/" + Authtoken.user_id);
 	const history = useHistory();
 	const [loading, setLoading] = useState(false);
@@ -37,9 +39,11 @@ const LearnSubject = () => {
 			if(response.data.status === "Token is Expired" || response.data.status === "Token is Invalid"){
 				throw new Error('Token Problem')
 			}else{
-			console.log(response)
-			setChapterResponse(response.data);
-			}
+			console.log(response.data.subjects, 'apple')
+			setChapterResponse(response.data.subjects);
+			setSubjectName(response.data.subject_name)
+			setChapterCount(response.data.chapter_count)
+			}	
 		}).catch(error => {
 			console.log(error)
 			// setChapterError(()=>{
@@ -47,6 +51,7 @@ const LearnSubject = () => {
 			// })
 		});
 	}, [getUrl, loading]);
+
 
 	return (
 		<React.Fragment>
@@ -60,8 +65,8 @@ const LearnSubject = () => {
 							<i className="fa fa-atom"></i>
 						</div>
 						<div className="title-box">
-							<h2>Physics</h2>
-							<div className="chapter-number">10 Chapters</div>
+							<h2>{subjectName}</h2>
+							<div className="chapter-number">{chapterCount} chapters</div>
 						</div>
 					</div>
 					<ul className="nav nav-pills">

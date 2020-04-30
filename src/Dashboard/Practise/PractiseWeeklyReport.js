@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
 	AreaChart,
 	Area,
@@ -10,139 +10,78 @@ import {
 	Legend
 } from "recharts";
 
-const data1 = [
-	{
-		name: "Sun",
-		Math: 20,
-		Science: 24,
-		English: 28
-	},
-	{
-		name: "Mon",
-		Math: 23,
-		Science: 12,
-		English: 34
-	},
-	{
-		name: "Tue",
-		Math: 23,
-		Science: 56,
-		English: 26
-	},
-	{
-		name: "Wed",
-		Math: 15,
-		Science: 26,
-		English: 14
-	},
-	{
-		name: "Thu",
-		Math: 35,
-		Science: 39,
-		English: 5
-	},
-	{
-		name: "Fri",
-		Math: 23,
-		Science: 15,
-		English: 56
-	},
-	{
-		name: "Sat",
-		Math: 37,
-		Science: 29,
-		English: 68
+
+
+export default function PractiseWeeklyReport({practiseReport}) {
+	console.log(practiseReport)
+	const [color, setColor] = useState(["#8884d8", "#82ca9d", "#23ca9d", "red", "blue"  ])
+
+	const subjectLength = practiseReport.length
+	const linears = [];
+
+	for(let i = 0; i <= subjectLength ; i++){
+		linears.push(
+		<linearGradient id={"subject"+''+i} x1="0" y1="0" x2="0" y2="1">
+      		<stop offset="5%" stopColor={color[i]} stopOpacity={0.8}/>
+      		<stop offset="95%" stopColor={color[i]} stopOpacity={0}/>
+   		 </linearGradient>
+		);
 	}
-];
-const data2 = [
-	{
-		name: "Sun",
-		Math: 20,
-		Science: 24,
-		English: 28
-	},
-	{
-		name: "Mon",
-		Math: 23,
-		Science: 12,
-		English: 34
-	},
-	{
-		name: "Tue",
-		Math: 23,
-		Science: 56,
-		English: 26
-	},
-	{
-		name: "Wed",
-		Math: 15,
-		Science: 26,
-		English: 14
-	},
-	{
-		name: "Thu",
-		Math: 35,
-		Science: 39,
-		English: 5
-	},
-	{
-		name: "Fri",
-		Math: 23,
-		Science: 15,
-		English: 56
-	},
-	{
-		name: "Sat",
-		Math: 37,
-		Science: 29,
-		English: 68
+	// let Area=[]
+	// for (let j=1; j<=((practiseReport[0].size)); j++){
+	// 	Area.push(<Area
+	// 						type="monotone"
+	// 						dataKey="Math"
+	// 						stroke="#8884d8"
+    //                         activeDot={{ r: 8 }}
+    //                         fillOpacity={1} fill="url(#subject1)"
+	// 	/>)
+	// }
+	const apple = practiseReport[0]
+	// console.log(apple)
+	const MeroArea = []
+	if(apple){
+		var keys = Object.keys(apple)
+		// console.log('s', keys)
+		console.log('s', keys)
+		
+	for(let j=1; j<=(keys.length); j++){
+		MeroArea.push(
+		<Area
+							type="monotone"
+							dataKey={keys[j]}
+							stroke={color[j-1]}
+                            activeDot={{ r: 8 }}
+                            fillOpacity={1} fill={"url(#subject" + (j-1) +")"}
+	/>
+
+		)}
 	}
-];
-const data3 = [
-	{
-		name: "Sun",
-		Math: 20,
-		Science: 24,
-		English: 28
-	},
-	{
-		name: "Mon",
-		Math: 23,
-		Science: 12,
-		English: 34
-	},
-	{
-		name: "Tue",
-		Math: 23,
-		Science: 56,
-		English: 26
-	},
-	{
-		name: "Wed",
-		Math: 15,
-		Science: 26,
-		English: 14
-	},
-	{
-		name: "Thu",
-		Math: 35,
-		Science: 39,
-		English: 5
-	},
-	{
-		name: "Fri",
-		Math: 23,
-		Science: 15,
-		English: 56
-	},
-	{
-		name: "Sat",
-		Math: 37,
-		Science: 29,
-		English: 68
-	}
-];
-export default function PractiseWeeklyReport() {
+
+	const [myKey, setMykey] = useState(keys)
+	console.log('s', myKey)
+	// let Area = []
+	// for(let j=1; j<=(myKey.length); j++){
+	// 	Area.push(
+	// <Area
+	// 						type="monotone"
+	// 						dataKey={keys[j]}
+	// 						stroke="#8884d8"
+    //                         activeDot={{ r: 8 }}
+    //                         fillOpacity={1} fill="url(#colorMath)"
+	// />
+
+	// 	)}
+
+	// console.log(keys)
+
+	// const values = [Object.keys(apple)]
+	// console.log(keys)
+	// console.log(practiseReport[0])
+	// const nepal = Object.keys(practiseReport[0]).map((key) => practiseReport[0][key])
+	// console.log('nepal', nepal);
+
+
 	return (
 		<div className="report-wrapper ">
 			<div className="title d-flex justify-content-between">
@@ -161,43 +100,24 @@ export default function PractiseWeeklyReport() {
 			<div className="content-wrapper">
 				<ResponsiveContainer width="100%" height={300}>
 					<AreaChart 
-						data={data2}
+						data={practiseReport}
 						margin={{
 							top: 5,
 							right: 30,
 							left: 20,
-							bottom: 5
+							bottom: 5 
 						}}
 					>
                         <defs>
-    <linearGradient id="colorMath" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
-      <stop offset="95%" stopColor="#8884d8" stopOpacity={0}/>
-    </linearGradient>
-    <linearGradient id="colorScience" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8}/>
-      <stop offset="95%" stopColor="#82ca9d" stopOpacity={0}/>
-    </linearGradient>
-    <linearGradient id="colorEnglish" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="5%" stopColor="#23ca9d" stopOpacity={0.8}/>
-      <stop offset="95%" stopColor="#23ca9d" stopOpacity={0}/>
-    </linearGradient>
+   {linears}
   </defs>
 						
-						<XAxis dataKey="name" />
+						<XAxis dataKey="date" />
 						<YAxis />
                         <CartesianGrid strokeDasharray="3 3" />
 						<Tooltip />
 						<Legend />
-						<Area
-							type="monotone"
-							dataKey="Math"
-							stroke="#8884d8"
-                            activeDot={{ r: 8 }}
-                            fillOpacity={1} fill="url(#colorMath)"
-						/>
-						<Area type="monotone" dataKey="Science" stroke="#82ca9d" fillOpacity={1} fill="url(#colorScience)"/>
-						<Area type="monotone" dataKey="English" stroke="#12679d" fillOpacity={1} fill="url(#colorEnglish)" />
+						{MeroArea}
 					</AreaChart >
 				</ResponsiveContainer>
 			</div>
