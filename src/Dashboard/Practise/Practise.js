@@ -306,7 +306,9 @@ export default function Practise() {
 								</div>
 							</div>
 							<div className="col-md-8 col-lg-8 col-12">
+								{console.log(practiseReport)}
 							{practiseReport.length > 0 &&
+							
 								<PractiseWeeklyReport  practiseReport={practiseReport} loading={loading} practiseSubject={practiseSubject}/>
 							}
 							</div>

@@ -17,7 +17,7 @@ const Note = ({ chapterResponse , setLoading, subjectId}) => {
 	const { url, params } = useRouteMatch();
 	const [getUrl, setUrl] = useState("notes/" + Authtoken.user_id);
 
-	console.log(chapterResponse);
+	console.log(chapterResponse.subjects);
 	const HandleBookmark = data => {
 		console.log(data);
 		setLoading(true);
@@ -46,16 +46,19 @@ const Note = ({ chapterResponse , setLoading, subjectId}) => {
 	return (
 		<div className="tab-pane active" id="note">
 			<div className="subject-content">
-				{chapterResponse.data ? (
+				{chapterResponse.subjects ? (
 					<React.Fragment>
-						{chapterResponse.data.map(
+						{chapterResponse.subjects.map(
 							(note, index) =>
+							
 								note.notes &&
 								note.notes[0] && (
 									<div
 										className="chapter-wrapper d-flex justify-content-between"
 										key={index}
 									>
+									{console.log(note)}
+
 										<Link to="/viewer">
 											<div className="chapter-title">
 												<span>{index + 1}</span>

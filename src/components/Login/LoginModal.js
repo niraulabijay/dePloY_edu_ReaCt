@@ -51,13 +51,6 @@ function LoginModal() {
 	console.log(LoginError);
 
 	const history = useHistory();
-	// useEffect(() => {
-	// 	if (isLogged) {
-	// 		history.replace({
-	// 			pathname: "/learn"
-	// 		});
-	// 	}
-	// }, [Authtoken, isLogged]);
 
 	return (
 		<div
@@ -193,6 +186,7 @@ function LoginModal() {
 								</a>
 							</div>
 						</form>
+					
 					</div>
 				</div>
 			</div>

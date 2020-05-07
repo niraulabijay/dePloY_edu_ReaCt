@@ -1839,6 +1839,7 @@ h6 {
 	border-radius: 5px;
 	background: linear-gradient(45deg, #36ea5f, #00b693);
 	color: white;
+	margin-bottom: 15px;
 }
 .chapterSubmit {
 	border: none;

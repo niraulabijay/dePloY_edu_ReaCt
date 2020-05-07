@@ -352,11 +352,15 @@ body {
 }
 .banner .banner-img {
 	position: absolute;
-
+	height: 100%;
 	bottom: 0;
 	right: 0;
 	left: 0;
 	z-index: -1;
+}
+.banner .banner-img img {
+	height: 100%;
+	width: 100%;
 }
 
 .banner .title {
@@ -873,7 +877,7 @@ body {
 /*------------------footer--------------*/
 .footer {
 	padding: 60px 90px 0px 90px;
-	background: #dbdbdb;
+	background: #ececff;
 	color: #000;
 }
 .footer .title {
@@ -1168,10 +1172,10 @@ body {
 }
 /* end of start Modal */
 .quiz .test-section {
-	display: flex;
+	/* display: flex; */
 	justify-content: center;
 	align-items: center;
-	padding: 60px 0px;
+	padding: 60px 0px 15px 0px;
 }
 .quiz .timer-container {
 	margin: 0px auto;
@@ -1469,6 +1473,9 @@ body {
 	}
 	.quiz .quit-section {
 		top: 25px;
+	}
+	.quiz .question-wrapper {
+		width: 100%;
 	}
 	.quiz .back-section {
 		top: 25px;
@@ -2381,4 +2388,142 @@ body {
 	.errorpage .img-container h2 {
 		font-size: 2em;
 	}
+}
+
+/* Join For Mobile App */
+.login-container  {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	height: 100vh;
+	overflow: hidden;
+	padding: 0px 15px;
+	position: relative;
+}
+.login-container .home-button{
+	position: absolute;
+	top: 8%;
+	left: 5%;
+
+}
+.login-container .home-button .home-button-wrapper{
+	padding: 10px 15px;
+    background: #fdfffd;
+    border-radius: 5px;
+    box-shadow: 1px 2px 4px #bfc3c1;
+	color: #2ad181;
+	text-decoration: none;
+	letter-spacing: 1px;
+}
+.login-container .home-button .home-button-wrapper:hover{
+	background: #2ad181;
+    color: white;
+}
+ .login-container 	.login-container-overlay{
+	position: absolute;
+	animation-name: login;
+	animation-delay: 0s;
+	animation-duration: 5s;
+	animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+	top: 120vh;
+	height: inherit;
+	overflow: hidden;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+background-image: linear-gradient(180deg, #2ad181, #009d98);
+
+}
+.login-container .login-container-overlay .login-overlay-content .login-logo-container{
+	width: 100px;
+    margin: 0 auto;
+}
+.login-container .login-container-overlay .login-overlay-content .company-name{
+	font-size: 36px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	color: #fff;
+}
+
+.login-container  .title {
+	font-size: 40px;
+	color: #ffffff;
+	font-weight: bold;
+	text-shadow: 1px 3px 4px #035a21;
+
+	font-family: "Righteous", cursive;
+	letter-spacing: 2px;
+	text-align: center;
+}
+.login-container  .form-control {
+	border: none;
+	background: #f3f3f3;
+}
+
+.login-container  .title {
+	color: #28a745;
+	text-shadow: 1px 3px 4px #d1d9d4;
+}
+
+.login-container  form input {
+	height: 45px;
+	margin: 25px auto;
+	padding: 0px 40px;
+}
+
+.login-container  .button-container {
+	text-align: center;
+}
+
+.login-container  .button-container button {
+	width: 80%;
+	border-radius: 50px;
+	font-size: 18px;
+	height: 50px;
+	color: #28a745;
+	margin-bottom: 20px;
+	background: #fdfffd;
+	box-shadow: 1px 2px 4px #bfc3c1;
+	font-family: "Righteous", cursive;
+	text-align: center;
+	border: 0px;
+}
+.login-container  .button-container button:hover {
+	background: #28a745;
+	color: white;
+}
+.login-container  button {
+	text-align: right;
+	padding-right: 25px;
+	padding-top: 5px;
+}
+#invite_code {
+	cursor: pointer;
+	margin-top: 10px;
+	margin-bottom: 30px;
+	color: #28a745;
+}
+
+.login-container  .button-container a {
+	text-align: center;
+	text-decoration: none;
+	font-weight: bold;
+	color: grey;
+}
+
+@keyframes login{
+0%{
+	opacity: 1;
+	top: 0;
+}
+40%{
+	opacity: 1;
+	top: 0;
+}
+100%{
+	opacity: 0;
+}
 }

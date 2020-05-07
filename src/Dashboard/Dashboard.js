@@ -68,107 +68,114 @@ const Dashboard = () => {
 	// const { StorageToken, Authtoken } = useAuth();
 	const { handleClose } = Logout();
 
-	function closeNav() {
-		function myFunction(x) {
-			let userSideNav = document.getElementById("userSideNav");
-			let main = document.getElementById("main");
-			if (x.matches) {
-				document.getElementById("main").style.marginLeft = "0";
-				document.getElementById("userSideNav").style.width = "0";
-			} else {
-				userSideNav.style.width = "80px";
-				userSideNav.style.left = "-170px";
-				userSideNav.style.marginLeft = "170px";
-				document.querySelectorAll(".title-name")[1].style.height = "0";
-				main.style.marginLeft = "80px";
-				document.getElementById("view").style.display = "block";
-				document.getElementsByClassName("company-container")[0].style.width =
-					"80px";
-				document.getElementsByClassName("navbar")[0].style.width =
-					"calc(100% - 80px)";
-				document.getElementById("hide").style.display = "none";
-
-				var elems = document.getElementsByClassName("sideTab");
-
-				for (var i = 0; i < elems.length; i++) {
-					// elems[i].style.display = "none";
-					elems[i].style.visibility = "hidden";
-					elems[i].style.opacity = "0";
-				}
+	
+		function hideSide(){
+			if(window.matchMedia("(max-width: 768px)").matches){
+						document.getElementById("main").style.marginLeft = "0";
+						document.getElementById("userSideNav").style.width = "0";
 			}
-		}
-		var x = window.matchMedia("(max-width: 768px)");
-		myFunction(x); // Call listener function at run time
-		x.addListener(myFunction);
-	}
-	window.onclick = function() {
-		var userSideNav = document.getElementById("userSideNav");
-		if (userSideNav != null) {
-			document.onclick = function(e) {
-				var x = window.matchMedia("(max-width: 768px)");
-				if (x.matches) {
-					if (userSideNav.offsetWidth != 0) {
-						if (e.target.parentNode.id !== "userSideNav") {
-							closeNav();
+			}
+			
+			function closeNav() {
+				function myFunction(x) {
+					let userSideNav = document.getElementById("userSideNav");
+					let main = document.getElementById("main");
+					if (x.matches) {
+						document.getElementById("main").style.marginLeft = "0";
+						document.getElementById("userSideNav").style.width = "0";
+					} else {
+						userSideNav.style.width = "80px";
+						userSideNav.style.left = "-170px";
+						userSideNav.style.marginLeft = "170px";
+						document.querySelectorAll(".title-name")[1].style.height = "0";
+						main.style.marginLeft = "80px";
+						document.getElementById("view").style.display = "block";
+						document.getElementsByClassName("company-container")[0].style.width =
+							"80px";
+						document.getElementsByClassName("navbar")[0].style.width =
+							"calc(100% - 80px)";
+						document.getElementById("hide").style.display = "none";
+		
+						var elems = document.getElementsByClassName("sideTab");
+		
+						for (var i = 0; i < elems.length; i++) {
+							// elems[i].style.display = "none";
+							elems[i].style.visibility = "hidden";
+							elems[i].style.opacity = "0";
 						}
 					}
 				}
-			};
-		}
-	};
-	function openNav() {
-		function myFunction(x) {
-			let main = document.getElementById("main");
-			let userSideNav = document.getElementById("userSideNav");
-
-			if (x.matches) {
-				document.getElementById("userSideNav").style.width = "240px";
-				document.getElementById("main").style.marginLeft = "240px";
-			} else {
-				userSideNav.style.left = "0px";
-				userSideNav.style.width = "250px";
-				userSideNav.style.marginLeft = "0px";
-				document.querySelectorAll(".title-name")[1].style.height = "50px";
-				main.style.marginLeft = "250px";
-				document.getElementById("view").style.display = "none";
-				document.getElementsByClassName("navbar")[0].style.width =
-					"calc(100% - 250px)";
-				document.getElementsByClassName("company-container")[0].style.width =
-					"250px";
-				document.getElementById("hide").style.display = "block";
-				var elems = document.getElementsByClassName("sideTab");
-
-				// document.getElementsByClassName("title-name")[1].style.display =
-				//     "block";
-
-				setTimeout(function() {
-					for (let i = 0; i < elems.length; i++) {
-						// elems[i].style.display = "inline-block";
-						elems[i].style.opacity = "1";
-						elems[i].style.visibility = "visible";
-					}
-				}, 350);
+				var x = window.matchMedia("(max-width: 768px)");
+				myFunction(x); // Call listener function at run time
+				x.addListener(myFunction);
 			}
-		}
-		var x = window.matchMedia("(max-width: 768px)");
-		myFunction(x); // Call listener function at run time
-		x.addListener(myFunction);
-	}
-
-	function facebook() {
-		window.open(
-			"https://www.facebook.com/sharer/sharer.php?u=" +
-				encodeURIComponent("edu.hellonep.com"),
-			"facebook-share-dialog",
-			"width=626,height=436"
-		);
-	}
-	let scrollPoint = document.getElementById("main");
-	if (scrollPoint) {
-		scrollPoint.scrollIntoView();
-	}
-
-	return (
+			window.onclick = function() {
+				var userSideNav = document.getElementById("userSideNav");
+				if (userSideNav != null) {
+					document.onclick = function(e) {
+						var x = window.matchMedia("(max-width: 768px)");
+						if (x.matches) {
+							if (userSideNav.offsetWidth != 0) {
+								if (e.target.parentNode.id !== "userSideNav") {
+									closeNav();
+								}
+							}
+						}
+					};
+				}
+			};
+			
+			function openNav() {
+				
+					let main = document.getElementById("main");
+					let userSideNav = document.getElementById("userSideNav");
+		
+					if (window.matchMedia("(max-width: 768px)").matches) {
+						userSideNav.style.width = "240px";
+						main.style.marginLeft = "240px";
+					} else {
+						userSideNav.style.left = "0px";
+						userSideNav.style.width = "250px";
+						userSideNav.style.marginLeft = "0px";
+						document.querySelectorAll(".title-name")[1].style.height = "50px";
+						main.style.marginLeft = "250px";
+						document.getElementById("view").style.display = "none";
+						document.getElementsByClassName("navbar")[0].style.width =
+							"calc(100% - 250px)";
+						document.getElementsByClassName("company-container")[0].style.width =
+							"250px";
+						document.getElementById("hide").style.display = "block";
+						var elems = document.getElementsByClassName("sideTab");
+		
+						// document.getElementsByClassName("title-name")[1].style.display =
+						//     "block";
+		
+						setTimeout(function() {
+							for (let i = 0; i < elems.length; i++) {
+								// elems[i].style.display = "inline-block";
+								elems[i].style.opacity = "1";
+								elems[i].style.visibility = "visible";
+							}
+						}, 350);
+					}		
+				
+			}
+	
+		
+			function facebook() {
+				window.open(
+					"https://www.facebook.com/sharer/sharer.php?u=" +
+						encodeURIComponent("edu.hellonep.com"),
+					"facebook-share-dialog",
+					"width=626,height=436"
+				);
+			}
+			let scrollPoint = document.getElementById("main");
+			if (scrollPoint) {
+				scrollPoint.scrollIntoView();
+			}
+		
+		return (
 		<SubjectProvider>
 			<React.Fragment>
 				<div id="userSideNav" className="userSidenav">
@@ -200,7 +207,7 @@ const Dashboard = () => {
 						<NavLink to="/class-select">Change ></NavLink>
 					</div>
 					<div className="d-sm-block d-none">
-						<NavLink to="/learn" className="test-class">
+						<NavLink to="/learn" className="test-class" >
 							<i className="fa fa-graduation-cap"></i>{" "}
 							<span className="sideTab"> Learn</span>
 						</NavLink>
@@ -223,11 +230,11 @@ const Dashboard = () => {
 
 						<hr />
 					</div>
-					<NavLink to="/profile">
+					<NavLink to="/profile" onClick={hideSide}>
 						<i className="fa fa-user"></i>
 						<span className="sideTab"> Profile</span>
 					</NavLink>
-					<NavLink to="/syllabus">
+					<NavLink to="/syllabus" onClick={hideSide}>
 						<i className="fa fa-folder-open"></i>{" "}
 						<span className="sideTab"> Syllabus</span>
 					</NavLink>
