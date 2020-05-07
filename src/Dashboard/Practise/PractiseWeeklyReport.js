@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {
 	AreaChart,
 	Area,
@@ -11,76 +11,11 @@ import {
 } from "recharts";
 
 
+export default function PractiseWeeklyReport({practiseReport, loading, practiseSubject}) {
+	
+	  
 
-export default function PractiseWeeklyReport({practiseReport}) {
-	console.log(practiseReport)
-	const [color, setColor] = useState(["#8884d8", "#82ca9d", "#23ca9d", "red", "blue"  ])
-
-	const subjectLength = practiseReport.length
-	const linears = [];
-
-	for(let i = 0; i <= subjectLength ; i++){
-		linears.push(
-		<linearGradient id={"subject"+''+i} x1="0" y1="0" x2="0" y2="1">
-      		<stop offset="5%" stopColor={color[i]} stopOpacity={0.8}/>
-      		<stop offset="95%" stopColor={color[i]} stopOpacity={0}/>
-   		 </linearGradient>
-		);
-	}
-	// let Area=[]
-	// for (let j=1; j<=((practiseReport[0].size)); j++){
-	// 	Area.push(<Area
-	// 						type="monotone"
-	// 						dataKey="Math"
-	// 						stroke="#8884d8"
-    //                         activeDot={{ r: 8 }}
-    //                         fillOpacity={1} fill="url(#subject1)"
-	// 	/>)
-	// }
-	const apple = practiseReport[0]
-	// console.log(apple)
-	const MeroArea = []
-	if(apple){
-		var keys = Object.keys(apple)
-		// console.log('s', keys)
-		console.log('s', keys)
-		
-	for(let j=1; j<=(keys.length); j++){
-		MeroArea.push(
-		<Area
-							type="monotone"
-							dataKey={keys[j]}
-							stroke={color[j-1]}
-                            activeDot={{ r: 8 }}
-                            fillOpacity={1} fill={"url(#subject" + (j-1) +")"}
-	/>
-
-		)}
-	}
-
-	const [myKey, setMykey] = useState(keys)
-	console.log('s', myKey)
-	// let Area = []
-	// for(let j=1; j<=(myKey.length); j++){
-	// 	Area.push(
-	// <Area
-	// 						type="monotone"
-	// 						dataKey={keys[j]}
-	// 						stroke="#8884d8"
-    //                         activeDot={{ r: 8 }}
-    //                         fillOpacity={1} fill="url(#colorMath)"
-	// />
-
-	// 	)}
-
-	// console.log(keys)
-
-	// const values = [Object.keys(apple)]
-	// console.log(keys)
-	// console.log(practiseReport[0])
-	// const nepal = Object.keys(practiseReport[0]).map((key) => practiseReport[0][key])
-	// console.log('nepal', nepal);
-
+	
 
 	return (
 		<div className="report-wrapper ">
@@ -109,7 +44,18 @@ export default function PractiseWeeklyReport({practiseReport}) {
 						}}
 					>
                         <defs>
-   {linears}
+							{
+								
+								practiseSubject.map((subject, index)=>{ return(
+								
+								<linearGradient id={"color"+subject} x1="0" y1="0" x2="0" y2="1">
+								<stop offset="5%"  stopColor="red" stopOpacity={0.9}/>
+								<stop offset="95%" stopColor="red" stopOpacity={0}/>
+							  </linearGradient>
+								)})
+							}
+   
+
   </defs>
 						
 						<XAxis dataKey="date" />
@@ -117,7 +63,27 @@ export default function PractiseWeeklyReport({practiseReport}) {
                         <CartesianGrid strokeDasharray="3 3" />
 						<Tooltip />
 						<Legend />
-						{MeroArea}
+						{console.log(practiseReport)}
+						
+					{
+						practiseSubject.map((subject, index)=>{ return(
+						
+							<Area
+							type="monotone"
+							dataKey={subject}
+							stroke={"url(#color"+subject+")"}
+							fillOpacity={1} fill={"url(#color"+subject+")"}
+							
+						/>)})
+					}
+							
+							
+						
+					
+											
+					
+						
+					
 					</AreaChart >
 				</ResponsiveContainer>
 			</div>

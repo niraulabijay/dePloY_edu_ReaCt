@@ -1,13 +1,24 @@
-import React, {useState} from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 // import LoginModal from "../Login/LoginModal"
 
 function Banner() {
-	const [registerNumber, setRegisterNumber] = useState()
-	const registerChange = e => {
-		setRegisterNumber(e.target.value)
-	}
-	console.log(registerNumber)
+	useEffect(() => {
+		const objects = document.querySelector(".asyncBanner");
+		console.log(objects);
+
+		// Start loading image
+		console.log("hello img");
+		const img = new Image();
+		img.src = objects.dataset.src;
+		// Once image is loaded replace the src of the HTML element
+		img.onload = () => {
+			objects.classList.remove("asyncBanner");
+			return objects.nodeName === "IMG"
+				? (objects.src = objects.dataset.src)
+				: (objects.style.backgroundImage = `url(${objects.dataset.src})`);
+		};
+	}, []);
 
 	return (
 		<div>
@@ -20,12 +31,12 @@ function Banner() {
 							className="img-fluid"
 						/>
 						<img
-							src={require("../../pages/images/banner.jpg")}
+							src={require("../../pages/images/banner-min.jpg")}
+							data-src={require("../../pages/images/banner.jpg")}
 							style={{ width: "auto" }}
-							className="img-fluid"
+							className="img-fluid asyncBanner"
 						/>
 					</picture>
-					
 				</div>
 				<div className="title">Better Education For a Better World</div>
 
@@ -36,7 +47,7 @@ function Banner() {
 						</div>
 						<div className="col-md-5 col-lg-5 col-5">
 							<div className="phone-number">
-								<input type="phone" name="phone" onChange={registerChange} maxLength="10" />
+								<input type="phone" name="phone"  maxLength="10" />
 							</div>
 						</div>
 						<div className="col-md-4 col-lg-4 col-4">

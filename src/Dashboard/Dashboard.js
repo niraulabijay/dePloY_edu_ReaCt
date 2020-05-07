@@ -182,9 +182,7 @@ const Dashboard = () => {
 						</div>
 						<div className="title-name sideTab">
 							Educate Nepal
-							<span onClick={closeNav}>
-								<i className="fa fa-lg fa-times"></i>
-							</span>
+							
 						</div>
 					</div>
 					<div className="profile-container">
@@ -233,39 +231,17 @@ const Dashboard = () => {
 						<i className="fa fa-folder-open"></i>{" "}
 						<span className="sideTab"> Syllabus</span>
 					</NavLink>
-
-					<a onClick={handleClose}>
+					<a onClick={facebook}>
+						<i className="fab fa-facebook"></i>
+						<span className="sideTab"> Share on Facebook</span>
+					</a>
+					<a data-toggle="modal" data-target="#logoutModal">
 						<i className="fa fa-power-off"></i> <span>Logout</span>
 					</a>
 
-					<a onClick={facebook}>
-						<i className="fab fa-facebook"></i>{" "}
-						<span className="sideTab"> Share on Facebook</span>
-					</a>
+					
 					<hr />
-					<div className="sideTab d-sm-block d-none">
-						<div className="download-title">Download App</div>
-						<div className="download-app d-flex justify-content-between ">
-							<div className="play-store">
-								<a href="">
-									<img
-										src={require("./assets/images/play-store.png")}
-										alt=""
-										className="img-fluid"
-									/>
-								</a>
-							</div>
-							<div className="app-store">
-								<a href="">
-									<img
-										src={require("./assets/images/brand-apple.png")}
-										alt=""
-										className="img-fluid"
-									/>
-								</a>
-							</div>
-						</div>
-					</div>
+					
 					<div className="copywrite text-center mt-2">
 						&copy; Copywrite EduNepal
 					</div>
@@ -316,6 +292,34 @@ const Dashboard = () => {
 							</div>
 						</div>
 					</div>
+					<div className="modal" id="logoutModal">
+						<div className="modal-dialog">
+							<div className="modal-content">
+								<div className="modal-body">
+									<button type="button" className="close" data-dismiss="modal">
+										&times;
+									</button>
+									<div className="title">Really, wanna Logout?</div>
+								
+								
+									<div className="button-container">
+										<a
+											href=""
+											data-dismiss="modal"
+											onClick={handleClose}
+											className="yes"
+										>
+											Yes
+										</a>
+										<a href="" className="no" data-dismiss="modal">
+											No{" "}
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				
 					<div className="main-content">
 						<Switch>
 							<Route exact path="/">

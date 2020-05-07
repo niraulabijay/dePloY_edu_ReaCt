@@ -36,8 +36,8 @@ export default function ViewNote() {
 				"/" +
 				params.subjectSlug
 		}).then(response => {
-			setChapterNote(response.data);
-			console.log(response.data);
+			setChapterNote(response.data.subjects);
+			console.log(response.data.subjects, 'note');
 			console.log('hello');
 		});
 	}, []);
@@ -115,7 +115,7 @@ export default function ViewNote() {
 					</div>
 				</div>
 				{chapterNote &&
-					chapterNote.data.map(
+					chapterNote.map(
 						(note, index) =>
 							note.notes &&
 							note.notes[0] && (

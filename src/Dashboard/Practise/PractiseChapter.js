@@ -16,12 +16,10 @@ import Skeleton from "react-loading-skeleton";
 export default function PractiseSubject() {
 	let { path, url, params } = useRouteMatch();
 	const [loading, setLoading] = useState(false);
-	console.log(url);
 	let { chapterId } = useParams();
 	const [PractiseChapter, setPractiseChapter] = useState([]);
 	let { Authtoken } = useAuth();
 	const [chapterError, setChapterError] = useState()
-	//    console.log(params)
 	useEffect(() => {
 		axios({
 			method: "get",
@@ -31,8 +29,9 @@ export default function PractiseSubject() {
 			},
 			timeout: 10000,	
 		}).then(response => {
-			setPractiseChapter(response.data.chapters);
+			setPractiseChapter(response.data);
 			setLoading(true);
+			console.log(response)
 		}).catch(error => {
 			setChapterError(() => {
 				throw new Error(error)
@@ -41,7 +40,6 @@ export default function PractiseSubject() {
 	}, []);
 	let History = useHistory();
 	const startTest = slug => {
-		// console.log(slug)
 		History.replace("/" + Authtoken.class_id + "/" + slug + "/practise");
 	};
 	return (
@@ -58,14 +56,14 @@ export default function PractiseSubject() {
 									<i className="fa fa-atom"></i>
 								</div>
 								<div className="title-box">
-									<h2>Maths</h2>
-									<div className="chapter-number">10 Chapters</div>
+									<h2>{PractiseChapter.subject_name}</h2>
+									<div className="chapter-number">{ PractiseChapter.chapter_count } Chapters</div>
 								</div>
 							</div>
 						</div>
 						<div className="practiseSubject">
 							{loading ?
-							(PractiseChapter.map((practise, index) => (
+							(PractiseChapter.chapters.map((practise, index) => (
 								<div className="practiseSubjectWrapper" key={index}>
 									<div className="row">
 										<div className="col-md-6">
@@ -75,10 +73,10 @@ export default function PractiseSubject() {
 											<div className="progress">
 												<div
 													className="progress-bar"
-													style={{ width: "70%" }}
+													style={{ width: (practise.percentage)  + "%" }}
 												></div>
 											</div>
-											<div className="progress-percent">70%</div>
+											<div className="progress-percent">{practise.percentage}%</div>
 											<div className="level">
 												Level <span> 1/10</span>
 											</div>

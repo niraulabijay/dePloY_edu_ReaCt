@@ -3,6 +3,7 @@ import {useHistory, useRouteMatch} from 'react-router-dom';
 import axios from "axios";
 import { useAuth } from "../../Context/Auth";
 import Skeleton from "react-loading-skeleton";
+import QuotaFull from "./QuotaFull";
 
 
 const ChapterQuiz = (props) => {
@@ -18,6 +19,7 @@ const ChapterQuiz = (props) => {
     const [nextQuestion, setNextQuestion] = useState(false)
     const [correct, setCorrect] = useState()
     const [mistake, setMistake] = useState()
+    const [quota, setQuota] = useState(false)
     const {Authtoken} = useAuth();
     
     useEffect(() => {
@@ -34,11 +36,13 @@ const ChapterQuiz = (props) => {
                 if(response.status === 200){
                 setQuestionResponse(response.data.data)
                 }
+                if(response.data.status === "error"){
+                    setQuota(true)
+                }
                 setLoading(true);
             }
         )
     }, [nextQuestion])
-
     const handleChange = (answer_id) => {
         console.log(answer_id)
         setActive(answer_id)
@@ -147,16 +151,25 @@ const ChapterQuiz = (props) => {
                         boxShadow: "0px 2px 4px #a1a4a4"
                     }}>                    
                     </nav>
-                </div>
-                {loading ? (
+                </div>{
+                    quota ? <QuotaFull /> :
+                <>
+                { loading ? (
                 <>
                 <div className="container test-section">
+                    <div className="question-wrapper">
                     <div className="question-container">
 
                         <div className="question-title">
                             <span className="question-number">{question.id}.</span>
                             {question.name}
                         </div>
+                        {/* use image of size 600*300 */}
+                        {(question.image !=null) &&
+                        <div className="question-image">
+                            <img src={question.image} alt="" className="img-fluid" />
+                        </div>
+                    }
                     </div>
                     <div className="answer-container">
                         <div className="row">
@@ -183,7 +196,7 @@ const ChapterQuiz = (props) => {
                             )}
                         </div>
                     </div>
-
+                    </div>
                 </div>
                 </>
                 ) : 
@@ -206,7 +219,7 @@ const ChapterQuiz = (props) => {
                                                 className=
                                                     "answer-wrapper"
                                             >
-                                                <div className="option-number">{index+1}</div>
+                                                <div className="option-number">{val}</div>
                                                 <div className="option">
                                                     <Skeleton></Skeleton>
                                                 </div>
@@ -223,6 +236,8 @@ const ChapterQuiz = (props) => {
                     </>
                 )
                 }
+                </>
+                }
             </div>
             <div className="container">
             <button  className="chapterSubmit" onClick={handleSubmit} disabled={EnableSubmit ? '' : 'true'}>Submit</button>          
@@ -237,7 +252,6 @@ const ChapterQuiz = (props) => {
             }
             </div>
                 
-            
     </React.Fragment>
     );
 

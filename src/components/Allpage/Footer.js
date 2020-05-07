@@ -8,12 +8,7 @@ function Footer(){
         <div className="container-fluid">
             <div className="row">
                 <div className="col-md-6 col-sm-6 col-lg-4">
-                    <div className="logo-container">
-                        <img src={require('../../pages/images/logo1.png')} alt="" className="img-fluid" />
-                    </div>
-                    <div className="tagline">
-                        Better Education for Better World
-                    </div>
+                    
                     <div className="title">
                         About us
                     </div>
@@ -74,6 +69,17 @@ function Footer(){
                                   <a type="submit" className="btn btn-success">Subscribe</a>
                             </div>
                         </form>
+                    </div>
+                    <div className="social-link">
+                        <div className="title">
+                            Connect with us:
+                        </div>
+                        <ul>
+                            <li><a href="" ><i className="fab fa-facebook"></i></a></li>
+                            <li><a href="" ><i className="fab fa-instagram" ></i></a></li>
+                            <li><a href=""><i className="fab fa-linkedin"></i></a></li>
+                            <li><a href=""><i className="fab fa-twitter"></i></a></li>
+                        </ul>
                     </div>
                 </div>
             </div>

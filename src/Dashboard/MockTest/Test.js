@@ -12,6 +12,16 @@ import axios from "axios";
 import Skeleton from "react-loading-skeleton";
 import { useAuth } from "../../Context/Auth";
 import { SubjectContext } from "../../Context/SubjectContext";
+import {
+	BarChart,
+	Bar,
+	XAxis,
+	YAxis,
+	ResponsiveContainer,
+	CartesianGrid,
+	Tooltip,
+	Legend
+} from "recharts";
 
 export default function Test() {
 	let { path } = useRouteMatch();
@@ -30,15 +40,28 @@ export default function Test() {
 		// }).then(res => {
 		//     console.log(res);
 		// });
-		localStorage.removeItem('initialValue')
-		localStorage.removeItem('active')
+		localStorage.removeItem("initialValue");
+		localStorage.removeItem("active");
 		history.replace("/" + Authtoken.class_id + "/" + slug + "/test");
 	};
 
 	// if(onGoing.innerHTML == "Ongoing"){
 	//     console.log('hi');
 	// }
-
+	function getRandomColor() {
+		var letters = '0123456789ABCDEF';
+		var color = '#';
+		for (var i = 0; i < 6; i++) {
+		  color += letters[Math.floor(Math.random() * 16)];
+		}
+		return color;
+	  }
+	const data = [
+		{ name: "First Week", Math: 400, Science: 700, amt: 2400 },
+		{ name: "Second Week", Math: 150, Science: 200, amt: 2400 },
+		{ name: "Third Week", Math:200, Science: 450, amt: 2400 },
+		{ name: "Fourth Week", Math:250, Science: 400, amt: 2400 }
+	];
 	return (
 		<React.Fragment>
 			<Switch>
@@ -176,23 +199,23 @@ export default function Test() {
 							<div className="row">
 								{testSub.map((data, index) => {
 									return (
-										<div className="col-md-3 col-lg-3" key={index}>
+										<div className="col-md-3 col-lg-3 testrow" key={index}>
 											<div className="test-wrapper">
 												<div className="subWrap">
 													<div className="icon-box">
-														<i className="fa fa-flask"></i>
+														<i className={data.icon}></i>
 													</div>
 													<div className="subject-name pt-2">{data.name}</div>
 												</div>
 												<div className="contentWrap">
 													<div className="time">
-														Time frame: <span> 30 min</span>
+														Time frame: <span> {data.time / 60} minutes</span>
 													</div>
 													<div className="attempt-container">
 														<div className="attempt">
-															Attempt 2{/* Attempt: {attempt} */}
+															Attempt: {data.attempt}
 														</div>
-														<div className="remaining">Remaining 3</div>
+														<div className="remaining">Remaining: {data.remaining}</div>
 													</div>
 
 													<div className="button-container">
@@ -252,24 +275,21 @@ export default function Test() {
 											correct.
 										</li>
 									</ol>
-									<div className="button-container">
+									<div className="button-container text-center">
 										<a
 											href=""
 											data-dismiss="modal"
 											onClick={() => handleTest(modalData)}
 											className="yes"
 										>
-											Yes
-										</a>
-										<a href="" className="no" data-dismiss="modal">
-											No{" "}
+											Take a Test
 										</a>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				
+
 					<div className="sub-title">Your practise Report</div>
 					<div className="practise-report">
 						<div className="row">
@@ -316,108 +336,24 @@ export default function Test() {
 									</div>
 								</div>
 							</div>
-							<div className="col-md-4 col-lg-4 col-12">
-								<div className="report-wrapper ">
-									<div className="title d-flex justify-content-between">
-										<span className="prev">
-											<i className="fa fa-caret-left"></i>
-										</span>
-										<div className="title-wrapper">
-											<strong>Weekly Report</strong>
-											<small>Jan 1 - Feb 1</small>
-										</div>
-
-										<span className="next">
-											<i className="fa fa-caret-right"></i>
-										</span>
-									</div>
-									<div className="content-wrapper">
-										<img
-											src={require("../assets/images/graph.jpg")}
-											alt=""
-											className="img-fluid"
-										/>
-									</div>
-									<div className="footer-wrapper">
-										<div className="title-wrapper d-flex justify-content-between">
-											<div className="title">
-												<small>Time</small>
-												<strong>1 hrs</strong>
-												<i
-													className="fa fa-long-arrow-alt-up"
-													style={{ color: "green" }}
-												></i>
-											</div>
-											<div className="title">
-												<small>Goals</small>
-												<strong>1 </strong>
-												<i
-													className="fa fa-long-arrow-alt-down"
-													style={{ color: "red" }}
-												></i>
-											</div>
-											<div className="title">
-												<small>Accuracy</small>
-												<strong>90%</strong>
-												<i
-													className="fa fa-long-arrow-alt-down"
-													style={{ color: "red" }}
-												></i>
-											</div>
-										</div>
-									</div>
+							<div className="col-md-8 col-lg-8 col-12">
+								<div className="title-wrapper text-center">
+									<strong>Weekly Report</strong>
+									<br />
+									<small>Month Jan</small>
 								</div>
-							</div>
-							<div className="col-md-4 col-lg-4 col-12">
 								<div className="report-wrapper ">
-									<div className="title d-flex justify-content-between">
-										<span className="prev">
-											<i className="fa fa-caret-left"></i>
-										</span>
-										<div className="title-wrapper">
-											<strong>Yearly Report</strong>
-											<small>2019 - 2020</small>
-										</div>
-
-										<span className="next">
-											<i className="fa fa-caret-right"></i>
-										</span>
-									</div>
-									<div className="content-wrapper">
-										<img
-											src={require("../assets/images/graph.jpg")}
-											alt=""
-											className="img-fluid"
-										/>
-									</div>
-									<div className="footer-wrapper">
-										<div className="title-wrapper d-flex justify-content-between">
-											<div className="title">
-												<small>Time</small>
-												<strong>1 hrs</strong>
-												<i
-													className="fa fa-long-arrow-alt-up"
-													style={{ color: "green" }}
-												></i>
-											</div>
-											<div className="title">
-												<small>Goals</small>
-												<strong>1 </strong>
-												<i
-													className="fa fa-long-arrow-alt-down"
-													style={{ color: "red" }}
-												></i>
-											</div>
-											<div className="title">
-												<small>Accuracy</small>
-												<strong>90%</strong>
-												<i
-													className="fa fa-long-arrow-alt-down"
-													style={{ color: "red" }}
-												></i>
-											</div>
-										</div>
-									</div>
+									<ResponsiveContainer width="100%" height={300}>
+										<BarChart width={730} height={250} data={data}>
+											<CartesianGrid strokeDasharray="3 3" />
+											<XAxis dataKey="name" />
+											<YAxis />
+											<Tooltip />
+											<Legend />
+											<Bar dataKey="Math" fill={getRandomColor()} />
+											<Bar dataKey="Science" fill={getRandomColor()} />
+										</BarChart>
+									</ResponsiveContainer>
 								</div>
 							</div>
 						</div>
