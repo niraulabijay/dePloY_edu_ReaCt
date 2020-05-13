@@ -9,7 +9,7 @@ export default function BackSyllabus() {
 	const { params } = useRouteMatch();
 	const [loading, setLoading] = useState(false);
 	const getUrl =
-		"http://noname.hellonep.com/api/front/syllabus/" + params.subjectSlug;
+		"/api/front/syllabus/" + params.subjectSlug;
 	const [getSyllabus, setSyllabus] = useState({});
 	useEffect(() => {
 		Axios.get(getUrl).then(Response => {

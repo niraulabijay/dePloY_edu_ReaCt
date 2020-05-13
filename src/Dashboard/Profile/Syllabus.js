@@ -9,7 +9,7 @@ export default function Syllabus() {
 	const [loading, setLoading] = useState(true);
 	const [syllabus, setSyllabus] = useState([]);
 	const { Authtoken } = useAuth();
-	let getUrl = "http://noname.hellonep.com/api/syllabus/" + Authtoken.class_id;
+	let getUrl = "/api/syllabus/" + Authtoken.class_id;
 	useEffect(() => {
 		let source = Axios.CancelToken.source();
 		const loadData = async () => {

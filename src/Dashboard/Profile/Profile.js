@@ -12,7 +12,7 @@ export default function Profile() {
 	const [loading, setLoading] = useState(true);
 	const { register, handleSubmit } = useForm();
 	const [ProfileImage, setProfileImage] = useState([]);
-	let getUrl = "http://noname.hellonep.com/api/user/" + Authtoken.user_id;
+	let getUrl = "/api/user/" + Authtoken.user_id;
 
 	useEffect(() => {
 		let source = Axios.CancelToken.source();
@@ -72,7 +72,7 @@ export default function Profile() {
         setReload(true);
 		Axios({
 			method: "post",
-			url: "http://noname.hellonep.com/api/user/update",
+			url: "/api/user/update",
             headers: { "Content-Type": "multipart/form-data" ,
             Authorization: "bearer" + Authtoken.token},
 			data: formData

@@ -18,7 +18,7 @@ export default function SubjectQuiz(props) {
 	const [QuizTime, setQuizTime] = useState();
 	const [logId, setLogId] = useState();
 	const getUrl =
-		"http://noname.hellonep.com/api/test/" +
+		"/api/test/" +
 		params.subjectId +
 		"/" +
 		Authtoken.user_id;
@@ -154,7 +154,7 @@ export default function SubjectQuiz(props) {
 		Axios({
 			method: "post",
 			headers: { Authorization: "bearer" + Authtoken.token },
-			url: "http://noname.hellonep.com/api/test/store",
+			url: "/api/test/store",
 			data: {
 				log_id: logId,
 				user_id: Authtoken.user_id,
@@ -213,7 +213,7 @@ export default function SubjectQuiz(props) {
 			headers: {
 				Authorization: "bearer" + Authtoken.token
 			},
-			url: "http://noname.hellonep.com/api/test/user_quit",
+			url: "/api/test/user_quit",
 			data: {
 				log_id: logId
 			}

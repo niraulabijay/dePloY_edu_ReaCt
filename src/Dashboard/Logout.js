@@ -14,7 +14,7 @@ const Logout = () => {
     const handleClose = () => {
         Axios({
             method: 'post',
-            url: 'http://noname.hellonep.com/api/logout',
+            url: '/api/logout',
             headers: {Authorization: "Bearer"+ Authtoken.token},
             data: {
                 auth_token: Authtoken.token,

@@ -23,7 +23,7 @@ const Note = ({ chapterResponse , setLoading, subjectId}) => {
 		setLoading(true);
 		axios({
 			method: "post",
-			url: "http://noname.hellonep.com/api/bookmark/store",
+			url: "/api/bookmark/store",
 			headers: {
 				Authorization: "bearer" + Authtoken.token
 			},

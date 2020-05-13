@@ -20,7 +20,7 @@ export default function Bookmark() {
 	const [err, setErr] = useState();
 
 	let getUrl =
-		"http://noname.hellonep.com/api/bookmarks/note/" + Authtoken.user_id;
+		"/api/bookmarks/note/" + Authtoken.user_id;
 
 	useEffect(() => {
 		let source = Axios.CancelToken.source();
@@ -61,7 +61,7 @@ export default function Bookmark() {
 		console.log(data + "hii");
 		Axios({
 			method: "post",
-			url: "http://noname.hellonep.com/api/bookmark/store",
+			url: "/api/bookmark/store",
 			
 				headers: {
 					Authorization: "bearer" + Authtoken.token

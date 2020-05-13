@@ -13,7 +13,7 @@ const ClassSelect = () => {
     const handleClassSubmit = data => {
         axios({
             method: "post",
-            url: "http://noname.hellonep.com/api/store/class",
+            url: "/api/store/class",
             headers: {
 				Authorization: "bearer" + Authtoken.token
 			},
@@ -45,7 +45,7 @@ const ClassSelect = () => {
     useEffect(() => {
         axios({
             method: 'get',
-            url: "http://noname.hellonep.com/api/classes",
+            url: "/api/classes",
             headers: {
                 Authorization: "bearer" + Authtoken.token
             }

@@ -31,7 +31,7 @@ export default function ViewNote() {
 			},
 
 			url:
-				"http://noname.hellonep.com/api/notes/" +
+				"/api/notes/" +
 				Authtoken.user_id +
 				"/" +
 				params.subjectSlug
