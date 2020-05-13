@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./assets/css/userStyle.css";
 import Practise from "./Practise/Practise";
 import Test from "./MockTest/Test";
@@ -22,7 +22,8 @@ import { SubjectProvider } from "../Context/SubjectContext";
 import { useAuth } from "../Context/Auth";
 import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 import Logout from "./Logout";
-
+import {ProfileProvider, ProfileContext} from "../Context/ProfileContext";
+import Skeleton from "react-loading-skeleton"
 import Notification from "./Notification/Notification";
 
 const routes = [
@@ -65,6 +66,7 @@ const routes = [
 ];
 
 const Dashboard = () => {
+	const {UserResponse} = useContext(ProfileContext);	
 	// const { StorageToken, Authtoken } = useAuth();
 	const { handleClose } = Logout();
 
@@ -187,11 +189,19 @@ const Dashboard = () => {
 					</div>
 					<div className="profile-container">
 						<div className="img-container">
-							<img
-								src={require("./assets/images/testimonial-1.jpg")}
-								alt=""
-								className="img-fluid"
-							/>
+							{UserResponse.length !== "0" ? 
+								<img
+									src={
+										
+											UserResponse.profile_image
+											
+									}
+									className="img-fluid"
+									alt=""
+								/> 
+							:
+								<Skeleton  height={150} width={150} />
+							}
 						</div>
 					</div>
 					<div className="title-name sideTab" style={{ width: "100%" }}>

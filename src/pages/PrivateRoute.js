@@ -10,6 +10,7 @@ import SubjectQuiz from "../Dashboard/Quiz/subjectQuiz";
 import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 import Dashboard from "../Dashboard/Dashboard";
 import SubjectResult from "../Dashboard/Quiz/SubjectResult";
+import { ProfileProvider } from "../Context/ProfileContext";
 
 const PrivateRoute = ({ children, ...rest }) => {
 	const { Authtoken } = useAuth();
@@ -39,8 +40,10 @@ const PrivateRoute = ({ children, ...rest }) => {
 							/>
 							<Route path="/:class_id/:subjectId/result">
 										<SubjectResult />
-								</Route>
+							</Route>
+							<ProfileProvider>
 								<Dashboard />
+							</ProfileProvider>
 						</Switch>
 					)
 				) : (

@@ -7,46 +7,46 @@ import AccountDetail from "./AccountDetail";
 
 export default function Profile() {
 	const { Authtoken } = useAuth();
-    const  [reload, setReload] = useState(true);
-	const [UserResponse, setUserResponse] = useState([]);
-	const [loading, setLoading] = useState(true);
-	const { register, handleSubmit } = useForm();
-	const [ProfileImage, setProfileImage] = useState([]);
-	let getUrl = "/api/user/" + Authtoken.user_id;
+    // const [UserResponse, setUserResponse] = useState([]); 
+    // const [loading, setLoading] = useState(true);
+    const { register, handleSubmit } = useForm();
+    const [ProfileImage, setProfileImage] = useState([]);
+    const {loading, UserResponse, setUserResponse, setUpdate, setLoading} = useContext(ProfileContext);
+    let getUrl = "/api/user/" + Authtoken.user_id;
 
-	useEffect(() => {
-		let source = Axios.CancelToken.source();
+	// useEffect(() => {
+	// 	let source = Axios.CancelToken.source();
 
-		const loadData = async () => {
-			try {
-				const response = await Axios.get(
-					getUrl,
-					{
-						headers: {
-							Authorization: "bearer" + Authtoken.token
-						}
-					},
-					{
-						cancelToken: source.token
-					}
-				);
-				setUserResponse(response.data.user);
+	// 	const loadData = async () => {
+	// 		try {
+	// 			const response = await Axios.get(
+	// 				getUrl,
+	// 				{
+	// 					headers: {
+	// 						Authorization: "bearer" + Authtoken.token
+	// 					}
+	// 				},
+	// 				{
+	// 					cancelToken: source.token
+	// 				}
+	// 			);
+	// 			setUserResponse(response.data.user);
 
 				
-				setLoading(false);
-			} catch (error) {
-				if (Axios.isCancel(error)) {
-					console.log(error);
-				} else {
-					throw error;
-				}
-			}
-		};
-		loadData();
-		return () => {
-			source.cancel();
-		};
-	}, [getUrl, reload]);
+	// 			setLoading(false);
+	// 		} catch (error) {
+	// 			if (Axios.isCancel(error)) {
+	// 				console.log(error);
+	// 			} else {
+	// 				throw error;
+	// 			}
+	// 		}
+	// 	};
+	// 	loadData();
+	// 	return () => {
+	// 		source.cancel();
+	// 	};
+	// }, [getUrl, reload]);
 
 	const handleUserChange = e =>
 		setUserResponse({
@@ -165,14 +165,14 @@ export default function Profile() {
 					<div className="container">
 						<div className="profile-pic">
 							<img
-								src={
-									UserResponse.length !== "0"
-										? UserResponse.profile_image
-										: require("../assets/images/testimonial-1.jpg")
-								}
-								className="img-fluid"
-								alt=""
-							/>
+                                src={
+                                    UserResponse.length !== "0"
+                                        ? UserResponse.profile_image
+                                        : require("../assets/images/testimonial-1.jpg")
+                                }
+                                className="img-fluid"
+                                alt=""
+                            />
 						</div>
 						<div className="text-container">
 							<div className="name">
