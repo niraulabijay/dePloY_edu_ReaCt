@@ -50,12 +50,15 @@ const Note = ({ chapterResponse , setLoading, subjectId}) => {
 					<React.Fragment>
 						{chapterResponse.map(
 							(note, index) =>
+							
 								note.notes &&
 								note.notes[0] && (
 									<div
 										className="chapter-wrapper d-flex justify-content-between"
 										key={index}
 									>
+									{console.log(note)}
+
 										<Link to="/viewer">
 											<div className="chapter-title">
 												<span>{index + 1}</span>
