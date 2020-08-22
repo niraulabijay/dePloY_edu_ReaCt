@@ -4,7 +4,7 @@ import {
 	Switch,
 	Route,
 	useRouteMatch,
-	useHistory
+	useHistory,
 } from "react-router-dom";
 import Axios from "axios";
 import { useAuth } from "../../Context/Auth";
@@ -15,38 +15,37 @@ export default function Bookmark() {
 	let History = useHistory();
 	const { Authtoken } = useAuth();
 
-    const [BookmarkResponse, setBookmarkResponse] = useState([]);
+	const [BookmarkResponse, setBookmarkResponse] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [err, setErr] = useState();
 
 	let getUrl =
-		"http://noname.hellonep.com/api/bookmarks/note/" + Authtoken.user_id;
+		"http://noname.dotnep.com/api/bookmarks/note/" + Authtoken.user_id;
 
 	useEffect(() => {
 		let source = Axios.CancelToken.source();
 		const loadData = async () => {
 			try {
 				const response = await Axios.get(
-					getUrl, 
+					getUrl,
 					{
 						headers: {
-							Authorization: "bearer" + Authtoken.token
+							Authorization: "bearer" + Authtoken.token,
 						},
-						timeout: 10000
+						timeout: 10000,
 					},
 					{
-						cancelToken: source.token
+						cancelToken: source.token,
 					}
 				);
 				setBookmarkResponse(response.data);
-				
 			} catch (error) {
 				if (Axios.isCancel(error)) {
 					console.log(error);
 				} else {
-					setErr(()=>{
+					setErr(() => {
 						throw error;
-					})
+					});
 				}
 			}
 		};
@@ -54,27 +53,27 @@ export default function Bookmark() {
 		return () => {
 			source.cancel();
 		};
-	}, [getUrl , loading]);
+	}, [getUrl, loading]);
 	console.log(BookmarkResponse + "hi");
-    const HandleBookmark = data => {
-        setLoading(true);
+	const HandleBookmark = (data) => {
+		setLoading(true);
 		console.log(data + "hii");
 		Axios({
 			method: "post",
-			url: "http://noname.hellonep.com/api/bookmark/store",
-			
-				headers: {
-					Authorization: "bearer" + Authtoken.token
-				},
+			url: "http://noname.dotnep.com/api/bookmark/store",
+
+			headers: {
+				Authorization: "bearer" + Authtoken.token,
+			},
 			data: {
 				note_id: data,
 				class_id: Authtoken.class_id,
 				user_id: Authtoken.user_id,
 				type: "note",
-				auth_token: Authtoken.token
-			}
-		}).then(response => {
-            setLoading(false);
+				auth_token: Authtoken.token,
+			},
+		}).then((response) => {
+			setLoading(false);
 			console.log(response);
 		});
 	};
@@ -92,15 +91,13 @@ export default function Bookmark() {
 						</div>
 						<div className="title-box">
 							<h2>Bookmark</h2>
-							<div className="chapter-number">
-								Quick access 
-							</div>
+							<div className="chapter-number">Quick access</div>
 						</div>
 					</div>
 				</div>
 				<div className="subject-content">
-					{BookmarkResponse.data ?
-					 (BookmarkResponse.data.map((bookmark, index) => (
+					{BookmarkResponse.data ? (
+						BookmarkResponse.data.map((bookmark, index) => (
 							<div
 								className="chapter-wrapper d-flex justify-content-between"
 								key={index}
@@ -118,7 +115,6 @@ export default function Bookmark() {
 									</Link>
 									{bookmark.notes && (
 										<a
-											
 											onClick={() => HandleBookmark(bookmark.notes[0].id)}
 											className="set"
 										>
@@ -126,21 +122,18 @@ export default function Bookmark() {
 										</a>
 									)}
 								</div>
-							</div>)
-						)):
-						(
-						<div className="chapter-wrapper d-flex justify-content-between"
-								
-							>
-								<div className="chapter-title">
-									<Skeleton width={150}/>
-								</div>
-								<div className="option">
-									<Skeleton width={150} />
-								</div>
 							</div>
-						)
-						}
+						))
+					) : (
+						<div className="chapter-wrapper d-flex justify-content-between">
+							<div className="chapter-title">
+								<Skeleton width={150} />
+							</div>
+							<div className="option">
+								<Skeleton width={150} />
+							</div>
+						</div>
+					)}
 				</div>
 			</div>
 		</React.Fragment>

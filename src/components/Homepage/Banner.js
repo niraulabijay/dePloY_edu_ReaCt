@@ -27,7 +27,7 @@ function Banner() {
 					<picture>
 						<source
 							media="(max-width: 768px)"
-							srcset={require("../../pages/images/mobileBanner.jpg")}
+							srcSet={require("../../pages/images/mobileBanner.jpg")}
 							className="img-fluid"
 						/>
 						<img

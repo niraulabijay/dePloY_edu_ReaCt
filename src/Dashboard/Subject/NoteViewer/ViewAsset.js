@@ -8,25 +8,29 @@ import { Switch } from "react-router-dom";
 
 const ViewAsset = ({ id }) => {
 	console.log(id);
-	const {Authtoken} = useAuth();
+	const { Authtoken } = useAuth();
 	const [NoteResponse, setNoteResponse] = useState([]);
-	let getUrl = "http://noname.hellonep.com/api/note/"+id;
+	let getUrl = "http://noname.dotnep.com/api/note/" + id;
 	console.log(NoteResponse.file);
 	useEffect(() => {
 		let source = Axios.CancelToken.source();
 
 		const loadData = async () => {
 			try {
-				const response = await Axios.get(getUrl,{
-					headers:{
-						Authorization: 'bearer'+Authtoken.token
+				const response = await Axios.get(
+					getUrl,
+					{
+						headers: {
+							Authorization: "bearer" + Authtoken.token,
+						},
+					},
+					{
+						cancelToken: source.token,
 					}
-				}, {
-					cancelToken: source.token
-				});
+				);
 				setNoteResponse(response.data.data);
 				console.log(response.data.data);
-				console.log('hi from viewset')
+				console.log("hi from viewset");
 			} catch (error) {
 				if (Axios.isCancel(error)) {
 					console.log(error);
@@ -43,10 +47,7 @@ const ViewAsset = ({ id }) => {
 	return (
 		<div className="ViewAsset">
 			{NoteResponse.file && (
-
-				
 				<PDFViewer backend={PDFJSBackend} src={NoteResponse.file} />
-				
 			)}
 		</div>
 	);

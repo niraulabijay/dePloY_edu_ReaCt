@@ -25,7 +25,7 @@ export default function PractiseSubject() {
 	useEffect(() => {
 		axios({
 			method: "get",
-			url: "http://noname.hellonep.com/api/chapters/" + params.subjectId,
+			url: "http://noname.dotnep.com/api/chapters/" + params.subjectId,
 			headers: {
 				Authorization: "bearer" + Authtoken.token
 			},

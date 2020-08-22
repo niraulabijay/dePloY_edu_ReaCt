@@ -23,7 +23,7 @@ const ChapterQuiz = (props) => {
 		axios({
 			method: "get",
 			url:
-				"http://noname.hellonep.com/api/practise_by_chapter/" +
+				"http://noname.dotnep.com/api/practise_by_chapter/" +
 				params.chapterId,
 			headers: { Authorization: "Bearer" + Authtoken.token },
 			timeout: 10000,
@@ -87,7 +87,7 @@ const ChapterQuiz = (props) => {
 		setLoading(false);
 		axios({
 			method: "post",
-			url: "http://noname.hellonep.com/api/practise/store",
+			url: "http://noname.dotnep.com/api/practise/store",
 			headers: { Authorization: "Bearer" + Authtoken.token },
 			data: {
 				data: [
@@ -163,7 +163,7 @@ const ChapterQuiz = (props) => {
 								<div className="question-container">
 									<div className="question-title">
 										<span className="question-number">{question.id}.</span>
-										{question.name}
+										<span dangerouslySetInnerHTML={{__html: question.name}}></span>
 									</div>
 									{/* use image of size 600*300 */}
 									{(question.image != null) &&
@@ -193,7 +193,7 @@ const ChapterQuiz = (props) => {
 													}
 												>
 													<div className="option-number">{index + 1}</div>
-													<div className="option">{answer.name}</div>
+													<div className="option" dangerouslySetInnerHTML = {{__html: answer.name}}></div>
 													<div className="option-tick">
 														<i className="fa fa-check"></i>
 													</div>

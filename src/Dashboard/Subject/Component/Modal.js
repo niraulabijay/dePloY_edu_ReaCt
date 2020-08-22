@@ -6,27 +6,27 @@ import { useAuth } from "../../../Context/Auth";
 const Modal = ({ id }) => {
 	const [FlashResponse, setFlashResponse] = useState({});
 	console.log(id + "modalid");
-	let getUrl = "http://noname.hellonep.com/api/flashcard/" + id;
-	const {Authtoken} = useAuth();
-	const [FlashError, setFlashError] = useState()
-
+	let getUrl = "http://noname.dotnep.com/api/flashcard/" + id;
+	const { Authtoken } = useAuth();
+	const [FlashError, setFlashError] = useState();
 
 	useEffect(() => {
 		let source = Axios.CancelToken.source();
 
-		
 		const loadData = async () => {
 			try {
-				const response = await Axios.get(getUrl,
+				const response = await Axios.get(
+					getUrl,
 					{
 						headers: {
-							Authorization: "bearer" + Authtoken.token
+							Authorization: "bearer" + Authtoken.token,
 						},
 						// timeout: 10000,
 					},
 					{
-					cancelToken: source.token
-				});
+						cancelToken: source.token,
+					}
+				);
 				setFlashResponse(response.data.data);
 			} catch (error) {
 				if (Axios.isCancel(error)) {
@@ -35,7 +35,7 @@ const Modal = ({ id }) => {
 					// setFlashError(()=>{
 					// 	throw error;
 					// })
-					console.log(error)
+					console.log(error);
 				}
 			}
 		};
@@ -57,9 +57,12 @@ const Modal = ({ id }) => {
 						{FlashResponse ? (
 							<div>
 								<strong>{FlashResponse.title}</strong>
-								<p style={{ fontWeight: "lighter" }} dangerouslySetInnerHTML={{ __html: FlashResponse.description }}>
-								
-								</p>
+								<p
+									style={{ fontWeight: "lighter" }}
+									dangerouslySetInnerHTML={{
+										__html: FlashResponse.description,
+									}}
+								></p>
 							</div>
 						) : (
 							<React.Fragment>

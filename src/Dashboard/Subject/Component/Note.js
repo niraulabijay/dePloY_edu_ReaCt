@@ -6,26 +6,26 @@ import {
 	Route,
 	Switch,
 	useLocation,
-	useRouteMatch
+	useRouteMatch,
 } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../../../Context/Auth";
 import Skeleton from "react-loading-skeleton";
 
-const Note = ({ chapterResponse , setLoading, subjectId}) => {
+const Note = ({ chapterResponse, setLoading, subjectId }) => {
 	const { Authtoken } = useAuth();
 	const { url, params } = useRouteMatch();
 	const [getUrl, setUrl] = useState("notes/" + Authtoken.user_id);
 
 	console.log(chapterResponse.subjects);
-	const HandleBookmark = data => {
+	const HandleBookmark = (data) => {
 		console.log(data);
 		setLoading(true);
 		axios({
 			method: "post",
-			url: "http://noname.hellonep.com/api/bookmark/store",
+			url: "http://noname.dotnep.com/api/bookmark/store",
 			headers: {
-				Authorization: "bearer" + Authtoken.token
+				Authorization: "bearer" + Authtoken.token,
 			},
 			// url: "http://192.168.1.71/api/bookmark/store",
 			data: {
@@ -33,14 +33,16 @@ const Note = ({ chapterResponse , setLoading, subjectId}) => {
 				class_id: Authtoken.class_id,
 				user_id: Authtoken.user_id,
 				type: "note",
-				auth_token: Authtoken.token
-			}
-		}).then(response => {
-			console.log(response);
-			setLoading(false);
-		}).catch(error=>{
-			throw error;
+				auth_token: Authtoken.token,
+			},
 		})
+			.then((response) => {
+				console.log(response);
+				setLoading(false);
+			})
+			.catch((error) => {
+				throw error;
+			});
 	};
 
 	return (
@@ -50,14 +52,13 @@ const Note = ({ chapterResponse , setLoading, subjectId}) => {
 					<React.Fragment>
 						{chapterResponse.subjects.map(
 							(note, index) =>
-							
 								note.notes &&
 								note.notes[0] && (
 									<div
 										className="chapter-wrapper d-flex justify-content-between"
 										key={index}
 									>
-									{console.log(note)}
+										{console.log(note)}
 
 										<Link to="/viewer">
 											<div className="chapter-title">
@@ -71,14 +72,18 @@ const Note = ({ chapterResponse , setLoading, subjectId}) => {
 											</a>
 											{note.notes && (
 												<Link
-													to={`/viewer/`+ subjectId+'/'+ (note.notes[0] && note.notes[0].id)}
+													to={
+														`/viewer/` +
+														subjectId +
+														"/" +
+														(note.notes[0] && note.notes[0].id)
+													}
 												>
 													<i className="fa fa-eye"></i>
 												</Link>
 											)}
 											{note.notes && (
 												<a
-													
 													onClick={() => HandleBookmark(note.notes[0].id)}
 													className={note.notes[0].bookmark == 1 ? "set" : ""}
 												>
@@ -98,7 +103,7 @@ const Note = ({ chapterResponse , setLoading, subjectId}) => {
 								<Skeleton width={200} />
 							</div>
 							<div className="option">
-							<Skeleton width={150} />
+								<Skeleton width={150} />
 							</div>
 						</div>
 						<div className="chapter-wrapper d-flex justify-content-between">
@@ -107,7 +112,7 @@ const Note = ({ chapterResponse , setLoading, subjectId}) => {
 								<Skeleton width={230} />
 							</div>
 							<div className="option">
-							<Skeleton width={150} />
+								<Skeleton width={150} />
 							</div>
 						</div>
 						<div className="chapter-wrapper d-flex justify-content-between">
@@ -116,7 +121,7 @@ const Note = ({ chapterResponse , setLoading, subjectId}) => {
 								<Skeleton width={200} />
 							</div>
 							<div className="option">
-							<Skeleton width={150} />
+								<Skeleton width={150} />
 							</div>
 						</div>
 					</React.Fragment>

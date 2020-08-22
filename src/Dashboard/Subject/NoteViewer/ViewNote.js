@@ -7,7 +7,7 @@ import {
 	Link,
 	NavLink,
 	useHistory,
-	useRouteMatch
+	useRouteMatch,
 } from "react-router-dom";
 import axios from "axios";
 import $ from "jquery";
@@ -27,18 +27,18 @@ export default function ViewNote() {
 			method: "get",
 
 			headers: {
-				Authorization: "bearer" + Authtoken.token
+				Authorization: "bearer" + Authtoken.token,
 			},
 
 			url:
-				"http://noname.hellonep.com/api/notes/" +
+				"http://noname.dotnep.com/api/notes/" +
 				Authtoken.user_id +
 				"/" +
-				params.subjectSlug
-		}).then(response => {
+				params.subjectSlug,
+		}).then((response) => {
 			setChapterNote(response.data);
 			console.log(response.data);
-			console.log('hello');
+			console.log("hello");
 		});
 	}, []);
 
@@ -91,7 +91,7 @@ export default function ViewNote() {
 		myFunction(x); // Call listener function at run time
 		x.addListener(myFunction);
 	}
-	const handleActive = event => {
+	const handleActive = (event) => {
 		$("#userSideNav a").removeClass("active");
 		event.target.classList.add("active");
 	};

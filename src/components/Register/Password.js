@@ -17,7 +17,7 @@ import { Redirect, useHistory } from 'react-router-dom';
          console.log(data)
         axios({
             method: 'post',
-            url: 'http://noname.hellonep.com/api/savepassword',
+            url: 'http://noname.dotnep.com/api/savepassword',
             data: data
         }).then(
             response =>{

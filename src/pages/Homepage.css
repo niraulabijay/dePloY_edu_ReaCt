@@ -1051,7 +1051,7 @@ body {
 }
 #quitModal .title {
 	margin-top: 30px;
-	font-size: 30px;
+	font-size: 26px;
 	color: #777d79;
 }
 #quitModal .button-container {
@@ -1065,13 +1065,13 @@ body {
 	border-radius: 5px;
 	background: #09d6af;
 	margin: 0px 15px;
-	padding: 10px 30px;
+	padding: 8px 30px;
 }
 
 #quitModal .button-container .no {
 	background: #ff8888;
 	margin: 0px 15px;
-	padding: 10px 30px;
+	padding: 8px 30px;
 	border-radius: 5px;
 }
 #finishModal {
@@ -1266,6 +1266,9 @@ body {
 	font-size: 18px;
 	color: #454545;
 	font-weight: bold;
+}
+.quiz .option p{
+	margin-bottom: 0;
 }
 .quiz .option-tick {
 	display: none;

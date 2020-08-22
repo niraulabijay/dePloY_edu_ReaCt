@@ -1,4 +1,4 @@
- import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { useAuth } from "../../Context/Auth";
 import { useForm } from "react-hook-form";
@@ -6,12 +6,12 @@ import Skeleton from "react-loading-skeleton";
 
 export default function Profile() {
 	const { Authtoken } = useAuth();
-    const  [reload, setReload] = useState(true);
+	const [reload, setReload] = useState(true);
 	const [UserResponse, setUserResponse] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const { register, handleSubmit } = useForm();
 	const [ProfileImage, setProfileImage] = useState([]);
-	let getUrl = "http://noname.hellonep.com/api/user/" + Authtoken.user_id;
+	let getUrl = "http://noname.dotnep.com/api/user/" + Authtoken.user_id;
 
 	useEffect(() => {
 		let source = Axios.CancelToken.source();
@@ -22,16 +22,15 @@ export default function Profile() {
 					getUrl,
 					{
 						headers: {
-							Authorization: "bearer" + Authtoken.token
-						}
+							Authorization: "bearer" + Authtoken.token,
+						},
 					},
 					{
-						cancelToken: source.token
+						cancelToken: source.token,
 					}
 				);
 				setUserResponse(response.data.user);
 
-				
 				setLoading(false);
 			} catch (error) {
 				if (Axios.isCancel(error)) {
@@ -47,17 +46,17 @@ export default function Profile() {
 		};
 	}, [getUrl, reload]);
 
-	const handleUserChange = e =>
+	const handleUserChange = (e) =>
 		setUserResponse({
 			...UserResponse,
-			[e.target.name]: [e.target.value]
+			[e.target.name]: [e.target.value],
 		});
 
-	const handleImageChange = e => {
+	const handleImageChange = (e) => {
 		setProfileImage(e.target.files[0]);
 	};
 
-	const onSubmit = data => {
+	const onSubmit = (data) => {
 		const formData = new FormData();
 		formData.append("profile_image", ProfileImage);
 		formData.append("user_id", Authtoken.user_id);
@@ -67,22 +66,24 @@ export default function Profile() {
 		formData.append("dob", data.dob);
 		formData.append("gender", data.gender);
 		formData.append("address", data.address);
-        console.log(...formData);
-        setReload(true);
+		console.log(...formData);
+		setReload(true);
 		Axios({
 			method: "post",
-			url: "http://noname.hellonep.com/api/user/update",
-            headers: { "Content-Type": "multipart/form-data" ,
-            Authorization: "bearer" + Authtoken.token},
-			data: formData
+			url: "http://noname.dotnep.com/api/user/update",
+			headers: {
+				"Content-Type": "multipart/form-data",
+				Authorization: "bearer" + Authtoken.token,
+			},
+			data: formData,
 		})
-			.then(res => {
-                console.log(res.status + "new");
-				if(res.status == 200){
-                    setReload(false);
-                }
+			.then((res) => {
+				console.log(res.status + "new");
+				if (res.status == 200) {
+					setReload(false);
+				}
 			})
-			.catch(err => console.log(err));
+			.catch((err) => console.log(err));
 	};
 	console.log(UserResponse.profile_image);
 
@@ -128,7 +129,7 @@ export default function Profile() {
 							<Skeleton />
 						</div>
 						<div className="button-container">
-							<Skeleton  width={100} height={30}/>
+							<Skeleton width={100} height={30} />
 						</div>
 					</form>
 				</div>
@@ -231,16 +232,18 @@ export default function Profile() {
 							/>
 						</div>
 						<div className="form-group">
-							<label>Profile</label><br/>
-                            <label class="custom-file-upload">
-    <input type="file"
-								id="image"
-								accept="image/png, image/jpeg"
-								onChange={handleImageChange}
-								name="profile_image"
-								ref={register}/>
-   </label>
-							
+							<label>Profile</label>
+							<br />
+							<label class="custom-file-upload">
+								<input
+									type="file"
+									id="image"
+									accept="image/png, image/jpeg"
+									onChange={handleImageChange}
+									name="profile_image"
+									ref={register}
+								/>
+							</label>
 						</div>
 						<div className="form-group">
 							<label>Gender</label>

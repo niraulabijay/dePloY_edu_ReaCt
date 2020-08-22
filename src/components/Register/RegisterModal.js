@@ -12,28 +12,30 @@ export default function RegisterModal() {
 	const [buttonDisable, setButtonDisable] = useState();
 	const [registerError, setRegisterError] = useState();
 
-	const onSubmit = data => {
-		setButtonDisable(true)
+	const onSubmit = (data) => {
+		setButtonDisable(true);
 		document.getElementById("joinLoader").style.display = "block";
 		axios({
 			method: "post",
-			url: "http://noname.hellonep.com/api/register",
-			data: data
-		}).then(response => {
-			if (response.data.status === "success") {
-				setResponse(response.data);
-				console.log(RegisterResponse);
-				$("#join").modal("hide");
-				$("#otp").modal("show");
-				setButtonDisable()
-			}else{
-				document.getElementById("joinLoader").style.display = "none";
-				setRegisterError("Your number is already registered")
-				setButtonDisable()
-			}
-		}).catch(error => {
-			console.log(error)
-		});
+			url: "http://noname.dotnep.com/api/register",
+			data: data,
+		})
+			.then((response) => {
+				if (response.data.status === "success") {
+					setResponse(response.data);
+					console.log(RegisterResponse);
+					$("#join").modal("hide");
+					$("#otp").modal("show");
+					setButtonDisable();
+				} else {
+					document.getElementById("joinLoader").style.display = "none";
+					setRegisterError("Your number is already registered");
+					setButtonDisable();
+				}
+			})
+			.catch((error) => {
+				console.log(error);
+			});
 	};
 
 	return (
@@ -71,21 +73,42 @@ export default function RegisterModal() {
 										ref={register({
 											minLength: 10,
 											pattern: { value: /^[0-9]*$/ },
-											required: true
+											required: true,
 										})}
 									/>
 									{errors.phone && errors.phone.type === "minLength" && (
-										<span style={{ color: "red",display:'block',textAlign: "center" }} id="error-name-maxLength">
+										<span
+											style={{
+												color: "red",
+												display: "block",
+												textAlign: "center",
+											}}
+											id="error-name-maxLength"
+										>
 											*The length must be 10
 										</span>
 									)}
 									{errors.phone && errors.phone.type === "pattern" && (
-										<span style={{ color: "red", display:'block',textAlign: "center" }} id="error-name-pattern">
+										<span
+											style={{
+												color: "red",
+												display: "block",
+												textAlign: "center",
+											}}
+											id="error-name-pattern"
+										>
 											*The value must be number
 										</span>
 									)}
 									{errors.phone && errors.phone.type === "required" && (
-										<span style={{ color: "red", display:'block',textAlign: "center" }} id="error-name-required">
+										<span
+											style={{
+												color: "red",
+												display: "block",
+												textAlign: "center",
+											}}
+											id="error-name-required"
+										>
 											*The field is empty
 										</span>
 									)}
@@ -101,14 +124,15 @@ export default function RegisterModal() {
 										aria-describedby="error-name-pattern error-name-required"
 										ref={register({
 											pattern: { value: /[A-za-z]/ },
-											required: true
+											required: true,
 										})}
 									/>
 									{errors.name && errors.name.type === "pattern" && (
 										<span
 											style={{
 												color: "red",
-												textAlign: "center", display:'block'
+												textAlign: "center",
+												display: "block",
 											}}
 											id="error-name-pattern"
 										>
@@ -119,8 +143,8 @@ export default function RegisterModal() {
 										<span
 											style={{
 												color: "red",
-												textAlign: "center"
-												, display:'block'
+												textAlign: "center",
+												display: "block",
 											}}
 											id="error-name-required"
 										>
@@ -135,7 +159,18 @@ export default function RegisterModal() {
                                     <input name="text" type="tel" value="" placeholder="Invite Code" className="form-control" />
                                 </div>
                             </div> */}
-								{registerError &&  <span style={{ color:'red', fontWeight:'bold', textAlign:'center', display:'block' }}>{registerError}</span>}
+								{registerError && (
+									<span
+										style={{
+											color: "red",
+											fontWeight: "bold",
+											textAlign: "center",
+											display: "block",
+										}}
+									>
+										{registerError}
+									</span>
+								)}
 								<div id="joinLoader">
 									<SkeletonTheme color="#89f3a1" highlightColor="#fbfbfb">
 										<Skeleton />
@@ -144,9 +179,8 @@ export default function RegisterModal() {
 								<div className="button-container">
 									<button
 										className="btn btn-success"
-											
 										type="submit"
-										disabled={ buttonDisable ? 'true' : '' }
+										disabled={buttonDisable ? "true" : ""}
 									>
 										Join Now
 									</button>

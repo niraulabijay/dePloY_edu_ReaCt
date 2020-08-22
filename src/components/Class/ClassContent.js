@@ -9,7 +9,7 @@ export default function Classcontent() {
     
 	const {path, url, params } = useRouteMatch();
 	console.log(params);
-	const getUrl = "http://noname.hellonep.com/api/overview/" + params.classSlug;
+	const getUrl = "http://noname.dotnep.com/api/overview/" + params.classSlug;
 	console.log(getUrl);
 	const [subjectCollection, setSubjectCollection] = useState();
 	useEffect(() => {

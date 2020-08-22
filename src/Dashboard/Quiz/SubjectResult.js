@@ -38,7 +38,7 @@ const SubjectResult = ({ result }) => {
 					<div className="question-container">
 						<div className="question-title">
 							<span className="question-number">{index + 1}.</span>
-							{question.name}
+							<span dangerouslySetInnerHTML={{ __html:question.name }}></span>
 						</div>
 						{question.selected == null ? (
 							<span style={{ color: "red" }}>
@@ -55,15 +55,15 @@ const SubjectResult = ({ result }) => {
 									<div
 										className={
 											"answer-wrapper " +
-											(answer.correct === "1" ? "active" : " ") +
+											(answer.correct === 1 ? "active" : " ") +
 											" " +
-											(answer.id === question.selected && answer.correct === "0"
+											(answer.id === question.selected && answer.correct === 0
 												? "wrong"
 												: " ")
 										}
 									>
-										<div className="option-number">A</div>
-										<div className="option">{answer.name}</div>
+										<div className="option-number">{index + 1}</div>
+										<div className="option" dangerouslySetInnerHTML={{__html: answer.name}}></div>
 										<div className="option-tick">
 											<i className="fa fa-check"></i>
 										</div>

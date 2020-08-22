@@ -9,7 +9,7 @@ export default function Syllabus() {
 	const [loading, setLoading] = useState(true);
 	const [syllabus, setSyllabus] = useState([]);
 	const { Authtoken } = useAuth();
-	let getUrl = "http://noname.hellonep.com/api/syllabus/" + Authtoken.class_id;
+	let getUrl = "http://noname.dotnep.com/api/syllabus/" + Authtoken.class_id;
 	useEffect(() => {
 		let source = Axios.CancelToken.source();
 		const loadData = async () => {
@@ -18,12 +18,12 @@ export default function Syllabus() {
 					getUrl,
 					{
 						headers: {
-							Authorization: "bearer" + Authtoken.token
+							Authorization: "bearer" + Authtoken.token,
 						},
 						timeout: 10000,
 					},
 					{
-						cancelToken: source.token
+						cancelToken: source.token,
 					}
 				);
 				setSyllabus(response.data.data);

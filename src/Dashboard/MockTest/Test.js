@@ -5,7 +5,7 @@ import {
 	Route,
 	useRouteMatch,
 	Redirect,
-	useHistory
+	useHistory,
 } from "react-router-dom";
 import TestSubject from "./TestSubject";
 import axios from "axios";
@@ -20,7 +20,7 @@ import {
 	ResponsiveContainer,
 	CartesianGrid,
 	Tooltip,
-	Legend
+	Legend,
 } from "recharts";
 
 export default function Test() {
@@ -31,11 +31,11 @@ export default function Test() {
 	const { Authtoken } = useAuth();
 	const history = useHistory();
 
-	const handleTest = slug => {
+	const handleTest = (slug) => {
 		console.log(slug);
 		// axios({
 		//     method: "get",
-		//     url: "http://noname.hellonep.com/api/test/"+slug+'/'+Authtoken.user_id,
+		//     url: "http://noname.dotnep.com/api/test/"+slug+'/'+Authtoken.user_id,
 		//     data: returnTest
 		// }).then(res => {
 		//     console.log(res);
@@ -49,18 +49,18 @@ export default function Test() {
 	//     console.log('hi');
 	// }
 	function getRandomColor() {
-		var letters = '0123456789ABCDEF';
-		var color = '#';
+		var letters = "0123456789ABCDEF";
+		var color = "#";
 		for (var i = 0; i < 6; i++) {
-		  color += letters[Math.floor(Math.random() * 16)];
+			color += letters[Math.floor(Math.random() * 16)];
 		}
 		return color;
-	  }
+	}
 	const data = [
 		{ name: "First Week", Math: 400, Science: 700, amt: 2400 },
 		{ name: "Second Week", Math: 150, Science: 200, amt: 2400 },
-		{ name: "Third Week", Math:200, Science: 450, amt: 2400 },
-		{ name: "Fourth Week", Math:250, Science: 400, amt: 2400 }
+		{ name: "Third Week", Math: 200, Science: 450, amt: 2400 },
+		{ name: "Fourth Week", Math: 250, Science: 400, amt: 2400 },
 	];
 	return (
 		<React.Fragment>
@@ -70,7 +70,7 @@ export default function Test() {
 					<div className="test-subject">
 						{loading ? (
 							<div className="row">
-								<div className="col-md-3 col-lg-3 col-12">
+								<div className="col-md-6 col-lg-3 col-12">
 									<div className="test-wrapper">
 										<div className="subWrap">
 											<div className="icon-box">
@@ -101,7 +101,7 @@ export default function Test() {
 										</div>
 									</div>
 								</div>
-								<div className="col-md-3 col-lg-3 col-12">
+								<div className="col-md-6 col-lg-3 col-12">
 									<div className="test-wrapper">
 										<div className="subWrap">
 											<div className="icon-box">
@@ -132,7 +132,7 @@ export default function Test() {
 										</div>
 									</div>
 								</div>
-								<div className="col-md-3 col-lg-3 col-12">
+								<div className="col-md-6 col-lg-3 col-12">
 									<div className="test-wrapper">
 										<div className="subWrap">
 											<div className="icon-box">
@@ -163,7 +163,7 @@ export default function Test() {
 										</div>
 									</div>
 								</div>
-								<div className="col-md-3 col-lg-3 col-12">
+								<div className="col-md-6 col-lg-3 col-12">
 									<div className="test-wrapper">
 										<div className="subWrap">
 											<div className="icon-box">
@@ -199,7 +199,7 @@ export default function Test() {
 							<div className="row">
 								{testSub.map((data, index) => {
 									return (
-										<div className="col-md-3 col-lg-3 testrow" key={index}>
+										<div className="col-md-6 col-lg-3 testrow" key={index}>
 											<div className="test-wrapper">
 												<div className="subWrap">
 													<div className="icon-box">
@@ -242,7 +242,7 @@ export default function Test() {
 														<div
 															className="progress-bar"
 															style={{
-																width: "70%"
+																width: "70%",
 															}}
 														></div>
 													</div>
