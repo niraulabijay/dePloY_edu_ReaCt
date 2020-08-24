@@ -43,7 +43,6 @@
 			"last 1 safari version"
 		]
 	},
-	"proxy": "http://noname.dotnep.com/",
 	"devDependencies": {
 		"@babel/core": "^7.8.3",
 		"@babel/preset-env": "^7.8.3",
@@ -55,5 +54,6 @@
 		"webpack": "^4.41.2",
 		"webpack-cli": "^3.3.10",
 		"webpack-dev-server": "^3.9.0"
-	}
+	},
+	"proxy": "http://localhost:3000"
 }

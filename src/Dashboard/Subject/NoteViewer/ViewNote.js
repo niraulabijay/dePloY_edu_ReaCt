@@ -31,7 +31,7 @@ export default function ViewNote() {
 			},
 
 			url:
-				"http://noname.dotnep.com/api/notes/" +
+				"https://noname.dotnep.com/api/notes/" +
 				Authtoken.user_id +
 				"/" +
 				params.subjectSlug,

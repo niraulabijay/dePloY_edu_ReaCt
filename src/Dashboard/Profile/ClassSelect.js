@@ -13,7 +13,7 @@ const ClassSelect = () => {
 	const handleClassSubmit = (data) => {
 		axios({
 			method: "post",
-			url: "http://noname.dotnep.com/api/store/class",
+			url: "https://noname.dotnep.com/api/store/class",
 			headers: {
 				Authorization: "bearer" + Authtoken.token,
 			},
@@ -44,7 +44,7 @@ const ClassSelect = () => {
 	useEffect(() => {
 		axios({
 			method: "get",
-			url: "http://noname.dotnep.com/api/classes",
+			url: "https://noname.dotnep.com/api/classes",
 			headers: {
 				Authorization: "bearer" + Authtoken.token,
 			},

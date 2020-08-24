@@ -4,7 +4,7 @@ import {
 	Switch,
 	Route,
 	useRouteMatch,
-	useHistory
+	useHistory,
 } from "react-router-dom";
 import Note from "./Component/Note";
 import FlashCards from "./Component/FlashCards";
@@ -15,13 +15,13 @@ import ErrorBoundary from "../../ErrorBoundary/ErrorBoundary";
 
 const LearnSubject = () => {
 	const { Authtoken } = useAuth();
-	const {  params } = useRouteMatch();
+	const { params } = useRouteMatch();
 	const [chapter, setChapterResponse] = useState([]);
 	const [getUrl, setUrl] = useState("notes/" + Authtoken.user_id);
 	const history = useHistory();
 	const [loading, setLoading] = useState(false);
-	const [chapterError, setChapterError] = useState()
-	const handleSubmit = data => {
+	const [chapterError, setChapterError] = useState();
+	const handleSubmit = (data) => {
 		setUrl(data);
 	};
 
@@ -29,23 +29,29 @@ const LearnSubject = () => {
 		axios({
 			method: "get",
 			headers: {
-				Authorization: "bearer" + JSON.parse(localStorage.getItem('tokens')).token
+				Authorization:
+					"bearer" + JSON.parse(localStorage.getItem("tokens")).token,
 			},
-			url: "http://noname.dotnep.com/api/" + getUrl + "/" + params.subjectId,
+			url: "https://noname.dotnep.com/api/" + getUrl + "/" + params.subjectId,
 			timeout: 10000,
-		}).then(response => {
-			if(response.data.status === "Token is Expired" || response.data.status === "Token is Invalid"){
-				throw new Error('Token Problem')
-			}else{
-			console.log(response)
-			setChapterResponse(response.data);
-			}
-		}).catch(error => {
-			console.log(error)
-			// setChapterError(()=>{
-			// 	throw error;
-			// })
-		});
+		})
+			.then((response) => {
+				if (
+					response.data.status === "Token is Expired" ||
+					response.data.status === "Token is Invalid"
+				) {
+					throw new Error("Token Problem");
+				} else {
+					console.log(response);
+					setChapterResponse(response.data);
+				}
+			})
+			.catch((error) => {
+				console.log(error);
+				// setChapterError(()=>{
+				// 	throw error;
+				// })
+			});
 	}, [getUrl, loading]);
 
 	return (
@@ -94,12 +100,16 @@ const LearnSubject = () => {
 							>
 								Question Set
 							</a>
-						</li> 
+						</li>
 					</ul>
 				</div>
 				<div className="tab-content">
 					{/* <ErrorBoundary> */}
-					<Note chapterResponse={chapter} setLoading={setLoading} subjectId={params.subjectId}/>
+					<Note
+						chapterResponse={chapter}
+						setLoading={setLoading}
+						subjectId={params.subjectId}
+					/>
 					<FlashCards FlashcardResponse={chapter} />
 					<PastQuestions QuestionResponse={chapter} />
 					{/* </ErrorBoundary> */}
@@ -107,6 +117,6 @@ const LearnSubject = () => {
 			</div>
 		</React.Fragment>
 	);
-}
+};
 
 export default LearnSubject;

@@ -25908,7 +25908,7 @@ object-assign
 				v = Ae(Object(r.useState)(!1), 2),
 				b = v[0],
 				y = v[1],
-				x = "http://noname.dotnep.com/api/practise/" + o.chapterId,
+				x = "https://noname.dotnep.com/api/practise/" + o.chapterId,
 				w = se(),
 				E = localStorage.getItem("active"),
 				N = Ae(Object(r.useState)(E ? JSON.parse(E) : []), 2),
@@ -26474,7 +26474,7 @@ object-assign
 																			Ne()({
 																				method: "post",
 																				url:
-																					"http://noname.dotnep.com/api/practise/store",
+																					"https://noname.dotnep.com/api/practise/store",
 																				data: {
 																					user_id: l.user_id,
 																					practise: e,
@@ -26577,7 +26577,7 @@ object-assign
 			Object(r.useEffect)(function () {
 				Ne()({
 					method: "get",
-					url: "http://noname.dotnep.com/api/chapters/" + i.subjectId,
+					url: "https://noname.dotnep.com/api/chapters/" + i.subjectId,
 				}).then(function (e) {
 					s(e.data.chapters);
 				});
@@ -26759,7 +26759,7 @@ object-assign
 				u = de(),
 				d = u.path,
 				p = u.url,
-				f = "http://noname.dotnep.com/api/subjects/" + e.class_id;
+				f = "https://noname.dotnep.com/api/subjects/" + e.class_id;
 			return (
 				Object(r.useEffect)(
 					function () {
@@ -27702,7 +27702,7 @@ object-assign
 			Object(r.useEffect)(function () {
 				Ne()({
 					method: "get",
-					url: "http://noname.dotnep.com/api/subjects/1",
+					url: "https://noname.dotnep.com/api/subjects/1",
 				}).then(function (e) {
 					l(e.data.subjects), u(!1);
 				});
@@ -28378,7 +28378,7 @@ object-assign
 				s = Ve(Object(r.useState)(!1), 2),
 				c = s[0],
 				u = s[1],
-				d = "http://noname.dotnep.com/api/bookmarks/note/" + n.user_id;
+				d = "https://noname.dotnep.com/api/bookmarks/note/" + n.user_id;
 			Object(r.useEffect)(
 				function () {
 					var e = Ne.a.CancelToken.source();
@@ -28527,7 +28527,7 @@ object-assign
 															void Ne()({
 																method: "post",
 																url:
-																	"http://noname.dotnep.com/api/bookmark/store",
+																	"https://noname.dotnep.com/api/bookmark/store",
 																data: {
 																	note_id: t,
 																	class_id: n.class_id,
@@ -30026,7 +30026,7 @@ and limitations under the License.
 				f = un(Object(r.useState)([]), 2),
 				m = f[0],
 				h = f[1],
-				g = "http://noname.dotnep.com/api/user/" + e.user_id;
+				g = "https://noname.dotnep.com/api/user/" + e.user_id;
 			Object(r.useEffect)(
 				function () {
 					var e = Ne.a.CancelToken.source();
@@ -30316,7 +30316,7 @@ and limitations under the License.
 													(n = console).log.apply(n, on(r)),
 													Ne()({
 														method: "post",
-														url: "http://noname.dotnep.com/api/user/update",
+														url: "https://noname.dotnep.com/api/user/update",
 														headers: { "Content-Type": "multipart/form-data" },
 														data: r,
 													})
@@ -30581,7 +30581,7 @@ and limitations under the License.
 																	void Ne()({
 																		method: "post",
 																		url:
-																			"http://noname.dotnep.com/api/bookmark/store",
+																			"https://noname.dotnep.com/api/bookmark/store",
 																		data: {
 																			note_id: t,
 																			class_id: n.class_id,
@@ -30767,7 +30767,7 @@ and limitations under the License.
 				i = n[0],
 				o = n[1];
 			console.log(t);
-			var l = "http://noname.dotnep.com/api/flashcard/" + t;
+			var l = "https://noname.dotnep.com/api/flashcard/" + t;
 			return (
 				Object(r.useEffect)(
 					function () {
@@ -31153,7 +31153,7 @@ and limitations under the License.
 					function () {
 						Ne()({
 							method: "get",
-							url: "http://noname.dotnep.com/api/" + s + "/" + t.subjectId,
+							url: "https://noname.dotnep.com/api/" + s + "/" + t.subjectId,
 						}).then(function (e) {
 							o(e.data), console.log(e.data);
 						});
@@ -31320,7 +31320,7 @@ and limitations under the License.
 				c = Sn(Object(r.useState)(!0), 2),
 				u = c[0],
 				d = c[1],
-				p = "http://noname.dotnep.com/api/subjects/" + i.class_id;
+				p = "https://noname.dotnep.com/api/subjects/" + i.class_id;
 			return (
 				Object(r.useEffect)(
 					function () {
@@ -31688,7 +31688,7 @@ and limitations under the License.
 				u = function (t) {
 					Ne()({
 						method: "post",
-						url: "http://noname.dotnep.com/api/store/class",
+						url: "https://noname.dotnep.com/api/store/class",
 						data: {
 							class_id: t,
 							user_id: JSON.parse(e).user_id,
@@ -31714,7 +31714,7 @@ and limitations under the License.
 				g = m[1];
 			return (
 				Object(r.useEffect)(function () {
-					Ne.a.get("http://noname.dotnep.com/api/classes").then(function (e) {
+					Ne.a.get("https://noname.dotnep.com/api/classes").then(function (e) {
 						f(e.data.grades), g(e.data.preparations);
 					});
 				}, []),
@@ -33969,7 +33969,7 @@ and limitations under the License.
 										onSubmit: s(function (e) {
 											Ne()({
 												method: "post",
-												url: "http://noname.dotnep.com/api/login",
+												url: "https://noname.dotnep.com/api/login",
 												data: e,
 											}).then(function (e) {
 												"success" === e.data.status
@@ -34170,7 +34170,7 @@ and limitations under the License.
 									onSubmit: f(function (e) {
 										Ne()({
 											method: "post",
-											url: "http://noname.dotnep.com/api/savepassword",
+											url: "https://noname.dotnep.com/api/savepassword",
 											data: e,
 										})
 											.then(function (e) {
@@ -34370,7 +34370,7 @@ and limitations under the License.
 													"block"),
 													Ne()({
 														method: "post",
-														url: "http://noname.dotnep.com/api/validateotp",
+														url: "https://noname.dotnep.com/api/validateotp",
 														data: e,
 													})
 														.then(function (e) {
@@ -34535,7 +34535,7 @@ and limitations under the License.
 												"block"),
 												Ne()({
 													method: "post",
-													url: "http://noname.dotnep.com/api/register",
+													url: "https://noname.dotnep.com/api/register",
 													data: e,
 												}).then(function (e) {
 													console.log(e),
@@ -35273,7 +35273,7 @@ and limitations under the License.
 				n = ur(Object(r.useState)([]), 2),
 				i = n[0],
 				o = n[1],
-				l = "http://noname.dotnep.com/api/note/" + t;
+				l = "https://noname.dotnep.com/api/note/" + t;
 			return (
 				console.log(i.file),
 				Object(r.useEffect)(

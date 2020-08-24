@@ -23,8 +23,7 @@ const ChapterQuiz = (props) => {
 		axios({
 			method: "get",
 			url:
-				"http://noname.dotnep.com/api/practise_by_chapter/" +
-				params.chapterId,
+				"https://noname.dotnep.com/api/practise_by_chapter/" + params.chapterId,
 			headers: { Authorization: "Bearer" + Authtoken.token },
 			timeout: 10000,
 		}).then((response) => {
@@ -36,7 +35,6 @@ const ChapterQuiz = (props) => {
 			}
 			setLoading(true);
 		});
-		
 	}, [nextQuestion]);
 	console.log(question);
 	const handleChange = (answer_id) => {
@@ -87,7 +85,7 @@ const ChapterQuiz = (props) => {
 		setLoading(false);
 		axios({
 			method: "post",
-			url: "http://noname.dotnep.com/api/practise/store",
+			url: "https://noname.dotnep.com/api/practise/store",
 			headers: { Authorization: "Bearer" + Authtoken.token },
 			data: {
 				data: [
@@ -163,14 +161,16 @@ const ChapterQuiz = (props) => {
 								<div className="question-container">
 									<div className="question-title">
 										<span className="question-number">{question.id}.</span>
-										<span dangerouslySetInnerHTML={{__html: question.name}}></span>
+										<span
+											dangerouslySetInnerHTML={{ __html: question.name }}
+										></span>
 									</div>
 									{/* use image of size 600*300 */}
-									{(question.image != null) &&
-									<div className="question-image">
-										<img src={question.image} alt="" className="img-fluid" />
-									</div>
-}
+									{question.image != null && (
+										<div className="question-image">
+											<img src={question.image} alt="" className="img-fluid" />
+										</div>
+									)}
 								</div>
 								<div className="answer-container">
 									<div className="row">
@@ -193,7 +193,10 @@ const ChapterQuiz = (props) => {
 													}
 												>
 													<div className="option-number">{index + 1}</div>
-													<div className="option" dangerouslySetInnerHTML = {{__html: answer.name}}></div>
+													<div
+														className="option"
+														dangerouslySetInnerHTML={{ __html: answer.name }}
+													></div>
 													<div className="option-tick">
 														<i className="fa fa-check"></i>
 													</div>

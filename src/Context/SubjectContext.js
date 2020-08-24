@@ -1,27 +1,24 @@
-import React , {useState, useEffect, createContext} from 'react'
-import Axios from 'axios'
-import { useAuth } from './Auth';
-import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
-import Logout from '../Dashboard/Logout';
-
+import React, { useState, useEffect, createContext } from "react";
+import Axios from "axios";
+import { useAuth } from "./Auth";
+import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
+import Logout from "../Dashboard/Logout";
 
 export const SubjectContext = createContext();
 
-export const SubjectProvider = props => {
-
+export const SubjectProvider = (props) => {
 	const [SubjectResponse, setSubjectResponse] = useState([]);
 	const [tokenError, setTokenError] = useState(false);
 	const [practiseReport, setPractiseReport] = useState([]);
-	const [practiseSubject, setPractiseSubject]= useState([]);
+	const [practiseSubject, setPractiseSubject] = useState([]);
 	const [testSub, setTestSubject] = useState([]);
 	const [PractiseResponse, setPractiseResponse] = useState([]);
-    const [loading, setLoading] = useState(true);
-	const {Authtoken} = useAuth();
-	const {handleClose} = Logout();
-	let getUrl = "http://noname.dotnep.com/api/subjects/" + Authtoken.class_id;
-	
+	const [loading, setLoading] = useState(true);
+	const { Authtoken } = useAuth();
+	const { handleClose } = Logout();
+	let getUrl = "https://noname.dotnep.com/api/subjects/" + Authtoken.class_id;
 
-    useEffect(() => {
+	useEffect(() => {
 		let source = Axios.CancelToken.source();
 
 		const loadData = async () => {
@@ -30,34 +27,37 @@ export const SubjectProvider = props => {
 					getUrl,
 					{
 						headers: {
-							Authorization: "bearer" + Authtoken.token
+							Authorization: "bearer" + Authtoken.token,
 						},
 						timeout: 10000,
 					},
-					{ cancelToken: source.token },
+					{ cancelToken: source.token }
 				);
 				// if(response.data.status === "")
-				if(response.data.status === "Token is Expired" || response.data.status === "Token is Invalid"){
-					handleClose()
-				}else{
-					console.log(response.data + "hello")
-				setSubjectResponse(response.data.learn_subjects);
-				setPractiseResponse(response.data.practice_subjects);
-				setTestSubject(response.data.test_subjects);
-				setPractiseSubject(response.data.practice_graph_subjects);
-				setPractiseReport(response.data.practice_report);
-				setLoading(false);
+				if (
+					response.data.status === "Token is Expired" ||
+					response.data.status === "Token is Invalid"
+				) {
+					handleClose();
+				} else {
+					console.log(response.data + "hello");
+					setSubjectResponse(response.data.learn_subjects);
+					setPractiseResponse(response.data.practice_subjects);
+					setTestSubject(response.data.test_subjects);
+					setPractiseSubject(response.data.practice_graph_subjects);
+					setPractiseReport(response.data.practice_report);
+					setLoading(false);
 				}
-			}catch(error){
+			} catch (error) {
 				if (Axios.isCancel(error)) {
 					console.log(error);
-				}else {
-					console.log(error)
+				} else {
+					console.log(error);
 					// setTokenError(error)
-					// throw new Error(error);	
-					setTokenError(()=>{
+					// throw new Error(error);
+					setTokenError(() => {
 						throw error;
-					})
+					});
 				}
 			}
 		};
@@ -67,24 +67,23 @@ export const SubjectProvider = props => {
 		};
 	}, [getUrl]);
 
-    return (
-		
+	return (
 		<React.Fragment>
-		{/* if({tokenError}){
+			{/* if({tokenError}){
 		 throw new Error('error');
 		}		 */}
-		<SubjectContext.Provider value={{
-				SubjectResponse:SubjectResponse, 
-				testSub:testSub, 
-				PractiseResponse:PractiseResponse, 
-				loading:loading,
-				practiseReport:practiseReport,
-				practiseSubject:practiseSubject
-			}}>
-            {props.children}
-        </SubjectContext.Provider>
-		
+			<SubjectContext.Provider
+				value={{
+					SubjectResponse: SubjectResponse,
+					testSub: testSub,
+					PractiseResponse: PractiseResponse,
+					loading: loading,
+					practiseReport: practiseReport,
+					practiseSubject: practiseSubject,
+				}}
+			>
+				{props.children}
+			</SubjectContext.Provider>
 		</React.Fragment>
-
-    )
-}
+	);
+};

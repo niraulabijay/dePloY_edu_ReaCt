@@ -12,29 +12,28 @@ function LoginModal() {
 	const [LoginError, setLoginError] = useState();
 	const [buttonDisable, setButtonDisable] = useState();
 
-	const onSubmit = data => {
+	const onSubmit = (data) => {
 		setButtonDisable(true);
 		document.getElementById("loginLoader").style.display = "block";
 		axios({
 			method: "post",
-			url: "http://noname.dotnep.com/api/login",
-			data: data
+			url: "https://noname.dotnep.com/api/login",
+			data: data,
 		})
-			.then(response => {
+			.then((response) => {
 				if (response.data.status === "success") {
 					setButtonDisable();
 					document.querySelector(".modal-backdrop").style.display = "none";
 					document.querySelector("body").classList.remove("modal-open");
-					
-						
+
 					StorageToken({
 						name: response.data.name,
 						user_id: response.data.user_id,
 						class_id: response.data.class_id,
-						token: response.data.auth_token
+						token: response.data.auth_token,
 					});
 					history.replace({
-						pathname: "/learn"
+						pathname: "/learn",
 					});
 				} else {
 					setButtonDisable();
@@ -42,7 +41,7 @@ function LoginModal() {
 					setLoginError("User is Not Valid");
 				}
 			})
-			.catch(error => {
+			.catch((error) => {
 				setButtonDisable();
 				setLoginError("Check your Login Credential or Internet Connection.");
 				document.getElementById("loginLoader").style.display = "none";
@@ -83,7 +82,7 @@ function LoginModal() {
 									ref={register({
 										minLength: 10,
 										pattern: { value: /^[0-9]*$/ },
-										required: true
+										required: true,
 									})}
 								/>
 							</div>
@@ -92,7 +91,7 @@ function LoginModal() {
 									style={{
 										color: "red",
 										display: "block",
-										textAlign: "center"
+										textAlign: "center",
 									}}
 									id="error-name-maxLength"
 								>
@@ -104,7 +103,7 @@ function LoginModal() {
 									style={{
 										color: "red",
 										display: "block",
-										textAlign: "center"
+										textAlign: "center",
 									}}
 									id="error-name-pattern"
 								>
@@ -116,7 +115,7 @@ function LoginModal() {
 									style={{
 										color: "red",
 										display: "block",
-										textAlign: "center"
+										textAlign: "center",
 									}}
 									id="error-name-required"
 								>
@@ -138,7 +137,7 @@ function LoginModal() {
 									style={{
 										color: "red",
 										display: "block",
-										textAlign: "center"
+										textAlign: "center",
 									}}
 									id="error-name-required"
 								>
@@ -154,7 +153,7 @@ function LoginModal() {
 											color: "red",
 											textAlign: "center",
 											fontWeight: "bold",
-											display: "block"
+											display: "block",
 										}}
 									>
 										{LoginError}
@@ -186,7 +185,6 @@ function LoginModal() {
 								</a>
 							</div>
 						</form>
-					
 					</div>
 				</div>
 			</div>

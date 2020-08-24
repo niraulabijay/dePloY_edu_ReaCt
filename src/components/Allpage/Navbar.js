@@ -4,13 +4,13 @@ import LoginModal from "../Login/LoginModal";
 import RegisterModal from "../Register/RegisterModal";
 import PageNotFound from "../../pages/PageNotFound";
 import axios from "axios";
-import {Link, NavLink} from 'react-router-dom';
+import { Link, NavLink } from "react-router-dom";
 
 export default function Navbar() {
 	const [classResponse, setClassResponse] = useState();
 	const [preparationResponse, setPreparationResponse] = useState();
 	useEffect(() => {
-		axios.get("http://noname.dotnep.com/api/nav/classes").then(response => {
+		axios.get("https://noname.dotnep.com/api/nav/classes").then((response) => {
 			setClassResponse(response.data.grades);
 			setPreparationResponse(response.data.preparations);
 			console.log(response.data.preparations);
@@ -27,19 +27,18 @@ export default function Navbar() {
 		document.getElementById("myNav").style.height = "0%";
 	}
 
-	window.onscroll = function() {
+	window.onscroll = function () {
 		let navbar = document.getElementById("navbar");
-		if(navbar != null){
+		if (navbar != null) {
 			if (
 				document.body.scrollTop > 80 ||
-					document.documentElement.scrollTop > 80
+				document.documentElement.scrollTop > 80
 			) {
 				navbar.style.background = "#f6f6ff";
 			} else {
 				navbar.style.background = "transparent";
 			}
 		}
-		
 	};
 
 	return (
@@ -61,14 +60,12 @@ export default function Navbar() {
 							Class
 						</a>
 						<div className="dropdown-menu">
-							{classResponse && classResponse.map(classItem=>(
-								<NavLink to={`/class/${classItem.slug}`} key={classItem.slug}>
-								<li className="dropdown-item" >
-								{classItem.name}
-							</li>
-							</NavLink>
-							))}
-							
+							{classResponse &&
+								classResponse.map((classItem) => (
+									<NavLink to={`/class/${classItem.slug}`} key={classItem.slug}>
+										<li className="dropdown-item">{classItem.name}</li>
+									</NavLink>
+								))}
 						</div>
 					</div>
 					<div className="dropdown">
@@ -76,16 +73,12 @@ export default function Navbar() {
 							Prepartion
 						</a>
 						<div className="dropdown-menu">
-							{
-								preparationResponse && preparationResponse.map((prepItem)=>(
+							{preparationResponse &&
+								preparationResponse.map((prepItem) => (
 									<NavLink to={`/class/${prepItem.slug}`} key={prepItem.slug}>
-									<li className="dropdown-item"  >
-									{prepItem.name}
-								</li>
-								</NavLink>
-								))
-							}
-					
+										<li className="dropdown-item">{prepItem.name}</li>
+									</NavLink>
+								))}
 						</div>
 					</div>
 
@@ -115,7 +108,7 @@ export default function Navbar() {
 				</span>
 
 				<div className="overlay-content">
-				<NavLink to="/" className="active" onClick={closeNav}>
+					<NavLink to="/" className="active" onClick={closeNav}>
 						Home
 					</NavLink>
 					<div className="dropdown">
@@ -123,13 +116,16 @@ export default function Navbar() {
 							Class
 						</a>
 						<div className="dropdown-menu">
-						{classResponse && classResponse.map(classItem=>(
-								<NavLink to={`/class/${classItem.slug}`} key={classItem.slug} onClick={closeNav}>
-								<li className="dropdown-item" >
-								{classItem.name}
-							</li>
-							</NavLink>
-							))}
+							{classResponse &&
+								classResponse.map((classItem) => (
+									<NavLink
+										to={`/class/${classItem.slug}`}
+										key={classItem.slug}
+										onClick={closeNav}
+									>
+										<li className="dropdown-item">{classItem.name}</li>
+									</NavLink>
+								))}
 						</div>
 					</div>
 					<div className="dropdown">
@@ -137,19 +133,24 @@ export default function Navbar() {
 							Preparation
 						</a>
 						<div className="dropdown-menu">
-						{
-								preparationResponse && preparationResponse.map((prepItem)=>(
-									<NavLink to={`/class/${prepItem.slug}`} key={prepItem.slug} onClick={closeNav}>
-									<li className="dropdown-item"  >
-									{prepItem.name}
-								</li>
-								</NavLink>
-								))
-							}
+							{preparationResponse &&
+								preparationResponse.map((prepItem) => (
+									<NavLink
+										to={`/class/${prepItem.slug}`}
+										key={prepItem.slug}
+										onClick={closeNav}
+									>
+										<li className="dropdown-item">{prepItem.name}</li>
+									</NavLink>
+								))}
 						</div>
 					</div>
-					<a href="dashboard.html" onClick={closeNav}>Features</a>
-					<a href="quiz.html" onClick={closeNav}>Blog</a>
+					<a href="dashboard.html" onClick={closeNav}>
+						Features
+					</a>
+					<a href="quiz.html" onClick={closeNav}>
+						Blog
+					</a>
 				</div>
 			</div>
 			<LoginModal />
