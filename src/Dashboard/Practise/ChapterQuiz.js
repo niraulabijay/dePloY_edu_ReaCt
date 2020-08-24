@@ -130,33 +130,6 @@ const ChapterQuiz = (props) => {
   <div className="modal-dialog">
     <div className="modal-content">
 
-<<<<<<< HEAD
-	useEffect(() => {
-		axios({
-			method: "get",
-			url:
-				"http://noname.dotnep.com/api/practise_by_chapter/" +
-				params.chapterId,
-			headers: { Authorization: "Bearer" + Authtoken.token },
-			timeout: 10000,
-		}).then((response) => {
-			console.log(response);
-			console.log(response.status);
-			setResult(null);
-			if (response.status === 200) {
-				setQuestionResponse(response.data.data);
-			}
-			setLoading(true);
-		});
-		
-	}, [nextQuestion]);
-	console.log(question);
-	const handleChange = (answer_id) => {
-		console.log(answer_id);
-		setActive(answer_id);
-		setEnableSubmit(true);
-	};
-=======
      
       <div className="modal-body">
       <button type="button" className="close" data-dismiss="modal">&times;</button>
@@ -171,7 +144,6 @@ const ChapterQuiz = (props) => {
     </div>
   </div>
 </div>
->>>>>>> 16e9bf58ca1daeea8f617df40b123ce6c726cc7f
 
                 <div className="quiz-header">
                     <nav className="navbar navbar-expand-sm" style={{
@@ -188,32 +160,6 @@ const ChapterQuiz = (props) => {
                     <div className="question-wrapper">
                     <div className="question-container">
 
-<<<<<<< HEAD
-		if (nextQuestion) {
-			setNextQuestion(false);
-		} else {
-			setNextQuestion(true);
-		}
-		setNextButton(false);
-		setLoading(false);
-		axios({
-			method: "post",
-			url: "http://noname.dotnep.com/api/practise/store",
-			headers: { Authorization: "Bearer" + Authtoken.token },
-			data: {
-				data: [
-					{
-						question_id: question.id,
-						correct: correct,
-						chapter: question.chapter_id,
-					},
-				],
-			},
-		}).then((res) => {
-			console.log("res", res);
-		});
-	};
-=======
                         <div className="question-title">
                             <span className="question-number">{question.id}.</span>
                             {question.name}
@@ -233,7 +179,6 @@ const ChapterQuiz = (props) => {
                                 +' '+ (mistake ? (answer.id === mistake ? 'wrong' : ''): '')}
                                 
                                 onClick ={ (!NextButton) ? () => handleChange(answer.id) : ''} >
->>>>>>> 16e9bf58ca1daeea8f617df40b123ce6c726cc7f
 
                                     <div className="option-number">
                                         {index+1}
@@ -310,130 +255,6 @@ const ChapterQuiz = (props) => {
     </React.Fragment>
     );
 
-<<<<<<< HEAD
-				<div className="quiz-header">
-					<nav
-						className="navbar navbar-expand-sm"
-						style={{
-							background: "linear-gradient(45deg, #0be788, #09d6af)",
-							boxShadow: "0px 2px 4px #a1a4a4",
-						}}
-					></nav>
-				</div>
-				{loading ? (
-					<>
-						<div className="container test-section">
-							<div className="question-wrapper">
-								<div className="question-container">
-									<div className="question-title">
-										<span className="question-number">{question.id}.</span>
-										<span dangerouslySetInnerHTML={{__html: question.name}}></span>
-									</div>
-									{/* use image of size 600*300 */}
-									{(question.image != null) &&
-									<div className="question-image">
-										<img src={question.image} alt="" className="img-fluid" />
-									</div>
 }
-								</div>
-								<div className="answer-container">
-									<div className="row">
-										{question.answers.map((answer, index) => (
-											<div className="col-md-6 col-sm-6">
-												<div
-													className={
-														"answer-wrapper" +
-														" " +
-														(answer.id === active ? "active" : "") +
-														" " +
-														(mistake
-															? answer.id === mistake
-																? "wrong"
-																: ""
-															: "")
-													}
-													onClick={
-														!NextButton ? () => handleChange(answer.id) : ""
-													}
-												>
-													<div className="option-number">{index + 1}</div>
-													<div className="option" dangerouslySetInnerHTML = {{__html: answer.name}}></div>
-													<div className="option-tick">
-														<i className="fa fa-check"></i>
-													</div>
-												</div>
-											</div>
-										))}
-									</div>
-								</div>
-							</div>
-						</div>
-					</>
-				) : (
-					<>
-						<div className="container test-section">
-							<div className="question-wrapper">
-								<div className="question-container">
-									<div className="question-title">
-										<span className="question-number">
-											<Skeleton></Skeleton>
-										</span>
-									</div>
-									{/* <div className="question-image">
-										<Skeleton width="100"></Skeleton>
-									</div> */}
-								</div>
-								<div className="answer-container">
-									<div className="row">
-										{[1, 2, 3, 4].map((val, index) => {
-											return (
-												<div className="col-md-6 col-sm-6">
-													<div className="answer-wrapper">
-														<div className="option-number">{index + 1}</div>
-														<div className="option">
-															<Skeleton></Skeleton>
-														</div>
-														<div className="option-tick">
-															<i className="fa fa-check"></i>
-														</div>
-													</div>
-												</div>
-											);
-										})}
-									</div>
-								</div>
-							</div>
-						</div>
-					</>
-				)}
-			</div>
-			<div className="container">
-				<button
-					className="chapterSubmit"
-					onClick={handleSubmit}
-					disabled={EnableSubmit ? "" : "true"}
-				>
-					Submit
-				</button>
-				{result === true ? (
-					<div className="status alert alert-success">Correct Answer</div>
-				) : result === false ? (
-					<div className="status alert alert-danger">Wrong Answer</div>
-				) : (
-					""
-				)}
-				{NextButton && (
-					<button className="chapterNext" onClick={handleNextQuestion}>
-						{" "}
-						Next!
-					</button>
-				)}
-			</div>
-		</React.Fragment>
-	);
-};
-=======
-}
->>>>>>> 16e9bf58ca1daeea8f617df40b123ce6c726cc7f
 
 export default ChapterQuiz;

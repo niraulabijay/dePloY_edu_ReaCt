@@ -17,7 +17,6 @@ export default function RegisterModal() {
 		document.getElementById("joinLoader").style.display = "block";
 		axios({
 			method: "post",
-<<<<<<< HEAD
 			url: "http://noname.dotnep.com/api/register",
 			data: data,
 		})
@@ -37,25 +36,6 @@ export default function RegisterModal() {
 			.catch((error) => {
 				console.log(error);
 			});
-=======
-			url: "https://noname.dotnep.com/api/register",
-			data: data
-		}).then(response => {
-			if (response.data.status === "success") {
-				setResponse(response.data);
-				console.log(RegisterResponse);
-				$("#join").modal("hide");
-				$("#otp").modal("show");
-				setButtonDisable()
-			}else{
-				document.getElementById("joinLoader").style.display = "none";
-				setRegisterError("Your number is already registered")
-				setButtonDisable()
-			}
-		}).catch(error => {
-			console.log(error)
-		});
->>>>>>> 16e9bf58ca1daeea8f617df40b123ce6c726cc7f
 	};
 
 	return (

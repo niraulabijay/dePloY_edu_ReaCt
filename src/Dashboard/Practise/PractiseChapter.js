@@ -23,11 +23,7 @@ export default function PractiseSubject() {
 	useEffect(() => {
 		axios({
 			method: "get",
-<<<<<<< HEAD
-			url: "http://noname.dotnep.com/api/chapters/" + params.subjectId,
-=======
 			url: "https://noname.dotnep.com/api/chapters/" + params.subjectId,
->>>>>>> 16e9bf58ca1daeea8f617df40b123ce6c726cc7f
 			headers: {
 				Authorization: "bearer" + Authtoken.token
 			},

@@ -10,11 +10,7 @@ const ViewAsset = ({ id }) => {
 	console.log(id);
 	const { Authtoken } = useAuth();
 	const [NoteResponse, setNoteResponse] = useState([]);
-<<<<<<< HEAD
-	let getUrl = "http://noname.dotnep.com/api/note/" + id;
-=======
 	let getUrl = "https://noname.dotnep.com/api/note/"+id;
->>>>>>> 16e9bf58ca1daeea8f617df40b123ce6c726cc7f
 	console.log(NoteResponse.file);
 	useEffect(() => {
 		let source = Axios.CancelToken.source();

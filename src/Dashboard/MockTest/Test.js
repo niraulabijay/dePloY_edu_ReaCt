@@ -35,11 +35,7 @@ export default function Test() {
 		console.log(slug);
 		// axios({
 		//     method: "get",
-<<<<<<< HEAD
 		//     url: "http://noname.dotnep.com/api/test/"+slug+'/'+Authtoken.user_id,
-=======
-		//     url: "https://noname.dotnep.com/api/test/"+slug+'/'+Authtoken.user_id,
->>>>>>> 16e9bf58ca1daeea8f617df40b123ce6c726cc7f
 		//     data: returnTest
 		// }).then(res => {
 		//     console.log(res);

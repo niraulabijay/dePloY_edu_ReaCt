@@ -10,21 +10,12 @@ const ClassSelect = () => {
 	const { StorageToken, Authtoken } = useAuth();
 	let history = useHistory();
 
-<<<<<<< HEAD
 	const handleClassSubmit = (data) => {
 		axios({
 			method: "post",
 			url: "http://noname.dotnep.com/api/store/class",
 			headers: {
 				Authorization: "bearer" + Authtoken.token,
-=======
-    const handleClassSubmit = data => {
-        axios({
-            method: "post",
-            url: "https://noname.dotnep.com/api/store/class",
-            headers: {
-				Authorization: "bearer" + Authtoken.token
->>>>>>> 16e9bf58ca1daeea8f617df40b123ce6c726cc7f
 			},
 			data: {
 				class_id: data,
@@ -50,7 +41,6 @@ const ClassSelect = () => {
 	const [classResponse, setClassResponse] = useState([]);
 	const [PreparationResponse, setPreparationResponse] = useState([]);
 
-<<<<<<< HEAD
 	useEffect(() => {
 		axios({
 			method: "get",
@@ -63,42 +53,6 @@ const ClassSelect = () => {
 			setPreparationResponse(response.data.preparations);
 		});
 	}, []);
-=======
-            }
-        }).then(res => {
-            console.log(res)
-            if (res.data.status === "success") {
-                // const localstor = JSON.parse(localStorage.getItem('tokens'))
-                // localstor.class_id = data
-                // localStorage.setItem('tokens', JSON.stringify(localstor));
-                StorageToken({
-                    name: res.data.name,
-                    user_id: res.data.user_id,
-                    class_id: res.data.class_id,
-                    token: res.data.auth_token
-                });
-            }
-            setLoading(true);
-        });
-    };
-    const [classResponse, setClassResponse] = useState([]);
-    const [PreparationResponse, setPreparationResponse] = useState([]);
-    
-    useEffect(() => {
-        axios({
-            method: 'get',
-            url: "https://noname.dotnep.com/api/classes",
-            headers: {
-                Authorization: "bearer" + Authtoken.token
-            }
-        })
-        
-        .then(response => {
-            setClassResponse(response.data.grades);
-            setPreparationResponse(response.data.preparations);
-        });
-    }, []);
->>>>>>> 16e9bf58ca1daeea8f617df40b123ce6c726cc7f
 
 	useEffect(() => {
 		if (loading) {

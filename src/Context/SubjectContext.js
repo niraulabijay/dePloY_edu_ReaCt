@@ -19,11 +19,7 @@ export const SubjectProvider = props => {
     const [loading, setLoading] = useState(true);
 	const {Authtoken} = useAuth();
 	const {handleClose} = Logout();
-<<<<<<< HEAD
-	let getUrl = "http://noname.dotnep.com/api/subjects/" + Authtoken.class_id;
-=======
 	let getUrl = "https://noname.dotnep.com/api/subjects/" + Authtoken.class_id;
->>>>>>> 16e9bf58ca1daeea8f617df40b123ce6c726cc7f
 	
 
     useEffect(() => {

@@ -17,22 +17,13 @@ const Note = ({ chapterResponse, setLoading, subjectId }) => {
 	const { url, params } = useRouteMatch();
 	const [getUrl, setUrl] = useState("notes/" + Authtoken.user_id);
 
-<<<<<<< HEAD
 	console.log(chapterResponse.subjects);
 	const HandleBookmark = (data) => {
-=======
-	console.log(chapterResponse, 'myResponse');
-	const HandleBookmark = data => {
->>>>>>> 16e9bf58ca1daeea8f617df40b123ce6c726cc7f
 		console.log(data);
 		setLoading(true);
 		axios({
 			method: "post",
-<<<<<<< HEAD
 			url: "http://noname.dotnep.com/api/bookmark/store",
-=======
-			url: "https://noname.dotnep.com/api/bookmark/store",
->>>>>>> 16e9bf58ca1daeea8f617df40b123ce6c726cc7f
 			headers: {
 				Authorization: "bearer" + Authtoken.token,
 			},
