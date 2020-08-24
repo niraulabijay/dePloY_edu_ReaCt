@@ -17,23 +17,24 @@ export default function LoginMobile() {
 		document.getElementById("loginLoader").style.display = "block";
 		axios({
 			method: "post",
-			url: "http://noname.hellonep.com/api/login",
+			url: "https://noname.dotnep.com/api/login",
 			data: data,
 		})
 			.then((response) => {
 				if (response.data.status === "success") {
+					console.log('success')
 					setButtonDisable();
-					document.querySelector(".modal-backdrop").style.display = "none";
-					document.querySelector("body").classList.remove("modal-open");
-
+					// document.querySelector(".modal-backdrop").style.display = "none";
+					// document.querySelector("body").classList.remove("modal-open");
 					StorageToken({
 						name: response.data.name,
 						user_id: response.data.user_id,
 						class_id: response.data.class_id,
 						token: response.data.auth_token,
 					});
+
 					history.replace({
-						pathname: "/learn",
+						pathname: "/learn", 
 					});
 				} else {
 					setButtonDisable();
@@ -47,7 +48,6 @@ export default function LoginMobile() {
 				document.getElementById("loginLoader").style.display = "none";
 			});
 	};
-	console.log(LoginError);
 
 	const history = useHistory();
 	return (

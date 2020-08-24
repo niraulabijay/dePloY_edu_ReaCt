@@ -10,7 +10,7 @@ export default function FrontSyllabus() {
 	const [loading, setLoading] = useState(false);
 	console.log(params);
 	const getUrl =
-		"http://noname.hellonep.com/api/front/syllabus/" + params.subjectSlug;
+		"https://noname.dotnep.com/api/front/syllabus/" + params.subjectSlug;
 	const [getSyllabus, setSyllabus] = useState({});
 	useEffect(() => {
 		Axios.get(getUrl).then(Response => {

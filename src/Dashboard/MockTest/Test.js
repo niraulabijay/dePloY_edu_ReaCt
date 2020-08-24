@@ -35,7 +35,7 @@ export default function Test() {
 		console.log(slug);
 		// axios({
 		//     method: "get",
-		//     url: "http://noname.hellonep.com/api/test/"+slug+'/'+Authtoken.user_id,
+		//     url: "https://noname.dotnep.com/api/test/"+slug+'/'+Authtoken.user_id,
 		//     data: returnTest
 		// }).then(res => {
 		//     console.log(res);

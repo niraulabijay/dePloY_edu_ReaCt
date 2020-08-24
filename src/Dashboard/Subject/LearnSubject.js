@@ -33,7 +33,7 @@ const LearnSubject = () => {
 			headers: {
 				Authorization: "bearer" + JSON.parse(localStorage.getItem('tokens')).token
 			},
-			url: "http://noname.hellonep.com/api/" + getUrl + "/" + params.subjectId,
+			url: "https://noname.dotnep.com/api/" + getUrl + "/" + params.subjectId,
 			timeout: 10000,
 		}).then(response => {
 			if(response.data.status === "Token is Expired" || response.data.status === "Token is Invalid"){

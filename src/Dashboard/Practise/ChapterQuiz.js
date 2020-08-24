@@ -25,7 +25,7 @@ const ChapterQuiz = (props) => {
     useEffect(() => {
         axios({
             method: 'get',
-            url: 'http://noname.hellonep.com/api/practise_by_chapter/'+(params.chapterId),
+            url: 'https://noname.dotnep.com/api/practise_by_chapter/'+(params.chapterId),
             headers: {Authorization : "Bearer"+ Authtoken.token},
             timeout: 10000
         }).then(
@@ -94,7 +94,7 @@ const ChapterQuiz = (props) => {
         setLoading(false);
         axios({
             method: 'post',
-            url: 'http://noname.hellonep.com/api/practise/store',
+            url: 'https://noname.dotnep.com/api/practise/store',
             headers: {Authorization : "Bearer"+ Authtoken.token},
             data: { "data": [
             {

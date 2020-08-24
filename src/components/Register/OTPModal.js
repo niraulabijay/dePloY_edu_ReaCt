@@ -20,7 +20,7 @@ const OTPModal = ({ RegisterResponse }) => {
 		document.getElementById("otpLoader").style.display = "block";
 		axios({
 			method: "post",
-			url: "http://noname.hellonep.com/api/validateotp",
+			url: "https://noname.dotnep.com/api/validateotp",
 			data: values
 		})
 			.then(response => {

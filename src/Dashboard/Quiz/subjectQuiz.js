@@ -18,7 +18,7 @@ export default function SubjectQuiz(props) {
 	const [QuizTime, setQuizTime] = useState();
 	const [logId, setLogId] = useState();
 	const getUrl =
-		"http://noname.hellonep.com/api/test/" +
+		"https://noname.dotnep.com/api/test/" +
 		params.subjectId +
 		"/" +
 		Authtoken.user_id;
@@ -29,13 +29,12 @@ export default function SubjectQuiz(props) {
 	);
 	const [QuestionPosition, setQuestionPosition] = useState(localActive ? JSON.parse(localActive): null);
 
-
 	useEffect(() => {
-		if (params.class_id !== Authtoken.class_id) {
-			history.push({
-				pathname: "/practise"
-			});
-		}
+		// if (params.class_id !== Authtoken.class_id) {
+		// 	history.push({
+		// 		pathname: "/practise"
+		// 	});
+		// }
 		let source = Axios.CancelToken.source();
 	
         const loadData = async () => {
@@ -91,6 +90,7 @@ export default function SubjectQuiz(props) {
 	const [SpecificMark, setSpecificMark] = useState([]);
 
 	function handleChange(Correct, Index, activeId) {
+		setQuestionPosition(JSON.parse(localActive))
 		active.filter(
 			({ ...datas }) =>
 				(active[Index] = {
@@ -117,7 +117,17 @@ export default function SubjectQuiz(props) {
 		};
 		localStorage.setItem("active", JSON.stringify(active));
 		localStorage.setItem("score", JSON.stringify(Score));
-	}
+		
+		// items.map((...datas)=>(
+		// 	items[Index] = <li
+		// 	key={Index}
+		// 	onClick={() => JumpQuestion(Index)}
+		// 	className = "active"
+		// >
+		// 	{Index}
+		// </li>
+		// ))
+	} 
 
 	const markCounter = useMarkCounter(Score);
 
@@ -154,7 +164,7 @@ export default function SubjectQuiz(props) {
 		Axios({
 			method: "post",
 			headers: { Authorization: "bearer" + Authtoken.token },
-			url: "http://noname.hellonep.com/api/test/store",
+			url: "https://noname.dotnep.com/api/test/store",
 			data: {
 				log_id: logId,
 				user_id: Authtoken.user_id,
@@ -185,23 +195,12 @@ export default function SubjectQuiz(props) {
 	const items = [];
     for (let i = 1; i <= quizLength; i++) {
         items.push(
-            <li
-                key={i}
-                onClick={() => JumpQuestion(i)}
-                className={
-                    QuestionPosition != null
-                        ? ((QuestionPosition[i - 1] === null)
-                            ? "wrong"
-                            : "active")
-                        : "wrong"
-                }
-            >
-                {i}
-            </li>
+            i
         );
-    }
-
+	}
+	
 	const JumpQuestion = i => {
+		console.log(active)
 		setCurrentQuestionIndex(i - 1);
 	};
 
@@ -213,7 +212,7 @@ export default function SubjectQuiz(props) {
 			headers: {
 				Authorization: "bearer" + Authtoken.token
 			},
-			url: "http://noname.hellonep.com/api/test/user_quit",
+			url: "https://noname.dotnep.com/api/test/user_quit",
 			data: {
 				log_id: logId
 			}
@@ -241,7 +240,22 @@ export default function SubjectQuiz(props) {
 						<div className="closebtn" onClick={closeQuiz}>
 							&times;
 						</div>
-						<ul>{items}</ul>
+						<ul>
+							{items.map((val,index)=>(
+						<li
+                key={items}
+                onClick={() => JumpQuestion(val)}
+                className={
+                    	active !== "null"
+                        ? ((active[val - 1] == null)
+                            ? "wrong"
+                            : "active")
+                        : "wrong"
+                }>
+							{val}
+							</li>
+							))}
+						</ul>
 					</div>
 					<div className="quiz">
 						<div className="quit-section">

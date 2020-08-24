@@ -17,7 +17,7 @@ export default function RegisterModal() {
 		document.getElementById("joinLoader").style.display = "block";
 		axios({
 			method: "post",
-			url: "http://noname.hellonep.com/api/register",
+			url: "https://noname.dotnep.com/api/register",
 			data: data
 		}).then(response => {
 			if (response.data.status === "success") {

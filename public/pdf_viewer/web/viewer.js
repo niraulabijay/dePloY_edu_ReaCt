@@ -1752,7 +1752,7 @@ var PDFViewerApplication = {
 exports.PDFViewerApplication = PDFViewerApplication;
 var validateFileURL;
 {
-  var HOSTED_VIEWER_ORIGINS = ['null', 'http://mozilla.github.io', 'https://mozilla.github.io','http://localhost:3000', 'http://edu.hellonep.com', 'http://noname.hellonep.com'];
+  var HOSTED_VIEWER_ORIGINS = ['null', 'http://mozilla.github.io', 'https://mozilla.github.io','http://localhost:3000', 'http://edu.hellonep.com', 'https://noname.dotnep.com'];
 
   validateFileURL = function validateFileURL(file) {
     if (file === undefined) {

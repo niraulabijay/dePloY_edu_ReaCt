@@ -1,52 +1,53 @@
- import React, { useState, useEffect } from "react";
+ import React, { useState, useEffect, useContext } from "react";
 import Axios from "axios";
 import { useAuth } from "../../Context/Auth";
 import { useForm } from "react-hook-form";
 import Skeleton from "react-loading-skeleton";
 import AccountDetail from "./AccountDetail";
-
+import { ProfileContext } from "../../Context/ProfileContext";
 export default function Profile() {
 	const { Authtoken } = useAuth();
     const  [reload, setReload] = useState(true);
-	const [UserResponse, setUserResponse] = useState([]);
-	const [loading, setLoading] = useState(true);
+		// const [UserResponse, setUserResponse] = useState([]);
+		// const [loading, setLoading] = useState(true);
+	const {loading, UserResponse, setUserResponse, setUpdate, setLoading} = useContext(ProfileContext);	
 	const { register, handleSubmit } = useForm();
 	const [ProfileImage, setProfileImage] = useState([]);
-	let getUrl = "http://noname.hellonep.com/api/user/" + Authtoken.user_id;
+	let getUrl = "https://noname.dotnep.com/api/user/" + Authtoken.user_id;
 
-	useEffect(() => {
-		let source = Axios.CancelToken.source();
+	// useEffect(() => {
+	// 	let source = Axios.CancelToken.source();
 
-		const loadData = async () => {
-			try {
-				const response = await Axios.get(
-					getUrl,
-					{
-						headers: {
-							Authorization: "bearer" + Authtoken.token
-						}
-					},
-					{
-						cancelToken: source.token
-					}
-				);
-				setUserResponse(response.data.user);
+	// 	const loadData = async () => {
+	// 		try {
+	// 			const response = await Axios.get(
+	// 				getUrl,
+	// 				{
+	// 					headers: {
+	// 						Authorization: "bearer" + Authtoken.token
+	// 					}
+	// 				},
+	// 				{
+	// 					cancelToken: source.token
+	// 				}
+	// 			);
+	// 			setUserResponse(response.data.user);
 
 				
-				setLoading(false);
-			} catch (error) {
-				if (Axios.isCancel(error)) {
-					console.log(error);
-				} else {
-					throw error;
-				}
-			}
-		};
-		loadData();
-		return () => {
-			source.cancel();
-		};
-	}, [getUrl, reload]);
+	// 			setLoading(false);
+	// 		} catch (error) {
+	// 			if (Axios.isCancel(error)) {
+	// 				console.log(error);
+	// 			} else {
+	// 				throw error;
+	// 			}
+	// 		}
+	// 	};
+	// 	loadData();
+	// 	return () => {
+	// 		source.cancel();
+	// 	};
+	// }, [getUrl, reload]);
 
 	const handleUserChange = e =>
 		setUserResponse({
@@ -59,6 +60,7 @@ export default function Profile() {
 	};
 
 	const onSubmit = data => {
+		setLoading(true)
 		const formData = new FormData();
 		formData.append("profile_image", ProfileImage);
 		formData.append("user_id", Authtoken.user_id);
@@ -72,7 +74,7 @@ export default function Profile() {
         setReload(true);
 		Axios({
 			method: "post",
-			url: "http://noname.hellonep.com/api/user/update",
+			url: "https://noname.dotnep.com/api/user/update",
             headers: { "Content-Type": "multipart/form-data" ,
             Authorization: "bearer" + Authtoken.token},
 			data: formData
@@ -80,10 +82,15 @@ export default function Profile() {
 			.then(res => {
                 console.log(res.status + "new");
 				if(res.status == 200){
-                    setReload(false);
+					// setLoading(true)
+					setUpdate({...initialstate => initialstate +1})
+                    setLoading(false);
                 }
 			})
-			.catch(err => console.log(err));
+		.catch(err => {
+			console.log(err)
+			setLoading(false)
+		});
 	};
 	console.log(UserResponse.profile_image);
 

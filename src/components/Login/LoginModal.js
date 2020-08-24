@@ -17,7 +17,7 @@ function LoginModal() {
 		document.getElementById("loginLoader").style.display = "block";
 		axios({
 			method: "post",
-			url: "http://noname.hellonep.com/api/login",
+			url: "https://noname.dotnep.com/api/login",
 			data: data,
 		})
 			.then(response => {

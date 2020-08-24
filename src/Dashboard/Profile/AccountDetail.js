@@ -11,7 +11,7 @@ const AccountDetail = ({ UserResponse }) => {
     const onSubmit = (data) => {
         axios({
             method: 'post',
-            url: 'http://noname.hellonep.com/api/changepassword',
+            url: 'https://noname.dotnep.com/api/changepassword',
             data: data,
             headers: {Authorization: "bearer" + Authtoken.token},
 

@@ -9,19 +9,20 @@ const SubjectResult = () => {
 
 	const location = useLocation()
 	const result = location.state
+	console.log(result)
 
 	console.log(location)
 	console.log(result)
-	useEffect(() => {
+	// useEffect(() => {
 		
-		window.onpopstate = e => {
-			history.replace(place);
-		};
-		if (history.action === "POP") {
-			history.replace(place);
-		}
+	// 	window.onpopstate = e => {
+	// 		history.replace(place);
+	// 	};
+	// 	if (history.action === "POP") {
+	// 		history.replace(place);
+	// 	}
 
-	}, [history]);
+	// }, [history]);
 
 	return (
 		<div className="quiz">
@@ -62,9 +63,9 @@ const SubjectResult = () => {
 									<div
 										className={
 											"answer-wrapper " +
-											(answer.correct === "1" ? "active" : " ") +
+											(answer.correct === 1 ? "active" : " ") +
 											" " +
-											(answer.id === question.selected && answer.correct === "0"
+											(answer.id === question.selected && answer.correct === 0
 												? "wrong"
 												: " ")
 										}

@@ -40,6 +40,7 @@ const PrivateRoute = ({ children, ...rest }) => {
 									path="/:class_id/:subjectId/test"
 									component={SubjectQuiz}
 								/>
+								<Route path="/:class_id/:subjectId/result"> <SubjectResult /></Route>
 								<ProfileProvider>
 								<Dashboard />
 								</ProfileProvider>

@@ -10,7 +10,7 @@ export default function Navbar() {
 	const [classResponse, setClassResponse] = useState();
 	const [preparationResponse, setPreparationResponse] = useState();
 	useEffect(() => {
-		axios.get("http://noname.hellonep.com/api/nav/classes").then(response => {
+		axios.get("https://noname.dotnep.com/api/nav/classes").then(response => {
 			setClassResponse(response.data.grades);
 			setPreparationResponse(response.data.preparations);
 			console.log(response.data.preparations);

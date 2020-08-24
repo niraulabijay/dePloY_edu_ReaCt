@@ -6,7 +6,7 @@ import { useAuth } from "../../../Context/Auth";
 const Modal = ({ id }) => {
 	const [FlashResponse, setFlashResponse] = useState({});
 	console.log(id + "modalid");
-	let getUrl = "http://noname.hellonep.com/api/flashcard/" + id;
+	let getUrl = "https://noname.dotnep.com/api/flashcard/" + id;
 	const {Authtoken} = useAuth();
 	const [FlashError, setFlashError] = useState()
 
