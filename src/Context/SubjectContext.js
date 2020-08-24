@@ -15,10 +15,15 @@ export const SubjectProvider = props => {
 	const [practiseSubject, setPractiseSubject]= useState([]);
 	const [testSub, setTestSubject] = useState([]);
 	const [PractiseResponse, setPractiseResponse] = useState([]);
+	const [practisePercentage, setPractisePercentage] = useState()
     const [loading, setLoading] = useState(true);
 	const {Authtoken} = useAuth();
 	const {handleClose} = Logout();
+<<<<<<< HEAD
 	let getUrl = "http://noname.dotnep.com/api/subjects/" + Authtoken.class_id;
+=======
+	let getUrl = "https://noname.dotnep.com/api/subjects/" + Authtoken.class_id;
+>>>>>>> 16e9bf58ca1daeea8f617df40b123ce6c726cc7f
 	
 
     useEffect(() => {
@@ -46,6 +51,7 @@ export const SubjectProvider = props => {
 				setTestSubject(response.data.test_subjects);
 				setPractiseSubject(response.data.practice_graph_subjects);
 				setPractiseReport(response.data.practice_report);
+				setPractisePercentage(response.data.practise_percentage)
 				setLoading(false);
 				}
 			}catch(error){
@@ -79,7 +85,8 @@ export const SubjectProvider = props => {
 				PractiseResponse:PractiseResponse, 
 				loading:loading,
 				practiseReport:practiseReport,
-				practiseSubject:practiseSubject
+				practiseSubject:practiseSubject,
+				PractisePercentage: practisePercentage
 			}}>
             {props.children}
         </SubjectContext.Provider>

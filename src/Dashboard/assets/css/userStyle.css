@@ -70,7 +70,8 @@ h6 {
 	margin-top: 60px;
 }
 .userSidenav .profile-container .img-container {
-	width: 40%;
+	width: 120px;
+	height: 120px;
 	box-shadow: 0px 0px 5px 4px #5753538f;
 	margin: 0px auto;
 	overflow: hidden;
@@ -278,7 +279,8 @@ h6 {
 		font-size: 16px;
 	}
 	.userSidenav .profile-container .img-container {
-		width: 40%;
+		width: 80px;
+		height: 80px;
 	}
 }
 /*--------------------main-div---------------------------------*/
@@ -1316,9 +1318,7 @@ h6 {
 	.main-content.viewer {
 		padding: 40px 0px 0px 0px;
 	}
-	.userSidenav .active {
-		background: none;
-	}
+	
 }
 @media screen and (max-height: 450px) {
 	.userSidenav {

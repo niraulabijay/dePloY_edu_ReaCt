@@ -14,7 +14,11 @@ const Logout = () => {
     const handleClose = () => {
         Axios({
             method: 'post',
+<<<<<<< HEAD
             url: 'http://noname.dotnep.com/api/logout',
+=======
+            url: 'https://noname.dotnep.com/api/logout',
+>>>>>>> 16e9bf58ca1daeea8f617df40b123ce6c726cc7f
             headers: {Authorization: "Bearer"+ Authtoken.token},
             data: {
                 auth_token: Authtoken.token,
@@ -28,7 +32,7 @@ const Logout = () => {
         localStorage.clear();
         StorageToken(false)
         history.push({
-            pathname:'/'
+            pathname:'/login'
         })
     }
    

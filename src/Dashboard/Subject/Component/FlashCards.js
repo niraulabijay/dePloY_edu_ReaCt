@@ -42,9 +42,9 @@ const FlashCards = ({ FlashcardResponse }) => {
 
 	return (
 		<div className="tab-pane container fade" id="flash">
-			{FlashcardResponse.data && (
+			{FlashcardResponse && (
 				<React.Fragment>
-					{FlashcardResponse.data.map((Flash, index) => (
+					{FlashcardResponse.map((Flash, index) => (
 						<div key={index}>
 							<div className="chapter-title">
 								<span>{index + 1}</span>

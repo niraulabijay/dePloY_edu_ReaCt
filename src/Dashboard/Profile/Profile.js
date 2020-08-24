@@ -1,21 +1,37 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
+=======
+ import React, { useState, useEffect, useContext } from "react";
+>>>>>>> 16e9bf58ca1daeea8f617df40b123ce6c726cc7f
 import Axios from "axios";
 import { useAuth } from "../../Context/Auth";
 import { useForm } from "react-hook-form";
 import Skeleton from "react-loading-skeleton";
-
+import AccountDetail from "./AccountDetail";
+import { ProfileContext } from "../../Context/ProfileContext";
 export default function Profile() {
 	const { Authtoken } = useAuth();
+<<<<<<< HEAD
 	const [reload, setReload] = useState(true);
 	const [UserResponse, setUserResponse] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const { register, handleSubmit } = useForm();
 	const [ProfileImage, setProfileImage] = useState([]);
 	let getUrl = "http://noname.dotnep.com/api/user/" + Authtoken.user_id;
+=======
+    const  [reload, setReload] = useState(true);
+		// const [UserResponse, setUserResponse] = useState([]);
+		// const [loading, setLoading] = useState(true);
+	const {loading, UserResponse, setUserResponse, setUpdate, setLoading} = useContext(ProfileContext);	
+	const { register, handleSubmit } = useForm();
+	const [ProfileImage, setProfileImage] = useState([]);
+	let getUrl = "https://noname.dotnep.com/api/user/" + Authtoken.user_id;
+>>>>>>> 16e9bf58ca1daeea8f617df40b123ce6c726cc7f
 
-	useEffect(() => {
-		let source = Axios.CancelToken.source();
+	// useEffect(() => {
+	// 	let source = Axios.CancelToken.source();
 
+<<<<<<< HEAD
 		const loadData = async () => {
 			try {
 				const response = await Axios.get(
@@ -45,6 +61,38 @@ export default function Profile() {
 			source.cancel();
 		};
 	}, [getUrl, reload]);
+=======
+	// 	const loadData = async () => {
+	// 		try {
+	// 			const response = await Axios.get(
+	// 				getUrl,
+	// 				{
+	// 					headers: {
+	// 						Authorization: "bearer" + Authtoken.token
+	// 					}
+	// 				},
+	// 				{
+	// 					cancelToken: source.token
+	// 				}
+	// 			);
+	// 			setUserResponse(response.data.user);
+
+				
+	// 			setLoading(false);
+	// 		} catch (error) {
+	// 			if (Axios.isCancel(error)) {
+	// 				console.log(error);
+	// 			} else {
+	// 				throw error;
+	// 			}
+	// 		}
+	// 	};
+	// 	loadData();
+	// 	return () => {
+	// 		source.cancel();
+	// 	};
+	// }, [getUrl, reload]);
+>>>>>>> 16e9bf58ca1daeea8f617df40b123ce6c726cc7f
 
 	const handleUserChange = (e) =>
 		setUserResponse({
@@ -56,7 +104,12 @@ export default function Profile() {
 		setProfileImage(e.target.files[0]);
 	};
 
+<<<<<<< HEAD
 	const onSubmit = (data) => {
+=======
+	const onSubmit = data => {
+		setLoading(true)
+>>>>>>> 16e9bf58ca1daeea8f617df40b123ce6c726cc7f
 		const formData = new FormData();
 		formData.append("profile_image", ProfileImage);
 		formData.append("user_id", Authtoken.user_id);
@@ -70,6 +123,7 @@ export default function Profile() {
 		setReload(true);
 		Axios({
 			method: "post",
+<<<<<<< HEAD
 			url: "http://noname.dotnep.com/api/user/update",
 			headers: {
 				"Content-Type": "multipart/form-data",
@@ -84,6 +138,25 @@ export default function Profile() {
 				}
 			})
 			.catch((err) => console.log(err));
+=======
+			url: "https://noname.dotnep.com/api/user/update",
+            headers: { "Content-Type": "multipart/form-data" ,
+            Authorization: "bearer" + Authtoken.token},
+			data: formData
+		})
+			.then(res => {
+                console.log(res.status + "new");
+				if(res.status == 200){
+					// setLoading(true)
+					setUpdate({...initialstate => initialstate +1})
+                    setLoading(false);
+                }
+			})
+		.catch(err => {
+			console.log(err)
+			setLoading(false)
+		});
+>>>>>>> 16e9bf58ca1daeea8f617df40b123ce6c726cc7f
 	};
 	console.log(UserResponse.profile_image);
 
@@ -264,58 +337,7 @@ export default function Profile() {
 						</div>
 					</form>
 				</div>
-				<div className="account-details">
-					<div className="title">Account Details</div>
-					<form>
-						<div className="form-group">
-							<label>Phone Number</label>
-							<input
-								className="form-control"
-								type="number"
-								placeholder={UserResponse.phone}
-								disabled
-								name="phone"
-							/>
-						</div>
-						<div className="form-group">
-							<label>email</label>
-							<input
-								className="form-control"
-								type="email"
-								placeholder={UserResponse.email}
-								disabled
-								name="email"
-							/>
-						</div>
-						<div className="form-group">
-							<label>New Password</label>
-							<input
-								className="form-control"
-								type="password"
-								name="new-password"
-							/>
-						</div>
-						<div className="form-group">
-							<label>Confirm Password</label>
-							<input
-								className="form-control"
-								type="password"
-								name="confirm-password"
-							/>
-						</div>
-						<div className="form-group">
-							<label>Old Password</label>
-							<input
-								className="form-control"
-								type="password"
-								name="old-password"
-							/>
-						</div>
-						<div className="button-container">
-							<input type="submit" value="Update" />
-						</div>
-					</form>
-				</div>
+				<AccountDetail UserResponse={UserResponse} />
 			</div>
 		</React.Fragment>
 	);

@@ -9,9 +9,9 @@ import PractiseWeeklyReport from "./PractiseWeeklyReport";
 
 export default function Practise() {
 	const { Authtoken } = useAuth();
-	const { PractiseResponse, loading , practiseReport, practiseSubject} = useContext(SubjectContext);
+	const { PractiseResponse, loading , practiseReport, practiseSubject, PractisePercentage} = useContext(SubjectContext);
 	let { path, url } = useRouteMatch();
-
+	console.log(PractisePercentage)
 	return (
 		<React.Fragment>
 			<Switch>
@@ -243,11 +243,11 @@ export default function Practise() {
 																<div
 																	className="progress-bar"
 																	style={{
-																		width: "70%"
+																		width: (practise.percentage)+"%"
 																	}}
 																></div>
 															</div>
-															<div className="progress-percent">70%</div>
+															<div className="progress-percent">{practise.percentage}%</div>
 														</div>
 													</div>
 												</Link>
@@ -271,7 +271,7 @@ export default function Practise() {
 									</div>
 									<div className="content-wrapper">
 										<div className="overall-report">
-											92%
+										{PractisePercentage}%
 											<div className="title">Course Completion</div>
 										</div>
 									</div>

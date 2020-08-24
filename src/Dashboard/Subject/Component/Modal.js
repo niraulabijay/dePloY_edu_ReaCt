@@ -6,9 +6,16 @@ import { useAuth } from "../../../Context/Auth";
 const Modal = ({ id }) => {
 	const [FlashResponse, setFlashResponse] = useState({});
 	console.log(id + "modalid");
+<<<<<<< HEAD
 	let getUrl = "http://noname.dotnep.com/api/flashcard/" + id;
 	const { Authtoken } = useAuth();
 	const [FlashError, setFlashError] = useState();
+=======
+	let getUrl = "https://noname.dotnep.com/api/flashcard/" + id;
+	const {Authtoken} = useAuth();
+	const [FlashError, setFlashError] = useState()
+
+>>>>>>> 16e9bf58ca1daeea8f617df40b123ce6c726cc7f
 
 	useEffect(() => {
 		let source = Axios.CancelToken.source();

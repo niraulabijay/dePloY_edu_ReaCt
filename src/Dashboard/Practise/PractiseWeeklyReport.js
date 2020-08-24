@@ -40,7 +40,7 @@ export default function PractiseWeeklyReport({practiseReport, loading, practiseS
 							top: 5,
 							right: 30,
 							left: 20,
-							bottom: 5
+							bottom: 5 
 						}}
 					>
                         <defs>

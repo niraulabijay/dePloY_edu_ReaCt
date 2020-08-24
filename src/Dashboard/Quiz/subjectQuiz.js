@@ -18,7 +18,11 @@ export default function SubjectQuiz(props) {
 	const [QuizTime, setQuizTime] = useState();
 	const [logId, setLogId] = useState();
 	const getUrl =
+<<<<<<< HEAD
 		"http://noname.dotnep.com/api/test/" +
+=======
+		"https://noname.dotnep.com/api/test/" +
+>>>>>>> 16e9bf58ca1daeea8f617df40b123ce6c726cc7f
 		params.subjectId +
 		"/" +
 		Authtoken.user_id;
@@ -27,9 +31,13 @@ export default function SubjectQuiz(props) {
 	const [active, setActive] = useState(
 		localActive ? JSON.parse(localActive) : []
 	);
+<<<<<<< HEAD
 	const [QuestionPosition, setQuestionPosition] = useState(
 		localActive ? JSON.parse(localActive) : null
 	);
+=======
+	const [QuestionPosition, setQuestionPosition] = useState(localActive ? JSON.parse(localActive): null);
+>>>>>>> 16e9bf58ca1daeea8f617df40b123ce6c726cc7f
 
 	useEffect(() => {
 		// if (params.class_id !== Authtoken.class_id) {
@@ -38,6 +46,7 @@ export default function SubjectQuiz(props) {
 		// 	});
 		// }
 		let source = Axios.CancelToken.source();
+<<<<<<< HEAD
 
 		const loadData = async () => {
 			try {
@@ -75,6 +84,44 @@ export default function SubjectQuiz(props) {
 			source.cancel();
 		};
 	}, [getUrl]);
+=======
+	
+        const loadData = async () => {
+            try {
+                const response = await Axios.get(getUrl, {
+                    headers: {Authorization: "bearer" + Authtoken.token },
+                    timeout: 10000,
+                },
+                {
+                    cancelToken: source.token
+				});
+				console.log(response)
+                setGetQuestion(response.data.questions);
+                setQuizTime(parseInt(response.data.time));
+                setLogId(parseInt(response.data.log_id))
+                setQuizLength(response.data.questions.length);
+                if (!localStorage.getItem(  "active")) {
+                    for (let i = 0; i  < response.data.questions.length; i++) {
+                        active.push(null);
+                    }
+                    localStorage.setItem("active", JSON.stringify(active)); 
+                    setActive(active);
+                }
+            } catch (error) {
+                if (Axios.isCancel(error)) {
+                    console.log(error);
+                } else {
+                    throw error;
+                }
+            }
+        };
+		loadData();
+        return () => {
+            source.cancel();
+		};
+	
+    }, [getUrl]);
+>>>>>>> 16e9bf58ca1daeea8f617df40b123ce6c726cc7f
 
 	const allQuestion = questions.length;
 	const localData = localStorage.getItem("initialValue");
@@ -93,6 +140,7 @@ export default function SubjectQuiz(props) {
 	const [SpecificMark, setSpecificMark] = useState([]);
 
 	function handleChange(Correct, Index, activeId) {
+		setQuestionPosition(JSON.parse(localActive))
 		active.filter(
 			({ ...datas }) =>
 				(active[Index] = {
@@ -119,7 +167,17 @@ export default function SubjectQuiz(props) {
 		};
 		localStorage.setItem("active", JSON.stringify(active));
 		localStorage.setItem("score", JSON.stringify(Score));
-	}
+		
+		// items.map((...datas)=>(
+		// 	items[Index] = <li
+		// 	key={Index}
+		// 	onClick={() => JumpQuestion(Index)}
+		// 	className = "active"
+		// >
+		// 	{Index}
+		// </li>
+		// ))
+	} 
 
 	const markCounter = useMarkCounter(Score);
 
@@ -156,7 +214,11 @@ export default function SubjectQuiz(props) {
 		Axios({
 			method: "post",
 			headers: { Authorization: "bearer" + Authtoken.token },
+<<<<<<< HEAD
 			url: "http://noname.dotnep.com/api/test/store",
+=======
+			url: "https://noname.dotnep.com/api/test/store",
+>>>>>>> 16e9bf58ca1daeea8f617df40b123ce6c726cc7f
 			data: {
 				log_id: logId,
 				user_id: Authtoken.user_id,
@@ -164,6 +226,9 @@ export default function SubjectQuiz(props) {
 			},
 		}).then((response) => {
 			if (response.data.status === "success") {
+				console.log(response)
+				console.log(response.data.obtain_marks.obtain_marks)
+				console.log(response.data.obtain_marks.total_marks)
 				setResultResponse(response.data.result);
 				setTestFinish(true);
 			}
@@ -174,19 +239,36 @@ export default function SubjectQuiz(props) {
 		if (testFinish) {
 			localStorage.removeItem("active");
 			localStorage.removeItem("initialValue");
+<<<<<<< HEAD
 			history.push({
 				pathname: url + "/result",
 				state: ResultResponse,
+=======
+			history.replace({
+				pathname:  '/' + Authtoken.class_id + '/' + params.subjectId + "/result",
+				state: ResultResponse
+>>>>>>> 16e9bf58ca1daeea8f617df40b123ce6c726cc7f
 			});
 		}
-	}, [ResultResponse, testFinish]);
+	}, [testFinish]);
 
 	const items = [];
+<<<<<<< HEAD
 	for (let i = 1; i <= quizLength; i++) {
 		items.push(i);
 	}
 
 	const JumpQuestion = (i) => {
+=======
+    for (let i = 1; i <= quizLength; i++) {
+        items.push(
+            i
+        );
+	}
+	
+	const JumpQuestion = i => {
+		console.log(active)
+>>>>>>> 16e9bf58ca1daeea8f617df40b123ce6c726cc7f
 		setCurrentQuestionIndex(i - 1);
 	};
 
@@ -198,7 +280,11 @@ export default function SubjectQuiz(props) {
 			headers: {
 				Authorization: "bearer" + Authtoken.token,
 			},
+<<<<<<< HEAD
 			url: "http://noname.dotnep.com/api/test/user_quit",
+=======
+			url: "https://noname.dotnep.com/api/test/user_quit",
+>>>>>>> 16e9bf58ca1daeea8f617df40b123ce6c726cc7f
 			data: {
 				log_id: logId,
 			},
@@ -217,6 +303,7 @@ export default function SubjectQuiz(props) {
 	return (
 		<React.Fragment>
 			<Switch>
+<<<<<<< HEAD
 				<Route exact path={path}>
 					<div>
 						<span onClick={openQuiz} id="quizOpen">
@@ -225,6 +312,41 @@ export default function SubjectQuiz(props) {
 						<div id="quizSideNav" className="quizsidenav">
 							<div className="closebtn" onClick={closeQuiz}>
 								&times;
+=======
+			<Route exact path={path}>
+				<div>
+					<span onClick={openQuiz} id="quizOpen">
+						<i class="fas fa-th-large"></i>
+					</span>
+					<div id="quizSideNav" className="quizsidenav">
+						<div className="closebtn" onClick={closeQuiz}>
+							&times;
+						</div>
+						<ul>
+							{items.map((val,index)=>(
+						<li
+                key={items}
+                onClick={() => JumpQuestion(val)}
+                className={
+                    	active !== "null"
+                        ? ((active[val - 1] == null)
+                            ? "wrong"
+                            : "active")
+                        : "wrong"
+                }>
+							{val}
+							</li>
+							))}
+						</ul>
+					</div>
+					<div className="quiz">
+						<div className="quit-section">
+							<div className="quit">
+								<a href="" data-toggle="modal" data-target="#quitModal">
+									{" "}
+									<i className="fa fa-stop-circle"></i> Quit
+								</a>
+>>>>>>> 16e9bf58ca1daeea8f617df40b123ce6c726cc7f
 							</div>
 							<ul>
 								{items.map((val, index) => (
@@ -244,6 +366,7 @@ export default function SubjectQuiz(props) {
 								))}
 							</ul>
 						</div>
+<<<<<<< HEAD
 						<div className="quiz">
 							<div className="quit-section">
 								<div className="quit">
@@ -260,6 +383,26 @@ export default function SubjectQuiz(props) {
 											<button
 												type="button"
 												className="close"
+=======
+						<div className="modal" id="finishModal">
+							<div className="modal-dialog">
+								<div className="modal-content">
+									<div className="modal-body">
+										<button
+											type="button"
+											className="close"
+											data-dismiss="modal"
+										>
+											&times;
+										</button>
+										<div className="title">Are you sure you want to submit the quiz?
+										</div>
+										<span style={{ color:'red' }}>Your work will not be reverted.</span>
+
+										<div className="button-container">
+											<a
+												href=""
+>>>>>>> 16e9bf58ca1daeea8f617df40b123ce6c726cc7f
 												data-dismiss="modal"
 											>
 												&times;
@@ -599,9 +742,15 @@ export default function SubjectQuiz(props) {
 				</Route>
 				{/* <Route path="/:class_id/:subjectId/result" component={SubjectResult}	/> */}
 
+<<<<<<< HEAD
 				<Route path={`${path}/result`}>
 					<SubjectResult result={ResultResponse} />
 				</Route>
+=======
+			{/* <Route path={`${path}/result`}>
+				<SubjectResult result={ResultResponse} />
+			</Route> */}
+>>>>>>> 16e9bf58ca1daeea8f617df40b123ce6c726cc7f
 			</Switch>
 		</React.Fragment>
 	);

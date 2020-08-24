@@ -1,9 +1,9 @@
-@import url("https://fonts.googleapis.com/css?family=Righteous|Poppins:400,600&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Righteous|Mukta:400,600&display=swap");
 
 body {
 	margin: 0;
 	padding: 0;
-	font-family: "Poppins", sans-serif;
+	font-family: "Mukta", sans-serif;
 	overflow-x: hidden;
 	overflow-y: scroll;
 }
@@ -360,7 +360,7 @@ body {
 }
 .banner .banner-img img {
 	height: 100%;
-	width: 100%;
+	width: 100% !important;
 }
 
 .banner .title {

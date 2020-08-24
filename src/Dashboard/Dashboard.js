@@ -22,9 +22,11 @@ import { SubjectProvider } from "../Context/SubjectContext";
 import { useAuth } from "../Context/Auth";
 import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 import Logout from "./Logout";
+import Skeleton from "react-loading-skeleton"
 
 import Notification from "./Notification/Notification";
-
+import { ProfileContext } from "../Context/ProfileContext";
+import { useContext } from "react";
 const routes = [
 	{
 		path: "/learn",
@@ -65,6 +67,7 @@ const routes = [
 ];
 
 const Dashboard = () => {
+	const {UserResponse} = useContext(ProfileContext)
 	// const { StorageToken, Authtoken } = useAuth();
 	const { handleClose } = Logout();
 
@@ -193,16 +196,24 @@ const Dashboard = () => {
 						</div>
 					</div>
 					<div className="profile-container">
-						<div className="img-container">
+					<div className="img-container">
+						{UserResponse.length !== "0" ? 
 							<img
-								src={require("./assets/images/testimonial-1.jpg")}
-								alt=""
+								src={
+									
+										UserResponse.profile_image
+										
+								}
 								className="img-fluid"
-							/>
-						</div>
+								alt=""
+							/> 
+						:
+							<Skeleton  height={150} width={150} />
+						}
+					</div>
 					</div>
 					<div className="title-name sideTab" style={{ width: "100%" }}>
-						Hot Babe
+						{UserResponse.name}
 						<div className="grade">| Class 10</div>
 						<NavLink to="/class-select">Change </NavLink>
 					</div>

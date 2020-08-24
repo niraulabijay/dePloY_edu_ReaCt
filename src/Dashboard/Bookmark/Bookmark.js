@@ -20,7 +20,11 @@ export default function Bookmark() {
 	const [err, setErr] = useState();
 
 	let getUrl =
+<<<<<<< HEAD
 		"http://noname.dotnep.com/api/bookmarks/note/" + Authtoken.user_id;
+=======
+		"https://noname.dotnep.com/api/bookmarks/note/" + Authtoken.user_id;
+>>>>>>> 16e9bf58ca1daeea8f617df40b123ce6c726cc7f
 
 	useEffect(() => {
 		let source = Axios.CancelToken.source();
@@ -60,11 +64,19 @@ export default function Bookmark() {
 		console.log(data + "hii");
 		Axios({
 			method: "post",
+<<<<<<< HEAD
 			url: "http://noname.dotnep.com/api/bookmark/store",
 
 			headers: {
 				Authorization: "bearer" + Authtoken.token,
 			},
+=======
+			url: "https://noname.dotnep.com/api/bookmark/store",
+			
+				headers: {
+					Authorization: "bearer" + Authtoken.token
+				},
+>>>>>>> 16e9bf58ca1daeea8f617df40b123ce6c726cc7f
 			data: {
 				note_id: data,
 				class_id: Authtoken.class_id,

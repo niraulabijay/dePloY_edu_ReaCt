@@ -47,7 +47,7 @@ function Banner() {
 						</div>
 						<div className="col-md-5 col-lg-5 col-5">
 							<div className="phone-number">
-								<input type="phone" name="phone number" maxLength="10" />
+								<input type="phone" name="phone"  maxLength="10" />
 							</div>
 						</div>
 						<div className="col-md-4 col-lg-4 col-4">

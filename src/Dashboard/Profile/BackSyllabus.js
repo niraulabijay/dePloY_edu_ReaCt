@@ -9,7 +9,11 @@ export default function BackSyllabus() {
 	const { params } = useRouteMatch();
 	const [loading, setLoading] = useState(false);
 	const getUrl =
+<<<<<<< HEAD
 		"http://noname.dotnep.com/api/front/syllabus/" + params.subjectSlug;
+=======
+		"https://noname.dotnep.com/api/front/syllabus/" + params.subjectSlug;
+>>>>>>> 16e9bf58ca1daeea8f617df40b123ce6c726cc7f
 	const [getSyllabus, setSyllabus] = useState({});
 	useEffect(() => {
 		Axios.get(getUrl).then((Response) => {

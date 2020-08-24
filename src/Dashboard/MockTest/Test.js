@@ -35,7 +35,11 @@ export default function Test() {
 		console.log(slug);
 		// axios({
 		//     method: "get",
+<<<<<<< HEAD
 		//     url: "http://noname.dotnep.com/api/test/"+slug+'/'+Authtoken.user_id,
+=======
+		//     url: "https://noname.dotnep.com/api/test/"+slug+'/'+Authtoken.user_id,
+>>>>>>> 16e9bf58ca1daeea8f617df40b123ce6c726cc7f
 		//     data: returnTest
 		// }).then(res => {
 		//     console.log(res);
@@ -203,19 +207,19 @@ export default function Test() {
 											<div className="test-wrapper">
 												<div className="subWrap">
 													<div className="icon-box">
-														<i className="fa fa-flask"></i>
+														<i className={data.icon}></i>
 													</div>
 													<div className="subject-name pt-2">{data.name}</div>
 												</div>
 												<div className="contentWrap">
 													<div className="time">
-														Time frame: <span> 30 min</span>
+														Time frame: <span> {data.time / 60} minutes</span>
 													</div>
 													<div className="attempt-container">
 														<div className="attempt">
-															Attempt 2{/* Attempt: {attempt} */}
+															Attempt: {data.attempt}
 														</div>
-														<div className="remaining">Remaining 3</div>
+														<div className="remaining">Remaining: {data.remaining}</div>
 													</div>
 
 													<div className="button-container">

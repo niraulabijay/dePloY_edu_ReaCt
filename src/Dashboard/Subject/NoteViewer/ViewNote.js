@@ -31,6 +31,7 @@ export default function ViewNote() {
 			},
 
 			url:
+<<<<<<< HEAD
 				"http://noname.dotnep.com/api/notes/" +
 				Authtoken.user_id +
 				"/" +
@@ -39,6 +40,16 @@ export default function ViewNote() {
 			setChapterNote(response.data);
 			console.log(response.data);
 			console.log("hello");
+=======
+				"https://noname.dotnep.com/api/notes/" +
+				Authtoken.user_id +
+				"/" +
+				params.subjectSlug
+		}).then(response => {
+			setChapterNote(response.data.subjects);
+			console.log(response.data.subjects, 'note');
+			console.log('hello');
+>>>>>>> 16e9bf58ca1daeea8f617df40b123ce6c726cc7f
 		});
 	}, []);
 
@@ -115,7 +126,7 @@ export default function ViewNote() {
 					</div>
 				</div>
 				{chapterNote &&
-					chapterNote.data.map(
+					chapterNote.map(
 						(note, index) =>
 							note.notes &&
 							note.notes[0] && (
