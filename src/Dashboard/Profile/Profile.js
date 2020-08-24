@@ -1,5 +1,4 @@
-
- import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Axios from "axios";
 import { useAuth } from "../../Context/Auth";
 import { useForm } from "react-hook-form";
@@ -8,14 +7,13 @@ import AccountDetail from "./AccountDetail";
 import { ProfileContext } from "../../Context/ProfileContext";
 
 export default function Profile() {
-	
 	const { Authtoken } = useAuth();
 	const [reload, setReload] = useState(true);
 	const [UserResponse, setUserResponse] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const { register, handleSubmit } = useForm();
 	const [ProfileImage, setProfileImage] = useState([]);
-	let getUrl = "http://noname.dotnep.com/api/user/" + Authtoken.user_id;
+	let getUrl = "https://noname.dotnep.com/api/user/" + Authtoken.user_id;
 
 	useEffect(() => {
 		let source = Axios.CancelToken.source();
@@ -74,7 +72,7 @@ export default function Profile() {
 		setReload(true);
 		Axios({
 			method: "post",
-			url: "http://noname.dotnep.com/api/user/update",
+			url: "https://noname.dotnep.com/api/user/update",
 			headers: {
 				"Content-Type": "multipart/form-data",
 				Authorization: "bearer" + Authtoken.token,

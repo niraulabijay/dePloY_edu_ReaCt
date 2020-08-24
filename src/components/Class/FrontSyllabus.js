@@ -10,36 +10,39 @@ export default function FrontSyllabus() {
 	const [loading, setLoading] = useState(false);
 	console.log(params);
 	const getUrl =
-		"http://noname.dotnep.com/api/front/syllabus/" + params.subjectSlug;
+		"https://noname.dotnep.com/api/front/syllabus/" + params.subjectSlug;
 	const [getSyllabus, setSyllabus] = useState({});
 	useEffect(() => {
-		Axios.get(getUrl).then(Response => {
+		Axios.get(getUrl).then((Response) => {
 			setSyllabus(Response.data.data);
 			setLoading(true);
 			console.log(Response.data.data);
 		});
-		return()=>{
+		return () => {
 			setLoading(false);
-		}
+		};
 	}, [getUrl]);
 
 	return (
 		<React.Fragment>
 			<div className="container">
-				{loading?(
+				{loading ? (
 					<React.Fragment>
-<div className="subtitle">{getSyllabus.title}</div>
-				<p dangerouslySetInnerHTML={{ __html: getSyllabus.description }}></p>
+						<div className="subtitle">{getSyllabus.title}</div>
+						<p
+							dangerouslySetInnerHTML={{ __html: getSyllabus.description }}
+						></p>
 					</React.Fragment>
-				):(
+				) : (
 					<React.Fragment>
-						<div className="subtitle"><Skeleton/></div>
-				<p ><Skeleton/></p>
+						<div className="subtitle">
+							<Skeleton />
+						</div>
+						<p>
+							<Skeleton />
+						</p>
 					</React.Fragment>
-				)
-
-				}
-				
+				)}
 			</div>
 		</React.Fragment>
 	);

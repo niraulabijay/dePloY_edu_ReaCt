@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { useForm } from "react-hook-form";
-import {
-	useHistory,
-} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
@@ -14,27 +12,27 @@ const OTPModal = ({ RegisterResponse }) => {
 	const [responseError, setResponseError] = useState();
 
 	let history = useHistory();
-	const onSubmit = values => {
-		setButtonDisable(true)
-		console.log(values)
+	const onSubmit = (values) => {
+		setButtonDisable(true);
+		console.log(values);
 		document.getElementById("otpLoader").style.display = "block";
 		axios({
 			method: "post",
-			url: "http://noname.dotnep.com/api/validateotp",
-			data: values
+			url: "https://noname.dotnep.com/api/validateotp",
+			data: values,
 		})
-			.then(response => {
-				if(response.data.status === "success") {
+			.then((response) => {
+				if (response.data.status === "success") {
 					document.querySelector(".modal-backdrop").style.display = "none";
 					history.push({
 						pathname: "/set-password",
-						state: { detail: response.data }
+						state: { detail: response.data },
 					});
 				} else {
 					setResponseError(response.data.message);
 				}
 			})
-			.catch(error => {
+			.catch((error) => {
 				setError(error);
 			});
 	};
@@ -81,8 +79,8 @@ const OTPModal = ({ RegisterResponse }) => {
 									<div
 										style={{
 											color: "Red",
-											textAlign: "center"
-											, display:'block'
+											textAlign: "center",
+											display: "block",
 										}}
 									>
 										*The OTP provided does not match
@@ -95,7 +93,11 @@ const OTPModal = ({ RegisterResponse }) => {
 									</SkeletonTheme>
 								</div>
 								<div className="button-container">
-									<button className="btn btn-success" type="submit" disabled={buttonDisable ? "true" : ""} >
+									<button
+										className="btn btn-success"
+										type="submit"
+										disabled={buttonDisable ? "true" : ""}
+									>
 										Jump In
 									</button>
 
