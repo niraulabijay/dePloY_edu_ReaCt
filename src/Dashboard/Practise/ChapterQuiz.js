@@ -162,7 +162,9 @@ const ChapterQuiz = (props) => {
 
                         <div className="question-title">
                             <span className="question-number">{question.id}.</span>
-                            {question.name}
+                            <span
+											dangerouslySetInnerHTML={{ __html: question.name }}
+										></span>
                         </div>
                         {/* use image of size 600*300 */}
                         {(question.image !=null) &&
@@ -185,9 +187,10 @@ const ChapterQuiz = (props) => {
 
                                
                                     </div>
-                                    <div className="option" >
-                                        {answer.name}
-                                    </div>
+                                    <div
+														className="option"
+														dangerouslySetInnerHTML={{ __html: answer.name }}
+													></div>
                                     <div className="option-tick">
                                         <i className="fa fa-check"></i>
                                     </div>
@@ -241,14 +244,15 @@ const ChapterQuiz = (props) => {
             </div>
             <div className="container">
             <button  className="chapterSubmit" onClick={handleSubmit} disabled={EnableSubmit ? '' : 'true'}>Submit</button>          
-            {     (result === true) ?
+           
+            {
+                NextButton && <button className="chapterNext" onClick={handleNextQuestion}> Next!</button>
+            }
+             {     (result === true) ?
                 <div className="status alert alert-success">Correct Answer</div>
                 : (result === false) ?
                 <div className="status alert alert-danger">Wrong Answer</div>
                 : ""
-            }
-            {
-                NextButton && <button className="chapterNext" onClick={handleNextQuestion}> Next!</button>
             }
             </div>
                 

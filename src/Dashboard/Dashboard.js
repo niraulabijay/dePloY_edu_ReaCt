@@ -98,7 +98,9 @@ const Dashboard = () => {
 						document.getElementsByClassName("navbar")[0].style.width =
 							"calc(100% - 80px)";
 						document.getElementById("hide").style.display = "none";
-		
+						document.querySelector(".userSidenav .profile-container .img-container").style.height="50px";
+						document.querySelector(".userSidenav .profile-container .img-container").style.width="50px";
+
 						var elems = document.getElementsByClassName("sideTab");
 		
 						for (var i = 0; i < elems.length; i++) {
@@ -149,10 +151,9 @@ const Dashboard = () => {
 							"250px";
 						document.getElementById("hide").style.display = "block";
 						var elems = document.getElementsByClassName("sideTab");
-		
-						// document.getElementsByClassName("title-name")[1].style.display =
-						//     "block";
-		
+						document.querySelector(".userSidenav .profile-container .img-container").style.height="120px";
+						document.querySelector(".userSidenav .profile-container .img-container").style.width="120px";
+
 						setTimeout(function() {
 							for (let i = 0; i < elems.length; i++) {
 								// elems[i].style.display = "inline-block";
@@ -191,7 +192,7 @@ const Dashboard = () => {
 							/>
 						</div>
 						<div className="title-name sideTab">
-							Educate Nepal
+							Vedhayu
 							
 						</div>
 					</div>
@@ -214,8 +215,8 @@ const Dashboard = () => {
 					</div>
 					<div className="title-name sideTab" style={{ width: "100%" }}>
 						{UserResponse.name}
-						<div className="grade">| Class 10</div>
-						<NavLink to="/class-select">Change ></NavLink>
+						<div className="grade"> &nbsp;| Class 10</div>
+						<NavLink to="/class-select">Change Class &nbsp;&gt;</NavLink>
 					</div>
 					<div className="d-sm-block d-none">
 						<NavLink to="/learn" className="test-class" >
@@ -261,7 +262,7 @@ const Dashboard = () => {
 					<hr />
 					
 					<div className="copywrite text-center mt-2">
-						&copy; Copywrite EduNepal
+						 Copyright&copy; Vedhayu
 					</div>
 				</div>
 				<div className="footer-nav">

@@ -60,7 +60,7 @@ function LoginModal() {
 			data-backdrop="static"
 		>
 			<div className="modal-dialog">
-				<div className="modal-content">
+				<div className="modal-content customModal">
 					<button type="button" className="close" data-dismiss="modal">
 						<i className="fa fa-window-close mt-2"></i>
 					</button>

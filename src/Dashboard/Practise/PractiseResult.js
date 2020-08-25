@@ -43,8 +43,10 @@ export default function PractiseResult({result}){
                     <div className="question-container">
 
                         <div className="question-title">
-                            <span className="question-number">{index + 1}.</span>
-                            {question.name}
+                           
+                            <span
+											dangerouslySetInnerHTML={{ __html: question.name }}
+										></span>
                         </div>
                         {(question.selected == null) ? <span style={{ color:'red' }}>The Question Was Not attempted</span>: ''}
                     </div>
@@ -56,9 +58,10 @@ export default function PractiseResult({result}){
                                     <div className="option-number">
                                         A
                                     </div>
-                                    <div className="option" >
-                                        {answer.name} 
-                                    </div>
+                                    <div
+														className="option"
+														dangerouslySetInnerHTML={{ __html: answer.name }}
+													></div>
                                     <div className="option-tick">
                                         <i className="fa fa-check"></i>
                                     </div>

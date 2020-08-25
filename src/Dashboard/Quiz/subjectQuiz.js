@@ -357,8 +357,13 @@ export default function SubjectQuiz(props) {
 											<span className="question-number">
 												{currentQuestionIndex + 1}.
 											</span>
-											{currentQuestion.initialQuestion &&
-												currentQuestion.initialQuestion.name}
+											<span
+													dangerouslySetInnerHTML={{
+														__html:
+															currentQuestion.initialQuestion &&
+															currentQuestion.initialQuestion.name,
+													}}
+												></span>
 										</div>
 									</div>
 									<div className="answer-container">
@@ -386,9 +391,14 @@ export default function SubjectQuiz(props) {
 														}
 													>
 														<div className="option-number">A</div>
-														<div className="option">
-															{currentQuestion.initialQuestion.answers[0].name}
-														</div>
+														<div
+																className="option"
+																dangerouslySetInnerHTML={{
+																	__html:
+																		currentQuestion.initialQuestion.answers[0]
+																			.name,
+																}}
+															></div>
 														<div className="option-tick">
 															<i className="fa fa-check"></i>
 														</div>
@@ -416,9 +426,14 @@ export default function SubjectQuiz(props) {
 														}
 													>
 														<div className="option-number">B</div>
-														<div className="option">
-															{currentQuestion.initialQuestion.answers[1].name}
-														</div>
+														<div
+																className="option"
+																dangerouslySetInnerHTML={{
+																	__html:
+																		currentQuestion.initialQuestion.answers[1]
+																			.name,
+																}}
+															></div>
 														<div className="option-tick">
 															<i className="fa fa-check"></i>
 														</div>
@@ -446,9 +461,14 @@ export default function SubjectQuiz(props) {
 														}
 													>
 														<div className="option-number">C</div>
-														<div className="option">
-															{currentQuestion.initialQuestion.answers[2].name}
-														</div>
+														<div
+																className="option"
+																dangerouslySetInnerHTML={{
+																	__html:
+																		currentQuestion.initialQuestion.answers[2]
+																			.name,
+																}}
+															></div>
 														<div className="option-tick">
 															<i className="fa fa-check"></i>
 														</div>
@@ -476,9 +496,14 @@ export default function SubjectQuiz(props) {
 														}
 													>
 														<div className="option-number">D</div>
-														<div className="option">
-															{currentQuestion.initialQuestion.answers[3].name}
-														</div>
+														<div
+																className="option"
+																dangerouslySetInnerHTML={{
+																	__html:
+																		currentQuestion.initialQuestion.answers[3]
+																			.name,
+																}}
+															></div>
 														<div className="option-tick">
 															<i className="fa fa-check"></i>
 														</div>

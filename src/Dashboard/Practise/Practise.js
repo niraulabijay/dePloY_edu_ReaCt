@@ -9,9 +9,15 @@ import PractiseWeeklyReport from "./PractiseWeeklyReport";
 
 export default function Practise() {
 	const { Authtoken } = useAuth();
-	const { PractiseResponse, loading , practiseReport, practiseSubject, PractisePercentage} = useContext(SubjectContext);
+	const {
+		PractiseResponse,
+		loading,
+		practiseReport,
+		practiseSubject,
+		PractisePercentage,
+	} = useContext(SubjectContext);
 	let { path, url } = useRouteMatch();
-	console.log(PractisePercentage)
+	console.log(PractisePercentage);
 	return (
 		<React.Fragment>
 			<Switch>
@@ -20,212 +26,40 @@ export default function Practise() {
 					<div className="practise-subject">
 						{loading ? (
 							<div className="row">
-								<div className="col-md-3 col-lg-3 col-12">
-									<div className="practise-wrapper">
-										<div className="row">
-											<div className="col-md-3 col-3">
-												<Skeleton height="50px" width="50px" />
-											</div>
-											<div className="col-md-9 col-9">
-												<div className="subject-name">
-													<Skeleton />
+								{[1, 2, 3, 4, 5, 6].map((index) => (
+									<div className="col-md-6 col-lg-4 col-xl-3 col-12">
+										<div className="practise-wrapper">
+											<div className="row">
+												<div className="col-md-3 col-3">
+													<Skeleton height="50px" width="50px" />
 												</div>
-												<div
-													className="progress"
-													style={{
-														marginBottom: "5px"
-													}}
-												>
-													<Skeleton />
-												</div>
-												<div className="progress-percent">
-													<Skeleton />
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div className="col-md-3 col-lg-3 col-12">
-									<div className="practise-wrapper">
-										<div className="row">
-											<div className="col-md-3 col-3">
-												<Skeleton height="50px" width="50px" />
-											</div>
-											<div className="col-md-9 col-9">
-												<div className="subject-name">
-													<Skeleton />
-												</div>
-												<div
-													className="progress"
-													style={{
-														marginBottom: "5px"
-													}}
-												>
-													<Skeleton />
-												</div>
-												<div className="progress-percent">
-													<Skeleton />
+												<div className="col-md-9 col-9">
+													<div className="subject-name">
+														<Skeleton />
+													</div>
+													<div
+														className="progress"
+														style={{
+															marginBottom: "5px",
+														}}
+													>
+														<Skeleton />
+													</div>
+													<div className="progress-percent">
+														<Skeleton />
+													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-								</div>
-								<div className="col-md-3 col-lg-3 col-12">
-									<div className="practise-wrapper">
-										<div className="row">
-											<div className="col-md-3 col-3">
-												<Skeleton height="50px" width="50px" />
-											</div>
-											<div className="col-md-9 col-9">
-												<div className="subject-name">
-													<Skeleton />
-												</div>
-												<div
-													className="progress"
-													style={{
-														marginBottom: "5px"
-													}}
-												>
-													<Skeleton />
-												</div>
-												<div className="progress-percent">
-													<Skeleton />
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div className="col-md-3 col-lg-3 col-12">
-									<div className="practise-wrapper">
-										<div className="row">
-											<div className="col-md-3 col-3">
-												<Skeleton height="50px" width="50px" />
-											</div>
-											<div className="col-md-9 col-9">
-												<div className="subject-name">
-													<Skeleton />
-												</div>
-												<div
-													className="progress"
-													style={{
-														marginBottom: "5px"
-													}}
-												>
-													<Skeleton />
-												</div>
-												<div className="progress-percent">
-													<Skeleton />
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div className="col-md-3 col-lg-3 col-12">
-									<div className="practise-wrapper">
-										<div className="row">
-											<div className="col-md-3 col-3">
-												<Skeleton height="50px" width="50px" />
-											</div>
-											<div className="col-md-9 col-9">
-												<div className="subject-name">
-													<Skeleton />
-												</div>
-												<div
-													className="progress"
-													style={{
-														marginBottom: "5px"
-													}}
-												>
-													<Skeleton />
-												</div>
-												<div className="progress-percent">
-													<Skeleton />
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div className="col-md-3 col-lg-3 col-12">
-									<div className="practise-wrapper">
-										<div className="row">
-											<div className="col-md-3 col-3">
-												<Skeleton height="50px" width="50px" />
-											</div>
-											<div className="col-md-9 col-9">
-												<div className="subject-name">
-													<Skeleton />
-												</div>
-												<div
-													className="progress"
-													style={{
-														marginBottom: "5px"
-													}}
-												>
-													<Skeleton />
-												</div>
-												<div className="progress-percent">
-													<Skeleton />
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div className="col-md-3 col-lg-3 col-12">
-									<div className="practise-wrapper">
-										<div className="row">
-											<div className="col-md-3 col-3">
-												<Skeleton height="50px" width="50px" />
-											</div>
-											<div className="col-md-9 col-9">
-												<div className="subject-name">
-													<Skeleton />
-												</div>
-												<div
-													className="progress"
-													style={{
-														marginBottom: "5px"
-													}}
-												>
-													<Skeleton />
-												</div>
-												<div className="progress-percent">
-													<Skeleton />
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div className="col-md-3 col-lg-3 col-12">
-									<div className="practise-wrapper">
-										<div className="row">
-											<div className="col-md-3 col-3">
-												<Skeleton height="50px" width="50px" />
-											</div>
-											<div className="col-md-9 col-9">
-												<div className="subject-name">
-													<Skeleton />
-												</div>
-												<div
-													className="progress"
-													style={{
-														marginBottom: "5px"
-													}}
-												>
-													<Skeleton />
-												</div>
-												<div className="progress-percent">
-													<Skeleton />
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+								))}
+
 							</div>
 						) : (
 							<React.Fragment>
 								<div className="row">
 									{PractiseResponse.map((practise, index) => (
-										<div className="col-md-3 col-lg-3 col-12" key={index}>
+										<div className="col-md-6 col-lg-4 col-xl-3 col-12" key={index}>
 											<div className="practise-wrapper">
 												<Link to={`${url}/` + practise.slug}>
 													<div className="row">
@@ -243,11 +77,13 @@ export default function Practise() {
 																<div
 																	className="progress-bar"
 																	style={{
-																		width: (practise.percentage)+"%"
+																		width: practise.percentage + "%",
 																	}}
 																></div>
 															</div>
-															<div className="progress-percent">{practise.percentage}%</div>
+															<div className="progress-percent">
+																{practise.percentage}%
+															</div>
 														</div>
 													</div>
 												</Link>
@@ -262,8 +98,8 @@ export default function Practise() {
 					<div className="sub-title">Your practise Report</div>
 					<div className="practise-report">
 						<div className="row">
-							<div className="col-md-4 col-lg-4 col-12">
-								<div className="report-wrapper ">
+							<div className="col-md-12 col-lg-4 col-12">
+								<div className="report-wrapper overall-wrapper">
 									<div className="title d-flex justify-content-center">
 										<div className="title-wrapper">
 											<strong>Overall Report</strong>
@@ -271,7 +107,7 @@ export default function Practise() {
 									</div>
 									<div className="content-wrapper">
 										<div className="overall-report">
-										{PractisePercentage}%
+											{PractisePercentage}%
 											<div className="title">Course Completion</div>
 										</div>
 									</div>
@@ -305,12 +141,15 @@ export default function Practise() {
 									</div>
 								</div>
 							</div>
-							<div className="col-md-8 col-lg-8 col-12">
+							<div className="col-md-12 col-lg-8 col-12">
 								{console.log(practiseReport)}
-							{practiseReport.length > 0 &&
-							
-								<PractiseWeeklyReport  practiseReport={practiseReport} loading={loading} practiseSubject={practiseSubject}/>
-							}
+								{practiseReport.length > 0 && (
+									<PractiseWeeklyReport
+										practiseReport={practiseReport}
+										loading={loading}
+										practiseSubject={practiseSubject}
+									/>
+								)}
 							</div>
 							{/* <div className="col-md-4 col-lg-4 col-12">
 								<div className="report-wrapper ">

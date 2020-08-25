@@ -70,7 +70,8 @@ export default function Test() {
 					<div className="test-subject">
 						{loading ? (
 							<div className="row">
-								<div className="col-md-3 col-lg-3 col-12">
+							{[1,2,3,4].map(index=>
+									<div className="col-md-6 col-lg-4 col-xl-3 col-12" key={index}>
 									<div className="test-wrapper">
 										<div className="subWrap">
 											<div className="icon-box">
@@ -101,105 +102,14 @@ export default function Test() {
 										</div>
 									</div>
 								</div>
-								<div className="col-md-3 col-lg-3 col-12">
-									<div className="test-wrapper">
-										<div className="subWrap">
-											<div className="icon-box">
-												<Skeleton circle="true" width="50px" height="50px" />
-											</div>
-											<div className="subject-name pt-2">
-												<Skeleton />
-											</div>
-										</div>
-										<div className="contentWrap">
-											<div className="time">
-												<Skeleton />
-											</div>
-											<div className="attempt-container">
-												<div className="attempt">
-													<Skeleton />
-												</div>
-												<div className="remaining">
-													<Skeleton />
-												</div>
-											</div>
-											<div className="button-container">
-												<Skeleton />
-											</div>
-											<div className="progress">
-												<Skeleton />
-											</div>
-										</div>
-									</div>
-								</div>
-								<div className="col-md-3 col-lg-3 col-12">
-									<div className="test-wrapper">
-										<div className="subWrap">
-											<div className="icon-box">
-												<Skeleton circle="true" width="50px" height="50px" />
-											</div>
-											<div className="subject-name pt-2">
-												<Skeleton />
-											</div>
-										</div>
-										<div className="contentWrap">
-											<div className="time">
-												<Skeleton />
-											</div>
-											<div className="attempt-container">
-												<div className="attempt">
-													<Skeleton />
-												</div>
-												<div className="remaining">
-													<Skeleton />
-												</div>
-											</div>
-											<div className="button-container">
-												<Skeleton />
-											</div>
-											<div className="progress">
-												<Skeleton />
-											</div>
-										</div>
-									</div>
-								</div>
-								<div className="col-md-3 col-lg-3 col-12">
-									<div className="test-wrapper">
-										<div className="subWrap">
-											<div className="icon-box">
-												<Skeleton circle="true" width="50px" height="50px" />
-											</div>
-											<div className="subject-name pt-2">
-												<Skeleton />
-											</div>
-										</div>
-										<div className="contentWrap">
-											<div className="time">
-												<Skeleton />
-											</div>
-											<div className="attempt-container">
-												<div className="attempt">
-													<Skeleton />
-												</div>
-												<div className="remaining">
-													<Skeleton />
-												</div>
-											</div>
-											<div className="button-container">
-												<Skeleton />
-											</div>
-											<div className="progress">
-												<Skeleton />
-											</div>
-										</div>
-									</div>
-								</div>
+							
+								)}
 							</div>
 						) : (
 							<div className="row">
 								{testSub.map((data, index) => {
 									return (
-										<div className="col-md-3 col-lg-3 testrow" key={index}>
+										<div className="col-md-6 col-lg-4 col-xl-3 col-12 testrow" key={index}>
 											<div className="test-wrapper">
 												<div className="subWrap">
 													<div className="icon-box">
@@ -293,8 +203,8 @@ export default function Test() {
 					<div className="sub-title">Your practise Report</div>
 					<div className="practise-report">
 						<div className="row">
-							<div className="col-md-4 col-lg-4 col-12">
-								<div className="report-wrapper ">
+							<div className=" col-md-12 col-lg-4 col-12">
+								<div className="report-wrapper overall-wrapper">
 									<div className="title d-flex justify-content-center">
 										<div className="title-wrapper">
 											<strong>Overall Report</strong>
@@ -336,7 +246,7 @@ export default function Test() {
 									</div>
 								</div>
 							</div>
-							<div className="col-md-8 col-lg-8 col-12">
+							<div className="col-md-12  col-lg-8 col-12">
 								<div className="title-wrapper text-center">
 									<strong>Weekly Report</strong>
 									<br />

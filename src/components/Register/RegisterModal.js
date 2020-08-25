@@ -45,7 +45,7 @@ export default function RegisterModal() {
 				data-backdrop="static"
 			>
 				<div className="modal-dialog">
-					<div className="modal-content">
+					<div className="modal-content customModal">
 						{/* <!-- Modal body --> */}
 						<button type="button" className="close" data-dismiss="modal">
 							<i className="fa fa-window-close mt-2"></i>

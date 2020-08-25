@@ -95,7 +95,7 @@ export default function Navbar() {
 				<div className="button-container">
 					<div className="join-now">
 						<a href="" data-toggle="modal" data-target="#join">
-							Join Now
+							Join 
 						</a>
 					</div>
 					<div className="login">

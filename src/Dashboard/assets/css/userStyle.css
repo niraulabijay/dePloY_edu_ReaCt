@@ -71,11 +71,11 @@ h6 {
 }
 .userSidenav .profile-container .img-container {
 	width: 120px;
+    box-shadow: 0px 0px 5px 4px #5753538f;
 	height: 120px;
-	box-shadow: 0px 0px 5px 4px #5753538f;
-	margin: 0px auto;
-	overflow: hidden;
-	border-radius: 50%;
+    margin: 0px auto;
+    overflow: hidden;
+    border-radius: 50%;
 }
 
 .userSidenav .title-name {
@@ -270,17 +270,20 @@ h6 {
 	}
 	.footer-nav .active {
 		color: #019456;
+		margin-top: -8px;
+		border-bottom: 2px solid #019456;
+		transition: all 0.5s ease-in;
 	}
 	.footer-nav a span {
-		font-size: 14px;
+		font-size: 12px;
 		font-weight: normal;
 	}
 	.userSidenav .title-name {
 		font-size: 16px;
 	}
 	.userSidenav .profile-container .img-container {
-		width: 80px;
-		height: 80px;
+		width: 100px;
+		height: 100px;
 	}
 }
 /*--------------------main-div---------------------------------*/
@@ -380,7 +383,7 @@ h6 {
 }
 .main-title {
 	text-align: center;
-	font-size: 36px;
+	font-size: 30px;
 	color: #009170;
 	font-family: "Lato", sans-serif;
 	letter-spacing: 1px;
@@ -473,7 +476,7 @@ h6 {
 	padding: 10px 5px;
 	border-radius: 5px;
 	background: #fff;
-	box-shadow: 0px 0px 5px 1px #ebe9e9;
+	box-shadow: 0px 5px 10px #d4f1e6;
 }
 .practise-subject .practise-wrapper a {
 	text-decoration: none;
@@ -482,23 +485,24 @@ h6 {
 
 .practise-subject .practise-wrapper .icon-box {
 	display: inline-block;
-	height: 50px;
-	margin-left: 5px;
-	padding: 5px 10px;
-	font-size: 30px;
-	color: #ffffff;
-	border-radius: 5px;
-	background: #27cd81;
+    line-height: 40px;
+    margin-left: 5px;
+    padding: 5px 10px;
+    font-size: 26px;
+    color: #ffffff;
+    border-radius: 5px;
+    background: #27cd81;
 }
 .practise-subject .practise-wrapper .subject-name {
 	margin-bottom: 5px;
+	font-size: 14px;
 }
 .practise-subject .practise-wrapper .subject-name i {
 	margin-right: 5px;
 	color: #32c24d;
 }
 .practise-subject .practise-wrapper:hover .subject-name i {
-	margin-left: 40%;
+	margin-left: 30%;
 	transition: margin-left 0.4s linear;
 }
 .practise-subject .practise-wrapper .progress {
@@ -513,17 +517,25 @@ h6 {
 }
 
 .practise-report {
-	padding: 15px 60px;
+	padding: 15px 60px 45px 60px;
 }
 .practise-report .report-wrapper {
 	background: #fff;
 	padding: 10px;
 	border-radius: 5px;
-	margin-top: 10px;
+	margin-top: 45px;
 	box-shadow: -5px -5px 15px #fff, 5px 5px 15px #eaeaea;
 }
+.practise-report .title-wrapper{
+	margin-top: 30px;
+}
+.practise-report .overall-wrapper{
+	margin-top: 50px;
+    padding: 60px 15px;
+
+}
 .practise-report .report-wrapper .content-wrapper .overall-report {
-	font-size: 120px;
+	font-size: 80px;
 	color: #00ce6f;
 	text-shadow: 1px 4px 5px #716e6e;
 	text-align: center;
@@ -574,10 +586,14 @@ h6 {
 		padding: 8px 15px;
 		margin-left: 10px;
 	}
+	.practise-report .overall-wrapper {
+		margin-top: 15px;
+		padding: 30px 15px;
+	}
 }
 /* -test-front page */
 .test-subject {
-	padding: 90px 60px 30px 60px;
+	padding: 60px 60px 30px 60px;
 }
 .test-subject .test-wrapper {
 	margin: 60px auto;
@@ -634,13 +650,14 @@ h6 {
 	font-size: 12px;
 }
 .test-subject .test-wrapper .time {
-	color: #505050;
-
-	text-align: center;
+	color: #696868;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
 }
 .test-subject .test-wrapper .attempt-container {
 	padding: 10px;
-	font-size: 14px;
+	font-size: 13px;
 	display: flex;
 	justify-content: space-between;
 	color: #585858;
@@ -668,6 +685,7 @@ h6 {
 	text-decoration: none;
 	color: #ffffff;
 	border-radius: 50px;
+	font-size: 14px;
 }
 .test-report {
 	padding: 15px 60px;
@@ -722,6 +740,7 @@ h6 {
 	}
 	.test-subject {
 		padding: 45px;
+		padding-bottom: 0px;
 	}
 	.test-subject .test-wrapper {
 		padding: 80px 15px 15px 15px;
@@ -737,10 +756,10 @@ h6 {
 	}
 	.test-subject .test-wrapper .subject-name {
 		margin-bottom: 0;
-		font-size: 20px;
+		font-size: 18px;
 	}
 	.test-subject .test-wrapper .attempt-container {
-		font-size: 18px;
+		font-size: 14px;
 	}
 }
 /*---------------------test-section--------------*/
@@ -842,16 +861,20 @@ h6 {
 	box-shadow: 0px 0px 5px 1px #d8d3d3;
 	border-radius: 5px;
 	color: #25cb83;
-	font-size: 46px;
+	font-size: 30px;
 }
 .subject-navbar .title-box {
 	display: inline-block;
-	padding-left: 20px;
+	padding-left: 15px;
 }
 .subject-navbar .title-box h2 {
 	line-height: 1;
 	margin-top: 5px;
 	margin-bottom: 0px;
+	font-size: 26px;
+}
+.subject-navbar .title-box .chapter-number{
+	font-size: 14px;
 }
 .subject-navbar .nav {
 	margin-top: 15px;
@@ -924,7 +947,7 @@ h6 {
 }
 @media screen and (max-width: 768px) {
 	.subject-navbar .icon-box {
-		font-size: 36px;
+		font-size: 30px;
 		padding: 5px 15px 0px 15px;
 	}
 	.subject-navbar {
@@ -1318,7 +1341,9 @@ h6 {
 	.main-content.viewer {
 		padding: 40px 0px 0px 0px;
 	}
-	
+	.userSidenav .active {
+		background: none;
+	}
 }
 @media screen and (max-height: 450px) {
 	.userSidenav {
@@ -1396,6 +1421,17 @@ h6 {
 @media screen and (max-width: 768px) {
 	.practiseSubject {
 		padding: 30px 0px;
+	}
+	.practiseSubject .practiseSubjectWrapper .chapter-name{
+		font-size: 16px;
+	}
+
+	.practiseSubject .practiseSubjectWrapper .button-container{
+		padding-top: 0px;
+	}
+	.practiseSubject .practiseSubjectWrapper .button-container a{
+		font-size: 14px;
+		padding: 5px 10px;
 	}
 }
 /* testsubject page */
@@ -1582,7 +1618,7 @@ h6 {
 	margin-bottom: 15px;
 }
 .doubts-container .questionary-container .questionary-wrapper .question {
-	font-size: 18px;
+	font-size: 16px;
 	color: #000;
 	margin-bottom: 15px;
 	margin-top: 15px;
@@ -1594,7 +1630,7 @@ h6 {
 	margin-left: 15px;
 }
 .doubts-container .questionary-container .questionary-wrapper .answer {
-	font-size: 14px;
+	font-size: 12px;
 	color: gray;
 	margin-left: 30px;
 }
@@ -1834,6 +1870,7 @@ h6 {
 .chapterNext {
 	border: none;
 	padding: 10px 30px;
+cursor: pointer;
 	margin: 0 auto;
 	display: block;
 	border-radius: 5px;
@@ -1891,9 +1928,10 @@ h6 {
 	margin-bottom: 15px;
 	border-radius: 5px;
 	box-shadow: 0px 5px 15px -5px lightgrey;
+	font-size: 14px;
 }
 .notificationWrapper .notification-item .date {
-	font-size: 14px;
+	font-size: 12px;
 	color: gray;
 }
 

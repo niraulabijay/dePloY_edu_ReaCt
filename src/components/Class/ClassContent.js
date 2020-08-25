@@ -22,10 +22,11 @@ export default function Classcontent() {
 		<div className="class-section">
 			<div className="syllabus-section">
 				<div className="container">
-					<div className="title">Syllabus For {params.classSlug}</div>
+				
 					<div className="content">
 						<div className="row">
                             <div className="col-md-3 col-12">
+							<div className="title">Syllabus For {params.classSlug}</div>
                                 <div className="row">
                             {subjectCollection &&
 								subjectCollection.map((subject) => (

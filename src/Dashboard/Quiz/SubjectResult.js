@@ -4,17 +4,17 @@ import { useHistory, Link, useLocation } from "react-router-dom";
 const SubjectResult = () => {
 	const history = useHistory();
 	const place = {
-		pathname: "/test"
+		pathname: "/test",
 	};
 
-	const location = useLocation()
-	const result = location.state
-	console.log(result)
+	const location = useLocation();
+	const result = location.state;
+	console.log(result);
 
-	console.log(location)
-	console.log(result)
+	console.log(location);
+	console.log(result);
 	// useEffect(() => {
-		
+
 	// 	window.onpopstate = e => {
 	// 		history.replace(place);
 	// 	};
@@ -36,7 +36,7 @@ const SubjectResult = () => {
 					className="navbar navbar-expand-sm"
 					style={{
 						background: "linear-gradient(45deg, #0be788, #09d6af)",
-						boxShadow: "0px 2px 4px #a1a4a4"
+						boxShadow: "0px 2px 4px #a1a4a4",
 					}}
 				></nav>
 				{/* <DisplayMark fullMark={allQuestion} total={myTotal} /> */}
@@ -46,10 +46,16 @@ const SubjectResult = () => {
 					<div className="question-container">
 						<div className="question-title">
 							<span className="question-number">{index + 1}.</span>
-							{question.name}
+							<span
+								dangerouslySetInnerHTML={{
+									__html: question.name,
+								}}
+							></span>
 						</div>
 						{question.selected == null ? (
-							<span style={{ color: "red" }}>
+							<span
+								style={{ color: "red", textAlign: "center", display: "block" }}
+							>
 								The Question Was Not attempted
 							</span>
 						) : (
@@ -70,8 +76,13 @@ const SubjectResult = () => {
 												: " ")
 										}
 									>
-										<div className="option-number">A</div>
-										<div className="option">{answer.name}</div>
+										<div className="option-number">{index + 1}</div>
+										<div
+											className="option"
+											dangerouslySetInnerHTML={{
+												__html: answer.name,
+											}}
+										></div>
 										<div className="option-tick">
 											<i className="fa fa-check"></i>
 										</div>

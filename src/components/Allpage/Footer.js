@@ -85,7 +85,7 @@ function Footer(){
             </div>
         </div>
         <div className="buttom-footer"> 
-                <p> &copy; Copyright 2020 EducateNepal. Designed and Owned By EducateNepal. </p>
+                <p> &copy; Copyright 2020 Vedhayu. </p>
         </div>
     </div>
         
