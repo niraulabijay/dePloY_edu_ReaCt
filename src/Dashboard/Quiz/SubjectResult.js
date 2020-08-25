@@ -41,7 +41,8 @@ const SubjectResult = ({ result }) => {
 							<span dangerouslySetInnerHTML={{ __html:question.name }}></span>
 						</div>
 						{question.selected == null ? (
-							<span style={{ color: "red" }}>
+							<span style={{ color: "red",textAlign: "center",
+							display: "block" }}>
 								The Question Was Not attempted
 							</span>
 						) : (

@@ -1312,11 +1312,11 @@ body {
 	box-shadow: 1px 2px 5px 1px #a09f9f;
 }
 .answer-container .wrong .option-wrong {
-	display: block;
-	margin: 5px auto 4px auto;
-	background: white;
-	padding: 10px;
-	border-radius: 30px;
+	display: inherit;
+    margin: 5px auto 4px auto;
+    background: white;
+    padding: 10px;
+    border-radius: 30px;
 	box-shadow: 1px 2px 5px 1px #a09f9f;
 }
 .progress-container {

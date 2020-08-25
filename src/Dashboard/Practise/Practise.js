@@ -225,7 +225,7 @@ export default function Practise() {
 							<React.Fragment>
 								<div className="row">
 									{PractiseResponse.map((practise, index) => (
-										<div className="col-md-3 col-lg-3 col-12" key={index}>
+										<div className="col-md-6 col-lg-4 col-12" key={index}>
 											<div className="practise-wrapper">
 												<Link to={`${url}/` + practise.slug}>
 													<div className="row">
