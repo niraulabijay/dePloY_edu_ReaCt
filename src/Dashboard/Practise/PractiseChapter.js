@@ -77,9 +77,9 @@ export default function PractiseSubject() {
 												></div>
 											</div>
 											<div className="progress-percent">{practise.percentage}%</div>
-											<div className="level">
+											{/* <div className="level">
 												Level <span> 1/10</span>
-											</div>
+											</div> */}
 										</div>
 										<div className="col-md-6">
 											<div className="button-container">

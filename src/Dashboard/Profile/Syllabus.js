@@ -46,11 +46,10 @@ export default function Syllabus() {
 	return (
 		<React.Fragment>
 			<div className="user-syllabus">
-				<div className="title">Syllabus</div>
-
+			
 				<div className="subject-wrapper">
 					<div className="row">
-						<div className="col-md-3 subject-list">
+						<div className="col-md-6 col-lg-4 col-xl-3 col-12  subject-list mt-3">
 							<h2>Class 10 Syllabus</h2>
 							<ul className="nav">
 								{loading ? (
@@ -68,7 +67,7 @@ export default function Syllabus() {
 								)}
 							</ul>
 						</div>
-						<div className="col-md-9">
+						<div className="col-md-12 col-lg-8 col-xl-9 col-12 mt-3">
 							<div className="syllabusContainer container">
 								<Switch>
 									<Route exact path={path}>

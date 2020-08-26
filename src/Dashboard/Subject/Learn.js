@@ -11,6 +11,7 @@ import { useAuth } from "../../Context/Auth";
 import Skeleton from "react-loading-skeleton";
 import "../assets/css/userStyle.css";
 import { SubjectContext } from "../../Context/SubjectContext";
+import CenterAlert from "../../components/Alert/CenterAlert";
 
 export default function Learn() {
 	let { path, url } = useRouteMatch();

@@ -1106,7 +1106,7 @@ body {
 }
 #finishModal .title {
 	margin-top: 30px;
-	font-size: 30px;
+	font-size: 26px;
 	color: #777d79;
 }
 #finishModal .button-container {
@@ -1120,13 +1120,13 @@ body {
 	border-radius: 5px;
 	background: #09d6af;
 	margin: 0px 15px;
-	padding: 10px 30px;
+	padding: 8px 30px;
 }
 
 #finishModal .button-container .no {
 	background: #ff8888;
 	margin: 0px 15px;
-	padding: 10px 30px;
+	padding: 8px 30px;
 	border-radius: 5px;
 }
 /* logout modal */
@@ -1261,6 +1261,7 @@ body {
 	cursor: pointer;
 	margin-top: 5px;
 	margin-bottom: 20px;
+	align-items: center;
 	box-shadow: inset 3px 2px 6px 0px #b6acac;
 }
 .quiz .question .answer-wrapper:hover {
@@ -1278,17 +1279,19 @@ body {
 }
 .quiz .option-number {
 	font-weight: bold;
-	text-transform: uppercase;
-	padding: 5px 15px;
-	margin-left: 15px;
-	color: slategray;
-	box-shadow: 1px 1px 5px 0px #00503263;
-	border-radius: 50%;
-	font-size: 22px;
+    text-transform: uppercase;
+    margin-left: 15px;
+    color: slategray;
+    box-shadow: 1px 1px 5px 0px #00503263;
+    border-radius: 50%;
+    font-size: 22px;
+    height: 40px;
+    width: 40px;
+    padding: 4px 0px;
+    text-align: center;
 }
 .quiz .option {
 	flex: 1;
-	padding-top: 10px;
 	margin-left: 10px;
 	font-size: 18px;
 	color: #454545;
@@ -1331,12 +1334,13 @@ body {
 }
 .quiz .question .answer-wrapper:hover .option-tick,
 .answer-container .active .option-tick {
-	display: inherit;
-	margin: 5px auto 4px auto;
-	background: white;
-	padding: 10px;
-	border-radius: 30px;
-	box-shadow: 1px 2px 5px 1px #a09f9f;
+    background: white;
+    border-radius: 30px;
+    box-shadow: 1px 2px 5px 1px #a09f9f;
+    height: 40px;
+    width: 40px;
+    display: block;
+    text-align: center;
 }
 .answer-container .wrong .option-wrong {
 	display: inherit;
@@ -1488,6 +1492,20 @@ body {
 	}
 	.quiz .option-number {
 		font-size: 16px;
+		height: 30px;
+		width: 30px;
+	}
+	.quiz .question .answer-wrapper:hover .option-number, .answer-container .active .option-number{
+		font-size: 16px;
+	}
+	.quiz .question .answer-wrapper:hover .option-tick, .answer-container .active .option-tick{
+		height: 30px;
+		width: 30px;
+		padding-top: 5px;
+	}
+	.answer-container .wrong .option-number{
+		font-size: 16px;
+		padding: 5px 10px;
 	}
 	.quiz .option {
 		font-size: 14px;

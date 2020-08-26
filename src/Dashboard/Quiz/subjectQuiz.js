@@ -5,12 +5,13 @@ import { useAuth } from "../../Context/Auth";
 import Timer from "./Timer";
 import SubjectResult from "./SubjectResult";
 import Skeleton from "react-loading-skeleton";
+import CenterAlert from "../../components/Alert/CenterAlert";
 
 export default function SubjectQuiz(props) {
 	let { path, url, params } = useRouteMatch();
 	console.log(params);
 	let { Authtoken } = useAuth();
-
+	const [handleAlert,setHandleAlert] = useState(false);
 	const [questions, setGetQuestion] = useState([]);
 	const [quizLength, setQuizLength] = useState(0);
 	const [ResultResponse, setResultResponse] = useState([]);
@@ -152,6 +153,7 @@ export default function SubjectQuiz(props) {
 	}
 
 	const submitPractise = () => {
+		setHandleAlert(true);
 		const PractiseData = JSON.parse(localStorage.getItem("active"));
 		PractiseData.filter(({ ...datas }, index) => {
 			if (PractiseData[index] == null) {
@@ -177,6 +179,7 @@ export default function SubjectQuiz(props) {
 				console.log(response.data.obtain_marks.total_marks)
 				setResultResponse(response.data.result);
 				setTestFinish(true);
+				setHandleAlert(false);
 			}
 		});
 	};
@@ -203,7 +206,7 @@ export default function SubjectQuiz(props) {
 		console.log(active)
 		setCurrentQuestionIndex(i - 1);
 	};
-
+	
 	const handleQuit = e => {
 		e.preventDefault();
 		console.log(logId);
@@ -604,7 +607,11 @@ export default function SubjectQuiz(props) {
                             ></div>
                         </div>
                     </div>
+					{
+					handleAlert ? <CenterAlert message="Submitting ..."/> : ""
+				}
                 </div>
+				
             </Route>
             {/* <Route path="/:class_id/:subjectId/result" component={SubjectResult}	/> */}
 

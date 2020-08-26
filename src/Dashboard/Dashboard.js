@@ -216,7 +216,7 @@ const Dashboard = () => {
 					<div className="title-name sideTab" style={{ width: "100%" }}>
 						{UserResponse.name}
 						<div className="grade"> &nbsp;| Class 10</div>
-						<NavLink to="/class-select">Change Class &nbsp;&gt;</NavLink>
+						<NavLink to="/class-select">Change Class </NavLink>
 					</div>
 					<div className="d-sm-block d-none">
 						<NavLink to="/learn" className="test-class" >

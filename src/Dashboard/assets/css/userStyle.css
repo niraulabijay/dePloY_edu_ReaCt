@@ -98,17 +98,19 @@ h6 {
 	width: 100%;
 }
 .userSidenav .title-name .grade {
-	font-size: 16px;
-	text-shadow: none;
-	display: inline-block;
-	color: black;
+	font-size: 14px;
+    text-shadow: none;
+    display: inline-block;
+    color: #313130;
+    font-weight: bold;
 }
 .userSidenav .title-name a {
-	display: block;
-	padding-left: 10px;
-	font-size: 13px;
-
-	padding: 0px 10px 0px 5px;
+	color: white;
+    text-shadow: none;
+    display: block;
+    padding-left: 10px;
+    font-size: 12px;
+    padding: 0px 10px 0px 5px;
 }
 .userSidenav .company-container {
 	position: fixed;
@@ -130,7 +132,9 @@ h6 {
 }
 .userSidenav .company-container .title-name {
 	display: inline-block;
-	border: none;
+    border: none;
+    font-size: 22px;
+    font-weight: bold;
 }
 .userSidenav .company-container .title-name span {
 	display: none;
@@ -383,9 +387,9 @@ h6 {
 }
 .main-title {
 	text-align: center;
-	font-size: 30px;
+	font-size: 26px;
 	color: #009170;
-	font-family: "Lato", sans-serif;
+	font-family: "Poppins", sans-serif;
 	letter-spacing: 1px;
 	margin-top: 60px;
 }
@@ -524,7 +528,7 @@ h6 {
 	padding: 10px;
 	border-radius: 5px;
 	margin-top: 45px;
-	box-shadow: -5px -5px 15px #fff, 5px 5px 15px #eaeaea;
+	box-shadow: -5px -5px 15px #fff, 5px 5px 15px #d3d1d1;
 }
 .practise-report .title-wrapper{
 	margin-top: 30px;
@@ -601,7 +605,7 @@ h6 {
 	padding-top: 90px;
 	border-radius: 5px;
 	background: #fff;
-	box-shadow: 0px 0px 10px 1px #ebe9e9;
+	box-shadow: 0px 0px 10px 1px #e1dfdf;
 	position: relative;
 }
 .test-subject .testrow{
@@ -612,7 +616,7 @@ h6 {
 	position: absolute;
 	top: -60px;
 	left: 0;
-	box-shadow: inset 3px 0px 20px -15px #8d8d8d;
+	box-shadow:inset 3px 0px 20px -12px #4e4e4e;
 	right: 0;
 	width: 50%;
 	margin: 0 auto;
@@ -1372,7 +1376,7 @@ h6 {
 	color: gray;
 }
 .practiseSubject .practiseSubjectWrapper .chapter-name {
-	font-size: 20px;
+	font-size: 16px;
 	color: black;
 	margin-bottom: 5px;
 }
@@ -1407,7 +1411,7 @@ h6 {
 }
 .practiseSubject .practiseSubjectWrapper .button-container a {
 	border-radius: 5px;
-	border: 2px solid #dcfff0;
+	border:1px solid #7feabd;
 	color: #2ad181;
 	background: white;
 	padding: 8px;
@@ -1502,7 +1506,8 @@ h6 {
 	padding: 60px 90px;
 }
 .doubts-container .doubts-wrapper {
-	background: #32ea9b;
+	background: linear-gradient(135deg, #27cd81, #009d97);
+	border-radius: 5px;
 	padding: 15px;
 }
 .doubts-container .doubts-wrapper .icon-box {
@@ -1532,7 +1537,7 @@ h6 {
 	border-radius: 25px;
 	font-weight: bold;
 	color: white;
-	box-shadow: 0px 0px 15px 5px #fff;
+	box-shadow: 0px 0px 10px 0px #fff;
 }
 #doubts {
 	padding: 0px 60px;
@@ -1784,7 +1789,7 @@ h6 {
 	font-weight: bold;
 
 	border-radius: 5px;
-	font-size: 20px;
+	font-size: 16px;
 	display: block;
 	margin-top: 5px;
 }
@@ -1929,6 +1934,18 @@ cursor: pointer;
 	border-radius: 5px;
 	box-shadow: 0px 5px 15px -5px lightgrey;
 	font-size: 14px;
+	position: relative;
+}
+.notificationWrapper .notification-item .close-item{
+	position: absolute;
+    top: 5px;
+    right: 10px;
+	font-size: 20px;
+    color: #a7a5a5;
+	cursor: pointer;
+}
+.notificationWrapper .notification-item .close-item:hover{
+color: #434141;
 }
 .notificationWrapper .notification-item .date {
 	font-size: 12px;
@@ -1950,4 +1967,38 @@ cursor: pointer;
 .alertContainer p {
 	color: white;
 	margin: 0;
+}
+.centerAlertContainer {
+	position: absolute;
+	bottom: 0px;
+	top: 30%;
+    left: 0;
+	display: flex;
+	flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 200px;
+    margin: 0 auto;
+    right: 0px;
+	border-radius: 5px;
+	box-shadow: 0px 0px 15px 0px #c4efdf;
+	z-index: 9999;
+	background: white;
+}
+.centerAlertContainer .icon-box{
+	background: #25cb83;
+    font-size: 32px;
+    color: white;
+    width: 70px;
+    height: 70px;
+    margin-bottom: 15px;
+    border-radius: 50%;
+    text-align: center;
+    padding-top: 12px;
+}
+.centerAlertContainer p{
+	font-size: 26px;
+	color:#25cb83;
+	margin-bottom: 0px;
 }

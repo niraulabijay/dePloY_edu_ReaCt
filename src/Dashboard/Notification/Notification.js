@@ -1,6 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import Alert from "./Alert";
+import Alert from "../../components/Alert/Alert";
+
 export default function Notification() {
 	let History = useHistory();
 	return (
@@ -20,10 +21,13 @@ export default function Notification() {
 						</div>
 					</div>
 				</div>
-                <Alert/>
+                <Alert message={'Notification Received'} />
 				<div className="subject-content">
 					<div className="notificationWrapper">
 						<div className="notification-item">
+							<div className="close-item">
+								<span><i className="fa fa-window-close"></i></span>
+							</div>
                             <p>
 
 							Lorem ipsum dolor sit, amet consectetur adipisicing elit.
@@ -34,6 +38,9 @@ export default function Notification() {
                             <div className="date">Feb 22, 4:00 PM</div>
 						</div>
                         <div className="notification-item">
+						<div className="close-item">
+								<span><i className="fa fa-window-close"></i></span>
+							</div>
                             <p>
 
 							Lorem ipsum dolor sit, amet consectetur adipisicing elit.

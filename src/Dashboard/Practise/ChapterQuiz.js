@@ -161,7 +161,7 @@ const ChapterQuiz = (props) => {
                     <div className="question-container">
 
                         <div className="question-title">
-                            <span className="question-number">{question.id}.</span>
+                            <span className="question-number">{question.id}. </span>
                             <span
 											dangerouslySetInnerHTML={{ __html: question.name }}
 										></span>
