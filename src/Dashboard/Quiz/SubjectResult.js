@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useHistory, Link, useLocation } from "react-router-dom";
+import DisplayMark from './DisplayMarks'
 
 const SubjectResult = () => {
 	const history = useHistory();
@@ -12,7 +13,7 @@ const SubjectResult = () => {
 	console.log(result);
 
 	console.log(location);
-	console.log(result);
+	// console.log(result);
 	// useEffect(() => {
 
 	// 	window.onpopstate = e => {
@@ -39,7 +40,7 @@ const SubjectResult = () => {
 						boxShadow: "0px 2px 4px #a1a4a4",
 					}}
 				></nav>
-				{/* <DisplayMark fullMark={allQuestion} total={myTotal} /> */}
+				<DisplayMark fullMark={5} total={10} />
 			</div>
 			{result.map((question, index) => (
 				<div className="container  test-section">

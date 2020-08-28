@@ -131,9 +131,7 @@ export default function Test() {
 													<div className="button-container">
 														{data.ongoing == 1 ? (
 															<Link
-																data-toggle="modal"
-																data-target="#startModal"
-																onClick={() => setModalData(data.slug)}
+																to = {"/" + Authtoken.class_id + "/" + data.slug + "/test"}
 																style={{ background: "#4bf769" }}
 															>
 																<span>Ongoing</span>
