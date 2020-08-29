@@ -13,7 +13,7 @@ import {
 
 export default function PractiseWeeklyReport({practiseReport, loading, practiseSubject}) {
 	
-	  
+	  console.log(practiseReport)
 
 	
 
@@ -25,7 +25,7 @@ export default function PractiseWeeklyReport({practiseReport, loading, practiseS
 				</span>
 				<div className="title-wrapper">
 					<strong>Weekly Report</strong>
-					<small>Jan 1 - Jan 7</small>
+					<small>Last 7 Days</small>
 				</div>
 
 				<span className="next">
@@ -45,9 +45,7 @@ export default function PractiseWeeklyReport({practiseReport, loading, practiseS
 					>
                         <defs>
 							{
-								
 								practiseSubject.map((subject, index)=>{ return(
-								
 								<linearGradient id={"color"+subject} x1="0" y1="0" x2="0" y2="1">
 								<stop offset="5%"  stopColor="red" stopOpacity={0.9}/>
 								<stop offset="95%" stopColor="red" stopOpacity={0}/>

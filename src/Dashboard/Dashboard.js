@@ -68,7 +68,7 @@ const routes = [
 
 const Dashboard = () => {
 	const {UserResponse} = useContext(ProfileContext)
-	// const { StorageToken, Authtoken } = useAuth();
+	const { StorageToken, Authtoken } = useAuth();
 	const { handleClose } = Logout();
 
 	
@@ -215,7 +215,7 @@ const Dashboard = () => {
 					</div>
 					<div className="title-name sideTab" style={{ width: "100%" }}>
 						{UserResponse && UserResponse.name}
-						<div className="grade"> &nbsp;| Class 10</div>
+						<div className="grade"> &nbsp;| {Authtoken.class_name}</div>
 						<NavLink to="/class-select">Change Class </NavLink>
 					</div>
 					<div className="d-sm-block d-none">

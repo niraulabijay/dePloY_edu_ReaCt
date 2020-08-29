@@ -31,6 +31,7 @@ export default function LoginMobile() {
 						user_id: response.data.user_id,
 						class_id: response.data.class_id,
 						token: response.data.auth_token,
+						class_name: response.data.class_name
 					});
 
 					history.replace({

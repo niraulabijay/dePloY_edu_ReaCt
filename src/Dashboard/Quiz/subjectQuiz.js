@@ -184,7 +184,7 @@ export default function SubjectQuiz(props) {
 				console.log(response)
 				console.log(response.data.obtain_marks.obtain_marks)
 				console.log(response.data.obtain_marks.total_marks)
-				setResultResponse(response.data.result);
+				setResultResponse(response.data);
 				setTestFinish(true);
 				setHandleAlert(false);
 			}
@@ -365,7 +365,7 @@ export default function SubjectQuiz(props) {
 									<div className="question-container">
 										<div className="question-title">
 											<span className="question-number">
-												{currentQuestionIndex + 1}.
+												{currentQuestionIndex + 1}. &nbsp;
 											</span>
 											<span
 													dangerouslySetInnerHTML={{

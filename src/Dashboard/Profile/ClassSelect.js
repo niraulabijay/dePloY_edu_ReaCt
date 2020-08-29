@@ -33,7 +33,8 @@ const ClassSelect = () => {
                     name: res.data.name,
                     user_id: res.data.user_id,
                     class_id: res.data.class_id,
-                    token: res.data.auth_token
+                    token: res.data.auth_token,
+                    class_name: res.data.class_name
                 });
             }
             setLoading(true);

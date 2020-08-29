@@ -9,9 +9,11 @@ const SubjectResult = () => {
 	};
 
 	const location = useLocation();
-	const result = location.state;
+	const result = location.state.result;
+	const obtain_marks = location.state.obtain_marks.obtain_marks;
+	const total_marks = location.state.obtain_marks.total_marks;
 	console.log(result);
-
+	console.log(history);
 	console.log(location);
 	// console.log(result);
 	// useEffect(() => {
@@ -40,13 +42,13 @@ const SubjectResult = () => {
 						boxShadow: "0px 2px 4px #a1a4a4",
 					}}
 				></nav>
-				<DisplayMark fullMark={5} total={10} />
+				<DisplayMark fullMark={total_marks} total={obtain_marks} />
 			</div>
 			{result.map((question, index) => (
 				<div className="container  test-section">
 					<div className="question-container">
 						<div className="question-title">
-							<span className="question-number">{index + 1}.</span>
+							<span className="question-number">{index + 1}. &nbsp;</span>
 							<span
 								dangerouslySetInnerHTML={{
 									__html: question.name,
