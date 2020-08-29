@@ -16,6 +16,8 @@ export const SubjectProvider = props => {
 	const [testSub, setTestSubject] = useState([]);
 	const [PractiseResponse, setPractiseResponse] = useState([]);
 	const [practisePercentage, setPractisePercentage] = useState()
+	const [testGraphAccuracy, setTestGraphAccuracy] = useState([])
+	const [testGraphReport, setTestGraphReport] = useState([])
     const [loading, setLoading] = useState(true);
 	const {Authtoken} = useAuth();
 	const {handleClose} = Logout();
@@ -47,7 +49,9 @@ export const SubjectProvider = props => {
 				setTestSubject(response.data.test_subjects);
 				setPractiseSubject(response.data.practice_graph_subjects);
 				setPractiseReport(response.data.practice_report);
-				setPractisePercentage(response.data.practise_percentage)
+				setPractisePercentage(response.data.practise_percentage);
+				setTestGraphAccuracy(response.data.test_accuracy);
+				setTestGraphReport(response.data.test_report);
 				setLoading(false);
 				}
 			}catch(error){
@@ -82,7 +86,9 @@ export const SubjectProvider = props => {
 				loading:loading,
 				practiseReport:practiseReport,
 				practiseSubject:practiseSubject,
-				PractisePercentage: practisePercentage
+				PractisePercentage: practisePercentage,
+				testGraphReport: testGraphReport,
+				testGraphAccuracy: testGraphAccuracy,
 			}}>
             {props.children}
         </SubjectContext.Provider>

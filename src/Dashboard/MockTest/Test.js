@@ -22,10 +22,11 @@ import {
 	Tooltip,
 	Legend
 } from "recharts";
+import TestReport from "./TestReport";
 
 export default function Test() {
 	let { path } = useRouteMatch();
-	const { testSub, loading } = useContext(SubjectContext);
+	const { testSub, loading, testGraphReport, testGraphAccuracy  } = useContext(SubjectContext);
 	const [modalData, setModalData] = useState();
 	// const [returnTest, setReturnTest] = useState([]);
 	const { Authtoken } = useAuth();
@@ -48,20 +49,7 @@ export default function Test() {
 	// if(onGoing.innerHTML == "Ongoing"){
 	//     console.log('hi');
 	// }
-	function getRandomColor() {
-		var letters = '0123456789ABCDEF';
-		var color = '#';
-		for (var i = 0; i < 6; i++) {
-		  color += letters[Math.floor(Math.random() * 16)];
-		}
-		return color;
-	  }
-	const data = [
-		{ name: "First Week", Math: 400, Science: 700, amt: 2400 },
-		{ name: "Second Week", Math: 150, Science: 200, amt: 2400 },
-		{ name: "Third Week", Math:200, Science: 450, amt: 2400 },
-		{ name: "Fourth Week", Math:250, Science: 400, amt: 2400 }
-	];
+	
 	return (
 		<React.Fragment>
 			<Switch>
@@ -197,75 +185,13 @@ export default function Test() {
 							</div>
 						</div>
 					</div>
-
-					<div className="sub-title">Your practise Report</div>
-					<div className="practise-report">
-						<div className="row">
-							<div className=" col-md-12 col-lg-4 col-12">
-								<div className="report-wrapper overall-wrapper">
-									<div className="title d-flex justify-content-center">
-										<div className="title-wrapper">
-											<strong>Overall Report</strong>
-										</div>
-									</div>
-									<div className="content-wrapper">
-										<div className="overall-report">
-											92%
-											<div className="title">Course Completion</div>
-										</div>
-									</div>
-									<div className="footer-wrapper">
-										<div className="title-wrapper d-flex justify-content-between">
-											<div className="title">
-												<small>Time</small>
-												<strong>1 hrs</strong>
-												<i
-													className="fa fa-long-arrow-alt-up"
-													style={{ color: "green" }}
-												></i>
-											</div>
-											<div className="title">
-												<small>Goals</small>
-												<strong>1 </strong>
-												<i
-													className="fa fa-long-arrow-alt-down"
-													style={{ color: "red" }}
-												></i>
-											</div>
-											<div className="title">
-												<small>Accuracy</small>
-												<strong>90%</strong>
-												<i
-													className="fa fa-long-arrow-alt-down"
-													style={{ color: "red" }}
-												></i>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div className="col-md-12  col-lg-8 col-12">
-								<div className="title-wrapper text-center">
-									<strong>Weekly Report</strong>
-									<br />
-									<small>Month Jan</small>
-								</div>
-								<div className="report-wrapper ">
-									<ResponsiveContainer width="100%" height={300}>
-										<BarChart width={730} height={250} data={data}>
-											<CartesianGrid strokeDasharray="3 3" />
-											<XAxis dataKey="name" />
-											<YAxis />
-											<Tooltip />
-											<Legend />
-											<Bar dataKey="Math" fill={getRandomColor()} />
-											<Bar dataKey="Science" fill={getRandomColor()} />
-										</BarChart>
-									</ResponsiveContainer>
-								</div>
-							</div>
-						</div>
-					</div>
+					{testGraphReport.length > 0 && (
+									<TestReport
+										testGraphReport={testGraphReport}
+										loading={loading}
+										testGraphAccuracy={testGraphAccuracy}
+									/>
+					)}
 				</Route>
 				<Route path={`${path}/physics`}>
 					<TestSubject />
