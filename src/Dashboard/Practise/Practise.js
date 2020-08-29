@@ -141,6 +141,7 @@ export default function Practise() {
 									</div>
 								</div>
 							</div>
+							
 							<div className="col-md-12 col-lg-8 col-12">
 								{console.log(practiseReport)}
 								{practiseReport.length > 0 && (
