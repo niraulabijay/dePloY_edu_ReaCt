@@ -98,7 +98,7 @@ export default function Bookmark() {
 						</div>
 					</div>
 				</div>
-				<div className="subject-content">
+				<div className="subject-content container">
 					{BookmarkResponse.data ?
 					 (BookmarkResponse.data.map((bookmark, index) => (
 							<div

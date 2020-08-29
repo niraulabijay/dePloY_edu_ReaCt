@@ -71,7 +71,7 @@ export default function Profile() {
 		formData.append("gender", data.gender);
 		formData.append("address", data.address);
         console.log(...formData);
-        setReload(true);
+        // setReload(true);
 		Axios({
 			method: "post",
 			url: "https://noname.dotnep.com/api/user/update",

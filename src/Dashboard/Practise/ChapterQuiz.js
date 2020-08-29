@@ -114,7 +114,7 @@ const ChapterQuiz = (props) => {
     const handleQuit = e => {
         e.preventDefault()
         history.replace({
-            pathname: '/learn'
+            pathname: '/practise'
         })
     }
     

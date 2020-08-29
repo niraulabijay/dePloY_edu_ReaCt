@@ -9,7 +9,7 @@ export default function QuotaFull(){
                <img src={require('../../pages/images/404.png')} className="img-fluid" alt=""/>
                <h2>The Quota For This Set For The Day IS COMPLETE</h2>
                <div className="button-container">
-                   <Link to="/">Back</Link>
+                   <Link to="/practise">Back</Link>
                </div>
            </div>
           

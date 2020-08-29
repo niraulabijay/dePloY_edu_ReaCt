@@ -1442,6 +1442,7 @@ body {
 	color: #fff;
 	width: 35px;
 	height: 35px;
+	cursor: pointer;
 	margin-right: 10px;
 	margin-bottom: 10px;
 	display: inline-block;
@@ -2404,30 +2405,39 @@ body {
 	border: #09a893;
 }
 .errorpage {
-	height: 100vh;
+	height: calc(100vh - 80px);
 	background: #f4f4fe;
 	width: 100vw;
 }
 .errorpage .img-container {
-	padding-top: 10%;
+	padding-top: 60px;
 	text-align: center;
 	width: 30%;
 	margin: 0 auto;
+	
+}
+.errorpage .img-container img{
+	height: 200px;
+
 }
 
 .errorpage .img-container h2 {
-	font-size: 3em;
-	margin-bottom: 30px;
+	font-size: 2em;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 .errorpage .img-container a {
 	background: linear-gradient(235deg, #36ea5f, #00b693);
 	color: white;
-	padding: 10px 30px;
+	padding: 8px 30px;
 	text-decoration: none;
 
 	border-radius: 5px;
 }
 @media (max-width: 768px) {
+	.errorpage{
+		height: calc(100vh - 70px);
+	}
 	.errorpage .img-container {
 		padding-top: 25%;
 		text-align: center;

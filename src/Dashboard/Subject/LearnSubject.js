@@ -102,7 +102,7 @@ const LearnSubject = () => {
 						</li> 
 					</ul>
 				</div>
-				<div className="tab-content">
+				<div className="tab-content container">
 					{/* <ErrorBoundary> */}
 					<Note chapterResponse={chapter} setLoading={setLoading} subjectId={params.subjectId}/>
 					<FlashCards FlashcardResponse={chapter} />

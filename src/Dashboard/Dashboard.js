@@ -198,7 +198,7 @@ const Dashboard = () => {
 					</div>
 					<div className="profile-container">
 					<div className="img-container">
-						{UserResponse.length !== "0" ? 
+						{UserResponse && UserResponse.length !== "0" ? 
 							<img
 								src={
 									
@@ -214,7 +214,7 @@ const Dashboard = () => {
 					</div>
 					</div>
 					<div className="title-name sideTab" style={{ width: "100%" }}>
-						{UserResponse.name}
+						{UserResponse && UserResponse.name}
 						<div className="grade"> &nbsp;| Class 10</div>
 						<NavLink to="/class-select">Change Class </NavLink>
 					</div>

@@ -28,7 +28,7 @@ const SubjectResult = () => {
 	return (
 		<div className="quiz">
 			<div className="back-section">
-				<Link to="/practise">
+				<Link to="/test">
 					<i className="fa fa-arrow-left"></i> Back
 				</Link>
 			</div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useHistory, Route, useRouteMatch, Switch } from "react-router-dom";
 import Axios from "axios";
 import { useAuth } from "../../Context/Auth";
@@ -132,6 +132,7 @@ export default function SubjectQuiz(props) {
 
 	const markCounter = useMarkCounter(Score);
 
+	
 	function is_active(qid, aid) {
 		var value = false;
 		active.map(active => {
@@ -152,6 +153,12 @@ export default function SubjectQuiz(props) {
 		document.getElementById("quizSideNav").style.width = "0";
 	}
 
+	const handleBlur = (e)=>{
+		if(e.target.id !=  "quizOpen" && e.target.id != "sideBtn")
+		{
+			closeQuiz();
+		}
+	}
 	const submitPractise = () => {
 		setHandleAlert(true);
 		const PractiseData = JSON.parse(localStorage.getItem("active"));
@@ -225,7 +232,7 @@ export default function SubjectQuiz(props) {
 				localStorage.removeItem("active");
 				localStorage.removeItem("initialValue");
 				history.replace({
-					pathname: "/learn"
+					pathname: "/test"
 				});
 			}
 		});
@@ -235,11 +242,11 @@ export default function SubjectQuiz(props) {
 		<React.Fragment>
 			<Switch>
 			<Route exact path={path}>
-				<div>
+				<div  onClick={(e)=>handleBlur(e)}>
 					<span onClick={openQuiz} id="quizOpen">
-						<i class="fas fa-th-large"></i>
+						<i class="fas fa-th-large" id="sideBtn"></i>
 					</span>
-					<div id="quizSideNav" className="quizsidenav">
+					<div id="quizSideNav" className="quizsidenav" >
 						<div className="closebtn" onClick={closeQuiz}>
 							&times;
 						</div>
