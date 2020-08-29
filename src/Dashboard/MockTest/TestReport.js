@@ -32,7 +32,51 @@ export default function TestReport({testGraphAccuracy, testGraphReport}){
         	<div className="sub-title">Your Test Report</div>
 					<div className="practise-report">
 						<div className="row">
-                            <div className="col-md-12  col-lg-12 col-12">
+                        <div className="col-md-12 col-lg-4 col-12">
+								<div className="report-wrapper overall-wrapper">
+									<div className="title d-flex justify-content-center">
+										<div className="title-wrapper">
+											<strong>Overall Report</strong>
+										</div>
+									</div>
+									<div className="content-wrapper">
+										<div className="overall-report">
+											{testGraphAccuracy.toFixed(2)}%
+											<div className="title">Test Accuracy</div>
+										</div>
+									</div>
+									<div className="footer-wrapper">
+										<div className="title-wrapper d-flex justify-content-between">
+											<div className="title">
+												<small>Time</small>
+												<strong>1 hrs</strong>
+												<i
+													className="fa fa-long-arrow-alt-up"
+													style={{ color: "green" }}
+												></i>
+											</div>
+											<div className="title">
+												<small>Goals</small>
+												<strong>1 </strong>
+												<i
+													className="fa fa-long-arrow-alt-down"
+													style={{ color: "red" }}
+												></i>
+											</div>
+											<div className="title">
+												<small>Accuracy</small>
+												<strong>90%</strong>
+												<i
+													className="fa fa-long-arrow-alt-down"
+													style={{ color: "red" }}
+												></i>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+                            <div className="col-md-12  col-lg-8 col-12">
 								<div className="title-wrapper text-center">
 									<strong>Average Monthly Accuracy Report</strong>
 									<br />
