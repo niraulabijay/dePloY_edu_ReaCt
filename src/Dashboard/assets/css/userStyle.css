@@ -32,7 +32,16 @@ h6 {
 	color: white;
 	text-decoration: none;
 }
-
+.nothing-to-show{
+	text-align: center;
+	font-size: 18px;
+	margin-top: 15%;
+}
+.nothing-in-card{
+	padding-left: 10%;
+	font-size: 16px;
+	margin-top: 30px;
+}
 /* ------------------- The side navigation menu -------------------- */
 .userSidenav {
 	height: 100%;
@@ -348,7 +357,7 @@ h6 {
 }
 .navbar #view i,
 .navbar #hide i {
-	font-size: 36px;
+	font-size: 28px;
 	color: #2ad181;
 }
 @media (max-width: 756px) {
@@ -848,13 +857,18 @@ h6 {
 
 	border-bottom: 2px solid #ffffff;
 }
-.subject-navbar .back {
+.subject-navbar a.back {
 	position: absolute;
 	top: 30px;
-	font-size: 24px;
+	font-size: 20px;
 	left: 30px;
 	cursor: pointer;
 	color: black;
+	color: #23c984;
+
+}
+.subject-navbar a.back:hover{
+	color: gray;
 }
 
 .subject-navbar .icon-box {
@@ -1711,7 +1725,7 @@ h6 {
 .profile-wrapper form .form-group .form-control {
 	border: none !important;
 	box-shadow: inset 1px 2px 5px #e2e0e0;
-	height: 3rem;
+	height: 2.5rem;
 }
 .profile-wrapper form .button-container {
 	text-align: right;
@@ -1722,7 +1736,7 @@ h6 {
 	margin-right: 45px;
 	border: none;
 	border-radius: 50px;
-	padding: 10px 45px;
+	padding: 8px 45px;
 	margin-top: 15px;
 	cursor: pointer;
 }
@@ -1928,6 +1942,18 @@ cursor: pointer;
 	padding: 0px 10%;
 }
 .notificationWrapper .notification-item {
+	cursor: pointer;
+	background: #e0f9f0;
+	padding: 10px 30px;
+	margin-bottom: 15px;
+	border-radius: 5px;
+	box-shadow: 0px 5px 15px -5px lightgrey;
+	font-size: 14px;
+	position: relative;
+}
+
+.notificationWrapper .notification-item.seen {
+	cursor: default;
 	background: #ffffff;
 	padding: 10px 30px;
 	margin-bottom: 15px;
@@ -1937,6 +1963,7 @@ cursor: pointer;
 	position: relative;
 }
 .notificationWrapper .notification-item .close-item{
+	display: none;
 	position: absolute;
     top: 5px;
     right: 10px;
@@ -1944,12 +1971,33 @@ cursor: pointer;
     color: #a7a5a5;
 	cursor: pointer;
 }
+.notificationWrapper .notification-item.seen .close-item{
+	display: block;
+}
 .notificationWrapper .notification-item .close-item:hover{
 color: #434141;
 }
 .notificationWrapper .notification-item .date {
 	font-size: 12px;
 	color: gray;
+}
+.notificationWrapper .notification-item .date .seen-identify{
+	display: none;
+    margin-left: 10px;
+
+}
+.notificationWrapper .notification-item .date .new-identify{
+	padding: 0px 5px;
+    background: #25cb83;
+    color: white;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+.notificationWrapper .notification-item.seen .date .new-identify{
+	display: none;
+}
+.notificationWrapper .notification-item.seen .date .seen-identify{
+display: inline;
 }
 
 /* Alert */

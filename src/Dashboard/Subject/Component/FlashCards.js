@@ -53,7 +53,9 @@ const FlashCards = ({ FlashcardResponse }) => {
 
 							<div className="top-content">
 								<div className="container-fluid ">
-									{Flash.flashCards ? (
+									{Flash.flashCards ? ( Flash.flashCards.length == 0 ?
+									<div className="nothing-in-card">No Flashcards added yet.</div>
+									:
 										<Slider {...settings}>
 											{Flash.flashCards.map(Content => (
 												<div className="carousel-inner" key={Content.id}>

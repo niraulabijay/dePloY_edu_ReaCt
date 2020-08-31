@@ -7,7 +7,8 @@ const PastQuestions = ({ QuestionResponse }) => {
 	return (
 		<div className="tab-pane  fade" id="past-question">
 			<div className="subject-content">
-				{QuestionResponse.data &&
+				{QuestionResponse.data ?
+				
 					QuestionResponse.data.map((question, index) => (
 						<div
 							className="chapter-wrapper d-flex justify-content-between"
@@ -27,7 +28,9 @@ const PastQuestions = ({ QuestionResponse }) => {
 								</Link>
 							</div>
 						</div>
-					))}
+					)):
+					<div className="nothing-to-show">No Questions added yet.</div>
+					}
 			</div>
 		</div>
 	);

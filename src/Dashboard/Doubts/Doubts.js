@@ -51,7 +51,10 @@ export default function Doubts(){
                 </div>
                 
                     <div id="doubts" class="collapse">
-                        <div className="title"> Select a subject</div>
+                        <div className="coming-soon">
+                            <h2 className="py-5">Coming Soon ...</h2>
+                        </div>
+                        {/* <div className="title"> Select a subject</div>
                             <div className="row">
                                 <div className="col-md-6">
                                     <a href="" data-toggle="modal" data-target="#doubtSub1">
@@ -97,9 +100,10 @@ export default function Doubts(){
                            
                                 
                             </div>
-                        </div>
+                      */}
+                     </div>
                    
-                <div className="questionary-container">
+                {/* <div className="questionary-container">
                     <div className="questionary-wrapper">
                         <div className="row">
                             <div className="col-10">
@@ -181,7 +185,7 @@ export default function Doubts(){
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
                         <div className="modal" id="doubtSub1">
   <div className="modal-dialog">
     <div className="modal-content">

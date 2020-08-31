@@ -110,7 +110,8 @@ export default function Learn() {
 									</div>
 								</div>
 							</div>
-						) : (
+						) : (( SubjectResponse.length == 0 ?
+							<div className="nothing-to-show">No Subjects added yet.</div> :
 							<div className="row">
 								{SubjectResponse.map((subject, index) => (
 									<div className="col-md-3 col-lg-3 col-6" key={index}>
@@ -125,7 +126,7 @@ export default function Learn() {
 									</div>
 								))}
 							</div>
-						)}
+						))}
 					</div>
 				</Route>
 				<Route path={`${path}/:subjectId`}>

@@ -21,34 +21,36 @@ export default function Notification() {
 						</div>
 					</div>
 				</div>
-                <Alert message={'Notification Received'} />
+				<Alert message={"Notification Received"} />
 				<div className="subject-content">
 					<div className="notificationWrapper">
-						<div className="notification-item">
+						<div className="notification-item ">
 							<div className="close-item">
-								<span><i className="fa fa-window-close"></i></span>
+								<span>
+									<i className="fa fa-window-close"></i>
+								</span>
 							</div>
-                            <p>
-
-							Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-							Obcaecati, unde culpa? Totam earum reiciendis quae itaque,
-							possimus magni asperiores, dignissimos voluptas adipisci eveniet
-							unde! Veniam deleniti illo quis quisquam quod?
-                            </p>
-                            <div className="date">Feb 22, 4:00 PM</div>
+							<p>
+								Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+								Obcaecati, unde culpa? Totam earum reiciendis quae itaque,
+								possimus magni asperiores, dignissimos voluptas adipisci eveniet
+								unde! Veniam deleniti illo quis quisquam quod?
+							</p>
+							<div className="date">Feb 22, 4:00 PM <span className="seen-identify"> <i className="fa fa-eye"></i>  </span> <span className="new-identify"> new  </span></div>
 						</div>
-                        <div className="notification-item">
-						<div className="close-item">
-								<span><i className="fa fa-window-close"></i></span>
+						<div className="notification-item seen">
+							<div className="close-item">
+								<span>
+									<i className="fa fa-window-close"></i>
+								</span>
 							</div>
-                            <p>
-
-							Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-							Obcaecati, unde culpa? Totam earum reiciendis quae itaque,
-							possimus magni asperiores, dignissimos voluptas adipisci eveniet
-							unde! Veniam deleniti illo quis quisquam quod?
-                            </p>
-                            <div className="date">Feb 22, 4:00 PM</div>
+							<p>
+								Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+								Obcaecati, unde culpa? Totam earum reiciendis quae itaque,
+								possimus magni asperiores, dignissimos voluptas adipisci eveniet
+								unde! Veniam deleniti illo quis quisquam quod?
+							</p>
+							<div className="date">Feb 22, 4:00 PM <span className="seen-identify"> <i className="fa fa-eye"></i>  </span> <span className="new-identify"> new  </span></div> 
 						</div>
 					</div>
 				</div>

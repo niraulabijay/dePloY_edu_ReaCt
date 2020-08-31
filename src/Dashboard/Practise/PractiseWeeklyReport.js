@@ -13,9 +13,15 @@ import {
 
 export default function PractiseWeeklyReport({practiseReport, loading, practiseSubject}) {
 	
-	  console.log(practiseReport)
-
-	
+	  function getRandomColor() {
+		var letters = '0123456789ABCDEF';
+		var color = '#';
+		for (var i = 0; i < 6; i++) {
+		  color += letters[Math.floor(Math.random() * 16)];
+		}
+		return color;
+	  }
+	console.log(getRandomColor())
 
 	return (
 		<div className="report-wrapper ">
@@ -64,13 +70,15 @@ export default function PractiseWeeklyReport({practiseReport, loading, practiseS
 						{console.log(practiseReport)}
 						
 					{
-						practiseSubject.map((subject, index)=>{ return(
-						
+						practiseSubject.map((subject, index)=>{
+							let color = getRandomColor();
+							 return(
+							
 							<Area
 							type="monotone"
 							dataKey={subject}
-							stroke={"url(#color"+subject+")"}
-							fillOpacity={1} fill={"url(#color"+subject+")"}
+							stroke={color}
+							fillOpacity={1} fill={color}
 							
 						/>)})
 					}

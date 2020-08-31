@@ -47,6 +47,9 @@ const Note = ({ chapterResponse , setLoading, subjectId}) => {
 		<div className="tab-pane active" id="note">
 			<div className="subject-content">
 				{chapterResponse[0] ? (
+					chapterResponse.length == 0 ?
+					<div className="nothing-to-show">No Notes added yet.</div>
+					:
 					<React.Fragment>
 						{chapterResponse.map(
 							(note, index) =>

@@ -99,7 +99,8 @@ export default function Bookmark() {
 					</div>
 				</div>
 				<div className="subject-content container">
-					{BookmarkResponse.data ?
+					{BookmarkResponse.data ?( BookmarkResponse.data.length == 0 ?
+					<div className="nothing-to-show">No bookmark pinned yet.</div> :
 					 (BookmarkResponse.data.map((bookmark, index) => (
 							<div
 								className="chapter-wrapper d-flex justify-content-between"
@@ -127,7 +128,7 @@ export default function Bookmark() {
 									)}
 								</div>
 							</div>)
-						)):
+						))):
 						(
 						<div className="chapter-wrapper d-flex justify-content-between"
 								
