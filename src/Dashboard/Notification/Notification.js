@@ -95,6 +95,7 @@ export default function Notification() {
 									<i className="fa fa-window-close"></i>
 								</span>
 							</div>
+							<h4>{notification.title}</h4>
 							<p dangerouslySetInnerHTML={{
 														__html:
 															notification.notifications
@@ -110,12 +111,14 @@ export default function Notification() {
 									<i className="fa fa-window-close"></i>
 								</span>
 							</div>
+							<h4>{notification.title}</h4>
 							<p dangerouslySetInnerHTML={{
 														__html:
 															notification.notifications
 													}}>
 							</p>
 							<div className="date">{notification.date} <span className="seen-identify"> <i className="fa fa-eye"></i>  </span> <span className="new-identify"> new  </span></div>
+												
 						</div>
 						)})}
 						
