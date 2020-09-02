@@ -1,4 +1,4 @@
- import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Axios from "axios";
 import { useAuth } from "../../Context/Auth";
 import { useForm } from "react-hook-form";
@@ -7,10 +7,16 @@ import AccountDetail from "./AccountDetail";
 import { ProfileContext } from "../../Context/ProfileContext";
 export default function Profile() {
 	const { Authtoken } = useAuth();
-    const  [reload, setReload] = useState(true);
-		// const [UserResponse, setUserResponse] = useState([]);
-		// const [loading, setLoading] = useState(true);
-	const {loading, UserResponse, setUserResponse, setUpdate, setLoading} = useContext(ProfileContext);	
+	const [reload, setReload] = useState(true);
+	// const [UserResponse, setUserResponse] = useState([]);
+	// const [loading, setLoading] = useState(true);
+	const {
+		loading,
+		UserResponse,
+		setUserResponse,
+		setUpdate,
+		setLoading,
+	} = useContext(ProfileContext);
 	const { register, handleSubmit } = useForm();
 	const [ProfileImage, setProfileImage] = useState([]);
 	let getUrl = "https://noname.dotnep.com/api/user/" + Authtoken.user_id;
@@ -33,7 +39,6 @@ export default function Profile() {
 	// 			);
 	// 			setUserResponse(response.data.user);
 
-				
 	// 			setLoading(false);
 	// 		} catch (error) {
 	// 			if (Axios.isCancel(error)) {
@@ -49,18 +54,19 @@ export default function Profile() {
 	// 	};
 	// }, [getUrl, reload]);
 
-	const handleUserChange = e =>
-		setUserResponse({
-			...UserResponse,
-			[e.target.name]: [e.target.value]
-		});
+	const handleUserChange = (e) =>{ e.preventDefault();
+	setUserResponse({
+		...UserResponse,
+		[e.target.name]: [e.target.value],
+	});
+}
 
-	const handleImageChange = e => {
+	const handleImageChange = (e) => {
 		setProfileImage(e.target.files[0]);
 	};
 
-	const onSubmit = data => {
-		setLoading(true)
+	const onSubmit = (data) => {
+		setLoading(true);
 		const formData = new FormData();
 		formData.append("profile_image", ProfileImage);
 		formData.append("user_id", Authtoken.user_id);
@@ -70,27 +76,29 @@ export default function Profile() {
 		formData.append("dob", data.dob);
 		formData.append("gender", data.gender);
 		formData.append("address", data.address);
-        console.log(...formData);
-        // setReload(true);
+		console.log(...formData);
+		// setReload(true);
 		Axios({
 			method: "post",
 			url: "https://noname.dotnep.com/api/user/update",
-            headers: { "Content-Type": "multipart/form-data" ,
-            Authorization: "bearer" + Authtoken.token},
-			data: formData
+			headers: {
+				"Content-Type": "multipart/form-data",
+				Authorization: "bearer" + Authtoken.token,
+			},
+			data: formData,
 		})
-			.then(res => {
-                console.log(res.status + "new");
-				if(res.status == 200){
+			.then((res) => {
+				console.log(res.status + "new");
+				if (res.status == 200) {
 					// setLoading(true)
-					setUpdate({...initialstate => initialstate +1})
-                    setLoading(false);
-                }
+					setUpdate({ ...(initialstate) => initialstate + 1 });
+					setLoading(false);
+				}
 			})
-		.catch(err => {
-			console.log(err)
-			setLoading(false)
-		});
+			.catch((err) => {
+				console.log(err);
+				setLoading(false);
+			});
 	};
 	console.log(UserResponse.profile_image);
 
@@ -136,7 +144,7 @@ export default function Profile() {
 							<Skeleton />
 						</div>
 						<div className="button-container">
-							<Skeleton  width={100} height={30}/>
+							<Skeleton width={100} height={30} />
 						</div>
 					</form>
 				</div>
@@ -199,7 +207,7 @@ export default function Profile() {
 								className="form-control"
 								type="text"
 								value={UserResponse.name}
-								onChange={handleUserChange}
+								onChange={(e) => handleUserChange(e)}
 								ref={register}
 								name="name"
 							/>
@@ -210,7 +218,7 @@ export default function Profile() {
 								className="form-control"
 								type="text"
 								value={UserResponse.institution}
-								onChange={handleUserChange}
+								onChange={(e) => handleUserChange(e)}
 								ref={register}
 								name="institution"
 							/>
@@ -221,7 +229,7 @@ export default function Profile() {
 								className="form-control"
 								type="text"
 								value={UserResponse.address}
-								onChange={handleUserChange}
+								onChange={(e) => handleUserChange(e)}
 								ref={register}
 								name="address"
 							/>
@@ -234,28 +242,30 @@ export default function Profile() {
 								type="date"
 								value={UserResponse.dob}
 								ref={register}
-								onChange={handleUserChange}
+								onChange={(e) => handleUserChange(e)}
 								name="dob"
 							/>
 						</div>
 						<div className="form-group">
-							<label>Profile</label><br/>
-                            <label class="custom-file-upload">
-    <input type="file"
-								id="image"
-								accept="image/png, image/jpeg"
-								onChange={handleImageChange}
-								name="profile_image"
-								ref={register}/>
-   </label>
-							
+							<label>Profile</label>
+							<br />
+							<label className="custom-file-upload">
+								<input
+									type="file"
+									id="image"
+									accept="image/png, image/jpeg"
+									onChange={handleImageChange}
+									name="profile_image"
+									ref={register}
+								/>
+							</label>
 						</div>
 						<div className="form-group">
 							<label>Gender</label>
 							<select
 								className="form-control"
 								value={UserResponse.gender}
-								onChange={handleUserChange}
+								onChange={(e) => handleUserChange(e)}
 								ref={register}
 								name="gender"
 							>
